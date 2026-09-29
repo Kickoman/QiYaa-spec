@@ -24,22 +24,22 @@ the queue has moved on to another wave.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| TRK-03 | — | A wave starts ([WAVE-01](wave.md)) | Event `{"type":"radioStarted","timestamp":…,"from":"web-main-rup-radio-main"}` with the first `batchId`. It has no `trackId`. It is sent before the `trackStarted` of the first track. | yes | no (gap A1) |
-| TRK-04 | A wave | A track starts | Event `trackStarted` with `trackId` = `"<id>:<albumId>"`, or `"<id>"` without an album, and the `batchId` of the batch the track came in. It has no `totalPlayedSeconds`. | yes | no (gap A1) |
-| TRK-05 | A wave track has started | It closes finished | Event `trackFinished` with `trackId` and `totalPlayedSeconds` ([TRK-08](#played-seconds)). | yes | no (gap A1) |
-| TRK-06 | A wave track has started | It closes as a skip: Next, Previous, a jump, a restart, Stop, a new queue, removal of the current track, quitting the app, or the end of a track whose download failed | Event `skip` with `trackId` and `totalPlayedSeconds`. It is sent before the next track's `trackStarted`. | yes | no (gap A1) |
-| TRK-07 | A wave track is current | The user dislikes it | `POST /users/<uid>/dislikes/tracks/add-multiple` with `track-ids=<id>`. Then the app acts as for Next ([TR-03](transport.md)), so the track closes with `skip`. There is no separate dislike event, and the track stays in the queue. | yes | no: no `skip` (gap A1) |
+| TRK-03 | — | A wave starts ([WAVE-01](wave.md)) | Event `{"type":"radioStarted","timestamp":…,"from":"web-main-rup-radio-main"}` with the first `batchId`. It has no `trackId`. It is sent before the `trackStarted` of the first track. | yes | yes |
+| TRK-04 | A wave | A track starts | Event `trackStarted` with `trackId` = `"<id>:<albumId>"`, or `"<id>"` without an album, and the `batchId` of the batch the track came in. It has no `totalPlayedSeconds`. | yes | yes |
+| TRK-05 | A wave track has started | It closes finished | Event `trackFinished` with `trackId` and `totalPlayedSeconds` ([TRK-08](#played-seconds)). | yes | yes |
+| TRK-06 | A wave track has started | It closes as a skip: Next, Previous, a jump, a restart, Stop, a new queue, removal of the current track, quitting the app, or the end of a track whose download failed | Event `skip` with `trackId` and `totalPlayedSeconds`. It is sent before the next track's `trackStarted`. | yes | yes |
+| TRK-07 | A wave track is current | The user dislikes it | `POST /users/<uid>/dislikes/tracks/add-multiple` with `track-ids=<id>`. Then the app acts as for Next ([TR-03](transport.md)), so the track closes with `skip`. There is no separate dislike event, and the track stays in the queue. | yes | yes |
 
 ## Played seconds
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| TRK-08 | A track has started | It closes | `totalPlayedSeconds` counts only the time that audio actually played. Seeks (jumps in either direction), pauses and buffering are not counted. It is rounded to 0.1 s, and each start resets it to 0. | yes | no (gap A1) |
+| TRK-08 | A track has started | It closes | `totalPlayedSeconds` counts only the time that audio actually played. Seeks (jumps in either direction), pauses and buffering are not counted. It is rounded to 0.1 s, and each start resets it to 0. | yes | yes |
 
 ## Delivery
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| TRK-09 | A wave session | A feedback event is sent | `POST /rotor/session/<radioSessionId>/feedback` with `{"event":{…},"batchId":"…"}`. `batchId` is left out when it is empty. | yes | no (gap A1) |
-| TRK-10 | A wave session | The session endpoint answers 4xx | The same event goes to `POST /rotor/station/<stationId>/feedback?batch-id=<batchId>`, whose body is the bare event object. The session is remembered, and its later events go straight to the station endpoint. Without a station id nothing more is sent. | yes | no (gap A1) |
-| TRK-11 | A wave session | The feedback request fails with 5xx or a timeout | It is logged and not retried. There is no fallback. | yes | no (gap A1) |
+| TRK-09 | A wave session | A feedback event is sent | `POST /rotor/session/<radioSessionId>/feedback` with `{"event":{…},"batchId":"…"}`. `batchId` is left out when it is empty. | yes | yes |
+| TRK-10 | A wave session | The session endpoint answers 4xx | The same event goes to `POST /rotor/station/<stationId>/feedback?batch-id=<batchId>`, whose body is the bare event object. The session is remembered, and its later events go straight to the station endpoint. Without a station id nothing more is sent. | yes | yes |
+| TRK-11 | A wave session | The feedback request fails with 5xx or a timeout | It is logged and not retried. There is no fallback. | yes | yes |

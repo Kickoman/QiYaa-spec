@@ -55,4 +55,3 @@ issue is fixed, remove its tag from the scenario rows and delete the entry here.
 | D2 | Desktop | A broken track (no usable link, or the decoder fails) stops playback. There is no skip, no limit and no counter. | ERR-04 to ERR-07 | Kickoman/QiYaa#9 |
 | D3 | Desktop | Previous always goes to the previous track. There is no 3-second rule. | TR-01, TR-02 | Kickoman/QiYaa#10 |
 | D4 | Desktop | Empty likes, and any source whose tracks are all unavailable, clear the queue. An empty first wave batch clears the queue and leaves a dead wave. | SRC-07, SRC-08, WAVE-03 | Kickoman/QiYaa#11 |
-| A1 | Android | Sends no rotor feedback: no `radioStarted`, `trackStarted`, `trackFinished` or `skip`, and no station fallback. | WAVE-01, TRK-03 to TRK-11 | Kickoman/QiYaa-android#26 |

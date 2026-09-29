@@ -26,7 +26,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | My Wave | yes | yes | [wave.md](player/wave.md) |
 | Wheel of waves (waves matched to the current track) | yes | no: Kickoman/QiYaa-android#20 | `POST /wheel/new` |
 | Search with the best result | yes | yes | [SRC-09 to SRC-12](player/sources.md#search) |
-| Empty source, or one whose tracks are all unavailable, keeps the queue | differs: D4, Kickoman/QiYaa#11 | differs: A3, Kickoman/QiYaa-android#28 | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
+| Empty source, or one whose tracks are all unavailable, keeps the queue | differs: D4, Kickoman/QiYaa#11 | yes | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
 

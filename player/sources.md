@@ -19,7 +19,7 @@ Loading a source into the queue. Terms and the status columns are explained in t
 | SRC-05 | A source reply lists tracks, some with `available: false` | It is applied | Tracks with `available: false` are left out of the queue. A track without an `available` field is available. | yes | yes |
 | SRC-06 | Any queue, possibly playing | A source with at least one available track answers | The queue is replaced by the source's available tracks in the source's order. The previous track is closed ([TRK-06](tracking.md)). The first track starts playing. A status names the source and its track count. | yes | yes |
 | SRC-07 | Any queue, possibly playing | A source answers with no tracks | Status "<source>: empty". The queue and playback stay as they were. This applies to every source: likes, playlist, album, artist, station and search (search: [SRC-12](#search)). A wave is covered by [WAVE-03](wave.md). | no: likes clear the queue (gap D4) | yes |
-| SRC-08 | Any queue, possibly playing | A source answers with tracks that are all unavailable | Same as SRC-07: "<source>: empty", and nothing changes. The empty check runs after the filter of SRC-05. | no (gap D4) | no (gap A3) |
+| SRC-08 | Any queue, possibly playing | A source answers with tracks that are all unavailable | Same as SRC-07: "<source>: empty", and nothing changes. The empty check runs after the filter of SRC-05. | no (gap D4) | yes |
 
 ## Search
 

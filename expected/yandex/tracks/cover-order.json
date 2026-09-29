@@ -1,0 +1,40 @@
+{
+  "tracks": [
+    {
+      "id": "11",
+      "albumId": "21",
+      "title": "Album cover wins",
+      "artists": [],
+      "durationMs": 0,
+      "available": true,
+      "albumTitle": "A",
+      "year": 0,
+      "genre": "",
+      "coverUri": "avatars.yandex.net/get-music-content/9/album-cover/%%"
+    },
+    {
+      "id": "12",
+      "albumId": "22",
+      "title": "Track cover when the album has none",
+      "artists": [],
+      "durationMs": 0,
+      "available": true,
+      "albumTitle": "B",
+      "year": 0,
+      "genre": "",
+      "coverUri": "avatars.yandex.net/get-music-content/9/track-only/%%"
+    },
+    {
+      "id": "13",
+      "albumId": "",
+      "title": "Only ogImage",
+      "artists": [],
+      "durationMs": 0,
+      "available": true,
+      "albumTitle": "",
+      "year": 0,
+      "genre": "",
+      "coverUri": "avatars.yandex.net/get-music-content/9/og-only/%%"
+    }
+  ]
+}

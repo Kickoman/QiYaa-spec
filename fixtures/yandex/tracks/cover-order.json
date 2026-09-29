@@ -1,0 +1,40 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "id": 11,
+      "title": "Album cover wins",
+      "coverUri": "avatars.yandex.net/get-music-content/9/track-cover/%%",
+      "ogImage": "avatars.yandex.net/get-music-content/9/og-image/%%",
+      "albums": [
+        {
+          "id": 21,
+          "title": "A",
+          "coverUri": "avatars.yandex.net/get-music-content/9/album-cover/%%"
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Track cover when the album has none",
+      "coverUri": "avatars.yandex.net/get-music-content/9/track-only/%%",
+      "ogImage": "avatars.yandex.net/get-music-content/9/og-image/%%",
+      "albums": [
+        {
+          "id": 22,
+          "title": "B"
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Only ogImage",
+      "ogImage": "avatars.yandex.net/get-music-content/9/og-only/%%",
+      "albums": []
+    }
+  ]
+}

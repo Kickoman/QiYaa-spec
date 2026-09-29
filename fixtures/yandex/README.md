@@ -26,7 +26,7 @@ Response bodies as the server sends them, one file per case. What parsing each m
 |---|---|---|
 | `account-status` | `GET /account/status` | `ok`, `500-empty` |
 | `users-likes-tracks` | `GET /users/<uid>/likes/tracks` | `string-ids`, `number-ids` |
-| `tracks` | `POST /tracks/` | `two-tracks`, `with-unavailable`, `version-and-artists`, `cover-from-album` |
+| `tracks` | `POST /tracks/` | `two-tracks`, `with-unavailable`, `version-and-artists`, `cover-from-album`, `cover-order` |
 | `users-playlists-list` | `GET /users/<uid>/playlists/list` | `ok` |
 | `users-playlists` | `GET /users/<uid>/playlists/<kind>` | `embedded-tracks`, `ids-only` |
 | `users-playlists-recommendations` | `GET /users/<uid>/playlists/<kind>/recommendations` | `ok` |

@@ -18,7 +18,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 |---|---|---|---|
 | Liked tracks | yes | yes | |
 | User playlists | yes | yes | |
-| "Похожие треки" for a playlist (recommendations) | yes | no: Kickoman/QiYaa-android#32 | `GET /users/<uid>/playlists/<kind>/recommendations` |
+| "Похожие треки" for a playlist (recommendations) | yes | yes | `GET /users/<uid>/playlists/<kind>/recommendations` |
 | "Для вас": personal playlists (Плейлист дня, Дежавю, Премьера…) | yes | yes | `GET /landing3?blocks=personalplaylists` |
 | Liked artists and their popular tracks | yes | yes | Top 100 by rating ([SRC-09](player/sources.md#search)) |
 | Liked albums (podcasts left out) | yes | yes | |

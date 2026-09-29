@@ -18,9 +18,9 @@ the [README](README.md). The feedback events a wave sends are in [tracking.md](t
 |---|---|---|---|---|---|
 | WAVE-05 | A wave, no load-more in flight | A track becomes current (play, next, previous, jump, or the automatic advance) and remaining ≤ 2 | `POST /rotor/session/<radioSessionId>/tracks` with `{"queue":[ids]}`. The ids are the plain track ids (no album) of the last 5 tracks of the queue: the end of the list, not the tracks around the cursor. The available tracks of the reply are appended ([SRC-05](sources.md)). If the reply carries no `radioSessionId`, the old one stays. | yes | yes |
 | WAVE-06 | A load-more request is in flight | Another track becomes current with remaining ≤ 2 | No second request. At most one load-more is in flight per queue. | yes | yes |
-| WAVE-07 | A load-more request is in flight for wave W | The queue is replaced before the reply arrives, and the reply then succeeds or fails | The reply is dropped silently: nothing is appended, no status appears, and the new queue's load-more state is untouched. | yes | no: a failure still shows an error (gap A4) |
+| WAVE-07 | A load-more request is in flight for wave W | The queue is replaced before the reply arrives, and the reply then succeeds or fails | The reply is dropped silently: nothing is appended, no status appears, and the new queue's load-more state is untouched. | yes | yes |
 | WAVE-08 | A wave; the last track ends while load-more is in flight | The reply arrives with new tracks | Playback continues with the first new track. With shuffle it is still the first new track ([WAVE-10](#shuffle-and-repeat)). | yes | yes |
-| WAVE-09 | A wave, stopped at its end | Load-more fails, or brings no available track | Playback stays stopped at the end and no request is retried on its own. The next Next sends the load-more request again. | yes | no: Next only shows a message (gap A4) |
+| WAVE-09 | A wave, stopped at its end | Load-more fails, or brings no available track | Playback stays stopped at the end and no request is retried on its own. The next Next sends the load-more request again. | yes | yes |
 
 ## Shuffle and repeat
 

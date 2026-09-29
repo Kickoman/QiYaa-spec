@@ -54,7 +54,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | A reply for a replaced queue is dropped silently | yes | differs: A4, Kickoman/QiYaa-android#29 | [WAVE-07](player/wave.md) |
 | Next at the end asks for more again after a failure | yes | differs: A4, Kickoman/QiYaa-android#29 | [WAVE-09](player/wave.md) |
 | Shuffle does not apply in a wave | yes | yes | [WAVE-10, WAVE-11](player/wave.md) |
-| Repeat does not apply in a wave | yes | differs: A5, Kickoman/QiYaa-android#30 | [WAVE-12](player/wave.md) |
+| Repeat does not apply in a wave | yes | yes | [WAVE-12](player/wave.md) |
 
 ## Play tracking
 

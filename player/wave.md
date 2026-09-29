@@ -29,6 +29,6 @@ Yandex Music app. The server already picks the tracks, and the wave never ends.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| WAVE-10 | Shuffle is on | A wave starts, or the user turns shuffle on during a wave | The wave plays in queue order. The shuffle control is disabled or ignored during the wave, and the status says why. | no: picks random tracks from the loaded queue (gap D5) | yes |
-| WAVE-11 | The user turned shuffle on before a wave | An ordinary queue replaces the wave | Shuffle is on again. The wave does not change the user's choice. | no (gap D5) | yes |
+| WAVE-10 | Shuffle is on | A wave starts, or the user turns shuffle on during a wave | The wave plays in queue order. The shuffle control is disabled or ignored during the wave, and the status says why. | yes | yes |
+| WAVE-11 | The user turned shuffle on before a wave | An ordinary queue replaces the wave | Shuffle is on again. The wave does not change the user's choice. | yes | yes |
 | WAVE-12 | Repeat is on, a wave is at its last track | The track ends, or the user presses Next | The wave does not wrap to its first track. It waits for more, as in WAVE-08 and WAVE-09. | yes | no: wraps to the first track (gap A5) |

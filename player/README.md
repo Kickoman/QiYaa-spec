@@ -55,7 +55,6 @@ issue is fixed, remove its tag from the scenario rows and delete the entry here.
 | D2 | Desktop | A broken track (no usable link, or the decoder fails) stops playback. There is no skip, no limit and no counter. | ERR-04 to ERR-07 | Kickoman/QiYaa#9 |
 | D3 | Desktop | Previous always goes to the previous track. There is no 3-second rule. | TR-01, TR-02 | Kickoman/QiYaa#10 |
 | D4 | Desktop | Empty likes, and any source whose tracks are all unavailable, clear the queue. An empty first wave batch clears the queue and leaves a dead wave. | SRC-07, SRC-08, WAVE-03 | Kickoman/QiYaa#11 |
-| D5 | Desktop | Shuffle applies in a wave: it picks random tracks from the loaded queue, and loading more starts only when a pick lands on the last two tracks. | WAVE-10, WAVE-11 | Kickoman/QiYaa#6 |
 | A1 | Android | Sends no rotor feedback: no `radioStarted`, `trackStarted`, `trackFinished` or `skip`, and no station fallback. | WAVE-01, TRK-03 to TRK-11 | Kickoman/QiYaa-android#26 |
 | A2 | Android | Sends `/play-audio` when the player switches to an item, including the first item of a queue loaded without autoplay. It does not repeat the report when the same track plays again. | TRK-01, TRK-02 | Kickoman/QiYaa-android#27 |
 | A3 | Android | A source whose tracks are all unavailable clears the queue and reports "loaded, 0 tracks". An empty first wave batch clears the queue. | SRC-08, WAVE-03 | Kickoman/QiYaa-android#28 |

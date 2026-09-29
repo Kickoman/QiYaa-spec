@@ -60,7 +60,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
-| `/play-audio` when a track starts | yes | differs: A2, Kickoman/QiYaa-android#27 | [TRK-01, TRK-02](player/tracking.md) |
+| `/play-audio` when a track starts | yes | yes | [TRK-01, TRK-02](player/tracking.md) |
 | Rotor feedback: `radioStarted`, `trackStarted`, `trackFinished`, `skip`, station fallback | yes | no: A1, Kickoman/QiYaa-android#26 | [TRK-03 to TRK-11](player/tracking.md) |
 
 ## Errors

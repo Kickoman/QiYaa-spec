@@ -18,13 +18,13 @@ When a feature lands on one platform, add its row here and open an issue for the
 |---|---|---|---|
 | Liked tracks | yes | yes | |
 | User playlists | yes | yes | |
-| "Похожие треки" for a playlist (recommendations) | yes | no: Kickoman/QiYaa-android#TBD | `GET /users/<uid>/playlists/<kind>/recommendations` |
-| "Для вас": personal playlists (Плейлист дня, Дежавю, Премьера…) | yes | no: Kickoman/QiYaa-android#TBD | `GET /landing3?blocks=personalplaylists` |
+| "Похожие треки" for a playlist (recommendations) | yes | no: Kickoman/QiYaa-android#32 | `GET /users/<uid>/playlists/<kind>/recommendations` |
+| "Для вас": personal playlists (Плейлист дня, Дежавю, Премьера…) | yes | no: Kickoman/QiYaa-android#31 | `GET /landing3?blocks=personalplaylists` |
 | Liked artists and their popular tracks | yes | yes | Top 100 by rating ([SRC-09](player/sources.md#search)) |
 | Liked albums (podcasts left out) | yes | yes | |
 | Stations, grouped by type | yes | yes | |
 | My Wave | yes | yes | [wave.md](player/wave.md) |
-| Wheel of waves (waves matched to the current track) | yes | no: Kickoman/QiYaa-android#TBD | `POST /wheel/new` |
+| Wheel of waves (waves matched to the current track) | yes | no: Kickoman/QiYaa-android#20 | `POST /wheel/new` |
 | Search with the best result | yes | yes | [SRC-09 to SRC-12](player/sources.md#search) |
 | Empty source, or one whose tracks are all unavailable, keeps the queue | differs: D4, Kickoman/QiYaa#11 | differs: A3, Kickoman/QiYaa-android#28 | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |

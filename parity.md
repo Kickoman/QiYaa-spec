@@ -134,6 +134,18 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Covers cached on disk | yes | unclear | |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
 
+## Jam
+
+A shared queue for a party: one app hosts and plays, guests add tracks from a browser or from
+their own QiYaa. The server and the web guest live in
+[Kickoman/QiYaa-jam](https://github.com/Kickoman/QiYaa-jam): the protocol, room and host
+scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web guest in #13 to #16.
+
+| Feature | Desktop | Android | Notes |
+|---|---|---|---|
+| Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | no: Kickoman/QiYaa#12, #13, #14, #15 | no: Kickoman/QiYaa-android#59, #60, #61, #62 | Desktop needs Kickoman/QiYaa#5 first |
+| Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | no: Kickoman/QiYaa-android#63 | Browser guests need no app |
+
 ## Desktop only: running without an account
 
 | Feature | Desktop | Android | Notes |

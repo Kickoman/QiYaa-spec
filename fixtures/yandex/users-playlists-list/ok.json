@@ -1,0 +1,47 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "owner": {
+        "uid": 42,
+        "login": "kick",
+        "name": "kick",
+        "verified": false
+      },
+      "playlistUuid": "d0e1f2a3-1003",
+      "available": true,
+      "uid": 42,
+      "kind": 1003,
+      "title": "Дорога",
+      "revision": 7,
+      "snapshot": 7,
+      "trackCount": 2,
+      "visibility": "public",
+      "collective": false,
+      "created": "2025-05-01T10:00:00+00:00",
+      "modified": "2026-09-01T10:00:00+00:00",
+      "isBanner": false,
+      "isPremiere": false,
+      "durationMs": 683000,
+      "ogImage": "avatars.yandex.net/get-music-user-playlist/1003/%%"
+    },
+    {
+      "owner": {
+        "uid": 503646255,
+        "login": "yamusic-daily"
+      },
+      "kind": 456,
+      "title": "Дежавю",
+      "trackCount": 30,
+      "available": true
+    },
+    {
+      "title": "Без kind",
+      "uid": 42
+    }
+  ]
+}

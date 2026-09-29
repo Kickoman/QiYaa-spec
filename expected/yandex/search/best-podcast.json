@@ -1,0 +1,21 @@
+{
+  "bestType": "other",
+  "bestId": "200",
+  "bestName": "Подкаст",
+  "tracks": [
+    {
+      "id": "33311009",
+      "albumId": "4053",
+      "title": "Кукушка",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 398000,
+      "available": true,
+      "albumTitle": "Звезда по имени Солнце",
+      "year": 1989,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
+    }
+  ]
+}

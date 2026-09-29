@@ -1,0 +1,56 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "id": "12345",
+      "realId": "12345",
+      "title": "Song",
+      "trackSource": "OWN",
+      "major": {
+        "id": 123,
+        "name": "IRICOM"
+      },
+      "available": true,
+      "availableForPremiumUsers": true,
+      "availableFullWithoutPermission": false,
+      "availableForOptions": [],
+      "storageDir": "",
+      "durationMs": 201000,
+      "fileSize": 0,
+      "r128": {
+        "i": -8.1,
+        "tp": 0.5
+      },
+      "previewDurationMs": 30000,
+      "artists": [
+        {
+          "id": 1,
+          "name": "A",
+          "various": false,
+          "composer": false
+        },
+        {
+          "id": 2,
+          "name": "B",
+          "various": false,
+          "composer": false
+        }
+      ],
+      "albums": [
+        {
+          "id": 777
+        }
+      ],
+      "lyricsAvailable": true,
+      "type": "music",
+      "rememberPosition": false,
+      "trackSharingFlag": "COVER_ONLY",
+      "disclaimers": [],
+      "version": "Live"
+    }
+  ]
+}

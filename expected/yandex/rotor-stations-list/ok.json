@@ -1,0 +1,14 @@
+{
+  "stations": [
+    {
+      "id": "genre:rock",
+      "type": "genre",
+      "name": "Рок"
+    },
+    {
+      "id": "mood:energetic",
+      "type": "mood",
+      "name": "Бодрое"
+    }
+  ]
+}

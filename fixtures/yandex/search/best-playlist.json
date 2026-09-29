@@ -1,0 +1,141 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": {
+    "searchRequestId": "req-1",
+    "text": "кино",
+    "misspellCorrected": false,
+    "nocorrect": false,
+    "tracks": {
+      "type": "track",
+      "total": 1,
+      "perPage": 10,
+      "order": 2,
+      "results": [
+        {
+          "id": "33311009",
+          "realId": "33311009",
+          "title": "Кукушка",
+          "trackSource": "OWN",
+          "major": {
+            "id": 123,
+            "name": "IRICOM"
+          },
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableFullWithoutPermission": false,
+          "availableForOptions": [],
+          "storageDir": "",
+          "durationMs": 398000,
+          "fileSize": 0,
+          "r128": {
+            "i": -8.1,
+            "tp": 0.5
+          },
+          "previewDurationMs": 30000,
+          "artists": [
+            {
+              "id": 41,
+              "name": "Кино",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+                "prefix": "kino.p.41/"
+              },
+              "genres": [],
+              "disclaimers": []
+            }
+          ],
+          "albums": [
+            {
+              "id": 4053,
+              "title": "Звезда по имени Солнце",
+              "metaType": "music",
+              "year": 1989,
+              "releaseDate": "1989-01-01T00:00:00+03:00",
+              "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+              "ogImage": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+              "genre": "rusrock",
+              "trackCount": 10,
+              "recent": false,
+              "veryImportant": false,
+              "artists": [
+                {
+                  "id": 41,
+                  "name": "Кино",
+                  "various": false,
+                  "composer": false,
+                  "available": true,
+                  "cover": {
+                    "type": "from-artist-photos",
+                    "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+                    "prefix": "kino.p.41/"
+                  },
+                  "genres": [],
+                  "disclaimers": []
+                }
+              ],
+              "labels": [
+                {
+                  "id": 1,
+                  "name": "Moroz Records"
+                }
+              ],
+              "available": true,
+              "availableForPremiumUsers": true,
+              "availableForMobile": true,
+              "availablePartially": false,
+              "bests": [],
+              "disclaimers": [],
+              "trackPosition": {
+                "volume": 1,
+                "index": 5
+              }
+            }
+          ],
+          "lyricsAvailable": true,
+          "type": "music",
+          "rememberPosition": false,
+          "trackSharingFlag": "COVER_ONLY",
+          "disclaimers": [],
+          "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+          "ogImage": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
+        }
+      ]
+    },
+    "best": {
+      "type": "playlist",
+      "text": "дорога",
+      "result": {
+        "owner": {
+          "uid": 42,
+          "login": "kick",
+          "name": "kick",
+          "verified": false
+        },
+        "playlistUuid": "d0e1f2a3-1003",
+        "available": true,
+        "uid": 42,
+        "kind": 1003,
+        "title": "Дорога",
+        "revision": 7,
+        "snapshot": 7,
+        "trackCount": 2,
+        "visibility": "public",
+        "collective": false,
+        "created": "2025-05-01T10:00:00+00:00",
+        "modified": "2026-09-01T10:00:00+00:00",
+        "isBanner": false,
+        "isPremiere": false,
+        "durationMs": 683000,
+        "ogImage": "avatars.yandex.net/get-music-user-playlist/1003/%%"
+      }
+    }
+  }
+}

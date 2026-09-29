@@ -1,0 +1,11 @@
+{
+  "waves": [
+    {
+      "name": "Бодрое",
+      "description": "Для энергичного настроения",
+      "seeds": [
+        "mood:energetic"
+      ]
+    }
+  ]
+}

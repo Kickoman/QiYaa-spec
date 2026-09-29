@@ -1,0 +1,22 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "id": 1,
+      "title": "T",
+      "albums": [
+        {
+          "id": 2,
+          "title": "Звезда",
+          "year": 1989,
+          "genre": "rusrock",
+          "coverUri": "avatars.yandex.net/get-music-content/1/a/%%"
+        }
+      ]
+    }
+  ]
+}

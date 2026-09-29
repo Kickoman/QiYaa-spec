@@ -1,0 +1,29 @@
+{
+  "variants": [
+    {
+      "codec": "mp3",
+      "bitrateKbps": 320,
+      "preview": true,
+      "downloadInfoUrl": "https://storage.mds.yandex.net/file-download-info/53090_49160c86.34071781.1.2758009/320?sign=p1&ts=66f8&nonce=a"
+    },
+    {
+      "codec": "aac",
+      "bitrateKbps": 256,
+      "preview": false,
+      "downloadInfoUrl": "https://storage.mds.yandex.net/file-download-info/53090_49160c86.34071781.1.2758009/256?sign=a1&ts=66f8&nonce=b"
+    },
+    {
+      "codec": "mp3",
+      "bitrateKbps": 192,
+      "preview": false,
+      "downloadInfoUrl": "https://storage.mds.yandex.net/file-download-info/53090_49160c86.34071781.1.2758009/192?sign=m1&ts=66f8&nonce=c"
+    },
+    {
+      "codec": "mp3",
+      "bitrateKbps": 320,
+      "preview": false,
+      "downloadInfoUrl": "https://storage.mds.yandex.net/file-download-info/53090_49160c86.34071781.1.2758009/320?sign=m2&ts=66f8&nonce=d"
+    }
+  ],
+  "best": "https://storage.mds.yandex.net/file-download-info/53090_49160c86.34071781.1.2758009/320?sign=m2&ts=66f8&nonce=d"
+}

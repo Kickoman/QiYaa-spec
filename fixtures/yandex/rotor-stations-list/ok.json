@@ -1,0 +1,48 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "station": {
+        "id": {
+          "type": "genre",
+          "tag": "rock"
+        },
+        "parentId": {
+          "type": "genre",
+          "tag": "all"
+        },
+        "name": "Рок",
+        "icon": {
+          "backgroundColor": "#FF5A4D",
+          "imageUrl": "avatars.yandex.net/get-music-misc/rock/%%"
+        },
+        "idForFrom": "genre-rock",
+        "restrictions": {},
+        "restrictions2": {}
+      },
+      "settings": {},
+      "settings2": {},
+      "adParams": {},
+      "rupTitle": "Рок",
+      "rupDescription": ""
+    },
+    {
+      "station": {
+        "id": {
+          "type": "mood",
+          "tag": "energetic"
+        },
+        "name": "Бодрое"
+      }
+    },
+    {
+      "station": {
+        "name": "Без id"
+      }
+    }
+  ]
+}

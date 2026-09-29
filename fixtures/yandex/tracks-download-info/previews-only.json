@@ -1,0 +1,25 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "codec": "mp3",
+      "gain": false,
+      "preview": true,
+      "downloadInfoUrl": "https://storage.mds.yandex.net/file-download-info/53090_49160c86.34071781.1.2758009/320?sign=p1&ts=66f8&nonce=a",
+      "direct": false,
+      "bitrateInKbps": 320
+    },
+    {
+      "codec": "aac",
+      "gain": false,
+      "preview": false,
+      "downloadInfoUrl": "https://storage.mds.yandex.net/file-download-info/53090_49160c86.34071781.1.2758009/256?sign=a1&ts=66f8&nonce=b",
+      "direct": false,
+      "bitrateInKbps": 256
+    }
+  ]
+}

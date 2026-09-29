@@ -1,0 +1,39 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "id": 9,
+      "name": "Кино",
+      "various": false,
+      "composer": false,
+      "available": true,
+      "cover": {
+        "type": "from-artist-photos",
+        "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+        "prefix": "kino.p.41/"
+      },
+      "genres": [],
+      "disclaimers": [],
+      "likesCount": 100
+    },
+    {
+      "timestamp": "2026-09-01T10:00:00+00:00",
+      "artist": {
+        "id": 10,
+        "name": "Земфира",
+        "various": false,
+        "composer": false,
+        "available": true,
+        "genres": [],
+        "disclaimers": []
+      }
+    },
+    {
+      "name": "Без id"
+    }
+  ]
+}

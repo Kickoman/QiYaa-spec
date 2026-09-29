@@ -1,0 +1,20 @@
+{
+  "sessionId": "S1-onyourwave",
+  "batchId": "B2.1727600300",
+  "tracks": [
+    {
+      "id": "38634573",
+      "albumId": "4053",
+      "title": "Пачка сигарет",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 268000,
+      "available": true,
+      "albumTitle": "Звезда по имени Солнце",
+      "year": 1989,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
+    }
+  ]
+}

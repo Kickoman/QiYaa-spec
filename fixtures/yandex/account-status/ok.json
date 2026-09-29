@@ -1,0 +1,43 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": {
+    "account": {
+      "now": "2026-09-29T12:00:00+03:00",
+      "uid": 42,
+      "login": "kick",
+      "region": 149,
+      "fullName": "Kick Test",
+      "secondName": "Test",
+      "firstName": "Kick",
+      "displayName": "Kick",
+      "serviceAvailable": true,
+      "hostedUser": false,
+      "registeredAt": "2015-01-01T00:00:00+03:00"
+    },
+    "permissions": {
+      "until": "2026-10-29T12:00:00+03:00",
+      "values": [
+        "landing-play",
+        "feed-play",
+        "radio-play"
+      ],
+      "default": [
+        "landing-play"
+      ]
+    },
+    "subscription": {
+      "hadAnySubscription": true,
+      "canStartTrial": false,
+      "mcdonalds": false
+    },
+    "plus": {
+      "hasPlus": true,
+      "isTutorialCompleted": true
+    },
+    "defaultEmail": "kick@example.com"
+  }
+}

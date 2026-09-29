@@ -1,0 +1,64 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": {
+    "pumpkin": false,
+    "contentId": "c1",
+    "blocks": [
+      {
+        "id": "b1",
+        "type": "personal-playlists",
+        "typeForFrom": "personal-playlists",
+        "title": "Собрано для вас",
+        "entities": [
+          {
+            "id": "e1",
+            "type": "personal-playlist",
+            "data": {
+              "type": "playlistOfTheDay",
+              "ready": true,
+              "notify": false,
+              "data": {
+                "uid": 503646255,
+                "kind": 123,
+                "title": "Плейлист дня",
+                "trackCount": 60,
+                "owner": {
+                  "uid": 503646255,
+                  "login": "yamusic-daily"
+                }
+              }
+            }
+          },
+          {
+            "id": "e2",
+            "type": "personal-playlist",
+            "data": {
+              "type": "neverHeard",
+              "ready": true,
+              "data": {
+                "owner": {
+                  "uid": 503646255,
+                  "login": "yamusic-daily"
+                },
+                "kind": 456,
+                "title": "Дежавю"
+              }
+            }
+          },
+          {
+            "id": "e3",
+            "type": "personal-playlist",
+            "data": {
+              "type": "notReady",
+              "ready": false
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

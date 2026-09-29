@@ -1,0 +1,16 @@
+{
+  "playlists": [
+    {
+      "ownerUid": "42",
+      "kind": "1003",
+      "title": "Дорога",
+      "trackCount": 2
+    },
+    {
+      "ownerUid": "503646255",
+      "kind": "456",
+      "title": "Дежавю",
+      "trackCount": 30
+    }
+  ]
+}

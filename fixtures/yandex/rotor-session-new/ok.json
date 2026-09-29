@@ -1,0 +1,228 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": {
+    "radioSessionId": "S1-onyourwave",
+    "batchId": "B1.1727600000",
+    "pumpkin": false,
+    "descriptionSeed": {
+      "value": "user:onyourwave",
+      "tag": "onyourwave",
+      "type": "user"
+    },
+    "acceptedSeeds": [
+      {
+        "value": "user:onyourwave",
+        "tag": "onyourwave",
+        "type": "user"
+      }
+    ],
+    "sequence": [
+      {
+        "type": "track",
+        "track": {
+          "id": "38634572",
+          "realId": "38634572",
+          "title": "Звезда по имени Солнце",
+          "trackSource": "OWN",
+          "major": {
+            "id": 123,
+            "name": "IRICOM"
+          },
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableFullWithoutPermission": false,
+          "availableForOptions": [],
+          "storageDir": "",
+          "durationMs": 225000,
+          "fileSize": 0,
+          "r128": {
+            "i": -8.1,
+            "tp": 0.5
+          },
+          "previewDurationMs": 30000,
+          "artists": [
+            {
+              "id": 41,
+              "name": "Кино",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+                "prefix": "kino.p.41/"
+              },
+              "genres": [],
+              "disclaimers": []
+            }
+          ],
+          "albums": [
+            {
+              "id": 4053,
+              "title": "Звезда по имени Солнце",
+              "metaType": "music",
+              "year": 1989,
+              "releaseDate": "1989-01-01T00:00:00+03:00",
+              "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+              "ogImage": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+              "genre": "rusrock",
+              "trackCount": 10,
+              "recent": false,
+              "veryImportant": false,
+              "artists": [
+                {
+                  "id": 41,
+                  "name": "Кино",
+                  "various": false,
+                  "composer": false,
+                  "available": true,
+                  "cover": {
+                    "type": "from-artist-photos",
+                    "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+                    "prefix": "kino.p.41/"
+                  },
+                  "genres": [],
+                  "disclaimers": []
+                }
+              ],
+              "labels": [
+                {
+                  "id": 1,
+                  "name": "Moroz Records"
+                }
+              ],
+              "available": true,
+              "availableForPremiumUsers": true,
+              "availableForMobile": true,
+              "availablePartially": false,
+              "bests": [],
+              "disclaimers": [],
+              "trackPosition": {
+                "volume": 1,
+                "index": 1
+              }
+            }
+          ],
+          "lyricsAvailable": true,
+          "type": "music",
+          "rememberPosition": false,
+          "trackSharingFlag": "COVER_ONLY",
+          "disclaimers": [],
+          "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+          "ogImage": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
+        },
+        "liked": false,
+        "trackParameters": {
+          "bpm": 120,
+          "hue": 200,
+          "energy": 0.5
+        }
+      },
+      {
+        "type": "track",
+        "track": {
+          "id": "51234567",
+          "realId": "51234567",
+          "title": "Недоступная запись",
+          "trackSource": "OWN",
+          "major": {
+            "id": 123,
+            "name": "IRICOM"
+          },
+          "available": false,
+          "availableForPremiumUsers": false,
+          "availableFullWithoutPermission": false,
+          "availableForOptions": [],
+          "storageDir": "",
+          "durationMs": 240000,
+          "fileSize": 0,
+          "r128": {
+            "i": -8.1,
+            "tp": 0.5
+          },
+          "previewDurationMs": 30000,
+          "artists": [
+            {
+              "id": 41,
+              "name": "Кино",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+                "prefix": "kino.p.41/"
+              },
+              "genres": [],
+              "disclaimers": []
+            }
+          ],
+          "albums": [
+            {
+              "id": 3141,
+              "title": "Группа крови",
+              "metaType": "music",
+              "year": 1988,
+              "releaseDate": "1988-01-01T00:00:00+03:00",
+              "coverUri": "avatars.yandex.net/get-music-content/41288/1d3c4a5b.a.3141-1/%%",
+              "ogImage": "avatars.yandex.net/get-music-content/41288/1d3c4a5b.a.3141-1/%%",
+              "genre": "rusrock",
+              "trackCount": 10,
+              "recent": false,
+              "veryImportant": false,
+              "artists": [
+                {
+                  "id": 41,
+                  "name": "Кино",
+                  "various": false,
+                  "composer": false,
+                  "available": true,
+                  "cover": {
+                    "type": "from-artist-photos",
+                    "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+                    "prefix": "kino.p.41/"
+                  },
+                  "genres": [],
+                  "disclaimers": []
+                }
+              ],
+              "labels": [
+                {
+                  "id": 1,
+                  "name": "Moroz Records"
+                }
+              ],
+              "available": true,
+              "availableForPremiumUsers": true,
+              "availableForMobile": true,
+              "availablePartially": false,
+              "bests": [],
+              "disclaimers": [],
+              "trackPosition": {
+                "volume": 1,
+                "index": 9
+              }
+            }
+          ],
+          "lyricsAvailable": true,
+          "type": "music",
+          "rememberPosition": false,
+          "trackSharingFlag": "COVER_ONLY",
+          "disclaimers": [],
+          "coverUri": "avatars.yandex.net/get-music-content/41288/1d3c4a5b.a.3141-1/%%",
+          "ogImage": "avatars.yandex.net/get-music-content/41288/1d3c4a5b.a.3141-1/%%"
+        },
+        "liked": false,
+        "trackParameters": {
+          "bpm": 120,
+          "hue": 200,
+          "energy": 0.5
+        }
+      }
+    ]
+  }
+}

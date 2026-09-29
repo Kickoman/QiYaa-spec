@@ -1,0 +1,20 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "id": 4053,
+      "timestamp": "2026-09-01T10:00:00+00:00"
+    },
+    {
+      "timestamp": "2026-08-01T10:00:00+00:00",
+      "album": {
+        "id": 200,
+        "title": "Подкаст"
+      }
+    }
+  ]
+}

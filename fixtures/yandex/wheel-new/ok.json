@@ -1,0 +1,39 @@
+{
+  "wheelId": "w1",
+  "items": [
+    {
+      "type": "WAVE",
+      "id": "1",
+      "data": {
+        "wave": {
+          "name": "Бодрое",
+          "description": "Для энергичного настроения",
+          "seeds": [
+            "mood:energetic"
+          ],
+          "stationId": "mood:energetic",
+          "agent": {
+            "cover": {
+              "uri": "avatars.yandex.net/get-music-misc/w/%%"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "OTHER",
+      "id": "2",
+      "data": {}
+    },
+    {
+      "type": "WAVE",
+      "id": "3",
+      "data": {
+        "wave": {
+          "name": "Без seeds",
+          "seeds": []
+        }
+      }
+    }
+  ]
+}

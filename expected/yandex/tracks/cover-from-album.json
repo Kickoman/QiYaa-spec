@@ -1,0 +1,16 @@
+{
+  "tracks": [
+    {
+      "id": "1",
+      "albumId": "2",
+      "title": "T",
+      "artists": [],
+      "durationMs": 0,
+      "available": true,
+      "albumTitle": "Звезда",
+      "year": 1989,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/1/a/%%"
+    }
+  ]
+}

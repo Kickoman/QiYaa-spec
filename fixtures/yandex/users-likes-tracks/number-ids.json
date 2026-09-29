@@ -1,0 +1,25 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": {
+    "library": {
+      "uid": 42,
+      "revision": 1235,
+      "tracks": [
+        {
+          "id": 33311009,
+          "albumId": 4053,
+          "timestamp": "2026-09-01T10:00:00+00:00"
+        },
+        {
+          "id": 2758009,
+          "albumId": 3141,
+          "timestamp": "2026-08-01T10:00:00+00:00"
+        }
+      ]
+    }
+  }
+}

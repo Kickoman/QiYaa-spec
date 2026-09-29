@@ -1,0 +1,32 @@
+{
+  "tracks": [
+    {
+      "id": "38634572",
+      "albumId": "4053",
+      "title": "Звезда по имени Солнце",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 225000,
+      "available": true,
+      "albumTitle": "Звезда по имени Солнце",
+      "year": 1989,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
+    },
+    {
+      "id": "51234567",
+      "albumId": "3141",
+      "title": "Недоступная запись",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 240000,
+      "available": false,
+      "albumTitle": "Группа крови",
+      "year": 1988,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/41288/1d3c4a5b.a.3141-1/%%"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "exec-duration-millis": 12
+  },
+  "result": [
+    {
+      "id": 4053,
+      "title": "Звезда по имени Солнце",
+      "metaType": "music",
+      "year": 1989,
+      "releaseDate": "1989-01-01T00:00:00+03:00",
+      "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+      "ogImage": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%",
+      "genre": "rusrock",
+      "trackCount": 10,
+      "recent": false,
+      "veryImportant": false,
+      "artists": [
+        {
+          "id": 41,
+          "name": "Кино",
+          "various": false,
+          "composer": false,
+          "available": true,
+          "cover": {
+            "type": "from-artist-photos",
+            "uri": "avatars.yandex.net/get-music-content/41/kino.p.41/%%",
+            "prefix": "kino.p.41/"
+          },
+          "genres": [],
+          "disclaimers": []
+        }
+      ],
+      "labels": [
+        {
+          "id": 1,
+          "name": "Moroz Records"
+        }
+      ],
+      "available": true,
+      "availableForPremiumUsers": true,
+      "availableForMobile": true,
+      "availablePartially": false,
+      "bests": [],
+      "disclaimers": []
+    },
+    {
+      "id": 200,
+      "title": "Подкаст",
+      "type": "podcast",
+      "metaType": "podcast",
+      "artists": [],
+      "trackCount": 150,
+      "available": true
+    }
+  ]
+}

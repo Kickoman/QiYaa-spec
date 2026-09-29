@@ -1,0 +1,46 @@
+{
+  "tracks": [
+    {
+      "id": "38634572",
+      "albumId": "4053",
+      "title": "Звезда по имени Солнце",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 225000,
+      "available": true,
+      "albumTitle": "Звезда по имени Солнце",
+      "year": 1989,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
+    },
+    {
+      "id": "33311009",
+      "albumId": "4053",
+      "title": "Кукушка",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 398000,
+      "available": true,
+      "albumTitle": "Звезда по имени Солнце",
+      "year": 1989,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
+    },
+    {
+      "id": "38634574",
+      "albumId": "4053",
+      "title": "Легенда",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 246000,
+      "available": true,
+      "albumTitle": "",
+      "year": 0,
+      "genre": "",
+      "coverUri": ""
+    }
+  ]
+}

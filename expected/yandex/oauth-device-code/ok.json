@@ -1,0 +1,7 @@
+{
+  "deviceCode": "DEV",
+  "userCode": "ABCD1234",
+  "verificationUrl": "https://ya.ru/device",
+  "intervalSeconds": 1,
+  "expiresInSeconds": 300
+}

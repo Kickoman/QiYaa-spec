@@ -1,0 +1,19 @@
+{
+  "tracks": [
+    {
+      "id": "12345",
+      "albumId": "777",
+      "title": "Song (Live)",
+      "artists": [
+        "A",
+        "B"
+      ],
+      "durationMs": 201000,
+      "available": true,
+      "albumTitle": "",
+      "year": 0,
+      "genre": "",
+      "coverUri": ""
+    }
+  ]
+}

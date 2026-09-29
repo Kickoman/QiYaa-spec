@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/validateRequest.schema.json",
+  "title": "ValidateRequestMessage",
+  "description": "To the host: check tracks a QiYaa guest adds",
+  "type": "object",
+  "required": [
+    "type",
+    "requestId",
+    "trackIds"
+  ],
+  "properties": {
+    "type": {
+      "const": "validateRequest"
+    },
+    "requestId": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "trackIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "$ref": "../defs.schema.json#/$defs/catalogId"
+      }
+    }
+  }
+}

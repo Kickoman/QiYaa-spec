@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/server-message.schema.json",
+  "title": "ServerMessage",
+  "description": "Any message a server sends",
+  "oneOf": [
+    {
+      "$ref": "messages/welcome.schema.json"
+    },
+    {
+      "$ref": "messages/rejected.schema.json"
+    },
+    {
+      "$ref": "messages/ack.schema.json"
+    },
+    {
+      "$ref": "messages/created.schema.json"
+    },
+    {
+      "$ref": "messages/resumed.schema.json"
+    },
+    {
+      "$ref": "messages/joined.schema.json"
+    },
+    {
+      "$ref": "messages/searchResults.schema.json"
+    },
+    {
+      "$ref": "messages/linkRotated.schema.json"
+    },
+    {
+      "$ref": "messages/searchRequest.schema.json"
+    },
+    {
+      "$ref": "messages/validateRequest.schema.json"
+    },
+    {
+      "$ref": "messages/command.schema.json"
+    },
+    {
+      "$ref": "messages/snapshot.schema.json"
+    },
+    {
+      "$ref": "messages/state.schema.json"
+    },
+    {
+      "$ref": "messages/ended.schema.json"
+    },
+    {
+      "$ref": "messages/kicked.schema.json"
+    }
+  ]
+}

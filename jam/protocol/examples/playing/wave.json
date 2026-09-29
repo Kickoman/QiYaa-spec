@@ -1,0 +1,16 @@
+{
+  "type": "playing",
+  "source": "wave",
+  "track": {
+    "id": "33792663",
+    "albumId": "11057711",
+    "title": "Время, назад!",
+    "artists": [
+      "Сплин"
+    ],
+    "durationMs": 252290,
+    "coverUri": "avatars.yandex.net/get-music-content/2433207/0130978f.a.11057711-1/%%"
+  },
+  "positionMs": 3000,
+  "paused": false
+}

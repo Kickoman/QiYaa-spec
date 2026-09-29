@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/search.schema.json",
+  "title": "SearchMessage",
+  "description": "Web guest: search through the host's account",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "text"
+  ],
+  "properties": {
+    "type": {
+      "const": "search"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "text": {
+      "$ref": "../defs.schema.json#/$defs/searchText"
+    }
+  }
+}

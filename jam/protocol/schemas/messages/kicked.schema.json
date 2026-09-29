@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/kicked.schema.json",
+  "title": "KickedMessage",
+  "description": "The host removed this guest",
+  "type": "object",
+  "required": [
+    "type"
+  ],
+  "properties": {
+    "type": {
+      "const": "kicked"
+    }
+  }
+}

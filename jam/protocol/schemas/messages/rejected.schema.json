@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/rejected.schema.json",
+  "title": "RejectedMessage",
+  "description": "A request, or the connection, is refused",
+  "type": "object",
+  "required": [
+    "type",
+    "reason"
+  ],
+  "properties": {
+    "type": {
+      "const": "rejected"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "reason": {
+      "$ref": "../defs.schema.json#/$defs/reason"
+    },
+    "detail": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "serverProtocol": {
+      "type": "integer",
+      "minimum": 1
+    }
+  }
+}

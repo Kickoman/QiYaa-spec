@@ -1,0 +1,137 @@
+{
+  "type": "state",
+  "version": 58,
+  "serverTime": 1790730045000,
+  "room": {
+    "id": "7k3m9q2x",
+    "hostName": "Маша",
+    "hostOnline": true,
+    "settings": {
+      "order": "round-robin",
+      "guestsCanSkip": false,
+      "joinOpen": true,
+      "maxPendingPerGuest": 10
+    },
+    "you": {
+      "publicId": "a4n8q1",
+      "isHost": false
+    },
+    "participants": [
+      {
+        "publicId": "h7k2m9",
+        "name": "Маша",
+        "kind": "host",
+        "online": true,
+        "pending": 1
+      },
+      {
+        "publicId": "a4n8q1",
+        "name": "Аня",
+        "kind": "web",
+        "online": true,
+        "pending": 1
+      },
+      {
+        "publicId": "b2r5t7",
+        "name": "Боря",
+        "kind": "qiyaa",
+        "online": false,
+        "pending": 1
+      }
+    ],
+    "nowPlaying": {
+      "source": "item",
+      "itemId": "i3",
+      "track": {
+        "id": "38633712",
+        "albumId": "5307396",
+        "title": "Группа крови",
+        "artists": [
+          "КИНО"
+        ],
+        "durationMs": 235100,
+        "coverUri": "avatars.yandex.net/get-music-content/95061/4f3808a0.a.5307396-3/%%"
+      },
+      "addedBy": "a4n8q1",
+      "positionMs": 42000,
+      "paused": false,
+      "reportedAt": 1790730040000
+    },
+    "queue": [
+      {
+        "itemId": "i6",
+        "track": {
+          "id": "39089632",
+          "albumId": "60058",
+          "title": "Выхода нет",
+          "artists": [
+            "Сплин"
+          ],
+          "durationMs": 227650,
+          "coverUri": "avatars.yandex.net/get-music-content/13043189/c8ad5f3f.a.60058-3/%%"
+        },
+        "addedBy": "h7k2m9",
+        "addedAt": 1790730030000,
+        "pinned": true
+      },
+      {
+        "itemId": "i4",
+        "track": {
+          "id": "1695498",
+          "albumId": "168137",
+          "title": "Что такое осень",
+          "artists": [
+            "ДДТ"
+          ],
+          "durationMs": 297700,
+          "coverUri": "avatars.yandex.net/get-music-content/34131/73fed284.a.168137-2/%%"
+        },
+        "addedBy": "b2r5t7",
+        "addedAt": 1790730012000,
+        "pinned": false
+      },
+      {
+        "itemId": "i5",
+        "track": {
+          "id": "4426586",
+          "albumId": "503862",
+          "title": "So What",
+          "artists": [
+            "Miles Davis"
+          ],
+          "durationMs": 565000,
+          "coverUri": "avatars.yandex.net/get-music-content/63210/3adf6672.a.503862-3/%%"
+        },
+        "addedBy": "a4n8q1",
+        "addedAt": 1790730020000,
+        "pinned": false
+      }
+    ],
+    "recent": [
+      {
+        "track": {
+          "id": "33792663",
+          "albumId": "11057711",
+          "title": "Время, назад!",
+          "artists": [
+            "Сплин"
+          ],
+          "durationMs": 252290,
+          "coverUri": "avatars.yandex.net/get-music-content/2433207/0130978f.a.11057711-1/%%"
+        },
+        "addedBy": "b2r5t7",
+        "playedAt": 1790729700000
+      }
+    ],
+    "fallback": {
+      "seeds": [
+        "track:39089632",
+        "track:4426586",
+        "track:1695498",
+        "track:38633712",
+        "track:33792663"
+      ],
+      "seedsVersion": 4
+    }
+  }
+}

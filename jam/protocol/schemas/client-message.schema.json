@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/client-message.schema.json",
+  "title": "ClientMessage",
+  "description": "Any message a client sends",
+  "oneOf": [
+    {
+      "$ref": "messages/hello.schema.json"
+    },
+    {
+      "$ref": "messages/create.schema.json"
+    },
+    {
+      "$ref": "messages/resume.schema.json"
+    },
+    {
+      "$ref": "messages/playing.schema.json"
+    },
+    {
+      "$ref": "messages/started.schema.json"
+    },
+    {
+      "$ref": "messages/add.schema.json"
+    },
+    {
+      "$ref": "messages/pin.schema.json"
+    },
+    {
+      "$ref": "messages/remove.schema.json"
+    },
+    {
+      "$ref": "messages/kick.schema.json"
+    },
+    {
+      "$ref": "messages/settings.schema.json"
+    },
+    {
+      "$ref": "messages/rotateLink.schema.json"
+    },
+    {
+      "$ref": "messages/end.schema.json"
+    },
+    {
+      "$ref": "messages/searchResult.schema.json"
+    },
+    {
+      "$ref": "messages/validateResult.schema.json"
+    },
+    {
+      "$ref": "messages/join.schema.json"
+    },
+    {
+      "$ref": "messages/search.schema.json"
+    },
+    {
+      "$ref": "messages/skip.schema.json"
+    }
+  ]
+}

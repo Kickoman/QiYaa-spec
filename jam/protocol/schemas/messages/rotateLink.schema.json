@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/rotateLink.schema.json",
+  "title": "RotateLinkMessage",
+  "description": "Host: replace the join secret; the old link stops working",
+  "type": "object",
+  "required": [
+    "type",
+    "id"
+  ],
+  "properties": {
+    "type": {
+      "const": "rotateLink"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    }
+  }
+}

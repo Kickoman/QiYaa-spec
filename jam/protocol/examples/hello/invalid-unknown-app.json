@@ -1,0 +1,6 @@
+{
+  "type": "hello",
+  "protocol": 1,
+  "app": "ios",
+  "appVersion": "1.0"
+}

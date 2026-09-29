@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/end.schema.json",
+  "title": "EndMessage",
+  "description": "Host: end the jam",
+  "type": "object",
+  "required": [
+    "type",
+    "id"
+  ],
+  "properties": {
+    "type": {
+      "const": "end"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    }
+  }
+}

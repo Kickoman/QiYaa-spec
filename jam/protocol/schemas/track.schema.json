@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/track.schema.json",
+  "title": "Track",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "artists",
+    "durationMs"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "defs.schema.json#/$defs/catalogId"
+    },
+    "albumId": {
+      "$ref": "defs.schema.json#/$defs/catalogId"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 150,
+      "pattern": "^[^\\u0000-\\u001F\\u007F]+$"
+    },
+    "artists": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 64,
+        "pattern": "^[^\\u0000-\\u001F\\u007F]+$"
+      }
+    },
+    "durationMs": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 86400000
+    },
+    "coverUri": {
+      "type": "string",
+      "maxLength": 300,
+      "pattern": "^\\S*%%\\S*$"
+    }
+  }
+}

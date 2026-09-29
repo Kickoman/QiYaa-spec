@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/pin.schema.json",
+  "title": "PinMessage",
+  "description": "Host: play this item next",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "itemId"
+  ],
+  "properties": {
+    "type": {
+      "const": "pin"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "itemId": {
+      "$ref": "../defs.schema.json#/$defs/itemId"
+    }
+  }
+}

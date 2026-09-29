@@ -1,0 +1,19 @@
+{
+  "type": "validateResult",
+  "requestId": "v3",
+  "results": [
+    {
+      "trackId": "1695498",
+      "track": {
+        "id": "1695498",
+        "albumId": "168137",
+        "title": "Что такое осень",
+        "artists": [
+          "ДДТ"
+        ],
+        "durationMs": 297700,
+        "coverUri": "avatars.yandex.net/get-music-content/34131/73fed284.a.168137-2/%%"
+      }
+    }
+  ]
+}

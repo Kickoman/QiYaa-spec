@@ -1,0 +1,145 @@
+{
+  "type": "snapshot",
+  "data": {
+    "format": 1,
+    "room": {
+      "id": "7k3m9q2x",
+      "hostName": "Маша",
+      "hostPublicId": "h7k2m9",
+      "joinSecretHash": "fef67e343acb48a702f8c124bbda895d7c47804028947b9f0abd989f826e7270",
+      "hostSecretHash": "2d4b4037679e2720a4b70eaf30aed9b922879e934ae6e4186f375bbd6b2d794d",
+      "createdAt": 1790726400000,
+      "version": 57,
+      "nextItemNumber": 7,
+      "settings": {
+        "order": "round-robin",
+        "guestsCanSkip": false,
+        "joinOpen": true,
+        "maxPendingPerGuest": 10
+      },
+      "participants": [
+        {
+          "publicId": "h7k2m9",
+          "idHash": null,
+          "name": "Маша",
+          "kind": "host",
+          "joinedAt": 1790726400000,
+          "lastServedAt": null
+        },
+        {
+          "publicId": "a4n8q1",
+          "idHash": "eb7edde4a3daca2a99ee4009715736e117d7cde78d042cfe7cfec425a5ebd007",
+          "name": "Аня",
+          "kind": "web",
+          "joinedAt": 1790727000000,
+          "lastServedAt": 1790730002000
+        },
+        {
+          "publicId": "b2r5t7",
+          "idHash": "22cb21e2960b57dc507a36227ba33ee77adf32168286d8d5e9a7fd8c1d3e3108",
+          "name": "Боря",
+          "kind": "qiyaa",
+          "joinedAt": 1790728000000,
+          "lastServedAt": 1790729700000
+        }
+      ],
+      "kicked": [
+        "86ebef44b269ddfa6cab313b54e37079d84c1f1a27a699626e7089e355b4f929"
+      ],
+      "queue": [
+        {
+          "itemId": "i6",
+          "track": {
+            "id": "39089632",
+            "albumId": "60058",
+            "title": "Выхода нет",
+            "artists": [
+              "Сплин"
+            ],
+            "durationMs": 227650,
+            "coverUri": "avatars.yandex.net/get-music-content/13043189/c8ad5f3f.a.60058-3/%%"
+          },
+          "addedBy": "h7k2m9",
+          "addedAt": 1790730030000,
+          "pinnedAt": 1790730031000
+        },
+        {
+          "itemId": "i4",
+          "track": {
+            "id": "1695498",
+            "albumId": "168137",
+            "title": "Что такое осень",
+            "artists": [
+              "ДДТ"
+            ],
+            "durationMs": 297700,
+            "coverUri": "avatars.yandex.net/get-music-content/34131/73fed284.a.168137-2/%%"
+          },
+          "addedBy": "b2r5t7",
+          "addedAt": 1790730012000,
+          "pinnedAt": null
+        },
+        {
+          "itemId": "i5",
+          "track": {
+            "id": "4426586",
+            "albumId": "503862",
+            "title": "So What",
+            "artists": [
+              "Miles Davis"
+            ],
+            "durationMs": 565000,
+            "coverUri": "avatars.yandex.net/get-music-content/63210/3adf6672.a.503862-3/%%"
+          },
+          "addedBy": "a4n8q1",
+          "addedAt": 1790730020000,
+          "pinnedAt": null
+        }
+      ],
+      "recent": [
+        {
+          "track": {
+            "id": "33792663",
+            "albumId": "11057711",
+            "title": "Время, назад!",
+            "artists": [
+              "Сплин"
+            ],
+            "durationMs": 252290,
+            "coverUri": "avatars.yandex.net/get-music-content/2433207/0130978f.a.11057711-1/%%"
+          },
+          "addedBy": "b2r5t7",
+          "playedAt": 1790729700000
+        }
+      ],
+      "nowPlaying": {
+        "source": "item",
+        "itemId": "i3",
+        "track": {
+          "id": "38633712",
+          "albumId": "5307396",
+          "title": "Группа крови",
+          "artists": [
+            "КИНО"
+          ],
+          "durationMs": 235100,
+          "coverUri": "avatars.yandex.net/get-music-content/95061/4f3808a0.a.5307396-3/%%"
+        },
+        "addedBy": "a4n8q1",
+        "positionMs": 42000,
+        "paused": false,
+        "reportedAt": 1790730040000
+      },
+      "fallback": {
+        "seeds": [
+          "track:39089632",
+          "track:4426586",
+          "track:1695498",
+          "track:38633712",
+          "track:33792663"
+        ],
+        "seedsVersion": 4
+      }
+    }
+  }
+}

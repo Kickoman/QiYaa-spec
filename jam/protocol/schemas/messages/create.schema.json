@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/create.schema.json",
+  "title": "CreateMessage",
+  "description": "Host: create a room",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "hostKey",
+    "hostName"
+  ],
+  "properties": {
+    "type": {
+      "const": "create"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "hostKey": {
+      "$ref": "../defs.schema.json#/$defs/hostKey"
+    },
+    "hostName": {
+      "$ref": "../defs.schema.json#/$defs/name"
+    },
+    "settings": {
+      "$ref": "../settings.schema.json#/$defs/patch"
+    }
+  }
+}

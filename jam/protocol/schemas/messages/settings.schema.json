@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/settings.schema.json",
+  "title": "SettingsMessage",
+  "description": "Host: change some settings",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "settings"
+  ],
+  "properties": {
+    "type": {
+      "const": "settings"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "settings": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "../settings.schema.json#/$defs/patch"
+        }
+      ],
+      "minProperties": 1
+    }
+  }
+}

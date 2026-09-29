@@ -15,6 +15,7 @@ both apps read.
 | [expected/yandex/](expected/yandex/README.md) | What parsing each fixture must produce, in neutral JSON | QiYaa#3 |
 | [dsp/](dsp/README.md) | Reference vectors for the equalizer and the spectrum, with tolerances | QiYaa#4 |
 | [parity.md](parity.md) | Feature × platform table | QiYaa#7 |
+| [jam/](jam/README.md) | The jam (a shared queue): protocol, limits, room and host scenarios | QiYaa-jam#3 to #5 |
 
 ## Where it lives
 
@@ -45,3 +46,6 @@ scenario, search both apps for its ID.
   minimal hand-written ones where no real response exists.
 - JSON is UTF-8 with 2-space indentation, one object per file.
 - Text is in English.
+
+`npm ci && npm run check` checks the spec's own files (the jam protocol examples against their
+schemas). CI runs it on every push.

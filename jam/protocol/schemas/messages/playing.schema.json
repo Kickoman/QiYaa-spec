@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/playing.schema.json",
+  "title": "PlayingMessage",
+  "description": "Host: what sounds now",
+  "type": "object",
+  "required": [
+    "type",
+    "source",
+    "positionMs",
+    "paused"
+  ],
+  "properties": {
+    "type": {
+      "const": "playing"
+    },
+    "source": {
+      "enum": [
+        "item",
+        "wave",
+        "idle"
+      ]
+    },
+    "itemId": {
+      "$ref": "../defs.schema.json#/$defs/itemId"
+    },
+    "track": {
+      "$ref": "../track.schema.json"
+    },
+    "positionMs": {
+      "$ref": "../defs.schema.json#/$defs/positionMs"
+    },
+    "paused": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "const": "item"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "itemId"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source": {
+            "const": "wave"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "track"
+        ]
+      }
+    }
+  ]
+}

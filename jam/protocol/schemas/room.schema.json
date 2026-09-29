@@ -1,0 +1,240 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/room.schema.json",
+  "title": "Room",
+  "description": "The room as one participant sees it (state.room)",
+  "type": "object",
+  "required": [
+    "id",
+    "hostName",
+    "hostOnline",
+    "settings",
+    "you",
+    "participants",
+    "nowPlaying",
+    "queue",
+    "recent",
+    "fallback"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "defs.schema.json#/$defs/roomId"
+    },
+    "hostName": {
+      "$ref": "defs.schema.json#/$defs/name"
+    },
+    "hostOnline": {
+      "type": "boolean"
+    },
+    "settings": {
+      "$ref": "settings.schema.json"
+    },
+    "you": {
+      "type": "object",
+      "required": [
+        "publicId",
+        "isHost"
+      ],
+      "properties": {
+        "publicId": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "isHost": {
+          "type": "boolean"
+        }
+      }
+    },
+    "participants": {
+      "type": "array",
+      "maxItems": 31,
+      "items": {
+        "$ref": "#/$defs/participant"
+      }
+    },
+    "nowPlaying": {
+      "$ref": "#/$defs/nowPlaying"
+    },
+    "queue": {
+      "type": "array",
+      "maxItems": 300,
+      "items": {
+        "$ref": "#/$defs/queueItem"
+      }
+    },
+    "recent": {
+      "type": "array",
+      "maxItems": 10,
+      "items": {
+        "$ref": "#/$defs/recentItem"
+      }
+    },
+    "fallback": {
+      "$ref": "#/$defs/fallback"
+    }
+  },
+  "$defs": {
+    "participant": {
+      "type": "object",
+      "required": [
+        "publicId",
+        "name",
+        "kind",
+        "online",
+        "pending"
+      ],
+      "properties": {
+        "publicId": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "name": {
+          "$ref": "defs.schema.json#/$defs/name"
+        },
+        "kind": {
+          "$ref": "defs.schema.json#/$defs/participantKind"
+        },
+        "online": {
+          "type": "boolean"
+        },
+        "pending": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "nowPlaying": {
+      "type": "object",
+      "required": [
+        "source",
+        "positionMs",
+        "paused",
+        "reportedAt"
+      ],
+      "properties": {
+        "source": {
+          "enum": [
+            "item",
+            "wave",
+            "idle"
+          ]
+        },
+        "itemId": {
+          "$ref": "defs.schema.json#/$defs/itemId"
+        },
+        "track": {
+          "$ref": "track.schema.json"
+        },
+        "addedBy": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "positionMs": {
+          "$ref": "defs.schema.json#/$defs/positionMs"
+        },
+        "paused": {
+          "type": "boolean"
+        },
+        "reportedAt": {
+          "$ref": "defs.schema.json#/$defs/time"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "const": "item"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "itemId",
+              "track",
+              "addedBy"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "source": {
+                "const": "wave"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "track"
+            ]
+          }
+        }
+      ]
+    },
+    "queueItem": {
+      "type": "object",
+      "required": [
+        "itemId",
+        "track",
+        "addedBy",
+        "addedAt",
+        "pinned"
+      ],
+      "properties": {
+        "itemId": {
+          "$ref": "defs.schema.json#/$defs/itemId"
+        },
+        "track": {
+          "$ref": "track.schema.json"
+        },
+        "addedBy": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "addedAt": {
+          "$ref": "defs.schema.json#/$defs/time"
+        },
+        "pinned": {
+          "type": "boolean"
+        }
+      }
+    },
+    "recentItem": {
+      "type": "object",
+      "required": [
+        "track",
+        "addedBy",
+        "playedAt"
+      ],
+      "properties": {
+        "track": {
+          "$ref": "track.schema.json"
+        },
+        "addedBy": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "playedAt": {
+          "$ref": "defs.schema.json#/$defs/time"
+        }
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "required": [
+        "seeds",
+        "seedsVersion"
+      ],
+      "properties": {
+        "seeds": {
+          "type": "array",
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "defs.schema.json#/$defs/seed"
+          }
+        },
+        "seedsVersion": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

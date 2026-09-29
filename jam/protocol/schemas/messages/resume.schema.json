@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/resume.schema.json",
+  "title": "ResumeMessage",
+  "description": "Host: come back to a room, or raise it again from the snapshot",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "roomId",
+    "hostSecret",
+    "hostKey",
+    "snapshot",
+    "outbox"
+  ],
+  "properties": {
+    "type": {
+      "const": "resume"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "roomId": {
+      "$ref": "../defs.schema.json#/$defs/roomId"
+    },
+    "hostSecret": {
+      "$ref": "../defs.schema.json#/$defs/hostSecret"
+    },
+    "hostKey": {
+      "$ref": "../defs.schema.json#/$defs/hostKey"
+    },
+    "snapshot": {
+      "anyOf": [
+        {
+          "$ref": "../snapshot-data.schema.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "outbox": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "$ref": "started.schema.json"
+      }
+    }
+  }
+}

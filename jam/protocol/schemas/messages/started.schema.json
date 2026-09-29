@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/started.schema.json",
+  "title": "StartedMessage",
+  "description": "Host: a queue item began to sound",
+  "type": "object",
+  "required": [
+    "type",
+    "itemId"
+  ],
+  "properties": {
+    "type": {
+      "const": "started"
+    },
+    "itemId": {
+      "$ref": "../defs.schema.json#/$defs/itemId"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/linkRotated.schema.json",
+  "title": "LinkRotatedMessage",
+  "description": "The new join secret; only the host gets this",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "joinSecret",
+    "joinUrl"
+  ],
+  "properties": {
+    "type": {
+      "const": "linkRotated"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "joinSecret": {
+      "$ref": "../defs.schema.json#/$defs/joinSecret"
+    },
+    "joinUrl": {
+      "$ref": "../defs.schema.json#/$defs/joinUrl"
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "playing",
+  "source": "item",
+  "track": {
+    "id": "38633712",
+    "albumId": "5307396",
+    "title": "Группа крови",
+    "artists": [
+      "КИНО"
+    ],
+    "durationMs": 235100,
+    "coverUri": "avatars.yandex.net/get-music-content/95061/4f3808a0.a.5307396-3/%%"
+  },
+  "positionMs": 0,
+  "paused": false
+}

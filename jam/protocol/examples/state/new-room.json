@@ -1,0 +1,41 @@
+{
+  "type": "state",
+  "version": 1,
+  "serverTime": 1790730000000,
+  "room": {
+    "id": "7k3m9q2x",
+    "hostName": "Маша",
+    "hostOnline": true,
+    "settings": {
+      "order": "round-robin",
+      "guestsCanSkip": false,
+      "joinOpen": true,
+      "maxPendingPerGuest": 10
+    },
+    "you": {
+      "publicId": "h7k2m9",
+      "isHost": true
+    },
+    "participants": [
+      {
+        "publicId": "h7k2m9",
+        "name": "Маша",
+        "kind": "host",
+        "online": true,
+        "pending": 0
+      }
+    ],
+    "nowPlaying": {
+      "source": "idle",
+      "positionMs": 0,
+      "paused": true,
+      "reportedAt": 1790730000000
+    },
+    "queue": [],
+    "recent": [],
+    "fallback": {
+      "seeds": [],
+      "seedsVersion": 0
+    }
+  }
+}

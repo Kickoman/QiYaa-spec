@@ -1,0 +1,7 @@
+{
+  "type": "playing",
+  "source": "item",
+  "itemId": "i3",
+  "positionMs": 42000,
+  "paused": false
+}

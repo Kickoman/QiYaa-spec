@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/resumed.schema.json",
+  "title": "ResumedMessage",
+  "description": "The host is back in the room",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "restored"
+  ],
+  "properties": {
+    "type": {
+      "const": "resumed"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "restored": {
+      "type": "boolean"
+    }
+  }
+}

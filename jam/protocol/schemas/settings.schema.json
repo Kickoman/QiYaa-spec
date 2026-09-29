@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/settings.schema.json",
+  "title": "Settings",
+  "description": "Room settings",
+  "$defs": {
+    "patch": {
+      "type": "object",
+      "properties": {
+        "order": {
+          "enum": [
+            "round-robin",
+            "fifo"
+          ]
+        },
+        "guestsCanSkip": {
+          "type": "boolean"
+        },
+        "joinOpen": {
+          "type": "boolean"
+        },
+        "maxPendingPerGuest": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50
+        }
+      }
+    }
+  },
+  "type": "object",
+  "allOf": [
+    {
+      "$ref": "#/$defs/patch"
+    }
+  ],
+  "required": [
+    "order",
+    "guestsCanSkip",
+    "joinOpen",
+    "maxPendingPerGuest"
+  ]
+}

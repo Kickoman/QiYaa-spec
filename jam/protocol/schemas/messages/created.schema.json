@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/created.schema.json",
+  "title": "CreatedMessage",
+  "description": "The room exists; only the host gets this",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "roomId",
+    "hostSecret",
+    "joinSecret",
+    "joinUrl",
+    "publicId"
+  ],
+  "properties": {
+    "type": {
+      "const": "created"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "roomId": {
+      "$ref": "../defs.schema.json#/$defs/roomId"
+    },
+    "hostSecret": {
+      "$ref": "../defs.schema.json#/$defs/hostSecret"
+    },
+    "joinSecret": {
+      "$ref": "../defs.schema.json#/$defs/joinSecret"
+    },
+    "joinUrl": {
+      "$ref": "../defs.schema.json#/$defs/joinUrl"
+    },
+    "publicId": {
+      "$ref": "../defs.schema.json#/$defs/publicId"
+    }
+  }
+}

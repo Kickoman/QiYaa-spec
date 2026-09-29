@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/join.schema.json",
+  "title": "JoinMessage",
+  "description": "Guest: enter a room",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "roomId",
+    "joinSecret",
+    "participantId",
+    "name"
+  ],
+  "properties": {
+    "type": {
+      "const": "join"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "roomId": {
+      "$ref": "../defs.schema.json#/$defs/roomId"
+    },
+    "joinSecret": {
+      "$ref": "../defs.schema.json#/$defs/joinSecret"
+    },
+    "participantId": {
+      "$ref": "../defs.schema.json#/$defs/participantId"
+    },
+    "name": {
+      "$ref": "../defs.schema.json#/$defs/name"
+    }
+  }
+}

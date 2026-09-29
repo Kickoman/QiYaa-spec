@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/validateResult.schema.json",
+  "title": "ValidateResultMessage",
+  "description": "Host: canonical tracks for a QiYaa guest's add, or why not",
+  "type": "object",
+  "required": [
+    "type",
+    "requestId",
+    "results"
+  ],
+  "properties": {
+    "type": {
+      "const": "validateResult"
+    },
+    "requestId": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "results": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": [
+          "trackId"
+        ],
+        "properties": {
+          "trackId": {
+            "$ref": "../defs.schema.json#/$defs/catalogId"
+          },
+          "track": {
+            "$ref": "../track.schema.json"
+          },
+          "reason": {
+            "enum": [
+              "track-unavailable",
+              "failed"
+            ]
+          }
+        },
+        "oneOf": [
+          {
+            "required": [
+              "track"
+            ]
+          },
+          {
+            "required": [
+              "reason"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/searchResults.schema.json",
+  "title": "SearchResultsMessage",
+  "description": "Search results for a web guest",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "tracks"
+  ],
+  "properties": {
+    "type": {
+      "const": "searchResults"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "tracks": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "$ref": "../track.schema.json"
+      }
+    }
+  }
+}

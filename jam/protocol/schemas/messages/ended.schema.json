@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/ended.schema.json",
+  "title": "EndedMessage",
+  "description": "The jam is over",
+  "type": "object",
+  "required": [
+    "type",
+    "reason"
+  ],
+  "properties": {
+    "type": {
+      "const": "ended"
+    },
+    "reason": {
+      "enum": [
+        "host-ended",
+        "expired"
+      ]
+    }
+  }
+}

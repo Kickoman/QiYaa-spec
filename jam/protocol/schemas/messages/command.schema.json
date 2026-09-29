@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/command.schema.json",
+  "title": "CommandMessage",
+  "description": "To the host: a guest skipped the current item",
+  "type": "object",
+  "required": [
+    "type",
+    "kind",
+    "itemId"
+  ],
+  "properties": {
+    "type": {
+      "const": "command"
+    },
+    "kind": {
+      "enum": [
+        "skip"
+      ]
+    },
+    "itemId": {
+      "$ref": "../defs.schema.json#/$defs/itemId"
+    }
+  }
+}

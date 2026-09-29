@@ -1,0 +1,26 @@
+{
+  "type": "searchResult",
+  "requestId": "s12",
+  "tracks": [
+    {
+      "id": "38633712",
+      "albumId": "5307396",
+      "title": "Группа крови",
+      "artists": [
+        "КИНО"
+      ],
+      "durationMs": 235100,
+      "coverUri": "avatars.yandex.net/get-music-content/95061/4f3808a0.a.5307396-3/%%"
+    },
+    {
+      "id": "33792663",
+      "albumId": "11057711",
+      "title": "Время, назад!",
+      "artists": [
+        "Сплин"
+      ],
+      "durationMs": 252290,
+      "coverUri": "avatars.yandex.net/get-music-content/2433207/0130978f.a.11057711-1/%%"
+    }
+  ]
+}

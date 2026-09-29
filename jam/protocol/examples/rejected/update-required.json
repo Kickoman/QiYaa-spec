@@ -1,0 +1,6 @@
+{
+  "type": "rejected",
+  "reason": "update-required",
+  "serverProtocol": 1,
+  "detail": "this server speaks protocol 1"
+}

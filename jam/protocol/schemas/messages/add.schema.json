@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/add.schema.json",
+  "title": "AddMessage",
+  "description": "Host or guest: add a track. A web guest names a track from its search results; the host and a QiYaa guest send the whole track",
+  "type": "object",
+  "required": [
+    "type",
+    "id"
+  ],
+  "properties": {
+    "type": {
+      "const": "add"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "trackId": {
+      "$ref": "../defs.schema.json#/$defs/catalogId"
+    },
+    "track": {
+      "$ref": "../track.schema.json"
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "trackId"
+      ]
+    },
+    {
+      "required": [
+        "track"
+      ]
+    }
+  ]
+}

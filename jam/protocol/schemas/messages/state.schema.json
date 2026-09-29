@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/state.schema.json",
+  "title": "StateMessage",
+  "description": "The room as this participant sees it, after every change",
+  "type": "object",
+  "required": [
+    "type",
+    "version",
+    "serverTime",
+    "room"
+  ],
+  "properties": {
+    "type": {
+      "const": "state"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "serverTime": {
+      "$ref": "../defs.schema.json#/$defs/time"
+    },
+    "room": {
+      "$ref": "../room.schema.json"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "../defs.schema.json#/$defs/noSecrets"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "name": "qiyaa-spec-checks",
+  "private": true,
+  "description": "Checks for the spec's own files; the apps do not use this",
+  "scripts": {
+    "check": "node scripts/check-jam-protocol.mjs"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1"
+  }
+}

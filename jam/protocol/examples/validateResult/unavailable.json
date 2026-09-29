@@ -1,0 +1,10 @@
+{
+  "type": "validateResult",
+  "requestId": "v3",
+  "results": [
+    {
+      "trackId": "1695498",
+      "reason": "track-unavailable"
+    }
+  ]
+}

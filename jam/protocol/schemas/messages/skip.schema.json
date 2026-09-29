@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/skip.schema.json",
+  "title": "SkipMessage",
+  "description": "Guest: skip the current item, when the host allows it",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "itemId"
+  ],
+  "properties": {
+    "type": {
+      "const": "skip"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "itemId": {
+      "$ref": "../defs.schema.json#/$defs/itemId"
+    }
+  }
+}

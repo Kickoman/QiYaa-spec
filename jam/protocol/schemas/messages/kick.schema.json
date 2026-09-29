@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/kick.schema.json",
+  "title": "KickMessage",
+  "description": "Host: remove a guest from the room",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "publicId"
+  ],
+  "properties": {
+    "type": {
+      "const": "kick"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "publicId": {
+      "$ref": "../defs.schema.json#/$defs/publicId"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/searchResult.schema.json",
+  "title": "SearchResultMessage",
+  "description": "Host: tracks found for a guest's search, or why none",
+  "type": "object",
+  "required": [
+    "type",
+    "requestId"
+  ],
+  "properties": {
+    "type": {
+      "const": "searchResult"
+    },
+    "requestId": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "tracks": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "$ref": "../track.schema.json"
+      }
+    },
+    "error": {
+      "enum": [
+        "failed",
+        "unauthorized"
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "required": [
+        "tracks"
+      ]
+    },
+    {
+      "required": [
+        "error"
+      ]
+    }
+  ]
+}

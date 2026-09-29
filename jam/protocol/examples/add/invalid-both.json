@@ -1,0 +1,15 @@
+{
+  "type": "add",
+  "id": "g3",
+  "trackId": "38633712",
+  "track": {
+    "id": "38633712",
+    "albumId": "5307396",
+    "title": "Группа крови",
+    "artists": [
+      "КИНО"
+    ],
+    "durationMs": 235100,
+    "coverUri": "avatars.yandex.net/get-music-content/95061/4f3808a0.a.5307396-3/%%"
+  }
+}

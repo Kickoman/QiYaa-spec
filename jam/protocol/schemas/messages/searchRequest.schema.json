@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/searchRequest.schema.json",
+  "title": "SearchRequestMessage",
+  "description": "To the host: search for a guest",
+  "type": "object",
+  "required": [
+    "type",
+    "requestId",
+    "text"
+  ],
+  "properties": {
+    "type": {
+      "const": "searchRequest"
+    },
+    "requestId": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "text": {
+      "$ref": "../defs.schema.json#/$defs/searchText"
+    }
+  }
+}

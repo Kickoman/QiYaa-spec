@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/hello.schema.json",
+  "title": "HelloMessage",
+  "description": "First message of every connection",
+  "type": "object",
+  "required": [
+    "type",
+    "protocol",
+    "app",
+    "appVersion"
+  ],
+  "properties": {
+    "type": {
+      "const": "hello"
+    },
+    "protocol": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "app": {
+      "enum": [
+        "desktop",
+        "android",
+        "web"
+      ]
+    },
+    "appVersion": {
+      "type": "string",
+      "pattern": "^[0-9A-Za-z.+_-]{1,32}$"
+    }
+  }
+}

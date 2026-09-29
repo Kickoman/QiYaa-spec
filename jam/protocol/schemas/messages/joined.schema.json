@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/messages/joined.schema.json",
+  "title": "JoinedMessage",
+  "description": "The guest is in the room",
+  "type": "object",
+  "required": [
+    "type",
+    "id",
+    "publicId"
+  ],
+  "properties": {
+    "type": {
+      "const": "joined"
+    },
+    "id": {
+      "$ref": "../defs.schema.json#/$defs/requestId"
+    },
+    "publicId": {
+      "$ref": "../defs.schema.json#/$defs/publicId"
+    }
+  }
+}

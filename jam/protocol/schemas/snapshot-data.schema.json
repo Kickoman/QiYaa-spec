@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/snapshot-data.schema.json",
+  "title": "SnapshotData",
+  "description": "Room snapshot: the whole room, secrets only as hashes",
+  "type": "object",
+  "required": [
+    "format",
+    "room"
+  ],
+  "properties": {
+    "format": {
+      "const": 1
+    },
+    "room": {
+      "$ref": "#/$defs/room"
+    }
+  },
+  "allOf": [
+    {
+      "$ref": "defs.schema.json#/$defs/noSecrets"
+    }
+  ],
+  "$defs": {
+    "room": {
+      "title": "SnapshotRoom",
+      "type": "object",
+      "required": [
+        "id",
+        "hostName",
+        "hostPublicId",
+        "joinSecretHash",
+        "hostSecretHash",
+        "createdAt",
+        "version",
+        "nextItemNumber",
+        "settings",
+        "participants",
+        "kicked",
+        "queue",
+        "recent",
+        "nowPlaying",
+        "fallback"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "defs.schema.json#/$defs/roomId"
+        },
+        "hostName": {
+          "$ref": "defs.schema.json#/$defs/name"
+        },
+        "hostPublicId": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "joinSecretHash": {
+          "$ref": "defs.schema.json#/$defs/hash"
+        },
+        "hostSecretHash": {
+          "$ref": "defs.schema.json#/$defs/hash"
+        },
+        "createdAt": {
+          "$ref": "defs.schema.json#/$defs/time"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "nextItemNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "settings": {
+          "$ref": "settings.schema.json"
+        },
+        "participants": {
+          "type": "array",
+          "maxItems": 31,
+          "items": {
+            "$ref": "#/$defs/participant"
+          }
+        },
+        "kicked": {
+          "type": "array",
+          "maxItems": 100,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "defs.schema.json#/$defs/hash"
+          }
+        },
+        "queue": {
+          "type": "array",
+          "maxItems": 300,
+          "items": {
+            "$ref": "#/$defs/queueItem"
+          }
+        },
+        "recent": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "$ref": "room.schema.json#/$defs/recentItem"
+          }
+        },
+        "nowPlaying": {
+          "$ref": "room.schema.json#/$defs/nowPlaying"
+        },
+        "fallback": {
+          "$ref": "room.schema.json#/$defs/fallback"
+        }
+      }
+    },
+    "participant": {
+      "title": "SnapshotParticipant",
+      "type": "object",
+      "required": [
+        "publicId",
+        "idHash",
+        "name",
+        "kind",
+        "joinedAt",
+        "lastServedAt"
+      ],
+      "properties": {
+        "publicId": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "idHash": {
+          "anyOf": [
+            {
+              "$ref": "defs.schema.json#/$defs/hash"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "$ref": "defs.schema.json#/$defs/name"
+        },
+        "kind": {
+          "$ref": "defs.schema.json#/$defs/participantKind"
+        },
+        "joinedAt": {
+          "$ref": "defs.schema.json#/$defs/time"
+        },
+        "lastServedAt": {
+          "anyOf": [
+            {
+              "$ref": "defs.schema.json#/$defs/time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "queueItem": {
+      "title": "SnapshotQueueItem",
+      "type": "object",
+      "required": [
+        "itemId",
+        "track",
+        "addedBy",
+        "addedAt",
+        "pinnedAt"
+      ],
+      "properties": {
+        "itemId": {
+          "$ref": "defs.schema.json#/$defs/itemId"
+        },
+        "track": {
+          "$ref": "track.schema.json"
+        },
+        "addedBy": {
+          "$ref": "defs.schema.json#/$defs/publicId"
+        },
+        "addedAt": {
+          "$ref": "defs.schema.json#/$defs/time"
+        },
+        "pinnedAt": {
+          "anyOf": [
+            {
+              "$ref": "defs.schema.json#/$defs/time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "name": "FIFO plays in the order of adding, whoever added",
+  "mode": "fifo",
+  "items": [
+    {
+      "itemId": "i2",
+      "addedBy": "B",
+      "addedAt": 2000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 3000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {},
+  "expected": [
+    "i3",
+    "i2",
+    "i1"
+  ]
+}

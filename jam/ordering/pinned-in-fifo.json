@@ -1,0 +1,23 @@
+{
+  "name": "Pinned items come first in FIFO too",
+  "mode": "fifo",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "B",
+      "addedAt": 2000,
+      "pinnedAt": 3000
+    }
+  ],
+  "lastServedAt": {},
+  "expected": [
+    "i2",
+    "i1"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "FIFO: equal addedAt falls back to the item number, compared as a number",
+  "mode": "fifo",
+  "items": [
+    {
+      "itemId": "i10",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i9",
+      "addedBy": "B",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i11",
+      "addedBy": "C",
+      "addedAt": 1000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {},
+  "expected": [
+    "i9",
+    "i10",
+    "i11"
+  ]
+}

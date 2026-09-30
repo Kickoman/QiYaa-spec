@@ -1,0 +1,37 @@
+{
+  "name": "Nobody played yet: the person with the earliest waiting item first",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i4",
+      "addedBy": "A",
+      "addedAt": 4000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "B",
+      "addedAt": 2000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "C",
+      "addedAt": 3000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i5",
+      "addedBy": "B",
+      "addedAt": 5000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {},
+  "expected": [
+    "i2",
+    "i3",
+    "i4",
+    "i5"
+  ]
+}

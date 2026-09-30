@@ -10,16 +10,11 @@ server and both apps.
 |---|---|---|
 | [protocol/](protocol/README.md) | Protocol v1: transport, handshake, messages as JSON Schema, examples, secrets, reasons | — |
 | [limits.md](limits.md) | Every size, timeout and rate of the jam | — |
-
-Coming next, with their issues:
-
-| Path | What it will hold | IDs | Issue |
-|---|---|---|---|
-| `room.md` | The room: joining, adding, removing, pinning, skipping, settings, the end | `ROOM-` | Kickoman/QiYaa-jam#4 |
-| `ordering/*.json` | Reference cases of the queue order | — | Kickoman/QiYaa-jam#4 |
-| `recovery.md` | Host gone and back, server restarts, snapshots, the outbox | `REC-` | Kickoman/QiYaa-jam#4 |
-| `seeds.md` | How the wave seeds are chosen | — | Kickoman/QiYaa-jam#4 |
-| `host.md` | What the host app does: the queue mirror, the jam wave, what it does not report | `HOST-` | Kickoman/QiYaa-jam#5 |
+| [room.md](room.md) | The room on the server: creating, joining, the link, adding, search, removing, pinning, kicking, what plays, skipping, settings, state, the end, abuse, privacy | `ROOM-` |
+| [ordering/](ordering/README.md) | The queue order: the rule and its reference cases | file names |
+| [recovery.md](recovery.md) | The host gone and back, raising a room from a snapshot, server restarts, guests reconnecting | `REC-` |
+| [seeds.md](seeds.md) | How the jam wave's seeds are chosen and when `seedsVersion` changes | `SEED-` |
+| [host.md](host.md) | What the host app does: the queue mirror, the jam wave, not learning, storage, offline, search for guests, the end | `HOST-` |
 
 ## Rules
 

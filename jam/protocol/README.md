@@ -37,7 +37,9 @@ Numbers such as sizes, timeouts and rates are in [../limits.md](../limits.md).
    it the host. `join` makes it a guest: `app: web` gives a web guest, `desktop` or `android` a
    QiYaa guest. A browser (`app: web`) cannot be a host. A role is kept for the connection's life.
 
-Over the per-IP connection limits, the server refuses the WebSocket upgrade with HTTP 429.
+Over the per-IP connection limits, the server refuses the WebSocket upgrade with HTTP 429. A
+browser must connect from a page of the server's own origin; another `Origin` gets HTTP 403.
+Connections without `Origin` (the apps) are accepted.
 
 ## Who may send what
 
@@ -183,7 +185,7 @@ canonical metadata (`validateResult`).
 | `host-error` | the host answered with an error (`searchResult.error`, `validateResult` reason `failed`) |
 | `invalid-message` | the message does not match its schema; the connection is closed next |
 | `update-required` | `hello` names a protocol this server does not speak; carries `serverProtocol` |
-| `server-full` | `create`: the server has its maximum of rooms |
+| `server-full` | `create`, or a `resume` that would raise a room from its snapshot: the server has its maximum of rooms |
 
 A client that meets a `reason` it does not know shows a general failure.
 
@@ -191,7 +193,7 @@ A client that meets a `reason` it does not know shows a general failure.
 
 | Close | When | The client |
 |---|---|---|
-| 1000 | after `ended`, `kicked` or `rejected{update-required}` | does not reconnect |
+| 1000 | after `ended`, `kicked` or `rejected{update-required}`, or when a newer connection took over the host role ([REC-04](../recovery.md#the-host-goes-away-and-comes-back)) | does not reconnect |
 | 1001 | the server is shutting down (a restart) | reconnects |
 | 1008 | protocol violation: no `hello` in time, a binary frame, an unknown `type`, `invalid-message` | reconnects with backoff; a correct client never sees it |
 | 1009 | a frame over the size limit | as 1008 |

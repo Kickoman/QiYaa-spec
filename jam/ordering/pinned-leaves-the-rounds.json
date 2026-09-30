@@ -1,0 +1,33 @@
+{
+  "name": "A pinned item does not use its owner's turn in the rounds",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": 5000
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "A",
+      "addedAt": 2000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "B",
+      "addedAt": 3000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 100,
+    "B": 200
+  },
+  "expected": [
+    "i1",
+    "i2",
+    "i3"
+  ]
+}

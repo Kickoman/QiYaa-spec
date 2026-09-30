@@ -1,0 +1,34 @@
+{
+  "name": "The person played longest ago goes first",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "B",
+      "addedAt": 2000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "C",
+      "addedAt": 3000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 9000,
+    "B": 7000,
+    "C": 8000
+  },
+  "expected": [
+    "i2",
+    "i3",
+    "i1"
+  ]
+}

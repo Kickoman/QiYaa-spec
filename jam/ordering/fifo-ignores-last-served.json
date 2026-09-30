@@ -1,0 +1,25 @@
+{
+  "name": "FIFO does not look at who played recently",
+  "mode": "fifo",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "B",
+      "addedAt": 2000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 9000
+  },
+  "expected": [
+    "i1",
+    "i2"
+  ]
+}

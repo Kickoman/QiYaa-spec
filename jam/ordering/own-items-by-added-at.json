@@ -1,0 +1,30 @@
+{
+  "name": "Within one person, addedAt decides, then the item number",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i7",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i5",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i6",
+      "addedBy": "B",
+      "addedAt": 900,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {},
+  "expected": [
+    "i6",
+    "i5",
+    "i7"
+  ]
+}

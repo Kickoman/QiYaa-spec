@@ -1,0 +1,25 @@
+{
+  "name": "Someone who has never been played goes before someone who has, even if they added later",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "B",
+      "addedAt": 2000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 500
+  },
+  "expected": [
+    "i2",
+    "i1"
+  ]
+}

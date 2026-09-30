@@ -199,11 +199,15 @@
     "recentItem": {
       "type": "object",
       "required": [
+        "itemId",
         "track",
         "addedBy",
         "playedAt"
       ],
       "properties": {
+        "itemId": {
+          "$ref": "defs.schema.json#/$defs/itemId"
+        },
         "track": {
           "$ref": "track.schema.json"
         },

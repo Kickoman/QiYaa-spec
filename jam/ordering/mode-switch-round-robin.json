@@ -1,0 +1,55 @@
+{
+  "name": "The same queue in round robin (see mode-switch-fifo)",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "A",
+      "addedAt": 2000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "A",
+      "addedAt": 3000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i4",
+      "addedBy": "B",
+      "addedAt": 4000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i5",
+      "addedBy": "C",
+      "addedAt": 5000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i6",
+      "addedBy": "B",
+      "addedAt": 6000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 100,
+    "B": 200,
+    "C": 300
+  },
+  "expected": [
+    "i1",
+    "i4",
+    "i5",
+    "i2",
+    "i6",
+    "i3"
+  ]
+}

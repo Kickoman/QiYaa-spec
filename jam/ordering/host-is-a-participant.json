@@ -1,0 +1,40 @@
+{
+  "name": "The host's own items take turns like anyone's",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "H",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "H",
+      "addedAt": 1100,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "H",
+      "addedAt": 1200,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i4",
+      "addedBy": "A",
+      "addedAt": 5000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "H": 4000,
+    "A": 3000
+  },
+  "expected": [
+    "i4",
+    "i1",
+    "i2",
+    "i3"
+  ]
+}

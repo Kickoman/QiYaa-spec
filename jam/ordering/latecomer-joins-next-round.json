@@ -1,0 +1,54 @@
+{
+  "name": "A guest who arrives late plays in the nearest round, not after everything that others queued",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "A",
+      "addedAt": 2000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "A",
+      "addedAt": 3000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i4",
+      "addedBy": "C",
+      "addedAt": 1500,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i5",
+      "addedBy": "C",
+      "addedAt": 2500,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i6",
+      "addedBy": "B",
+      "addedAt": 10000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 9000,
+    "C": 7000
+  },
+  "expected": [
+    "i6",
+    "i4",
+    "i1",
+    "i5",
+    "i2",
+    "i3"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "With one person waiting, their items play in the order they added them",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i3",
+      "addedBy": "A",
+      "addedAt": 3000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "A",
+      "addedAt": 2000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 500
+  },
+  "expected": [
+    "i1",
+    "i2",
+    "i3"
+  ]
+}

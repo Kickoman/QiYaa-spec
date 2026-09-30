@@ -1,0 +1,30 @@
+{
+  "name": "Pinned items play first, before the order of the room",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i1",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i2",
+      "addedBy": "B",
+      "addedAt": 2000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i3",
+      "addedBy": "B",
+      "addedAt": 3000,
+      "pinnedAt": 9000
+    }
+  ],
+  "lastServedAt": {},
+  "expected": [
+    "i3",
+    "i1",
+    "i2"
+  ]
+}

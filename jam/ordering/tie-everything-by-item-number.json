@@ -1,0 +1,26 @@
+{
+  "name": "Equal lastServedAt and equal addedAt: the lower item number first",
+  "mode": "round-robin",
+  "items": [
+    {
+      "itemId": "i12",
+      "addedBy": "A",
+      "addedAt": 1000,
+      "pinnedAt": null
+    },
+    {
+      "itemId": "i11",
+      "addedBy": "B",
+      "addedAt": 1000,
+      "pinnedAt": null
+    }
+  ],
+  "lastServedAt": {
+    "A": 5000,
+    "B": 5000
+  },
+  "expected": [
+    "i11",
+    "i12"
+  ]
+}

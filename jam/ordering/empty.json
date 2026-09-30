@@ -1,0 +1,7 @@
+{
+  "name": "An empty queue stays empty",
+  "mode": "round-robin",
+  "items": [],
+  "lastServedAt": {},
+  "expected": []
+}

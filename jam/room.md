@@ -154,7 +154,7 @@ Only the host reports what plays. Its reports move items; nothing else does.
 | ROOM-59 | — | A browser opens a WebSocket from a page of another origin (`Origin` is not the server's own) | The upgrade is refused with HTTP 403. Connections without `Origin` (the apps) are accepted. | no: #8 |
 | ROOM-60 | — | A request carries `X-Real-IP` | The server uses it as the client's IP only when the connection comes from `TRUSTED_PROXY`; otherwise it uses the connection's address. | no: #8 |
 | ROOM-61 | A connection | It does not answer the server's pings for the dead-connection time | Closed. Its participant goes offline as in ROOM-11. | no: #8 |
-| ROOM-62 | — | Any HTTP request other than `GET /`, `GET /j/<roomId>`, `GET /healthz`, `GET /.well-known/assetlinks.json` and the upgrade on `/ws` | 404 with an empty body. | no: #8 |
+| ROOM-62 | — | Any HTTP request other than `GET /`, `GET /j/<roomId>`, the web guest's own files under `GET /assets/`, `GET /healthz`, `GET /.well-known/assetlinks.json` and the upgrade on `/ws` | 404 with an empty body. A path never reaches outside the web guest's files. | no: #8 |
 
 ## Privacy
 

@@ -1,0 +1,20 @@
+{
+  "sessionId": "S1-onyourwave",
+  "batchId": "B1.1727600000",
+  "tracks": [
+    {
+      "id": "51234567",
+      "albumId": "3141",
+      "title": "Недоступная запись",
+      "artists": [
+        "Кино"
+      ],
+      "durationMs": 240000,
+      "available": false,
+      "albumTitle": "Группа крови",
+      "year": 1988,
+      "genre": "rusrock",
+      "coverUri": "avatars.yandex.net/get-music-content/41288/1d3c4a5b.a.3141-1/%%"
+    }
+  ]
+}

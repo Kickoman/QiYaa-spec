@@ -23,6 +23,7 @@ Each row is one scenario:
   queue and playback state afterwards. Anything that is not listed is left as it was.
 - **Desktop** and **Android**: whether that app does this today.
   - **yes**: the app does this.
+  - **not checked**: nobody has checked that app against this scenario yet.
   - **no**: the app does not do this. A tag such as `gap D2` names the entry in
     [Known gaps](#known-gaps) that describes what the app does instead.
 
@@ -51,7 +52,5 @@ issue is fixed, remove its tag from the scenario rows and delete the entry here.
 
 | Gap | App | What the app does instead | Scenarios | Issue |
 |---|---|---|---|---|
-| D1 | Desktop | On a network failure it stops. A link failure stops playback. A stream that drops plays what arrived, sends `skip` and moves on. | ERR-01, ERR-02, ERR-03 | Kickoman/QiYaa#8 |
-| D2 | Desktop | A broken track (no usable link, or the decoder fails) stops playback. There is no skip, no limit and no counter. | ERR-04 to ERR-07 | Kickoman/QiYaa#9 |
-| D3 | Desktop | Previous always goes to the previous track. There is no 3-second rule. | TR-01, TR-02 | Kickoman/QiYaa#10 |
-| D4 | Desktop | Empty likes, and any source whose tracks are all unavailable, clear the queue. An empty first wave batch clears the queue and leaves a dead wave. | SRC-07, SRC-08, WAVE-03 | Kickoman/QiYaa#11 |
+
+None at the moment: both apps follow every scenario that is checked for them.

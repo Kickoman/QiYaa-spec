@@ -26,7 +26,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | My Wave | yes | yes | [wave.md](player/wave.md) |
 | Wheel of waves (waves matched to the current track) | yes | yes | `POST /wheel/new` |
 | Search with the best result | yes | yes | [SRC-09 to SRC-12](player/sources.md#search) |
-| Empty source, or one whose tracks are all unavailable, keeps the queue | differs: D4, Kickoman/QiYaa#11 | yes | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
+| Empty source, or one whose tracks are all unavailable, keeps the queue | yes | yes | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
 
@@ -35,7 +35,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
 | Play, pause, stop, next, previous, seek | yes | yes | |
-| Previous: the previous track within 3 s, otherwise restart | differs: D3, Kickoman/QiYaa#10 | yes | [TR-01, TR-02](player/transport.md) |
+| Previous: the previous track within 3 s, otherwise restart | yes | yes | [TR-01, TR-02](player/transport.md) |
 | Previous while shuffle is on | differs | differs | Not decided yet ([transport.md](player/transport.md)) |
 | Shuffle | yes | yes | Android keeps the choice in memory only |
 | Repeat (whole queue; no repeat-one) | yes | yes | [TR-06](player/transport.md) |
@@ -67,9 +67,9 @@ When a feature lands on one platform, add its row here and open an issue for the
 
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
-| No network: pause, continue when it returns | no: D1, Kickoman/QiYaa#8 | yes | [ERR-01 to ERR-03](player/errors.md) |
-| Broken track: next, stop after 3 in a row | no: D2, Kickoman/QiYaa#9 | yes | [ERR-04 to ERR-07](player/errors.md) |
-| Rejected token: back to login | unclear | yes | |
+| No network: pause, continue when it returns | yes | yes | [ERR-01 to ERR-03](player/errors.md) |
+| Broken track: next, stop after 3 in a row | yes | yes | [ERR-04 to ERR-07](player/errors.md) |
+| Rejected token: back to login | differs | yes | Desktop stops with "Ошибка доступа" ([ERR-08](player/errors.md)) and does not open the login dialog |
 
 ## Likes
 

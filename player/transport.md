@@ -9,8 +9,8 @@ act the same way as the buttons.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| TR-01 | The current track has played for at most 3 s | Previous | The previous track plays. On the first track it goes to the last track if repeat is on, and restarts the first track if repeat is off. | no: no 3-second rule (gap D3) | yes |
-| TR-02 | The current track has played for more than 3 s | Previous | The current track restarts from 0. | no: goes to the previous track (gap D3) | yes |
+| TR-01 | The current track has played for at most 3 s | Previous | The previous track plays. On the first track it goes to the last track if repeat is on, and restarts the first track if repeat is off. | yes | yes |
+| TR-02 | The current track has played for more than 3 s | Previous | The current track restarts from 0. This is a seek, not a new start: no events and no `/play-audio` (unlike Play's restart, [TRK-02](tracking.md)). | yes | yes |
 | TR-03 | A track is current | Next, or the current track ends | The next track in play order plays. Without shuffle that is the following one. With shuffle it is a random other track of the queue. | yes | yes |
 | TR-04 | Repeat is off, the last track is current | Next, or the last track ends | Playback stops. The cursor stays on the last track, and the queue stays. | yes | yes |
 | TR-05 | Repeat is on, the last track is current | Next, or the last track ends | The first track plays. | yes | yes |

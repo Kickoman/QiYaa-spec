@@ -110,15 +110,15 @@ guest's request then ends with `host-timeout`.
 - The server therefore cannot tell the join secret after raising a room from a snapshot. The host
   keeps its `joinUrl` (from `created` or the last `linkRotated`) with its jam session, next to
   `roomId` and `hostSecret`.
-- `resume{roomId, hostSecret, hostKey, snapshot, outbox}`:
+- `resume{roomId, hostSecret, snapshot, outbox}`:
   - **the room is live**: `hostSecret` must match. The snapshot is ignored. The `started` events in
     `outbox` are applied in order, and an item that is no longer in the queue is skipped, so a
     repeated `started` changes nothing. Reply `resumed{restored: false}`;
-  - **the server does not know the room**: `hostKey` must be valid, the snapshot must pass this
-    schema and the limits, its `room.id` must be `roomId`, and SHA-256 of `hostSecret` must equal
+  - **the server does not know the room**: the snapshot must pass this schema and the limits, its `room.id` must be `roomId`, and SHA-256 of `hostSecret` must equal
     `hostSecretHash`. The room comes back with the same id and join secret, then `outbox` is
     applied. Reply `resumed{restored: true}`;
-  - otherwise: `room-not-found`, `bad-secret` or `bad-key`.
+  - otherwise: `room-not-found` or `bad-secret`. Raising a room counts as creating one for the
+    limits on rooms ([ROOM-02, ROOM-03](../room.md#create)): `rate-limited` or `server-full`.
 
 ## Identifiers and secrets
 
@@ -127,7 +127,6 @@ guest's request then ends with `host-timeout`.
 | `roomId` | 8 characters of lower-case Crockford base32 (40 bits) | server | no; it is in the link path |
 | `joinSecret` | 128 bits, base64url without padding (22 characters) | server | yes |
 | `hostSecret` | 256 bits, base64url (43 characters) | server | yes |
-| `hostKey` | `qjk_` + 256 bits base64url | a command on the server | yes |
 | `participantId` | UUID v4, lower case | the guest's client, kept per room | yes: it lets the guest come back as the same participant |
 | `publicId` | 6 characters of lower-case Crockford base32 | server | no; others see the participant by it |
 | `itemId` | `i` + a counter of the room; never reused, since the counter is in the snapshot | server | no |
@@ -139,7 +138,6 @@ Where each secret may appear:
 
 | Secret | Only in |
 |---|---|
-| `hostKey` | `create`, `resume` (to the server) |
 | `hostSecret` | `created` (to the host), `resume` |
 | `joinSecret` | `created`, `linkRotated` (to the host), their `joinUrl`, `join` |
 | `participantId` | `join` |
@@ -147,6 +145,11 @@ Where each secret may appear:
 No secret appears in `state`, in the snapshot, in `rejected.detail` or in server logs. For `state`
 and the snapshot the schemas enforce it: no object at any depth may have a property named
 `hostKey`, `hostSecret`, `joinSecret` or `participantId`.
+
+**No host keys.** Anyone with the app may create a room; the limits on rooms per IP and per server
+([limits](../limits.md#rooms)) keep that cheap. Until 2026-10-01 `create` and `resume` carried a
+`hostKey` issued by the server's owner. Apps from before that (Android 0.2.3) still send it: it is
+an unknown field now and ignored, and the name stays on the list above so that it never leaks.
 
 ## Tracks
 
@@ -167,13 +170,12 @@ canonical metadata (`validateResult`).
 
 | `reason` | When |
 |---|---|
-| `bad-key` | `create`, `resume`: the host key is unknown or revoked |
 | `bad-secret` | `join`: wrong join secret. `resume`: wrong host secret |
 | `room-not-found` | `join`, `resume`: no such room, and for `resume` no usable snapshot |
 | `room-full` | `join`: the room has its maximum of guests |
 | `join-closed` | `join`: the host closed the room to new guests |
 | `kicked` | `join`: this participant was removed by the host |
-| `rate-limited` | any request over a rate limit |
+| `rate-limited` | any request over a rate limit; `create`, or a `resume` that would raise a room, over the rooms of one IP |
 | `queue-limit` | `add`: the guest has `maxPendingPerGuest` items waiting, or the queue is full |
 | `duplicate` | `add`: the track is already waiting in the queue |
 | `not-allowed` | the sender's role or the room's settings do not allow it |

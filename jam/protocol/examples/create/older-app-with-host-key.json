@@ -4,5 +4,6 @@
   "hostName": "Маша",
   "settings": {
     "order": "fifo"
-  }
+  },
+  "hostKey": "qjk_LHDhK3oGRvkiefQnx7OOczTY5Tic_xZ6HcMOc_gmtoM"
 }

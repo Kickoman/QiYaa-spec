@@ -33,9 +33,9 @@ connections is in [recovery.md](recovery.md).
 
 | ID | Given | When | Then | Server |
 |---|---|---|---|---|
-| ROOM-01 | Fewer rooms than the server limit | A desktop or android connection sends `create` with a valid host key | `created{roomId, hostSecret, joinSecret, joinUrl, publicId}`, then `state` version 1. The room has the host as its only participant (`kind: host`, named `hostName`). Settings are the defaults `round-robin`, `guestsCanSkip: false`, `joinOpen: true`, `maxPendingPerGuest: 10`, overridden by `create.settings`. `nowPlaying` is `idle`, the queue and `recent` are empty, and `fallback` is `{seeds: [], seedsVersion: 0}`. The room's age counts from now. | no: #7, #8 |
-| ROOM-02 | — | `create` with a host key that is unknown or revoked | `rejected{bad-key}`. No room. | no: #8 |
-| ROOM-03 | The server has its maximum of rooms | `create` | `rejected{server-full}`. | no: #8 |
+| ROOM-01 | Fewer rooms than the limits (ROOM-02, ROOM-03) | A desktop or android connection sends `create` | `created{roomId, hostSecret, joinSecret, joinUrl, publicId}`, then `state` version 1. The room has the host as its only participant (`kind: host`, named `hostName`). Settings are the defaults `round-robin`, `guestsCanSkip: false`, `joinOpen: true`, `maxPendingPerGuest: 10`, overridden by `create.settings`. `nowPlaying` is `idle`, the queue and `recent` are empty, and `fallback` is `{seeds: [], seedsVersion: 0}`. The room's age counts from now. | no: #7, #8 |
+| ROOM-02 | The connection's IP has 2 live rooms, or created 5 rooms in the last hour ([limits](limits.md#rooms)) | `create` | `rejected{rate-limited}`. No room. A room counts for the IP of the connection that created or raised it (REC-06), for the room's whole life; a refused `create` does not count. | no: #8 |
+| ROOM-03 | The server has its maximum of rooms | `create` | `rejected{server-full}`. The server checks this before ROOM-02. | no: #8 |
 
 ## Join
 
@@ -161,7 +161,7 @@ Only the host reports what plays. Its reports move items; nothing else does.
 | ID | Given | When | Then | Server |
 |---|---|---|---|---|
 | ROOM-63 | — | The server logs anything | Logs hold connections, refusals with their `reason`, and counters. They never hold names, track titles, search texts, secrets or `participantId`s. | no: #8 |
-| ROOM-64 | — | The server keeps a secret | It keeps only hashes of `hostKey`, `hostSecret`, `joinSecret` and `participantId`. It does not need the secrets themselves after it has sent them to the host. | no: #7, #8 |
+| ROOM-64 | — | The server keeps a secret | It keeps only hashes of `hostSecret`, `joinSecret` and `participantId`. It does not need the secrets themselves after it has sent them to the host. | no: #7, #8 |
 
 ## Rights
 

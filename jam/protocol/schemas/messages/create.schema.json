@@ -7,7 +7,6 @@
   "required": [
     "type",
     "id",
-    "hostKey",
     "hostName"
   ],
   "properties": {
@@ -16,9 +15,6 @@
     },
     "id": {
       "$ref": "../defs.schema.json#/$defs/requestId"
-    },
-    "hostKey": {
-      "$ref": "../defs.schema.json#/$defs/hostKey"
     },
     "hostName": {
       "$ref": "../defs.schema.json#/$defs/name"

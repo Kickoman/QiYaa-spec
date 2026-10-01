@@ -25,6 +25,8 @@ that side enforces or follows it.
 | What | Value | Enforced by |
 |---|---|---|
 | Rooms on one server | 20 | server (`server-full`) |
+| Live rooms created or raised from one IP | 2 | server (`rate-limited`) |
+| Rooms created or raised from one IP | 5 an hour | server (`rate-limited`) |
 | Guests in a room | 30, the host not counted | server (`room-full`) |
 | Participants in `state` and in the snapshot | 31 | schema |
 | Queue length | 300 items | schema, server (`queue-limit`) |

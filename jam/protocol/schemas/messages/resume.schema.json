@@ -9,7 +9,6 @@
     "id",
     "roomId",
     "hostSecret",
-    "hostKey",
     "snapshot",
     "outbox"
   ],
@@ -25,9 +24,6 @@
     },
     "hostSecret": {
       "$ref": "../defs.schema.json#/$defs/hostSecret"
-    },
-    "hostKey": {
-      "$ref": "../defs.schema.json#/$defs/hostKey"
     },
     "snapshot": {
       "anyOf": [

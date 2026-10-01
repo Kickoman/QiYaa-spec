@@ -11,12 +11,10 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `welcome/invalid-no-server-time.json` | `serverTime` is missing: clients need it for the clock offset. |
 | `rejected/invalid-unknown-reason.json` | `reason` is not in the reason table. |
 | `ack/invalid-no-id.json` | `id` is missing: an `ack` always answers a request. |
-| `create/invalid-key-without-prefix.json` | `hostKey` lacks the `qjk_` prefix. |
 | `create/invalid-long-name.json` | `hostName` is longer than 24 characters. |
 | `created/invalid-url-without-secret.json` | `joinUrl` has no `#<joinSecret>` fragment. |
 | `resume/invalid-snapshot-with-join-secret.json` | The snapshot carries `joinSecret`; a snapshot holds secrets only as hashes. |
 | `resume/invalid-outbox-with-playing.json` | The outbox holds only `started` events. |
-| `resume/invalid-no-host-key.json` | `hostKey` is missing: raising a room from a snapshot needs a valid host key. |
 | `resumed/invalid-no-restored.json` | `restored` is missing. |
 | `playing/invalid-wave-without-track.json` | A wave track is not in the queue, so `track` is required. |
 | `playing/invalid-item-without-item-id.json` | `itemId` is required for `source: item`. |
@@ -50,7 +48,7 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `snapshot/invalid-format-2.json` | `format` is not 1. |
 | `state/invalid-join-secret.json` | The room carries `joinSecret`. |
 | `state/invalid-host-secret.json` | `you` carries `hostSecret`, even though this is the host's own state. |
-| `state/invalid-host-key.json` | `settings` carries `hostKey`. |
+| `state/invalid-host-key.json` | `settings` carries `hostKey`, the field older apps still send in `create` and `resume`. |
 | `state/invalid-participant-id.json` | A participant carries its `participantId`. |
 | `state/invalid-item-without-track.json` | `nowPlaying` with `source: item` has no `track`. |
 | `ended/invalid-unknown-reason.json` | `reason` is not `host-ended` or `expired`. |

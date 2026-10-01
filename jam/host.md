@@ -86,7 +86,7 @@ The host's account must not learn the party's taste.
 |---|---|---|---|---|---|
 | HOST-22 | A jam session | `created`, `linkRotated`, `snapshot`, or a change of the outbox | The app stores `roomId`, `hostSecret`, `joinUrl`, the latest snapshot `data` and the outbox on disk, atomically (a temporary file and a rename, or the platform's equivalent). | no: #12, #14 | yes |
 | HOST-23 | A stored jam session | The app starts, or Android restores it after the process was killed | The app asks "Continue the jam?". Yes: it connects and sends `resume` with the stored snapshot and outbox. No: it connects, resumes and sends `end`, then clears the storage. | no: #14 | no: #62 |
-| HOST-24 | A stored jam session | `resume` is refused with `room-not-found`, `bad-secret` or `bad-key` | The storage is cleared, the jam part of the tail becomes ordinary tracks as in HOST-32, and a status says the jam is over. | no: #14 | no: #62 |
+| HOST-24 | A stored jam session | `resume` is refused with `room-not-found` or `bad-secret` | The storage is cleared, the jam part of the tail becomes ordinary tracks as in HOST-32, and a status says the jam is over. | no: #14 | no: #62 |
 
 ## Without the server
 

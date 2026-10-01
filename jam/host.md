@@ -77,22 +77,22 @@ The host's account must not learn the party's taste.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | no: #14 | no: #62 |
-| HOST-21 | A jam session | The user picks a source that would replace the queue (a playlist, an album, a wave) | The queue is not replaced. The app offers to add tracks to the jam instead. | no: #14 | no: #62 |
+| HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | no: #14 | yes |
+| HOST-21 | A jam session | The user picks a source that would replace the queue (a playlist, an album, a wave) | The queue is not replaced. The app offers to add tracks to the jam instead. | no: #14 | yes |
 
 ## Storage and "Continue the jam?"
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
 | HOST-22 | A jam session | `created`, `linkRotated`, `snapshot`, or a change of the outbox | The app stores `roomId`, `hostSecret`, `joinUrl`, the latest snapshot `data` and the outbox on disk, atomically (a temporary file and a rename, or the platform's equivalent). | no: #12, #14 | yes |
-| HOST-23 | A stored jam session | The app starts, or Android restores it after the process was killed | The app asks "Continue the jam?". Yes: it connects and sends `resume` with the stored snapshot and outbox. No: it connects, resumes and sends `end`, then clears the storage. | no: #14 | no: #62 |
-| HOST-24 | A stored jam session | `resume` is refused with `room-not-found` or `bad-secret` | The storage is cleared, the jam part of the tail becomes ordinary tracks as in HOST-32, and a status says the jam is over. | no: #14 | no: #62 |
+| HOST-23 | A stored jam session | The app starts, or Android restores it after the process was killed | The app asks "Continue the jam?". Yes: it connects and sends `resume` with the stored snapshot and outbox. No: it connects, resumes and sends `end`, then clears the storage. | no: #14 | yes |
+| HOST-24 | A stored jam session | `resume` is refused with `room-not-found` or `bad-secret` | The storage is cleared, the jam part of the tail becomes ordinary tracks as in HOST-32, and a status says the jam is over. | no: #14 | yes |
 
 ## Without the server
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-25 | Connected | The connection closes or dies | Playback goes on from the tail and the jam wave (HOST-10, with the last state's seeds). The `started` events that should be sent go to the outbox instead, and `playing` is not queued. Removing, pinning, kicking, settings and adding are disabled, and a status says there is no connection to the jam server. | no: #14 | no: #62 |
+| HOST-25 | Connected | The connection closes or dies | Playback goes on from the tail and the jam wave (HOST-10, with the last state's seeds). The `started` events that should be sent go to the outbox instead, and `playing` is not queued. Removing, pinning, kicking, settings and adding are disabled, and a status says there is no connection to the jam server. | no: #14 | yes |
 | HOST-26 | Not connected | — | The host reconnects after 1, 2, 4 … 30 s, and at once when the network comes back. Then `resume` with the snapshot and the outbox. After `resumed`, the outbox is cleared, the controls are enabled again, and the host sends `playing` for the current track. | no: #14 | yes |
 | HOST-27 | Not connected | A Yandex request of the player fails for the network | As ERR-01 to ERR-03: the jam changes nothing here. | no: #13 | yes |
 
@@ -118,5 +118,5 @@ A guest's track is built like a track of the app's own parsing ([expected/yandex
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. Wave tracks are marked as the jam wave. The current track's line says who added it. | no: #15 | no: #62 |
-| HOST-35 | A jam session | — | The jam window or screen shows a QR code of `joinUrl`, the link with a copy or share action, the participants with their online state and a kick action, the settings, "new link" and "end", and whether the host is connected. | no: #15 | no: #62 |
+| HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. Wave tracks are marked as the jam wave. The current track's line says who added it. | no: #15 | yes |
+| HOST-35 | A jam session | — | The jam window or screen shows a QR code of `joinUrl`, the link with a copy or share action, the participants with their online state and a kick action, the settings, "new link" and "end", and whether the host is connected. | no: #15 | yes |

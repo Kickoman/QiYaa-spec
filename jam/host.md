@@ -70,30 +70,30 @@ The host's account must not learn the party's taste.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-18 | Jam item I is current | `command{kind: skip, itemId: I}` | As Next (HOST-05, HOST-10). | no: #14 | yes |
-| HOST-19 | Item I is not current: another item, a wave track, or nothing plays | `command{kind: skip, itemId: I}` | Ignored. So two quick skips from guests skip one track. | no: #14 | yes |
+| HOST-18 | Jam item I is current | `command{kind: skip, itemId: I}` | As Next (HOST-05, HOST-10). | yes | yes |
+| HOST-19 | Item I is not current: another item, a wave track, or nothing plays | `command{kind: skip, itemId: I}` | Ignored. So two quick skips from guests skip one track. | yes | yes |
 
 ## Adding as the host
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | no: #14 | yes |
-| HOST-21 | A jam session | The user picks a source that would replace the queue (a playlist, an album, a wave) | The queue is not replaced. The app offers to add tracks to the jam instead. | no: #14 | yes |
+| HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | no: #15 | yes |
+| HOST-21 | A jam session | The user picks a source that would replace the queue (a playlist, an album, a wave) | The queue is not replaced. The app offers to add tracks to the jam instead. | yes | yes |
 
 ## Storage and "Continue the jam?"
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-22 | A jam session | `created`, `linkRotated`, `snapshot`, or a change of the outbox | The app stores `roomId`, `hostSecret`, `joinUrl`, the latest snapshot `data` and the outbox on disk, atomically (a temporary file and a rename, or the platform's equivalent). | no: #12, #14 | yes |
-| HOST-23 | A stored jam session | The app starts, or Android restores it after the process was killed | The app asks "Continue the jam?". Yes: it connects and sends `resume` with the stored snapshot and outbox. No: it connects, resumes and sends `end`, then clears the storage. | no: #14 | yes |
-| HOST-24 | A stored jam session | `resume` is refused with `room-not-found` or `bad-secret` | The storage is cleared, the jam part of the tail becomes ordinary tracks as in HOST-32, and a status says the jam is over. | no: #14 | yes |
+| HOST-22 | A jam session | `created`, `linkRotated`, `snapshot`, or a change of the outbox | The app stores `roomId`, `hostSecret`, `joinUrl`, the latest snapshot `data` and the outbox on disk, atomically (a temporary file and a rename, or the platform's equivalent). | yes | yes |
+| HOST-23 | A stored jam session | The app starts, or Android restores it after the process was killed | The app asks "Continue the jam?". Yes: it connects and sends `resume` with the stored snapshot and outbox. No: it connects, resumes and sends `end`, then clears the storage. | yes | yes |
+| HOST-24 | A stored jam session | `resume` is refused with `room-not-found` or `bad-secret` | The storage is cleared, the jam part of the tail becomes ordinary tracks as in HOST-32, and a status says the jam is over. | yes | yes |
 
 ## Without the server
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-25 | Connected | The connection closes or dies | Playback goes on from the tail and the jam wave (HOST-10, with the last state's seeds). The `started` events that should be sent go to the outbox instead, and `playing` is not queued. Removing, pinning, kicking, settings and adding are disabled, and a status says there is no connection to the jam server. | no: #14 | yes |
-| HOST-26 | Not connected | — | The host reconnects after 1, 2, 4 … 30 s, and at once when the network comes back. Then `resume` with the snapshot and the outbox. After `resumed`, the outbox is cleared, the controls are enabled again, and the host sends `playing` for the current track. | no: #14 | yes |
+| HOST-25 | Connected | The connection closes or dies | Playback goes on from the tail and the jam wave (HOST-10, with the last state's seeds). The `started` events that should be sent go to the outbox instead, and `playing` is not queued. Removing, pinning, kicking, settings and adding are disabled, and a status says there is no connection to the jam server. | yes | yes |
+| HOST-26 | Not connected | — | The host reconnects after 1, 2, 4 … 30 s, and at once when the network comes back. Then `resume` with the snapshot and the outbox. After `resumed`, the outbox is cleared, the controls are enabled again, and the host sends `playing` for the current track. | yes | yes |
 | HOST-27 | Not connected | A Yandex request of the player fails for the network | As ERR-01 to ERR-03: the jam changes nothing here. | yes | yes |
 
 ## Search and check for guests
@@ -102,16 +102,16 @@ A guest's track is built like a track of the app's own parsing ([expected/yandex
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-28 | Connected | `searchRequest{requestId, text}` | `GET /search?text=<text>&type=track&page=0`. `searchResult{requestId, tracks}` with the available tracks of `tracks.results`, in the order of the reply, at most 20. A reply without tracks gives `tracks: []`. | no: #14 | yes |
-| HOST-29 | As HOST-28 | The search fails; or the token is rejected (401) | `searchResult{requestId, error: failed}`; or `error: unauthorized`, and the app shows the login problem to its user as usual. | no: #14 | yes |
-| HOST-30 | Connected | `validateRequest{requestId, trackIds}` | `POST /tracks` with those ids. `validateResult{requestId, results}` with one result per id, in order: `track` for a track that is available, `reason: track-unavailable` for one that is missing or unavailable. If the request fails: `reason: failed` for every id. | no: #14 | yes |
-| HOST-31 | Connected | Either request | The answer goes out within the host timeout ([limits](limits.md#requests-through-the-host)), even while the player is busy: these requests do not wait behind playback work. | no: #14 | yes |
+| HOST-28 | Connected | `searchRequest{requestId, text}` | `GET /search?text=<text>&type=track&page=0`. `searchResult{requestId, tracks}` with the available tracks of `tracks.results`, in the order of the reply, at most 20. A reply without tracks gives `tracks: []`. | yes | yes |
+| HOST-29 | As HOST-28 | The search fails; or the token is rejected (401) | `searchResult{requestId, error: failed}`; or `error: unauthorized`, and the app shows the login problem to its user as usual. | yes | yes |
+| HOST-30 | Connected | `validateRequest{requestId, trackIds}` | `POST /tracks` with those ids. `validateResult{requestId, results}` with one result per id, in order: `track` for a track that is available, `reason: track-unavailable` for one that is missing or unavailable. If the request fails: `reason: failed` for every id. | yes | yes |
+| HOST-31 | Connected | Either request | The answer goes out within the host timeout ([limits](limits.md#requests-through-the-host)), even while the player is busy: these requests do not wait behind playback work. | yes | yes |
 
 ## The end
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-32 | A jam session | The user ends the jam; or `ended` arrives | Connected: `end` is sent (not for `ended`). The current track plays to its end. The jam part of the tail stays as ordinary tracks, and the deferred and remaining wave tracks are dropped. The jam wave does not go on. The storage is cleared. Not connected: the same locally, and the server ends the room on its own when the host has been away long enough (REC-05). | no: #14 | yes |
+| HOST-32 | A jam session | The user ends the jam; or `ended` arrives | Connected: `end` is sent (not for `ended`). The current track plays to its end. The jam part of the tail stays as ordinary tracks, and the deferred and remaining wave tracks are dropped. The jam wave does not go on. The storage is cleared. Not connected: the same locally, and the server ends the room on its own when the host has been away long enough (REC-05). | yes | yes |
 | HOST-33 | After HOST-32 | — | Ordinary playback rules again: `/play-audio` and feedback for tracks that start from now on. | yes | yes |
 
 ## What the host shows

@@ -143,7 +143,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
-| Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | no: Kickoman/QiYaa#14, #15 | yes | |
+| Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | no: Kickoman/QiYaa#15 | yes | |
 | Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | no: Kickoman/QiYaa-android#63 | Browser guests need no app |
 
 ## Desktop only: running without an account

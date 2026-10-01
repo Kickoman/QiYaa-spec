@@ -77,7 +77,7 @@ The host's account must not learn the party's taste.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | no: #15 | yes |
+| HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | yes | yes |
 | HOST-21 | A jam session | The user picks a source that would replace the queue (a playlist, an album, a wave) | The queue is not replaced. The app offers to add tracks to the jam instead. | yes | yes |
 
 ## Storage and "Continue the jam?"
@@ -118,5 +118,5 @@ A guest's track is built like a track of the app's own parsing ([expected/yandex
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. Wave tracks are marked as the jam wave. The current track's line says who added it. | no: #15 | yes |
-| HOST-35 | A jam session | — | The jam window or screen shows a QR code of `joinUrl`, the link with a copy or share action, the participants with their online state and a kick action, the settings, "new link" and "end", and whether the host is connected. | no: #15 | yes |
+| HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. Wave tracks are marked as the jam wave. The current track's line says who added it. | yes | yes |
+| HOST-35 | A jam session | — | The jam window or screen shows a QR code of `joinUrl`, the link with a copy or share action, the participants with their online state and a kick action, the settings, "new link" and "end", and whether the host is connected. | yes | yes |

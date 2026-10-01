@@ -104,7 +104,9 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Winamp `.wsz` skins | yes | n/a | Android has its own mobile design |
 | Accent themes | n/a | yes | |
 | Russian UI | yes | yes | |
-| English UI | n/a | yes | The desktop UI is Russian only |
+| English UI | yes | yes | Yandex's "волна" is "vibe" in English ("My Vibe"); Android still says "wave": Kickoman/QiYaa-android#70 |
+| Belarusian UI, the default language | yes | no: Kickoman/QiYaa-android#70 | |
+| Picking the language in the app, applied at once | yes | no: Kickoman/QiYaa-android#70 | Android follows the system language |
 
 ## Desktop windows
 

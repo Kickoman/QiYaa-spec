@@ -32,6 +32,9 @@
     },
     "paused": {
       "type": "boolean"
+    },
+    "listenUrl": {
+      "$ref": "../defs.schema.json#/$defs/listenUrl"
     }
   },
   "allOf": [

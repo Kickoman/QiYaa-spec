@@ -130,6 +130,12 @@
           }
         }
       }
+    },
+    "listenUrl": {
+      "description": "The host's Yandex Music file of the track that sounds now, for guests who listen along: an https link to Yandex's storage, valid for about an hour",
+      "type": "string",
+      "maxLength": 400,
+      "pattern": "^https://[A-Za-z0-9-]+\\.storage\\.yandex\\.net/get-mp3/[0-9a-f]{32}/[0-9a-f]{1,32}/[^\\s#?]+$"
     }
   }
 }

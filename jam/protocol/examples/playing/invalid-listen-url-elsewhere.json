@@ -1,0 +1,8 @@
+{
+  "type": "playing",
+  "source": "item",
+  "itemId": "i3",
+  "positionMs": 42000,
+  "paused": false,
+  "listenUrl": "https://jam.example.org/get-mp3/0123456789abcdef0123456789abcdef/00065cd937b03427/track.mp3"
+}

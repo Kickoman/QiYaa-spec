@@ -100,6 +100,21 @@ guest's request then ends with `host-timeout`.
   order does not matter.
 - `room.hostOnline` is `false` while the host has no connection.
 
+## Listening along (experimental)
+
+A prototype, to try on phones before it becomes a feature with its own scenarios.
+
+- When the host's user lets guests listen, the host's `playing` for an `item` or a `wave` track
+  carries `listenUrl`: the link to the very file the host plays, from Yandex Music's storage
+  (`https://*.storage.yandex.net/get-mp3/…`, valid for about an hour). The host never sends its
+  token, and the server never fetches the file.
+- The server keeps `listenUrl` in `room.nowPlaying` until the next `playing`, which replaces or
+  drops it, and until another item starts. It never goes into a snapshot.
+- A guest that listens plays `listenUrl` at the progress of the [state](#state) and follows the
+  host's pause. It seeks again when it is more than 2 s off.
+- The file is the host's: Yandex Music licenses it for the host's own listening. The host's app
+  sends it only after its user switched listening on.
+
 ## Snapshot and resume
 
 - After changes, the server sends the host `snapshot{data}`, at most once every 2 s. The host keeps

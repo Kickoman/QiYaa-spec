@@ -19,6 +19,7 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `playing/invalid-wave-without-track.json` | A wave track is not in the queue, so `track` is required. |
 | `playing/invalid-item-without-item-id.json` | `itemId` is required for `source: item`. |
 | `playing/invalid-negative-position.json` | `positionMs` is negative. |
+| `playing/invalid-listen-url-elsewhere.json` | `listenUrl` leads somewhere other than Yandex Music's storage. |
 | `started/invalid-number-id.json` | `itemId` is not `i` + a number. |
 | `add/invalid-both.json` | Both `trackId` and `track`: exactly one of them is allowed. |
 | `add/invalid-neither.json` | Neither `trackId` nor `track`. |

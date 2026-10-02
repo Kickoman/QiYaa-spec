@@ -134,6 +134,9 @@
         },
         "reportedAt": {
           "$ref": "defs.schema.json#/$defs/time"
+        },
+        "listenUrl": {
+          "$ref": "defs.schema.json#/$defs/listenUrl"
         }
       },
       "allOf": [

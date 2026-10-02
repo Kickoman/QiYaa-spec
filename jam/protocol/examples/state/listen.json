@@ -1,0 +1,88 @@
+{
+  "type": "state",
+  "version": 64,
+  "serverTime": 1790730095000,
+  "room": {
+    "id": "7k3m9q2x",
+    "hostName": "Маша",
+    "hostOnline": true,
+    "settings": {
+      "order": "round-robin",
+      "guestsCanSkip": false,
+      "joinOpen": true,
+      "maxPendingPerGuest": 10
+    },
+    "you": {
+      "publicId": "h7k2m9",
+      "isHost": true
+    },
+    "participants": [
+      {
+        "publicId": "h7k2m9",
+        "name": "Маша",
+        "kind": "host",
+        "online": true,
+        "pending": 0
+      },
+      {
+        "publicId": "a4n8q1",
+        "name": "Аня",
+        "kind": "web",
+        "online": true,
+        "pending": 0
+      },
+      {
+        "publicId": "b2r5t7",
+        "name": "Боря",
+        "kind": "qiyaa",
+        "online": false,
+        "pending": 0
+      }
+    ],
+    "nowPlaying": {
+      "source": "wave",
+      "track": {
+        "id": "33792663",
+        "albumId": "11057711",
+        "title": "Время, назад!",
+        "artists": [
+          "Сплин"
+        ],
+        "durationMs": 252290,
+        "coverUri": "avatars.yandex.net/get-music-content/2433207/0130978f.a.11057711-1/%%"
+      },
+      "positionMs": 3000,
+      "paused": false,
+      "reportedAt": 1790730090000,
+      "listenUrl": "https://s963sas.storage.yandex.net/get-mp3/0123456789abcdef0123456789abcdef/00065cd937b03427/rmusic/U2FsdGVkX19example/wave-track.mp3"
+    },
+    "queue": [],
+    "recent": [
+      {
+        "itemId": "i2",
+        "track": {
+          "id": "33792663",
+          "albumId": "11057711",
+          "title": "Время, назад!",
+          "artists": [
+            "Сплин"
+          ],
+          "durationMs": 252290,
+          "coverUri": "avatars.yandex.net/get-music-content/2433207/0130978f.a.11057711-1/%%"
+        },
+        "addedBy": "b2r5t7",
+        "playedAt": 1790729700000
+      }
+    ],
+    "fallback": {
+      "seeds": [
+        "track:39089632",
+        "track:4426586",
+        "track:1695498",
+        "track:38633712",
+        "track:33792663"
+      ],
+      "seedsVersion": 4
+    }
+  }
+}

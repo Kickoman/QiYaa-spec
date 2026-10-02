@@ -61,7 +61,7 @@ for (const name of readdirSync(orderingDir).filter((file) => file.endsWith(".jso
   }
 }
 
-const idPattern = /\b(ROOM|REC|SEED|HOST)-\d{2}\b/g;
+const idPattern = /\b(ROOM|REC|SEED|HOST|LISTEN)-\d{2}\b/g;
 const playerPattern = /\b(ERR|TRK|TR|WAVE|SRC)-\d{2}\b/g;
 const defined = new Map();
 const playerDefined = new Set();
@@ -71,7 +71,7 @@ for (const path of markdownFiles(join(spec, "player"))) {
 
 const docs = markdownFiles(jam);
 for (const path of docs) {
-  for (const match of readFileSync(path, "utf8").matchAll(/^\| ((?:ROOM|REC|SEED|HOST)-\d{2}) \|/gm)) {
+  for (const match of readFileSync(path, "utf8").matchAll(/^\| ((?:ROOM|REC|SEED|HOST|LISTEN)-\d{2}) \|/gm)) {
     const where = relative(jam, path);
     if (defined.has(match[1])) failures.push(`${match[1]}: defined in ${defined.get(match[1])} and ${where}`);
     defined.set(match[1], where);
@@ -112,7 +112,7 @@ for (const path of docs) {
   }
 }
 
-for (const prefix of ["ROOM", "REC", "SEED", "HOST"]) {
+for (const prefix of ["ROOM", "REC", "SEED", "HOST", "LISTEN"]) {
   const numbers = [...defined.keys()].filter((id) => id.startsWith(`${prefix}-`)).map((id) => Number(id.slice(-2))).sort((a, b) => a - b);
   numbers.forEach((number, index) => {
     if (number !== index + 1) failures.push(`${prefix}-: IDs are not 01 to ${numbers.length} without gaps`);

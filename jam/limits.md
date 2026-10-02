@@ -38,11 +38,11 @@ that side enforces or follows it.
 | A room without its host | ends (`expired`) after 1 h | server |
 | Room age | ends (`expired`) after 12 h | server |
 
-## Listening along (experimental)
+## Listening along
 
 | What | Value | Enforced by |
 |---|---|---|
-| `listenUrl` length | 400 characters | schema |
+| `listenUrl`, `listenNextUrl` length | 400 characters | schema |
 | A listening guest seeks again when it is off by more than | 2 s | web guest |
 
 ## Rates

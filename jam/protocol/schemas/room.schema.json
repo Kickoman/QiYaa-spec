@@ -137,6 +137,9 @@
         },
         "listenUrl": {
           "$ref": "defs.schema.json#/$defs/listenUrl"
+        },
+        "listenNextUrl": {
+          "$ref": "defs.schema.json#/$defs/listenUrl"
         }
       },
       "allOf": [

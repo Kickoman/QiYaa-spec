@@ -4,5 +4,6 @@
   "itemId": "i3",
   "positionMs": 42000,
   "paused": false,
-  "listenUrl": "https://s963sas.storage.yandex.net/get-mp3/0123456789abcdef0123456789abcdef/00065cd937b03427/rmusic/U2FsdGVkX19example/track.mp3"
+  "listenUrl": "https://s963sas.storage.yandex.net/get-mp3/0123456789abcdef0123456789abcdef/00065cd937b03427/rmusic/U2FsdGVkX19example/track.mp3",
+  "listenNextUrl": "https://s963sas.storage.yandex.net/get-mp3/fedcba9876543210fedcba9876543210/00065cd937b03427/rmusic/U2FsdGVkX19example/next.mp3"
 }

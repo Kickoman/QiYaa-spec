@@ -18,7 +18,7 @@ The protocol is in [protocol/](protocol/README.md#listening-along), the numbers 
 |---|---|---|---|---|---|
 | LISTEN-01 | A jam session, sharing off (the default) | Any `playing` | No `listenUrl`, no `listenNextUrl`. | yes | no: Kickoman/QiYaa-android#73 |
 | LISTEN-02 | Sharing on | `playing` for an item or a wave track | `listenUrl` is the link of the file the host plays, once the host has it. `playing{source: idle}` carries none. | yes | no: Kickoman/QiYaa-android#73 |
-| LISTEN-03 | Sharing on, the host already has the link of the file that plays next (a preloaded track) | `playing` | `listenNextUrl` is that link. Without one the field is left out; the next `playing` brings it once the host has it. | no: #17 | no: Kickoman/QiYaa-android#73 |
+| LISTEN-03 | Sharing on, the host already has the link of the file that plays next (a preloaded track) | `playing` | `listenNextUrl` is that link. Without one the field is left out; the next `playing` brings it once the host has it. | yes | no: Kickoman/QiYaa-android#73 |
 | LISTEN-04 | Sharing on | A link that is not a file of Yandex Music's storage (a test server) | It is left out: the server refuses a `playing` with such a link. | yes | no: Kickoman/QiYaa-android#73 |
 | LISTEN-05 | A jam session | The user switches sharing on or off | The next `playing` follows the new choice. The choice is the app's setting, not the room's: it outlives the jam. | yes | no: Kickoman/QiYaa-android#73 |
 

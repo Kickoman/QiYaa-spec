@@ -160,7 +160,7 @@ Only the host reports what plays. Its reports move items; nothing else does.
 
 | ID | Given | When | Then | Server |
 |---|---|---|---|---|
-| ROOM-63 | — | The server logs anything | Logs hold connections, refusals with their `reason`, and counters. They never hold names, track titles, search texts, secrets or `participantId`s. | no: #8 |
+| ROOM-63 | — | The server logs anything | Logs hold HTTP requests (the route, never a `roomId`; status, duration, client address, user agent, the referring site), connections and the app that opened them, refusals with their `reason`, room events and counters. They never hold names, track titles, search texts, secrets, `roomId`s or `participantId`s. | no: #8 |
 | ROOM-64 | — | The server keeps a secret | It keeps only hashes of `hostSecret`, `joinSecret` and `participantId`. It does not need the secrets themselves after it has sent them to the host. | no: #7, #8 |
 
 ## Rights

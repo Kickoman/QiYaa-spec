@@ -1,0 +1,14 @@
+{
+  "app": "desktop",
+  "machine": "5d41402abc4b2a76b9719d911017c592",
+  "events": [
+    {
+      "type": "feature",
+      "at": "2026-10-08T10:01:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "name": "skin",
+      "value": "Кино - Группа крови"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "app": "desktop",
+  "machine": "5d41402abc4b2a76b9719d911017c592",
+  "events": [
+    {
+      "type": "crash",
+      "at": "2026-10-08T09:59:58.000Z",
+      "session": "6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b",
+      "version": "0.5.0",
+      "signal": "SIGSEGV",
+      "seconds": 1834,
+      "frames": [
+        "QiYaa+0x4f2a10",
+        "QiYaa+0x4f1c88",
+        "libQt6Widgets.so.6+0x1d2f40",
+        "libc.so.6+0x29d90"
+      ]
+    },
+    {
+      "type": "start",
+      "at": "2026-10-08T10:00:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "os": "linux",
+      "osName": "Ubuntu 24.04.1 LTS",
+      "osVersion": "24.04",
+      "kernel": "6.8.0-45-generic",
+      "arch": "x86_64",
+      "qt": "6.4.2",
+      "package": "deb",
+      "locale": "be_BY",
+      "language": "be",
+      "scale": 2,
+      "screens": 1,
+      "dpr": 1,
+      "skin": "base",
+      "vis": "spectrum",
+      "equalizer": true,
+      "milkdropBuilt": true,
+      "milkdropVisible": false,
+      "jamBuilt": true,
+      "audioBackend": "PulseAudio",
+      "loggedIn": true,
+      "firstRun": false
+    }
+  ]
+}

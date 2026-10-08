@@ -1,0 +1,58 @@
+{
+  "app": "desktop",
+  "machine": "5d41402abc4b2a76b9719d911017c592",
+  "events": [
+    {
+      "type": "unclean_exit",
+      "at": "2026-10-08T09:59:58.000Z",
+      "session": "6ec0bd7f-11c0-43da-975e-2a8ad9ebae0b",
+      "version": "0.4.0",
+      "seconds": 7200
+    },
+    {
+      "type": "feature",
+      "at": "2026-10-08T10:01:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "name": "milkdrop",
+      "value": "on"
+    },
+    {
+      "type": "feature",
+      "at": "2026-10-08T10:02:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "name": "skin",
+      "value": "XMMS-Turquoise"
+    },
+    {
+      "type": "error",
+      "at": "2026-10-08T10:03:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "area": "api",
+      "kind": "http",
+      "httpStatus": 502
+    },
+    {
+      "type": "error",
+      "at": "2026-10-08T10:04:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "area": "milkdrop",
+      "kind": "old-opengl"
+    },
+    {
+      "type": "exit",
+      "at": "2026-10-08T12:00:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "seconds": 7200,
+      "tracks": 31,
+      "playMinutes": 104,
+      "milkdropMinutes": 12,
+      "jams": 0,
+      "errorsDropped": 0
+    }
+  ]
+}

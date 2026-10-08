@@ -3,7 +3,7 @@
   "private": true,
   "description": "Checks for the spec's own files; the apps do not use this",
   "scripts": {
-    "check": "node scripts/check-jam-protocol.mjs && node scripts/check-jam-scenarios.mjs"
+    "check": "node scripts/check-jam-protocol.mjs && node scripts/check-jam-scenarios.mjs && node scripts/check-telemetry.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1"

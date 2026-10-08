@@ -1,0 +1,448 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Kickoman/QiYaa-spec/telemetry/schemas/batch.schema.json",
+  "title": "TelemetryBatch",
+  "description": "One POST /api/telemetry: events of one machine, oldest first",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "app",
+    "machine",
+    "events"
+  ],
+  "properties": {
+    "app": {
+      "enum": [
+        "desktop"
+      ]
+    },
+    "machine": {
+      "$ref": "#/$defs/machine"
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 50,
+      "items": {
+        "oneOf": [
+          {
+            "$ref": "#/$defs/start"
+          },
+          {
+            "$ref": "#/$defs/exit"
+          },
+          {
+            "$ref": "#/$defs/crash"
+          },
+          {
+            "$ref": "#/$defs/unclean_exit"
+          },
+          {
+            "$ref": "#/$defs/error"
+          },
+          {
+            "$ref": "#/$defs/feature"
+          }
+        ]
+      }
+    }
+  },
+  "$defs": {
+    "machine": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$",
+      "description": "HMAC-SHA256 of the OS machine id with the app's key, first 16 bytes in hex"
+    },
+    "session": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9A-Za-z.+_-]{1,32}$"
+    },
+    "at": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(\\.[0-9]{3})?Z$"
+    },
+    "text32": {
+      "type": "string",
+      "pattern": "^[^\\u0000-\\u001f\\u007f]{0,32}$"
+    },
+    "text64": {
+      "type": "string",
+      "pattern": "^[^\\u0000-\\u001f\\u007f]{0,64}$"
+    },
+    "count": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 100000000
+    },
+    "skin": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9 ._-]{1,48}$",
+      "description": "base, the name of a built-in skin, or custom"
+    },
+    "start": {
+      "title": "StartEvent",
+      "description": "The app started: the platform, the build and the state it starts in",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "os",
+        "osName",
+        "osVersion",
+        "kernel",
+        "arch",
+        "qt",
+        "package",
+        "locale",
+        "language",
+        "scale",
+        "screens",
+        "dpr",
+        "skin",
+        "vis",
+        "equalizer",
+        "milkdropBuilt",
+        "milkdropVisible",
+        "jamBuilt",
+        "audioBackend",
+        "loggedIn",
+        "firstRun"
+      ],
+      "properties": {
+        "type": {
+          "const": "start"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "os": {
+          "enum": [
+            "linux",
+            "windows",
+            "macos",
+            "other"
+          ]
+        },
+        "osName": {
+          "$ref": "#/$defs/text64",
+          "description": "QSysInfo::prettyProductName()"
+        },
+        "osVersion": {
+          "$ref": "#/$defs/text32",
+          "description": "QSysInfo::productVersion()"
+        },
+        "kernel": {
+          "$ref": "#/$defs/text64",
+          "description": "QSysInfo::kernelVersion()"
+        },
+        "arch": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]{1,16}$"
+        },
+        "qt": {
+          "type": "string",
+          "pattern": "^[0-9]{1,2}\\.[0-9]{1,2}\\.[0-9]{1,3}$"
+        },
+        "package": {
+          "enum": [
+            "deb",
+            "appimage",
+            "windows",
+            "macos",
+            "source"
+          ]
+        },
+        "locale": {
+          "type": "string",
+          "pattern": "^(C|[a-z]{2,3}(_[A-Za-z0-9]{2,4})?)$"
+        },
+        "language": {
+          "enum": [
+            "be",
+            "ru",
+            "en"
+          ]
+        },
+        "scale": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 4
+        },
+        "screens": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16
+        },
+        "dpr": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 8
+        },
+        "skin": {
+          "$ref": "#/$defs/skin"
+        },
+        "vis": {
+          "enum": [
+            "spectrum",
+            "oscilloscope",
+            "off"
+          ]
+        },
+        "equalizer": {
+          "type": "boolean"
+        },
+        "milkdropBuilt": {
+          "type": "boolean"
+        },
+        "milkdropVisible": {
+          "type": "boolean"
+        },
+        "jamBuilt": {
+          "type": "boolean"
+        },
+        "audioBackend": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9 _-]{0,24}$"
+        },
+        "loggedIn": {
+          "type": "boolean"
+        },
+        "firstRun": {
+          "type": "boolean"
+        }
+      }
+    },
+    "exit": {
+      "title": "ExitEvent",
+      "description": "The app closed normally: what the session did",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "seconds",
+        "tracks",
+        "playMinutes",
+        "milkdropMinutes",
+        "jams",
+        "errorsDropped"
+      ],
+      "properties": {
+        "type": {
+          "const": "exit"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "seconds": {
+          "$ref": "#/$defs/count"
+        },
+        "tracks": {
+          "$ref": "#/$defs/count"
+        },
+        "playMinutes": {
+          "$ref": "#/$defs/count"
+        },
+        "milkdropMinutes": {
+          "$ref": "#/$defs/count"
+        },
+        "jams": {
+          "$ref": "#/$defs/count"
+        },
+        "errorsDropped": {
+          "$ref": "#/$defs/count"
+        }
+      }
+    },
+    "crash": {
+      "title": "CrashEvent",
+      "description": "The run named by session and version crashed; the next run sends this",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "signal",
+        "frames",
+        "seconds"
+      ],
+      "properties": {
+        "type": {
+          "const": "crash"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "signal": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{0,39}$"
+        },
+        "frames": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._+-]{1,64}\\+0x[0-9a-f]{1,16}$"
+          }
+        },
+        "seconds": {
+          "$ref": "#/$defs/count"
+        },
+        "exceptionType": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9_:<>, *&]{1,96}$"
+        }
+      }
+    },
+    "unclean_exit": {
+      "title": "UncleanExitEvent",
+      "description": "The run named by session and version neither closed nor left a crash report: killed, power lost, hung",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "seconds"
+      ],
+      "properties": {
+        "type": {
+          "const": "unclean_exit"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "seconds": {
+          "$ref": "#/$defs/count",
+          "description": "How long it ran, to the last minute it noted"
+        }
+      }
+    },
+    "error": {
+      "title": "ErrorEvent",
+      "description": "Something failed; a category from the table, never the text",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "area",
+        "kind"
+      ],
+      "properties": {
+        "type": {
+          "const": "error"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "area": {
+          "enum": [
+            "playback",
+            "audio",
+            "api",
+            "login",
+            "skin",
+            "milkdrop",
+            "jam"
+          ]
+        },
+        "kind": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]{1,32}$"
+        },
+        "httpStatus": {
+          "type": "integer",
+          "minimum": 100,
+          "maximum": 599
+        }
+      }
+    },
+    "feature": {
+      "title": "FeatureEvent",
+      "description": "The user switched a feature or changed a choice",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "name",
+        "value"
+      ],
+      "properties": {
+        "type": {
+          "const": "feature"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "name": {
+          "enum": [
+            "milkdrop",
+            "jam",
+            "skin",
+            "language",
+            "equalizer",
+            "vis"
+          ]
+        },
+        "value": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9 ._-]{1,48}$"
+        }
+      }
+    }
+  }
+}

@@ -16,6 +16,7 @@ both apps read.
 | [dsp/](dsp/README.md) | Reference vectors for the equalizer and the spectrum, with tolerances | QiYaa#4 |
 | [parity.md](parity.md) | Feature × platform table | QiYaa#7 |
 | [jam/](jam/README.md) | The jam (a shared queue): protocol, limits, room and host scenarios | QiYaa-jam#3 to #5 |
+| [telemetry/](telemetry/README.md) | Usage statistics and crash reports: the batch the apps post, the events, what is never sent | — |
 
 ## Where it lives
 

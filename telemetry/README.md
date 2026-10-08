@@ -48,7 +48,8 @@ which the app could not send then (a crash report, the last `exit`).
 | `feature` | A switch or a choice | `name` and `value` from the table below |
 
 A frame is `<the module's file name>+0x<offset in it>` (`QiYaa+0x4f2a10`,
-`libQt6Widgets.so.6+0x1d2f40`), or `?+0x<address>` when the module is unknown. Offsets do not
+`libQt6Widgets.so.6+0x1d2f40`), or `unknown+0x<address>` when the module is unknown. Characters a
+module name may not have become `_`. Offsets do not
 change between machines for one build, so one bug gives one list of frames everywhere; with the
 build's debug symbols they turn into function names.
 

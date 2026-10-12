@@ -45,6 +45,7 @@ Response bodies as the server sends them, one file per case. What parsing each m
 | `search` | `GET /search?type=all` | `best-artist`, `best-album`, `best-track`, `best-playlist`, `best-podcast`, `no-best` |
 | `tracks-download-info` | `GET /tracks/<id>/download-info` | `variants`, `previews-only`, `empty` |
 | `storage-download-info` | `GET <downloadInfoUrl>&format=json` | `ok`, `number-ts`, `xml` |
+| `get-file-info` | `GET /get-file-info` ([quality.md](../../player/quality.md)) | `lq-he-aac-mp4`, `nq-mp3`, `encraw`, `no-url`, `403-not-allowed`, `429-concurrency-limit` |
 | `users-likes-tracks-add-multiple`, `users-likes-tracks-remove`, `users-dislikes-tracks-add-multiple` | `POST /users/<uid>/…` | `ok` |
 | `play-audio` | `POST /play-audio` | `ok` |
 | `oauth-device-code` | `POST /device/code` | `ok`, `400-invalid-client` |
@@ -56,7 +57,8 @@ since both apps read errors the same way everywhere.
 
 ## Where they come from
 
-All fixtures so far are hand-written in the shape of real responses: the same envelope, field
+The `get-file-info` fixtures are real responses of 2026-10-12, scrubbed; `no-url` is derived from
+them by hand. All other fixtures are hand-written in the shape of real responses: the same envelope, field
 names and types. The account is uid 42, login `kick`. When a real response replaces one, scrub
 it first. That means tokens, uids, logins, names, e-mails, `req-id`, and the `sign`, `ts` and
 `nonce` of links. Then update its expected file in the same commit.

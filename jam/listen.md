@@ -21,6 +21,7 @@ The protocol is in [protocol/](protocol/README.md#listening-along), the numbers 
 | LISTEN-03 | Sharing on, the host already has the link of the file that plays next (a preloaded track) | `playing` | `listenNextUrl` is that link. Without one the field is left out; the next `playing` brings it once the host has it. | yes | yes |
 | LISTEN-04 | Sharing on | A link that is not a file of Yandex Music's storage (a test server) | It is left out: the server refuses a `playing` with such a link. | yes | yes |
 | LISTEN-05 | A jam session | The user switches sharing on or off | The next `playing` follows the new choice. The choice is the app's setting, not the room's: it outlives the jam. | yes | yes |
+| LISTEN-13 | Sharing on, the host plays at quality `economy` ([player/quality.md](../player/quality.md)) | `playing` | Its file is not a `/get-mp3/` link, so it is left out as in LISTEN-04, and so is a preloaded next file of that kind. The web guest pauses (LISTEN-10). The setting of sharing says that listening along needs quality `standard`. | yes | yes |
 
 ## The server
 

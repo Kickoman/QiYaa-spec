@@ -1,0 +1,14 @@
+{
+  "result": {
+    "name": "track-download-info-error",
+    "message": "not-allowed",
+    "requestId": "1727600000000000-0000000000000000000",
+    "details": {}
+  },
+  "invocationInfo": {
+    "hostname": "music-resource-provider-front-98.klg.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "app-name": "music-resource-provider",
+    "exec-duration-millis": 4
+  }
+}

@@ -24,6 +24,7 @@ Every file is one JSON object.
 | `search/*` | `{"bestType", "bestId", "bestName", "tracks": [Track]}` |
 | `tracks-download-info/*` | `{"variants": [{"codec", "bitrateKbps", "preview", "downloadInfoUrl"}], "best"}`: `best` is the `downloadInfoUrl` of the chosen variant, or `null` |
 | `storage-download-info/*` | `{"host", "path", "ts", "s", "trackUrl"}`: `trackUrl` is the signed `https://<host>/get-mp3/<sign>/<ts><path>`; `{"invalid": true}` when the reply is unusable |
+| `get-file-info/*` | `{"quality", "codec", "bitrateKbps", "transport", "url", "urls", "key"}`: `key` is `null` without one. `{"fallback": true}` for an HTTP error or a reply without an `https` `url`: the app takes the standard path ([QUAL-03](../../player/quality.md)) and reports nothing |
 | `oauth-device-code/ok` | `{"deviceCode", "userCode", "verificationUrl", "intervalSeconds", "expiresInSeconds"}` |
 | `oauth-token/ok` | `{"accessToken"}` |
 | `oauth-token/400-authorization-pending` | `{"pending": true}`: keep polling, not an error |

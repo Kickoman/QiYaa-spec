@@ -1,0 +1,26 @@
+{
+  "result": {
+    "downloadInfo": {
+      "trackId": "155647609",
+      "quality": "lq",
+      "codec": "he-aac-mp4",
+      "bitrate": 64,
+      "transport": "raw",
+      "gain": false,
+      "urls": [
+        "https://strm-fra-01.strm.yandex.net/music-v2/raw/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,lid=299,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+        "https://strm-ams24.strm.yandex.net/music-v2/raw/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,lid=294,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+        "https://strm-fra-01.strm.yandex.net/music-v2/raw/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,lid=293,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+        "https://strm-fra-01.strm.yandex.net/music-v2/raw/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,lid=328,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4"
+      ],
+      "url": "https://strm-fra-01.strm.yandex.net/music-v2/raw/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,lid=299,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+      "realId": "155647609"
+    }
+  },
+  "invocationInfo": {
+    "hostname": "music-resource-provider-front-15.klg.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "app-name": "music-resource-provider",
+    "exec-duration-millis": 4
+  }
+}

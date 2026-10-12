@@ -9,6 +9,7 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 | [tracking.md](tracking.md) | Play reports: `/play-audio` and the rotor feedback events | `TRK-` |
 | [errors.md](errors.md) | Network failures and broken tracks during playback | `ERR-` |
 | [transport.md](transport.md) | Previous, next, repeat and shuffle in an ordinary queue | `TR-` |
+| [quality.md](quality.md) | The audio quality the user chooses, and what is known about lossless | `QUAL-` |
 
 ## Reading a scenario
 
@@ -26,6 +27,7 @@ Each row is one scenario:
   - **not checked**: nobody has checked that app against this scenario yet.
   - **no**: the app does not do this. A tag such as `gap D2` names the entry in
     [Known gaps](#known-gaps) that describes what the app does instead.
+  - **n/a**: by design only on the other platform (a phone's networks). There is no gap.
 
 IDs are permanent (see the [top README](../README.md#rules-for-files)). A test that checks a
 scenario names its ID in its name or in a comment.
@@ -52,5 +54,4 @@ issue is fixed, remove its tag from the scenario rows and delete the entry here.
 
 | Gap | App | What the app does instead | Scenarios | Issue |
 |---|---|---|---|---|
-
-None at the moment: both apps follow every scenario that is checked for them.
+| A2 | Android | A next track that ExoPlayer has already begun to load keeps the quality it was fetched in; the tracks after it follow the new choice. Replacing the loaded item would reshuffle ExoPlayer's shuffle order | QUAL-05 | Kickoman/QiYaa-android#76 |

@@ -1,0 +1,14 @@
+{
+  "quality": "lq",
+  "codec": "he-aac-mp4",
+  "bitrateKbps": 64,
+  "transport": "encraw",
+  "url": "https://strm-fra-01.strm.yandex.net/music-v2/crypt/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,kts=6dab0000,lid=299,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+  "urls": [
+    "https://strm-fra-01.strm.yandex.net/music-v2/crypt/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,kts=6dab0000,lid=299,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+    "https://strm-ams24.strm.yandex.net/music-v2/crypt/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,kts=6dab0000,lid=294,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+    "https://strm-fra-01.strm.yandex.net/music-v2/crypt/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,kts=6dab0000,lid=293,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4",
+    "https://strm-fra-01.strm.yandex.net/music-v2/crypt/ysign1=0f1e2d3c4b5a69788796a5b4c3d2e1f0,kts=6dab0000,lid=328,pfx,secret_version=ver-1,sfx,source=mds,ts=66f80000/0/7767133/21d40f5d.226909333.2.155647609/aac64he-mp4"
+  ],
+  "key": "000102030405060708090a0b0c0d0e0f"
+}

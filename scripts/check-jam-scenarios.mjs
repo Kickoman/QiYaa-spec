@@ -62,11 +62,11 @@ for (const name of readdirSync(orderingDir).filter((file) => file.endsWith(".jso
 }
 
 const idPattern = /\b(ROOM|REC|SEED|HOST|LISTEN)-\d{2}\b/g;
-const playerPattern = /\b(ERR|TRK|TR|WAVE|SRC)-\d{2}\b/g;
+const playerPattern = /\b(ERR|TRK|TR|WAVE|SRC|QUAL)-\d{2}\b/g;
 const defined = new Map();
 const playerDefined = new Set();
 for (const path of markdownFiles(join(spec, "player"))) {
-  for (const match of readFileSync(path, "utf8").matchAll(/^\| ((?:ERR|TRK|TR|WAVE|SRC)-\d{2}) \|/gm)) playerDefined.add(match[1]);
+  for (const match of readFileSync(path, "utf8").matchAll(/^\| ((?:ERR|TRK|TR|WAVE|SRC|QUAL)-\d{2}) \|/gm)) playerDefined.add(match[1]);
 }
 
 const docs = markdownFiles(jam);

@@ -1,0 +1,20 @@
+{
+  "result": {
+    "downloadInfo": {
+      "trackId": "155647609",
+      "quality": "lq",
+      "codec": "he-aac-mp4",
+      "bitrate": 64,
+      "transport": "raw",
+      "gain": false,
+      "urls": [],
+      "realId": "155647609"
+    }
+  },
+  "invocationInfo": {
+    "hostname": "music-resource-provider-front-15.klg.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000000",
+    "app-name": "music-resource-provider",
+    "exec-duration-millis": 4
+  }
+}

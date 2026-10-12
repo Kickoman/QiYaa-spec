@@ -42,6 +42,9 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Gapless: the next track is fetched ahead and follows without silence | yes | unclear | Android relies on ExoPlayer's playlist |
 | Volume and balance | yes | yes | |
 | Bitrate, sample rate and channels shown | yes | yes | |
+| Quality: standard or economy (HE-AAC 64 kbps) | yes | differs | [quality.md](player/quality.md); Android: a next track already loading keeps the old quality (gap A2, Kickoman/QiYaa-android#76) |
+| Separate quality for Wi-Fi and mobile data | n/a | yes | [QUAL-07](player/quality.md) |
+| Lossless | no | no | Waits for a tester with access to lossless ([quality.md](player/quality.md#lossless-not-yet), #1) |
 | Elapsed or remaining time | yes | yes | |
 | Queue editing: select, remove, play a chosen track | yes | yes | |
 | Audio focus; pause when headphones are unplugged | n/a | yes | |

@@ -7,7 +7,8 @@ from the first start, and a switch in the menu turns it off. The Android app has
 ([parity](../parity.md)).
 
 The app posts batches of events to the jam server, which writes each event as a line of its log;
-the host's log store keeps them and draws the dashboard.
+the host's log store keeps them and draws the dashboard. The landing counts clicks on its download
+buttons the same way ([below](#the-landing)).
 
 ## Transport
 
@@ -77,7 +78,8 @@ build's debug symbols they turn into function names.
 The Yandex token, the account's name or id, track titles, artists, search texts, file paths (a
 skin from a file is `custom`), any error's or exception's text, the OS's own machine id, and the
 user's or the computer's name. The schema allows only the fields above, each with a pattern, so
-a batch with anything else is refused.
+a batch with anything else is refused. The landing sends no id of the visitor and, of the page it
+was opened from, only the host.
 
 ## Limits
 
@@ -112,3 +114,36 @@ a batch with anything else is refused.
 |---|---|---|---|
 | TEL-11 | — | A valid batch | 204. Each event becomes one log line: `service: qiyaa-desktop`, `stream: telemetry`, `event: app_<type>`, the level `error` for `crash`, `warn` for `error` and `unclean_exit`, `info` for the rest. The line holds `machine`, the client's address, the event's `at` as `client_at`, and the event's fields in snake_case. |
 | TEL-12 | — | Not JSON, not a batch of the schema, over 64 KiB, or over a rate limit | 400, 400, 413 or 429 with `Retry-After`. Nothing of the body is logged, only the request itself. |
+
+## The landing
+
+The landing's download buttons (`/`, `/ru`, `/en` on the jam server) go straight to the files on
+GitHub. A click also tells the jam server what was clicked: `POST /api/download` to the landing's
+own server, with a JSON object of the fields below; the page does not wait for the answer. The
+click carries no id of the visitor and the page keeps nothing in the browser. The server logs it
+with the request's client address and user agent, like a page view ([ROOM-63](../jam/room.md#privacy)).
+
+| Field | Value |
+|---|---|
+| `file` | The button's file: `windows-setup`, `windows-zip`, `appimage`, `deb`, `dmg` or `apk` |
+| `place` | The page's section the button is in: `download` or `android` |
+| `language` | The page's language: `be`, `ru` or `en` |
+| `version` | Only when known: the release the button points to, `X.Y.Z`. Left out while the button still points to the newest release's page because GitHub has not answered |
+| `browserLanguage` | Only when known: the browser's first language as it names it (`ru-RU`) |
+| `referrer` | Only when known: the host of the site the landing was opened from (`t.me`); never the landing's own host, and nothing but the host |
+
+| What | Limit | Kept by |
+|---|---|---|
+| Request body | 1 KiB | server (413) |
+| Clicks from one IP | 10 a minute | server (429) |
+| `version` | `X.Y.Z`, at most 20 characters | server (400) |
+| `browserLanguage` | 1 to 35 of `A-Z a-z 0-9 -` | page, server (400) |
+| `referrer` | 1 to 253 of `a-z 0-9 . : -` | page, server (400) |
+
+The page leaves out an optional field that does not fit, not the whole click.
+
+| ID | Given | When | Then |
+|---|---|---|---|
+| TEL-13 | The landing | The visitor clicks a download button: the main or the middle mouse button, a tap, Enter | The page posts the click once. The button works as it would without the post, whether the post succeeds, fails or is blocked: the page never waits for it and never stops the link. |
+| TEL-14 | — | A valid click | 204. The request's own log line (`stream: http_request`, level `info`) holds the click: `file`, `place`, `page_language` and, when sent, `app_version`, `browser_language`, `referrer_host`. No other line is written. |
+| TEL-15 | — | Not JSON; not an object of the fields above, or a value outside them; over 1 KiB; over the rate limit | 400, 400, 413 or 429 with `Retry-After`. Nothing of the body is logged, only the request itself. |

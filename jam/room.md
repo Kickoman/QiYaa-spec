@@ -154,13 +154,13 @@ Only the host reports what plays. Its reports move items; nothing else does.
 | ROOM-59 | — | A browser opens a WebSocket from a page of another origin (`Origin` is not the server's own) | The upgrade is refused with HTTP 403. Connections without `Origin` (the apps) are accepted. | no: #8 |
 | ROOM-60 | — | A request carries `X-Real-IP` | The server uses it as the client's IP only when the connection comes from `TRUSTED_PROXY`; otherwise it uses the connection's address. | no: #8 |
 | ROOM-61 | A connection | It does not answer the server's pings for the dead-connection time | Closed. Its participant goes offline as in ROOM-11. | no: #8 |
-| ROOM-62 | — | Any HTTP request other than a `GET` or `HEAD` of the landing (`/`, `/ru`, `/en`), `/j/<roomId>`, the web pages' own files under `/assets/`, `/healthz` and `/.well-known/assetlinks.json`, a `POST` of [telemetry](../telemetry/README.md) to `/api/telemetry`, and the upgrade on `/ws` | 404 with an empty body. A path never reaches outside the web pages' files. | no: #8 |
+| ROOM-62 | — | Any HTTP request other than a `GET` or `HEAD` of the landing (`/`, `/ru`, `/en`), `/j/<roomId>`, the web pages' own files under `/assets/`, `/healthz` and `/.well-known/assetlinks.json`, a `POST` of [telemetry](../telemetry/README.md) to `/api/telemetry`, a `POST` of a [download click](../telemetry/README.md#the-landing) to `/api/download`, and the upgrade on `/ws` | 404 with an empty body. A path never reaches outside the web pages' files. | no: #8 |
 
 ## Privacy
 
 | ID | Given | When | Then | Server |
 |---|---|---|---|---|
-| ROOM-63 | — | The server logs anything | Logs hold HTTP requests (the route, never a `roomId`; status, duration, client address, user agent, the referring site), connections and the app that opened them, refusals with their `reason`, room events and counters. They never hold names, track titles, search texts, secrets, `roomId`s or `participantId`s. | no: #8 |
+| ROOM-63 | — | The server logs anything | Logs hold HTTP requests (the route, never a `roomId`; status, duration, client address, user agent, the referring site; for a [download click](../telemetry/README.md#the-landing), its file, version, place and the page's and the browser's language), connections and the app that opened them, refusals with their `reason`, room events and counters. They never hold names, track titles, search texts, secrets, `roomId`s or `participantId`s. | no: #8 |
 | ROOM-64 | — | The server keeps a secret | It keeps only hashes of `hostSecret`, `joinSecret` and `participantId`. It does not need the secrets themselves after it has sent them to the host. | no: #7, #8 |
 
 ## Rights

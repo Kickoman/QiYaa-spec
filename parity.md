@@ -58,7 +58,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Next at the end asks for more again after a failure | yes | yes | [WAVE-09](player/wave.md) |
 | Shuffle does not apply in a wave | yes | yes | [WAVE-10, WAVE-11](player/wave.md) |
 | Repeat does not apply in a wave | yes | yes | [WAVE-12](player/wave.md) |
-| A queue goes on with a wave from history after its head ("continue with a wave", on by default) | no: Kickoman/QiYaa#28 | no | [CONT-01 to CONT-11](player/continuation.md) |
+| A queue goes on with a wave from history after its head ("continue with a wave", on by default) | no: Kickoman/QiYaa#28 | no: Kickoman/QiYaa-android#79 | [CONT-01 to CONT-11](player/continuation.md) |
 
 ## Play tracking
 
@@ -151,7 +151,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
 | Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | yes | yes | |
-| The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own | no: Kickoman/QiYaa#28 | no | [HOST-10 to HOST-14, HOST-21, HOST-32](jam/host.md#the-base) |
+| The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own | no: Kickoman/QiYaa#28 | no: Kickoman/QiYaa-android#80 | [HOST-10 to HOST-14, HOST-21, HOST-32](jam/host.md#the-base) |
 | Guests listen along on the jam page: the host shares the files it plays | yes | yes | [jam/listen.md](jam/listen.md); off by default, the host's subscription's files |
 | Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | no: Kickoman/QiYaa-android#63 | Browser guests need no app |
 

@@ -6,9 +6,10 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 |---|---|---|
 | [sources.md](sources.md) | Loading a source into the queue: requests, empty sources, unavailable tracks, search | `SRC-` |
 | [wave.md](wave.md) | Waves (rotor): start, loading more, shuffle and repeat in a wave | `WAVE-` |
+| [continuation.md](continuation.md) | What follows a queue's head: the flag "continue with a wave", the wave from history, shuffle and repeat with a continuation | `CONT-` |
 | [tracking.md](tracking.md) | Play reports: `/play-audio` and the rotor feedback events | `TRK-` |
 | [errors.md](errors.md) | Network failures and broken tracks during playback | `ERR-` |
-| [transport.md](transport.md) | Previous, next, repeat, shuffle and seeking in an ordinary queue | `TR-` |
+| [transport.md](transport.md) | Previous, next, repeat, shuffle and seeking | `TR-` |
 | [quality.md](quality.md) | The audio quality the user chooses, and what is known about lossless | `QUAL-` |
 
 ## Reading a scenario
@@ -26,7 +27,8 @@ Each row is one scenario:
   - **yes**: the app does this.
   - **not checked**: nobody has checked that app against this scenario yet.
   - **no**: the app does not do this. A tag such as `gap D2` names the entry in
-    [Known gaps](#known-gaps) that describes what the app does instead.
+    [Known gaps](#known-gaps) that describes what the app does instead. `no: #N` names the issue
+    in that app's repository that adds a new behaviour.
   - **n/a**: by design only on the other platform (a phone's networks). There is no gap.
 
 IDs are permanent (see the [top README](../README.md#rules-for-files)). A test that checks a
@@ -36,8 +38,13 @@ scenario names its ID in its name or in a comment.
 
 - **Queue**: the list of tracks the player walks through. It holds only available tracks
   ([SRC-05](sources.md)), and every index refers to that filtered list.
-- **Wave**: a queue that is endless. It comes from a rotor session and grows by loading more.
-  Every other queue is **finite**.
+- **Head** and **continuation**: the two parts of a queue's source. The head is a fixed list of
+  tracks, possibly empty; the continuation, which a source may have, is an endless supply of
+  tracks after it ([continuation.md](continuation.md)). A queue with a continuation is
+  **endless**, every other queue is **finite**.
+- **Wave**: a continuation from a rotor session that grows by loading more. My Wave and a station
+  are a wave with an empty head ([wave.md](wave.md)); a wave from history follows a head
+  ([continuation.md](continuation.md)). A **wave track** is a track a wave gave.
 - **Current track**: the track under the cursor, whether it is playing, paused or stopped.
 - **Remaining**: the number of tracks from the current one to the end of the queue in play order,
   counting the current track.

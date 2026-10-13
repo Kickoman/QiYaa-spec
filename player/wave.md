@@ -1,6 +1,8 @@
 # Wave
 
-A wave is an endless queue from a rotor session. Terms and the status columns are explained in
+A wave is a continuation from a rotor session. This file is about a wave with an empty head: My
+Wave or a station. A wave from history follows a head ([continuation.md](continuation.md)) and
+loads more by the same rules (WAVE-05 to WAVE-09). Terms and the status columns are explained in
 the [README](README.md). The feedback events a wave sends are in [tracking.md](tracking.md).
 
 ## Start
@@ -25,7 +27,8 @@ the [README](README.md). The feedback events a wave sends are in [tracking.md](t
 ## Shuffle and repeat
 
 The decision from Kickoman/QiYaa-android#4: in a wave, shuffle and repeat do not apply, as in the
-Yandex Music app. The server already picks the tracks, and the wave never ends.
+Yandex Music app. The server already picks the tracks, and the wave never ends. With a head,
+shuffle and repeat act on the head ([CONT-09 to CONT-11](continuation.md#shuffle-and-repeat)).
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|

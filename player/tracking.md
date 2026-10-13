@@ -19,8 +19,9 @@ to its end and its download completed. In every other case it closes as a **skip
 
 ## Rotor feedback
 
-Only a wave sends these. The events of a track go to the session the track came from, even after
-the queue has moved on to another wave.
+Only a wave sends these: My Wave, a station, or a wave from history for the tracks it gave
+([CONT-08](continuation.md#the-wave-from-history)); a head's tracks send none. The events of a
+track go to the session the track came from, even after the queue has moved on to another wave.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|

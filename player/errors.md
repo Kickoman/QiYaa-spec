@@ -32,7 +32,7 @@ feedback in [tracking.md](tracking.md) (TRK-11).
 | ERR-04 | A track is starting, a next track exists ([TR-03](transport.md)) | It hits a track failure, and it is the first or second track failure in a row | A status names the failure. The player goes to the next track and plays it. | yes | yes |
 | ERR-05 | Two track failures in a row | A third track in a row hits a track failure | The player stops on that track. A status says that playback stopped after 3 failed tracks. | yes | yes |
 | ERR-06 | Some track failures in a row | A track actually starts playing audio, or a new queue is set | The count of failures in a row goes back to 0. | yes | yes |
-| ERR-07 | A track is starting, and there is no next track (end of a finite queue without repeat) | It hits a track failure | The player stops on it with the status of ERR-04. In a wave it waits for more instead ([WAVE-08](wave.md)). | yes | yes |
+| ERR-07 | A track is starting, and there is no next track (the end of the queue, repeat off) | It hits a track failure | The player stops on it with the status of ERR-04. When a continuation follows (a wave, or a wave from history, [CONT-04](continuation.md#the-wave-from-history)), it waits for more instead ([WAVE-08](wave.md)). | yes | yes |
 
 ## Account
 

@@ -58,6 +58,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Next at the end asks for more again after a failure | yes | yes | [WAVE-09](player/wave.md) |
 | Shuffle does not apply in a wave | yes | yes | [WAVE-10, WAVE-11](player/wave.md) |
 | Repeat does not apply in a wave | yes | yes | [WAVE-12](player/wave.md) |
+| A queue goes on with a wave from history after its head ("continue with a wave", on by default) | no: Kickoman/QiYaa#28 | no | [CONT-01 to CONT-11](player/continuation.md) |
 
 ## Play tracking
 

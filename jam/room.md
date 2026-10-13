@@ -27,6 +27,8 @@ connections is in [recovery.md](recovery.md).
   stopped being current; the latest 10 are kept.
 - **Waiting items of a guest**: the items in the queue that the guest added, pinned or not. This is
   `participants[].pending`.
+- **Wave track**: what `nowPlaying` holds with `source: wave`: a track the host plays from its own
+  queue, not an item ([host.md](host.md#the-base)).
 - **Host action**: any request from the host connection.
 
 ## Create

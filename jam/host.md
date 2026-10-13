@@ -2,7 +2,9 @@
 
 What the QiYaa app does while it hosts a jam, the same on desktop and Android. The server keeps the
 room ([room.md](room.md)). The host plays, reports what plays, and runs the Yandex requests that
-guests need. Everything not written here is the ordinary player of [player/](../player/README.md).
+guests need. During a jam the player's queue is the current track, the guests' items, and under
+them the host's own source, the base: the jam has no wave of its own. Everything not written here
+is the ordinary player of [player/](../player/README.md).
 
 ## Reading a scenario
 
@@ -19,19 +21,24 @@ The table is the one from [player/README.md](../player/README.md#reading-a-scena
   disk (HOST-22).
 - **Last state**: the latest `state` the host applied.
 - **Tail**: the tracks of the player's queue after the current track. During a jam it has two
-  parts: first the **jam part**, the mirror of the last state's `queue`, then the **wave part**,
-  tracks of the jam wave.
+  parts: first the **jam part**, the mirror of the last state's `queue`, then the **base**.
 - **Jam item**: a track the player got from `state.queue`. It keeps its `itemId` and `addedBy`.
-- **Jam wave**: a rotor wave started from `state.room.fallback.seeds`. The ordinary wave rules of
-  [wave.md](../player/wave.md) apply to it unless a scenario here says otherwise.
-- **Jam track**: a jam item or a jam wave track.
+- **Base**: what the host's own source still has to play: the rest of its head, then its
+  continuation ([player/continuation.md](../player/continuation.md)), under the queue's flag
+  "continue with a wave", shuffle and repeat. A **base track** is any track of the base. The
+  protocol reports it as `source: wave` ([protocol](protocol/README.md#state)); a base track that
+  is not from the Yandex catalog is Kickoman/QiYaa-spec#4.
+- **Jam wave**: the base's wave from history while the jam is on. It takes its seeds from
+  `state.room.fallback.seeds` (HOST-11). The rules of
+  [continuation.md](../player/continuation.md) and [wave.md](../player/wave.md) apply to it unless
+  a scenario here says otherwise. My Wave or a station as the base is not the jam wave.
 - **Connected**: the host has a connection whose `resume` or `create` was accepted.
 
 ## Queue mirror
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-01 | A jam part [A, B, C] | A state with `queue` [A, B, D, E] | The jam part becomes [A, B, D, E]. The longest common prefix (A, B) stays in place and is not reloaded; the rest is replaced. The wave part stays behind it. | yes | yes |
+| HOST-01 | A jam part [A, B, C] | A state with `queue` [A, B, D, E] | The jam part becomes [A, B, D, E]. The longest common prefix (A, B) stays in place and is not reloaded; the rest is replaced. The base stays behind it. | yes | yes |
 | HOST-02 | A jam part [A, B], B is the next track and its link is already fetched | A state with `queue` [A, B, C] | A stays the next track: its link and buffer are kept. | yes | yes |
 | HOST-03 | A jam part [A, B] | A state with `queue` [B, A] or [C, A, B] | The next track changes, so the prefetch of A is dropped and the new first track is prefetched, as after any queue change. | yes | yes |
 | HOST-04 | Item A is current in the player | A state still lists A in `queue` (it was sent before the server applied `started{A}`) | A is not put into the tail again: the jam part never holds the current item. | yes | yes |
@@ -41,20 +48,20 @@ The table is the one from [player/README.md](../player/README.md#reading-a-scena
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
 | HOST-05 | The jam part is not empty | The current track ends, or the user presses Next | The first jam item becomes current. The host sends `started{itemId}` and then `playing{source: item, itemId, positionMs: 0, paused: false}`. | yes | yes |
-| HOST-06 | A jam track is current | Pause, resume, seek, or 10 s of playing since the last report | `playing` with the current `source`, `positionMs` and `paused`. A wave track also carries `track`. | yes | yes |
-| HOST-07 | A jam session | The user presses Previous | The current track restarts, whatever its position. During a jam, Previous never goes to an earlier track, which already left the queue. Not a new `started`. | yes | yes |
+| HOST-06 | A jam item or a base track is current | Pause, resume, seek, or 10 s of playing since the last report | `playing` with the current `source`, `positionMs` and `paused`. A base track also carries `track`. | yes | yes |
+| HOST-07 | A jam session | The user presses Previous | The current track restarts, whatever its position. During a jam, Previous never goes to an earlier track. Not a new `started`. | yes | yes |
 | HOST-08 | The player is stopped or idle, the tail is empty | A state brings a jam item | The item starts playing at once, as in HOST-05. | yes | yes |
 | HOST-09 | A jam item hits a track failure | — | The error rules of [errors.md](../player/errors.md) apply (ERR-04 to ERR-07). The item was already reported with `started`, so the server moves on as well. A network failure pauses playback as in ERR-01 to ERR-03. | yes | yes |
 
-## Jam wave
+## The base
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-10 | The jam part is empty, the last state has seeds | The current track ends, or Next | The host starts the jam wave: `POST /rotor/session/new` with the seeds as in WAVE-01, and plays its available tracks. It remembers the session and the `seedsVersion` it started with. Each wave track is reported as `playing{source: wave, track}`, with no `started`. | yes | yes |
-| HOST-11 | A jam wave session exists | The jam part becomes empty again | If the last state's `seedsVersion` is the one the session was started with, the host goes on with that session: first its deferred tracks (HOST-12), then load-more as in WAVE-05 to WAVE-09. Otherwise it starts a new session (HOST-10) and drops the old session's deferred tracks. | yes | yes |
-| HOST-12 | A jam wave track is current, more wave tracks are in the tail | A state brings a jam item | The current wave track plays to its end. The jam items go in front of the remaining wave tracks, which are deferred for HOST-11. | yes | yes |
-| HOST-13 | The jam part is empty and the last state has no seeds | The current track ends, or Next | If a track was playing, the jam wave starts from `track:<id>` of that track. If nothing has played yet, the player stops and the host sends `playing{source: idle}`. | yes | yes |
-| HOST-14 | The jam starts while a track plays that is not a jam item | — | That track plays on and is reported as `playing{source: wave, track}`. The rest of the old queue is replaced by the jam's tail. | yes | yes |
+| HOST-10 | The jam part is empty | The current track ends, or Next | The next track of the base plays, by the ordinary rules: the rest of the head, then the continuation ([TR-03](../player/transport.md), [CONT-04](../player/continuation.md#the-wave-from-history), [WAVE-05 to WAVE-09](../player/wave.md#loading-more)). Each base track is reported as `playing{source: wave, track}`, with no `started`. | no: #28 | no |
+| HOST-11 | The base's continuation is the jam wave | It asks for tracks (its first session, CONT-04, or a load-more, WAVE-05), or a state comes | Its seeds are the last state's seeds when there are any, and those of the queue's history ([CONT-05](../player/continuation.md#the-wave-from-history)) otherwise. A session remembers the `seedsVersion` it started with. When the last state has seeds and the session did not start with its `seedsVersion`, the session is outdated: its next request is `rotor/session/new` with the last state's seeds instead of a load-more, and whenever the jam part is empty and the current track is not a jam wave track, its tracks still in the tail (deferred by HOST-12) are dropped. The head's tracks are never dropped. | no: #28 | no |
+| HOST-12 | A base track is current, more base tracks are in the tail | A state brings a jam item | The current base track plays to its end. The jam items go in front of the rest of the base, which keeps its order and waits: it is deferred, and plays when the jam part is empty again (HOST-10, HOST-11). | no: #28 | no |
+| HOST-13 | The jam part is empty, and the base has nothing more: its head has played out and no continuation follows (the queue's flag is off, the jam wave has no seeds in the last state nor from CONT-05, or its first request failed, CONT-07) | The current track ends, or Next | The player stops at the end as in TR-04, and the host sends `playing{source: idle}`. An item that comes then starts at once (HOST-08). | no: #28 | no |
+| HOST-14 | The host's queue, playing or not | The jam starts | The current track stays and plays on if it plays; it is reported as `playing{source: wave, track}`. The rest of the queue stays as the base, with its flag, shuffle and repeat, and the jam items go in front of it as they come. An empty queue is an empty base: when the jam part runs out, the flag decides (HOST-11, HOST-13). | no: #28 | no |
 
 ## Not learning
 
@@ -62,37 +69,37 @@ The host's account must not learn the party's taste.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-15 | A jam session | Any jam track starts or closes | No `/play-audio` (TRK-01, TRK-02 are not applied). No feedback to My Wave or to any station. | yes | yes |
-| HOST-16 | A jam wave session | Its tracks start and close | Rotor feedback (TRK-03 to TRK-11) goes to the jam wave's own session only, so that the wave follows the party. The setting "feedback to the jam wave", on by default, turns it off: then no rotor feedback at all. | yes | yes |
-| HOST-17 | A jam track is current | The user likes or dislikes it with the player's own buttons | The like goes to the host's account as usual: that is the user's own choice. A dislike also skips, as TR-07. | yes | yes |
+| HOST-15 | A jam session | Any track starts or closes: a jam item or a base track | No `/play-audio` (TRK-01, TRK-02 are not applied). No feedback to My Wave or to any station, also when it is the base. | no: #28 | no |
+| HOST-16 | A jam session, the base's continuation is the jam wave | Its tracks start and close | Rotor feedback (TRK-03 to TRK-11) goes to the session each track came from, so that the wave follows the party. The setting "feedback to the jam wave", on by default, turns it off: then no rotor feedback at all. | no: #28 | no |
+| HOST-17 | A jam item or a base track is current | The user likes or dislikes it with the player's own buttons | The like goes to the host's account as usual: that is the user's own choice. A dislike also skips, as TR-07. | yes | yes |
 
 ## Skip
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
 | HOST-18 | Jam item I is current | `command{kind: skip, itemId: I}` | As Next (HOST-05, HOST-10). | yes | yes |
-| HOST-19 | Item I is not current: another item, a wave track, or nothing plays | `command{kind: skip, itemId: I}` | Ignored. So two quick skips from guests skip one track. | yes | yes |
+| HOST-19 | Item I is not current: another item, a base track, or nothing plays | `command{kind: skip, itemId: I}` | Ignored. So two quick skips from guests skip one track. | yes | yes |
 
 ## Adding as the host
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
 | HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | yes | yes |
-| HOST-21 | A jam session | The user picks a source that would replace the queue (a playlist, an album, a wave) | The queue is not replaced. The app offers to add tracks to the jam instead. | yes | yes |
+| HOST-21 | A jam session | The user picks a source that would replace the queue: likes, a playlist, an album, an artist, a station, a wave, a search | The request and its statuses are as outside a jam (SRC-01 to SRC-12, WAVE-01 to WAVE-04), and an empty or failed one leaves the base as it was. Otherwise the source becomes the new base, with the flag of a new queue ([CONT-01](../player/continuation.md#the-flag)), and the old base, its continuation included, is dropped. Unlike SRC-06 and WAVE-01 nothing starts at once: the current track plays to its end, then the jam part, then the new base. Adding to the jam (HOST-20) still makes a track a jam item. | no: #28 | no |
 
 ## Storage and "Continue the jam?"
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
 | HOST-22 | A jam session | `created`, `linkRotated`, `snapshot`, or a change of the outbox | The app stores `roomId`, `hostSecret`, `joinUrl`, the latest snapshot `data` and the outbox on disk, atomically (a temporary file and a rename, or the platform's equivalent). | yes | yes |
-| HOST-23 | A stored jam session | The app starts, or Android restores it after the process was killed | The app asks "Continue the jam?". Yes: it connects and sends `resume` with the stored snapshot and outbox. No: it connects, resumes and sends `end`, then clears the storage. | yes | yes |
+| HOST-23 | A stored jam session | The app starts, or Android restores it after the process was killed | The app asks "Continue the jam?". Yes: it connects and sends `resume` with the stored snapshot and outbox. No: it connects, resumes and sends `end`, then clears the storage. The queue is not stored between runs, so the base is empty after Yes, and when the jam part runs out the queue's flag decides (HOST-11, HOST-13). | yes | yes |
 | HOST-24 | A stored jam session | `resume` is refused with `room-not-found` or `bad-secret` | The storage is cleared, the jam part of the tail becomes ordinary tracks as in HOST-32, and a status says the jam is over. | yes | yes |
 
 ## Without the server
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-25 | Connected | The connection closes or dies | Playback goes on from the tail and the jam wave (HOST-10, with the last state's seeds). The `started` events that should be sent go to the outbox instead, and `playing` is not queued. Removing, pinning, kicking, settings and adding are disabled, and a status says there is no connection to the jam server. | yes | yes |
+| HOST-25 | Connected | The connection closes or dies | Playback goes on from the tail: the jam part, then the base (HOST-10, HOST-11 with the last state's seeds). The `started` events that should be sent go to the outbox instead, and `playing` is not queued. Removing, pinning, kicking, settings and adding are disabled, and a status says there is no connection to the jam server. | yes | yes |
 | HOST-26 | Not connected | — | The host reconnects after 1, 2, 4 … 30 s, and at once when the network comes back. Then `resume` with the snapshot and the outbox. After `resumed`, the outbox is cleared, the controls are enabled again, and the host sends `playing` for the current track. | yes | yes |
 | HOST-27 | Not connected | A Yandex request of the player fails for the network | As ERR-01 to ERR-03: the jam changes nothing here. | yes | yes |
 
@@ -111,12 +118,12 @@ A guest's track is built like a track of the app's own parsing ([expected/yandex
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-32 | A jam session | The user ends the jam; or `ended` arrives | Connected: `end` is sent (not for `ended`). The current track plays to its end. The jam part of the tail stays as ordinary tracks, and the deferred and remaining wave tracks are dropped. The jam wave does not go on. The storage is cleared. Not connected: the same locally, and the server ends the room on its own when the host has been away long enough (REC-05). | yes | yes |
+| HOST-32 | A jam session | The user ends the jam; or `ended` arrives | Connected: `end` is sent (not for `ended`). The current track plays to its end. The jam part stays as ordinary tracks: they join the head, in front of its rest, and the base plays on by its own rules. A jam wave whose session took the last state's seeds is ended: its tracks in the tail are dropped, and the next request of the wave from history starts a new session from the queue's history ([CONT-05](../player/continuation.md#the-wave-from-history)). The storage is cleared. Not connected: the same locally, and the server ends the room on its own when the host has been away long enough (REC-05). | no: #28 | no |
 | HOST-33 | After HOST-32 | — | Ordinary playback rules again: `/play-audio` and feedback for tracks that start from now on. | yes | yes |
 
 ## What the host shows
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. Wave tracks are marked as the jam wave. The current track's line says who added it. | yes | yes |
+| HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. A base track carries no name: the jam wave's tracks are marked as the jam wave, and the rest of the base looks as it does outside a jam. The current track's line says who added it. | no: #28 | no |
 | HOST-35 | A jam session | — | The jam window or screen shows a QR code of `joinUrl`, the link with a copy or share action, the participants with their online state and a kick action, the settings, "new link" and "end", and whether the host is connected. | yes | yes |

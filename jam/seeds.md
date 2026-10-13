@@ -1,9 +1,9 @@
 # Wave seeds
 
-When the jam queue is empty, the host plays the **jam wave**: a rotor wave started from seeds the
-server picks from the jam's own tracks. The server keeps them in `state.room.fallback`. What the
-host does with them is in [host.md](host.md#jam-wave). Format and terms are those of
-[room.md](room.md).
+When the jam queue is empty, the host plays its base: what its own source still has. A wave from
+history in the base, the **jam wave**, starts from seeds the server picks from the jam's own
+tracks. The server keeps them in `state.room.fallback`. What the host does with them is in
+[host.md](host.md#the-base). Format and terms are those of [room.md](room.md).
 
 ## The rule
 
@@ -39,7 +39,7 @@ Measured in Kickoman/QiYaa-jam#1, with one request per case:
 
 - Loading more (`/rotor/session/<id>/tracks`) drifts away from the seeds towards the host's
   account taste: the second batch had none of the seed artists. The host starts a new session
-  whenever `seedsVersion` changes ([HOST-11](host.md#jam-wave)), which at a party happens often.
+  whenever `seedsVersion` changes ([HOST-11](host.md#the-base)), which at a party happens often.
   Restarting the session every N wave tracks is not done in protocol 1.
 - Seeds far from the host's taste pull less, and with mixed seeds the wave leans towards the
   majority. That is accepted for a party.

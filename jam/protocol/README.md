@@ -91,13 +91,15 @@ guest's request then ends with `host-timeout`.
 - `room.queue` is already in play order: the items the host pinned first, then the room's order.
 - `room.nowPlaying.source`:
   - `item`: a queue item, with `itemId`, `track` and `addedBy`;
-  - `wave`: a track of the jam wave, with `track`. It was never in the queue;
+  - `wave`: a track the host plays from its own queue, not an item: the rest of its playlist,
+    album or search, or a track of its wave, the jam wave included ([host.md](../host.md#the-base)).
+    It comes with `track` and was never in the queue;
   - `idle`: nothing plays.
 - Progress: `positionMs + (server now − reportedAt)` while not `paused`, where server now = local
   now + clock offset.
-- `room.fallback.seeds` holds up to 5 `track:<id>` seeds. The host starts the jam wave from them
-  when the queue is empty. `seedsVersion` changes exactly when the set of seeds changes; their
-  order does not matter.
+- `room.fallback.seeds` holds up to 5 `track:<id>` seeds. A wave from history in the host's own
+  queue, the jam wave, starts from them once the queue is empty. `seedsVersion` changes exactly
+  when the set of seeds changes; their order does not matter.
 - `room.hostOnline` is `false` while the host has no connection.
 
 ## Listening along

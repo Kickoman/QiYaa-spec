@@ -151,6 +151,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
 | Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | yes | yes | |
+| The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own | no: Kickoman/QiYaa#28 | no | [HOST-10 to HOST-14, HOST-21, HOST-32](jam/host.md#the-base) |
 | Guests listen along on the jam page: the host shares the files it plays | yes | yes | [jam/listen.md](jam/listen.md); off by default, the host's subscription's files |
 | Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | no: Kickoman/QiYaa-android#63 | Browser guests need no app |
 

@@ -17,7 +17,7 @@ act the same way as the buttons.
 | TR-06 | — | The user switches repeat | Repeat has two states, off and on (the whole queue). There is no repeat of one track. | yes | yes |
 | TR-07 | A finite queue | The user dislikes the current track | The dislike request of [TRK-07](tracking.md), then the same as Next: TR-03, TR-04 or TR-05. | yes | yes |
 | TR-08 | A track plays or is paused | The user seeks | The position shows the target at once and stays on it until audio from the target plays, then runs on from there. It never goes back to the position from before the seek, also during a series of seeks. A paused track stays paused at the target. | yes | not checked |
-| TR-09 | The download of the current track has stalled midway | The user seeks into the part already downloaded | Audio plays from the target at once. It does not wait for the download to move on or to fail. | yes | not checked |
+| TR-09 | The download of the current track has stalled midway | The user seeks into the part already downloaded, at least 3 s before its end | Audio plays from the target at once. It does not wait for the download to move on or to fail. Closer to the end of the downloaded part a seek may wait for more bytes: a decoder can need data past the target. | yes | not checked |
 
 Not fixed yet: which track Previous goes to when shuffle is on. The desktop goes to the one before
 it in the queue, and Android to the one before it in the shuffled order.

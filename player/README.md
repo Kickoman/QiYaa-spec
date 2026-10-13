@@ -8,7 +8,7 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 | [wave.md](wave.md) | Waves (rotor): start, loading more, shuffle and repeat in a wave | `WAVE-` |
 | [tracking.md](tracking.md) | Play reports: `/play-audio` and the rotor feedback events | `TRK-` |
 | [errors.md](errors.md) | Network failures and broken tracks during playback | `ERR-` |
-| [transport.md](transport.md) | Previous, next, repeat and shuffle in an ordinary queue | `TR-` |
+| [transport.md](transport.md) | Previous, next, repeat, shuffle and seeking in an ordinary queue | `TR-` |
 | [quality.md](quality.md) | The audio quality the user chooses, and what is known about lossless | `QUAL-` |
 
 ## Reading a scenario

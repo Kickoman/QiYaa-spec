@@ -87,6 +87,12 @@ The host's account must not learn the party's taste.
 | HOST-20 | Connected | The user adds a track to the jam from its library or search | `add{track}` to the server. The track reaches the tail only with the next state, in its place in the order, never directly. "Play next" is `add` followed by `pin`, or `pin` for a jam item. | yes | yes |
 | HOST-21 | A jam session | The user picks a source that would replace the queue: likes, a playlist, an album, an artist, a station, a wave, a search | The request and its statuses are as outside a jam (SRC-01 to SRC-12, WAVE-01 to WAVE-04), and an empty or failed one leaves the base as it was. Otherwise the source becomes the new base, with the flag of a new queue ([CONT-01](../player/continuation.md#the-flag)), and the old base, its continuation included, is dropped. Unlike SRC-06 and WAVE-01 nothing starts at once: the current track plays to its end, then the jam part, then the new base. Adding to the jam (HOST-20) still makes a track a jam item. | no: #28 | no: #80 |
 
+## Editing the playlist
+
+| ID | Given | When | Then | Desktop | Android |
+|---|---|---|---|---|---|
+| HOST-36 | A jam session | The user removes lines from the playlist, or clears it | Removing a jam item of the tail sends `remove{itemId}`: the item leaves the tail with the next state, as when a guest removes it, never directly. Any other line (a base track, the current track, a track that already played) is removed from the queue at once, as outside a jam: the base plays on by its own rules without it, and removing the current track stops playback. Clearing the playlist keeps the current track and the jam part and drops the rest: the base, its continuation included, becomes an empty base with the flag of a new queue ([CONT-01](../player/continuation.md#the-flag)), and when the jam part runs out that flag decides (HOST-11, HOST-13). Not connected, removing a jam item is disabled (HOST-25). | no: #28 | no: #80 |
+
 ## Storage and "Continue the jam?"
 
 | ID | Given | When | Then | Desktop | Android |

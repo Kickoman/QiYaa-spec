@@ -67,5 +67,5 @@ issue is fixed, remove its tag from the scenario rows and delete the entry here.
 | Gap | App | What the app does instead | Scenarios | Issue |
 |---|---|---|---|---|
 | A2 | Android | A next track that ExoPlayer has already begun to load keeps the quality it was fetched in; the tracks after it follow the new choice. Replacing the loaded item would reshuffle ExoPlayer's shuffle order | QUAL-05 | Kickoman/QiYaa-android#76 |
-| A4 | Android | Removing tracks of the head keeps the pass: the removed tracks leave it and the others keep their order, so a track already heard does not come back in it | SHUF-04 | Kickoman/QiYaa-android#NNN |
-| A5 | Android | Previous on the first track of a continuation goes to the last track of the head's pass, not to the head track that was current last. The two differ when the user picked a track of the continuation before the pass ended | SHUF-02 | Kickoman/QiYaa-android#NNN |
+| A4 | Android | Removing tracks of the head keeps the pass: the removed tracks leave it and the others keep their order, so a track already heard does not come back in it | SHUF-04 | Kickoman/QiYaa-android#99 |
+| A5 | Android | Previous on the first track of a continuation goes to the last track of the head's pass, not to the head track that was current last. The two differ when the user picked a track of the continuation before the pass ended | SHUF-02 | Kickoman/QiYaa-android#99 |

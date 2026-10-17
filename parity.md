@@ -142,7 +142,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Log out | yes | yes | |
 | Covers cached on disk | yes | unclear | |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
-| Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | no: Kickoman/QiYaa-android#75 | [telemetry/](telemetry/README.md) |
+| Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | not checked: Kickoman/QiYaa-android#91 (builds with `-PqiyaaWithTelemetry=true`; the jam server accepts Android batches once Kickoman/QiYaa-jam#19 is deployed) | [telemetry/](telemetry/README.md) |
 
 ## Jam
 

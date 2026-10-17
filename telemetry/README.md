@@ -69,7 +69,7 @@ cause has no frames, the outer exception's. The line is `0` when it is unknown o
 native. Characters outside `A-Za-z0-9_$.<>-` become `_`; a frame over the length cuts its class
 and method and keeps `:<line>`. `exceptionType` is the root cause's class name
 (`java.lang.IllegalStateException`), left out when it does not fit; the exception's message is
-never sent. Release builds are minified with R8, so their frames arrive obfuscated as
+never sent. Once release builds are minified with R8 (Kickoman/QiYaa-android#22), their frames arrive obfuscated as
 `<R8 class>.<R8 method>:<pc>` (ART gives the instruction's offset in place of the line), apart
 from the system's own (`java.*`, `android.*`). Like the desktop's debug symbols, the
 `mapping.txt` published with each release turns them back: write each frame `c.m:N` as a stack

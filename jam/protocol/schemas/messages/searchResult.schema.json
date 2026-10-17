@@ -19,7 +19,7 @@
       "type": "array",
       "maxItems": 20,
       "items": {
-        "$ref": "../track.schema.json"
+        "$ref": "../track.schema.json#/$defs/catalogTrack"
       }
     },
     "error": {

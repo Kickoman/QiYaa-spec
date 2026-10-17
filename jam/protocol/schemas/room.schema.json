@@ -172,6 +172,42 @@
               "track"
             ]
           }
+        },
+        {
+          "if": {
+            "required": [
+              "track"
+            ],
+            "properties": {
+              "track": {
+                "type": "object",
+                "required": [
+                  "source"
+                ],
+                "properties": {
+                  "source": {
+                    "const": "host"
+                  }
+                }
+              }
+            }
+          },
+          "then": {
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "listenUrl"
+                  ]
+                },
+                {
+                  "required": [
+                    "listenNextUrl"
+                  ]
+                }
+              ]
+            }
+          }
         }
       ]
     },
@@ -189,7 +225,7 @@
           "$ref": "defs.schema.json#/$defs/itemId"
         },
         "track": {
-          "$ref": "track.schema.json"
+          "$ref": "track.schema.json#/$defs/catalogTrack"
         },
         "addedBy": {
           "$ref": "defs.schema.json#/$defs/publicId"
@@ -215,7 +251,7 @@
           "$ref": "defs.schema.json#/$defs/itemId"
         },
         "track": {
-          "$ref": "track.schema.json"
+          "$ref": "track.schema.json#/$defs/catalogTrack"
         },
         "addedBy": {
           "$ref": "defs.schema.json#/$defs/publicId"

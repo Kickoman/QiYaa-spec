@@ -170,7 +170,7 @@
           "$ref": "defs.schema.json#/$defs/itemId"
         },
         "track": {
-          "$ref": "track.schema.json"
+          "$ref": "track.schema.json#/$defs/catalogTrack"
         },
         "addedBy": {
           "$ref": "defs.schema.json#/$defs/publicId"

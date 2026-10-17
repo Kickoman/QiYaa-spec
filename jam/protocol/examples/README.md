@@ -20,6 +20,9 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `playing/invalid-item-without-item-id.json` | `itemId` is required for `source: item`. |
 | `playing/invalid-negative-position.json` | `positionMs` is negative. |
 | `playing/invalid-listen-url-elsewhere.json` | `listenUrl` leads somewhere other than Yandex Music's storage. |
+| `playing/invalid-host-track-with-listen-url.json` | A track that only the host can play (`source: host`) has no file a guest could fetch, so no `listenUrl`. |
+| `playing/invalid-host-track-with-next-url.json` | Nor a `listenNextUrl` next to such a track: a guest that listens has paused. |
+| `playing/invalid-host-track-with-cover.json` | A `host` track has no `coverUri`: the cover template is the Yandex catalog's. |
 | `started/invalid-number-id.json` | `itemId` is not `i` + a number. |
 | `add/invalid-both.json` | Both `trackId` and `track`: exactly one of them is allowed. |
 | `add/invalid-neither.json` | Neither `trackId` nor `track`. |
@@ -33,8 +36,10 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `rotateLink/invalid-no-id.json` | `id` is missing: the reply `linkRotated` needs it. |
 | `searchResult/invalid-tracks-and-error.json` | Both `tracks` and `error`: exactly one of them is allowed. |
 | `searchResult/invalid-too-many.json` | More than 20 tracks. |
+| `searchResult/invalid-host-track.json` | A search result is a track of the Yandex catalog, never a `host` one. |
 | `validateResult/invalid-track-and-reason.json` | A result carries either `track` or `reason`, not both. |
 | `validateResult/invalid-no-results.json` | `results` is empty. |
+| `validateResult/invalid-host-track.json` | A checked track is a track of the Yandex catalog, never a `host` one. |
 | `join/invalid-name-with-spaces.json` | `name` has spaces at its ends: the client trims it before sending. |
 | `join/invalid-participant-not-uuid.json` | `participantId` is not a UUID v4. |
 | `join/invalid-upper-case-room.json` | `roomId` is upper case; room ids are lower-case Crockford base32. |
@@ -52,4 +57,5 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `state/invalid-host-key.json` | `settings` carries `hostKey`, the field older apps still send in `create` and `resume`. |
 | `state/invalid-participant-id.json` | A participant carries its `participantId`. |
 | `state/invalid-item-without-track.json` | `nowPlaying` with `source: item` has no `track`. |
+| `state/invalid-host-track-in-queue.json` | A queue item is a track of the Yandex catalog, never a `host` one. |
 | `ended/invalid-unknown-reason.json` | `reason` is not `host-ended` or `expired`. |

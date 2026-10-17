@@ -30,7 +30,7 @@
             "$ref": "../defs.schema.json#/$defs/catalogId"
           },
           "track": {
-            "$ref": "../track.schema.json"
+            "$ref": "../track.schema.json#/$defs/catalogTrack"
           },
           "reason": {
             "enum": [

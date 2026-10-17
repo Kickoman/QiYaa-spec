@@ -24,11 +24,13 @@ connections is in [recovery.md](recovery.md).
 - **Item**: a track in the jam, with `itemId`, `addedBy`, `addedAt` and, once pinned, `pinnedAt`.
   An item is **waiting** while it is in the queue. It is **current** while it is
   `nowPlaying` with `source: item`. It is **recent** after that, with `playedAt` = the time it
-  stopped being current; the latest 10 are kept.
+  stopped being current; the latest 10 are kept. An item's track is always a track of the Yandex
+  catalog (ROOM-66).
 - **Waiting items of a guest**: the items in the queue that the guest added, pinned or not. This is
   `participants[].pending`.
 - **Wave track**: what `nowPlaying` holds with `source: wave`: a track the host plays from its own
-  queue, not an item ([host.md](host.md#the-base)).
+  queue, not an item ([host.md](host.md#the-base)). It may be a track that only the host can play
+  (`track.source: host`, [protocol](protocol/README.md#tracks)).
 - **Host action**: any request from the host connection.
 
 ## Create
@@ -76,6 +78,7 @@ not kicked → known participant (then admitted at once) → join secret → roo
 | ROOM-21 | A guest has `maxPendingPerGuest` waiting items | It adds | `rejected{queue-limit}`. | no: #7 |
 | ROOM-22 | The queue holds its maximum of items | Anyone adds | `rejected{queue-limit}`. | no: #7 |
 | ROOM-23 | A guest sent its maximum of `add` requests in the last minute, accepted or not | It sends another | `rejected{rate-limited}`. | no: #8 |
+| ROOM-66 | — | The host or a QiYaa guest sends `add{track}` with `track.source: host` | `rejected{not-allowed}`: an item is a track of the Yandex catalog. A QiYaa guest's track is refused before the host is asked: no `validateRequest`. | no: #17 |
 
 ## Search
 
@@ -112,6 +115,7 @@ Only the host reports what plays. Its reports move items; nothing else does.
 | ROOM-40 | Item I is waiting | `playing{source: item, itemId: I, …}` | As `started{I}` (ROOM-37), then as ROOM-39. | no: #7 |
 | ROOM-41 | Item I is neither current nor waiting | `playing{source: item, itemId: I, …}` | Ignored. | no: #7 |
 | ROOM-42 | Anything plays | `playing{source: wave, track, …}` or `playing{source: idle, …}` | `nowPlaying` becomes that wave track, or idle, with `reportedAt` = now. A current item goes to the front of `recent`. `lastServedAt` does not change. State to all. | no: #7 |
+| ROOM-67 | Anything plays | `playing{source: wave, track}` with `track.source: host` | As ROOM-42: `nowPlaying` holds the track as sent, `source` included, and so does the next `state`. It never becomes a seed (SEED-09). Such a `playing` with `listenUrl` or `listenNextUrl` does not match its schema (ROOM-56). | no: #17 |
 
 ## Skip
 

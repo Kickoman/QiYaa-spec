@@ -26,8 +26,8 @@ The table is the one from [player/README.md](../player/README.md#reading-a-scena
 - **Base**: what the host's own source still has to play: the rest of its head, then its
   continuation ([player/continuation.md](../player/continuation.md)), under the queue's flag
   "continue with a wave", shuffle and repeat. A **base track** is any track of the base. The
-  protocol reports it as `source: wave` ([protocol](protocol/README.md#state)); a base track that
-  is not from the Yandex catalog is Kickoman/QiYaa-spec#4.
+  protocol reports it as `source: wave` ([protocol](protocol/README.md#state)), and one that is
+  not from the Yandex catalog as in HOST-37.
 - **Jam wave**: the base's wave from history while the jam is on. It takes its seeds from
   `state.room.fallback.seeds` (HOST-11). The rules of
   [continuation.md](../player/continuation.md) and [wave.md](../player/wave.md) apply to it unless
@@ -57,11 +57,12 @@ The table is the one from [player/README.md](../player/README.md#reading-a-scena
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-10 | The jam part is empty | The current track ends, or Next | The next track of the base plays, by the ordinary rules: the rest of the head, then the continuation ([TR-03](../player/transport.md), [CONT-04](../player/continuation.md#the-wave-from-history), [WAVE-05 to WAVE-09](../player/wave.md#loading-more)). Each base track is reported as `playing{source: wave, track}`, with no `started`. | yes | no: #80 |
+| HOST-10 | The jam part is empty | The current track ends, or Next | The next track of the base plays, by the ordinary rules: the rest of the head, then the continuation ([TR-03](../player/transport.md), [CONT-04](../player/continuation.md#the-wave-from-history), [WAVE-05 to WAVE-09](../player/wave.md#loading-more)). Each base track is reported as `playing{source: wave, track}`, with no `started`; one that is not from the Yandex catalog as in HOST-37. | yes | no: #80 |
 | HOST-11 | The base's continuation is the jam wave | It asks for tracks (its first session, CONT-04, or a load-more, WAVE-05), or a state comes | Its seeds are the last state's seeds when there are any, and those of the queue's history ([CONT-05](../player/continuation.md#the-wave-from-history)) otherwise. A session remembers the `seedsVersion` it started with. When the last state has seeds and the session did not start with its `seedsVersion`, the session is outdated: its next request is `rotor/session/new` with the last state's seeds instead of a load-more, and whenever the jam part is empty and the current track is not a jam wave track, its tracks still in the tail (deferred by HOST-12) are dropped. The head's tracks are never dropped. | yes | no: #80 |
 | HOST-12 | A base track is current, more base tracks are in the tail | A state brings a jam item | The current base track plays to its end. The jam items go in front of the rest of the base, which keeps its order and waits: it is deferred, and plays when the jam part is empty again (HOST-10, HOST-11). | yes | no: #80 |
 | HOST-13 | The jam part is empty, and the base has nothing more: its head has played out and no continuation follows (the queue's flag is off, the jam wave has no seeds in the last state nor from CONT-05, or its first request failed, CONT-07) | The current track ends, or Next | The player stops at the end as in TR-04, and the host sends `playing{source: idle}`. An item that comes then starts at once (HOST-08). | yes | no: #80 |
 | HOST-14 | The host's queue, playing or not | The jam starts | The current track stays and plays on if it plays; it is reported as `playing{source: wave, track}`. The rest of the queue stays as the base, with its flag, shuffle and repeat, and the jam items go in front of it as they come. An empty queue is an empty base: when the jam part runs out, the flag decides (HOST-11, HOST-13). | yes | no: #80 |
+| HOST-37 | A base track that is not from the Yandex catalog, a local file for one | It becomes current, and every report about it (HOST-06) | `playing{source: wave, track}` with `track = {id, source: host, title, artists, durationMs}` ([protocol](protocol/README.md#tracks)): the title and the artists as the playlist shows them, cut to the limits of a track ([limits](limits.md#fields)), no `albumId` and no `coverUri`. The `id` is the host's own: the same for that track during the jam session, never a path or a file name. No `listenUrl` and no `listenNextUrl` (LISTEN-14). Such a track cannot be added to the jam (HOST-20, ROOM-66): the action is disabled for it. | no: #29 | n/a |
 
 ## Not learning
 

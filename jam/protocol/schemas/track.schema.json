@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/Kickoman/QiYaa-spec/jam/protocol/schemas/track.schema.json",
   "title": "Track",
+  "description": "A track as the apps show it: one of the Yandex catalog, or one only the host can play",
   "type": "object",
   "required": [
     "id",
@@ -41,6 +42,63 @@
       "type": "string",
       "maxLength": 300,
       "pattern": "^\\S*%%\\S*$"
+    },
+    "source": {
+      "description": "yandex: a track of the Yandex catalog, the default. host: a track that only the host can play, a local file for one",
+      "enum": [
+        "yandex",
+        "host"
+      ],
+      "default": "yandex"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "source"
+        ],
+        "properties": {
+          "source": {
+            "const": "host"
+          }
+        }
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "albumId"
+              ]
+            },
+            {
+              "required": [
+                "coverUri"
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "catalogTrack": {
+      "title": "CatalogTrack",
+      "description": "A track of the Yandex catalog: the only kind a jam item, a search result or a check result can be",
+      "allOf": [
+        {
+          "$ref": "#"
+        },
+        {
+          "type": "object",
+          "properties": {
+            "source": {
+              "const": "yandex"
+            }
+          }
+        }
+      ]
     }
   }
 }

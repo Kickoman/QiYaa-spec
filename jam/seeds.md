@@ -8,7 +8,8 @@ tracks. The server keeps them in `state.room.fallback`. What the host does with 
 ## The rule
 
 - **Candidates**: the jam's items that are waiting, current or recent. Tracks of the wave are
-  never candidates.
+  never candidates. An item is always a track of the Yandex catalog
+  ([ROOM-66](room.md#add)), so every seed is one.
 - Sort the candidates by item number, highest first: the latest added first.
 - Walk that list and take each track id not taken yet, until there are 5.
 - `seeds` = `track:<id>` for each, in that order. No album id and no artists: the rotor ignores

@@ -93,7 +93,8 @@ guest's request then ends with `host-timeout`.
   - `item`: a queue item, with `itemId`, `track` and `addedBy`;
   - `wave`: a track the host plays from its own queue, not an item: the rest of its playlist,
     album or search, or a track of its wave, the jam wave included ([host.md](../host.md#the-base)).
-    It comes with `track` and was never in the queue;
+    It comes with `track` and was never in the queue. Its track may be one that only the host can
+    play ([Tracks](#tracks));
   - `idle`: nothing plays.
 - Progress: `positionMs + (server now − reportedAt)` while not `paused`, where server now = local
   now + clock offset.
@@ -111,6 +112,9 @@ Guests may listen on their own devices ([listen.md](../listen.md)).
   (`https://*.storage.yandex.net/get-mp3/…`, valid for about an hour). When the host already has
   the next file's link, `listenNextUrl` comes too. The host never sends its token, and the server
   never fetches the file.
+- A track that only the host can play ([Tracks](#tracks)) has no file a guest could fetch: a
+  `playing` with such a track carries neither link, and the schemas refuse one. When the next
+  track is of that kind, `listenNextUrl` is left out.
 - The server keeps both in `room.nowPlaying` until the next `playing`, which replaces or drops
   them, and until another item starts. They never go into a snapshot.
 - A guest that listens plays `listenUrl` at the room's progress (see [State](#state)), follows
@@ -170,14 +174,26 @@ an unknown field now and ignored, and the name stays on the list above so that i
 
 ## Tracks
 
-`track = {id, albumId?, title, artists[], durationMs, coverUri?}`:
+`track = {id, source?, albumId?, title, artists[], durationMs, coverUri?}`:
 
-- `id` and `albumId`: catalogue ids as strings.
+- `source`: `yandex`, a track of the Yandex catalog, is the default and is usually left out.
+  `host` is a track that only the host can play, a local file for one.
+- `id` and `albumId`: catalogue ids as strings. A `host` track's `id` is the host's own: the same
+  for the same track during a jam session, and never a path or a file name, since every guest gets
+  it. It keeps the pattern of catalogue ids, so a decoder that does not know `source` still reads
+  the track.
 - `title`: the title as the apps show it, with the version in parentheses when there is one.
 - `artists`: artist names, at most 10 of up to 64 characters each. A sender cuts longer lists and
   names, so that a guest's `add` fits in a guest frame.
 - `coverUri`: the Yandex template without a scheme. `%%` stands for the size (`200x200`), and
   clients add `https://`.
+- A `host` track has no `albumId` and no `coverUri`. Clients show it by its title and artists,
+  with no cover and no link to Yandex Music.
+
+A `host` track appears only as the track of `playing{source: wave}` and of `room.nowPlaying`. Queue
+items, recent items, search results and checked tracks are tracks of the catalog (`CatalogTrack`
+in the schemas), and the server refuses an `add` of a `host` track
+([ROOM-66](../room.md#add)).
 
 The server never takes a guest's word for a track's metadata. A web guest sends only a `trackId`
 from the search results the server gave it. The host replaces a QiYaa guest's track with its own
@@ -195,7 +211,7 @@ canonical metadata (`validateResult`).
 | `rate-limited` | any request over a rate limit; `create`, or a `resume` that would raise a room, over the rooms of one IP |
 | `queue-limit` | `add`: the guest has `maxPendingPerGuest` items waiting, or the queue is full |
 | `duplicate` | `add`: the track is already waiting in the queue |
-| `not-allowed` | the sender's role or the room's settings do not allow it |
+| `not-allowed` | the sender's role or the room's settings do not allow it; `add` of a track that only the host can play |
 | `stale` | the item is no longer in the queue, or a `skip` names an item that is not playing |
 | `unknown-track` | `add` from a web guest: the `trackId` is not among the search results the server gave that guest recently |
 | `track-unavailable` | `add` from a QiYaa guest: the host cannot play the track |
@@ -227,6 +243,10 @@ Reconnecting waits 1, 2, 4 … up to 30 s, and happens at once when the network 
   Adding optional fields, or messages that only the other side needs, does not.
 - Unknown fields are ignored by everyone, and the schemas allow them. The exception is the
   secret names in `state` and in the snapshot.
+- An unknown value of a known field is refused: by the server's schemas and by the apps' decoders.
+  So something new comes as a new optional field rather than a new value. A track that only the
+  host can play is reported as `source: wave` with `track.source: host`, not as a new
+  `nowPlaying.source`, and needs no new protocol version.
 - An unknown `type` from a client makes the server close the connection with 1008. An unknown
   `type` from the server is ignored by the client.
 

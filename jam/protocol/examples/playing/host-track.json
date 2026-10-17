@@ -1,0 +1,15 @@
+{
+  "type": "playing",
+  "source": "wave",
+  "track": {
+    "id": "f3a9c2e17b4d5a60",
+    "source": "host",
+    "title": "Купалінка (рэпетыцыя)",
+    "artists": [
+      "Наш гурт"
+    ],
+    "durationMs": 214000
+  },
+  "positionMs": 61000,
+  "paused": false
+}

@@ -8,6 +8,8 @@ Every feature of either app and its status on each platform:
   [player/README.md](player/README.md#known-gaps) or the issue.
 - **n/a**: by design only on one platform (a desktop window system, a phone's audio focus). There
   is no issue.
+- **not checked**: the app has it, but nobody has checked it on a device yet. The linked issue
+  holds the device check, and the row becomes **yes** (or **differs** with a gap) after it.
 
 When a feature lands on one platform, add its row here and open an issue for the other; see the
 [top README](README.md#changing-the-behaviour). When the issue is closed, set the row to **yes**.
@@ -155,7 +157,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 | The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own; the host edits the base during the jam | yes | no: Kickoman/QiYaa-android#80 | [HOST-10 to HOST-14, HOST-21, HOST-32, HOST-36](jam/host.md#the-base) |
 | Guests listen along on the jam page: the host shares the files it plays | yes | yes | [jam/listen.md](jam/listen.md); off by default, the host's subscription's files |
 | A base track that is not from the Yandex catalog (a local file) plays in the jam: guests see its title and artists, with no cover and no listening along | no: Kickoman/QiYaa#29 | n/a | [HOST-37](jam/host.md#the-base), [LISTEN-14](jam/listen.md#the-host), `track.source: host` in the [protocol](jam/protocol/README.md#tracks); Android plays only tracks of the Yandex catalog |
-| Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | no: Kickoman/QiYaa-android#63 | [jam/guest.md](jam/guest.md); browser guests need no app |
+| Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | not checked: Kickoman/QiYaa-android#91 | [jam/guest.md](jam/guest.md); browser guests need no app |
 
 ## Desktop only: running without an account
 

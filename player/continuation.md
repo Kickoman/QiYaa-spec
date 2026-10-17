@@ -41,6 +41,6 @@ Shuffle and repeat act on the head. In a queue whose head is empty (My Wave, a s
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| CONT-09 | Shuffle is on, the flag is on | The head plays | Shuffle orders the head only ([TR-03](transport.md)). The head runs out at the end of its pass ([SHUF-01](shuffle.md#without-repeats)); then the tracks of the wave from history follow in their own order. With Random track, [SHUF-08](shuffle.md#random-track) applies instead. | yes | yes |
+| CONT-09 | Shuffle is on, the flag is on | The head plays | Shuffle orders the head only ([TR-03](transport.md)). The head runs out at the end of its pass ([SHUF-01](shuffle.md#without-repeats)); then the tracks of the wave from history follow in their own order. With Random track and two or more head tracks, [SHUF-08](shuffle.md#random-track) applies instead. | yes | yes |
 | CONT-10 | Repeat is on, the flag is on | The head's last track in play order ends, or Next | The head's first track plays ([TR-05](transport.md)): the head wraps, and the wave from history does not start while repeat is on. If its tracks are already in the queue (repeat was switched on after they came), they wait behind the head and follow it once repeat is off. | yes | yes |
 | CONT-11 | A track that a continuation gave is current, shuffle or repeat is on | Next, or the track ends | The continuation's next track plays: shuffle does not reorder the continuation, and repeat does not wrap the queue, as in WAVE-10 and WAVE-12. | yes | yes |

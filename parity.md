@@ -82,6 +82,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Like and unlike the current track | yes | yes | |
 | Dislike and skip | yes | yes | [TRK-07, TR-07](player/tracking.md) |
 | The current track shows whether it is liked | yes | yes | |
+| Like, dislike and open any track of the playlist | yes | yes | Desktop: a right click on a line; Android: a long press. A dislike skips only when that track is current ([TR-10](player/transport.md)) |
 
 ## Equalizer
 

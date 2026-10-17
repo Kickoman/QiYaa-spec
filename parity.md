@@ -71,7 +71,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
-| No network: pause, continue when it returns | yes | yes | [ERR-01 to ERR-03](player/errors.md) |
+| No network: pause, continue when it returns, as the same play | yes | yes | [ERR-01 to ERR-03, ERR-09](player/errors.md) |
 | Broken track: next, stop after 3 in a row | yes | yes | [ERR-04 to ERR-07](player/errors.md) |
 | Rejected token: back to login | differs | yes | Desktop stops with "Ошибка доступа" ([ERR-08](player/errors.md)) and does not open the login dialog |
 

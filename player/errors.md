@@ -23,7 +23,7 @@ feedback in [tracking.md](tracking.md) (TRK-11).
 | ERR-01 | A track is starting or playing | A network failure hits its link or its stream | The player pauses on this track and keeps its position. A status says it is waiting for the network. The queue does not move. | yes | yes |
 | ERR-02 | Paused by ERR-01 | The network comes back | The track loads again. If it was playing before the failure and the user has not paused since, playback continues from the same position. If the network was up all along, the app retries after 2 s, then 4 s, 8 s and so on up to 60 s between attempts. | yes | yes |
 | ERR-03 | A track is playing | Its stream breaks off midway through a network failure | When the buffered audio runs out, the same as ERR-01 and ERR-02. It does not move on to the next track. | yes | yes |
-| ERR-09 | A started track waits by ERR-01 to ERR-03 | The wait begins, and later the track continues | It is the same play: the track stays open. No `skip` when the wait begins, and no `trackStarted` or `/play-audio` when it continues ([tracking.md](tracking.md)). A track whose link failed before it ever started starts normally once it plays. | yes | not checked |
+| ERR-09 | A started track waits by ERR-01 to ERR-03 | The wait begins, and later the track continues | It is the same play: the track stays open. No `skip` when the wait begins, and no `trackStarted` or `/play-audio` when it continues ([tracking.md](tracking.md)). A track whose link failed before it ever started starts normally once it plays. | yes | yes |
 
 ## Broken tracks
 

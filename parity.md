@@ -38,8 +38,10 @@ When a feature lands on one platform, add its row here and open an issue for the
 |---|---|---|---|
 | Play, pause, stop, next, previous, seek | yes | yes | |
 | Previous: the previous track within 3 s, otherwise restart | yes | yes | [TR-01, TR-02](player/transport.md) |
-| Previous while shuffle is on | differs | differs | Not decided yet ([transport.md](player/transport.md)) |
-| Shuffle | yes | yes | Android keeps the choice in memory only |
+| Previous while shuffle is on | yes | differs: gap A5, Kickoman/QiYaa-android#NNN | Without repeats: the track before in the pass; Random track: the head's track before in source order ([SHUF-02, SHUF-07](player/shuffle.md)). Android has Without repeats only, and from the first track of a continuation goes to the last track of the pass |
+| Shuffle | yes | differs: gap A4, Kickoman/QiYaa-android#NNN | Orders the head only ([shuffle.md](player/shuffle.md)). Android keeps the pass when tracks of the head are removed ([SHUF-04](player/shuffle.md#either-algorithm)). The switch is kept with the queue: Android restores it with its saved queue; the desktop restores no queue and starts with shuffle off |
+| Shuffle algorithm: without repeats or random track | yes | no: Kickoman/QiYaa-android#NNN | [SHUF-06 to SHUF-09](player/shuffle.md); Android has only "without repeats", with no choice |
+| The algorithm is saved | yes | no: Kickoman/QiYaa-android#NNN | [SHUF-10](player/shuffle.md) |
 | Repeat (whole queue; no repeat-one) | yes | yes | [TR-06](player/transport.md) |
 | Gapless: the next track is fetched ahead and follows without silence | yes | unclear | Android relies on ExoPlayer's playlist |
 | Volume and balance | yes | yes | |

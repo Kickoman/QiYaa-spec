@@ -10,6 +10,7 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 | [tracking.md](tracking.md) | Play reports: `/play-audio` and the rotor feedback events | `TRK-` |
 | [errors.md](errors.md) | Network failures and broken tracks during playback | `ERR-` |
 | [transport.md](transport.md) | Previous, next, repeat, shuffle and seeking | `TR-` |
+| [shuffle.md](shuffle.md) | Shuffle: the pass without repeats, the random track, Previous with shuffle, the choice of algorithm | `SHUF-` |
 | [quality.md](quality.md) | The audio quality the user chooses, and what is known about lossless | `QUAL-` |
 
 ## Reading a scenario
@@ -46,8 +47,12 @@ scenario names its ID in its name or in a comment.
   are a wave with an empty head ([wave.md](wave.md)); a wave from history follows a head
   ([continuation.md](continuation.md)). A **wave track** is a track a wave gave.
 - **Current track**: the track under the cursor, whether it is playing, paused or stopped.
+- **Play order**: the order in which the queue plays: the head in its source order, or with
+  shuffle in the order of the chosen algorithm ([shuffle.md](shuffle.md)), then the continuation
+  in its own order.
 - **Remaining**: the number of tracks from the current one to the end of the queue in play order,
-  counting the current track.
+  counting the current track. It is endless while repeat holds the head (CONT-10) and with Random
+  track (SHUF-08).
 - **Source request**: a request that replaces the queue. It covers likes, a playlist, an album, an
   artist, a station, a wave and a search.
 - **Status**: a short message the user sees. On desktop this is the main window's status line,
@@ -62,3 +67,5 @@ issue is fixed, remove its tag from the scenario rows and delete the entry here.
 | Gap | App | What the app does instead | Scenarios | Issue |
 |---|---|---|---|---|
 | A2 | Android | A next track that ExoPlayer has already begun to load keeps the quality it was fetched in; the tracks after it follow the new choice. Replacing the loaded item would reshuffle ExoPlayer's shuffle order | QUAL-05 | Kickoman/QiYaa-android#76 |
+| A4 | Android | Removing tracks of the head keeps the pass: the removed tracks leave it and the others keep their order, so a track already heard does not come back in it | SHUF-04 | Kickoman/QiYaa-android#NNN |
+| A5 | Android | Previous on the first track of a continuation goes to the last track of the head's pass, not to the head track that was current last. The two differ when the user picked a track of the continuation before the pass ended | SHUF-02 | Kickoman/QiYaa-android#NNN |

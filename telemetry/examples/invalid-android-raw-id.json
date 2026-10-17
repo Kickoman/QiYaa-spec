@@ -1,0 +1,29 @@
+{
+  "app": "android",
+  "machine": "3f2b9c1d7a6e5048",
+  "events": [
+    {
+      "type": "start",
+      "at": "2026-10-17T10:00:00.000Z",
+      "session": "0d6e4c8a-6a3b-4f1e-9a57-3c2b1d0e9f84",
+      "version": "0.6.0",
+      "os": "android",
+      "osVersion": "14",
+      "sdk": 34,
+      "device": "Google Pixel 7",
+      "kernel": "5.10.198-android13-4-00050-g12f3388846c3-ab11920634",
+      "arch": "arm64",
+      "package": "apk",
+      "locale": "be_BY",
+      "language": "be",
+      "dpr": 2.625,
+      "theme": "amber",
+      "vis": "spectrum",
+      "equalizer": true,
+      "quality": "standard",
+      "qualityMetered": "economy",
+      "loggedIn": true,
+      "firstRun": false
+    }
+  ]
+}

@@ -2,9 +2,10 @@
 
 Anonymous usage statistics and crash reports, so the authors see which systems QiYaa runs on, what
 fails and what people use. Only builds made with telemetry have it (the desktop app's
-`QIYAA_WITH_TELEMETRY`, off by default; the releases on GitHub have it). In such a build it is on
-from the first start, and a switch in the menu turns it off. The Android app has none yet
-([parity](../parity.md)).
+`QIYAA_WITH_TELEMETRY`, the Android app's `-PqiyaaWithTelemetry=true`, both off by default; the
+releases on GitHub have it). In such a build it is on from the first start, and a switch turns it
+off: in the menu on the desktop, in the settings at the bottom of Library on Android. The Android
+app gets it in Kickoman/QiYaa-android#75 ([parity](../parity.md), [Android](#android)).
 
 The app posts batches of events to the jam server, which writes each event as a line of its log;
 the host's log store keeps them and draws the dashboard. The landing counts clicks on its download
@@ -14,7 +15,10 @@ buttons the same way ([below](#the-landing)).
 
 `POST <server>/api/telemetry` with `Content-Type: application/json` and a batch
 ([schemas/batch.schema.json](schemas/batch.schema.json), [examples](examples/)). `<server>` is
-the jam server the build names (`QIYAA_TELEMETRY_URL`), not the jam server chosen in the app.
+the jam server the build names (the desktop app's `QIYAA_TELEMETRY_URL`; the Android app's Gradle
+property `qiyaaTelemetryUrl`, by default `<qiyaaJamUrl>/api/telemetry`), not the jam server chosen
+in the app. A batch is of one app: `app` is `desktop` or `android`, and each carries only its own
+app's `start`, `exit` and `crash`.
 
 | Answer | Meaning | The app |
 |---|---|---|
@@ -31,6 +35,11 @@ the jam server the build names (`QIYAA_TELEMETRY_URL`), not the jam server chose
   `/var/lib/dbus/machine-id` on Linux, `MachineGuid` on Windows, `IOPlatformUUID` on macOS). The
   OS's id itself never leaves the machine, as `machine-id(5)` asks: an app derives its own. When
   the OS has no id, a random UUID is kept in the app's settings and hashed the same way.
+- On Android, `machine` is the same HMAC over `Settings.Secure.ANDROID_ID` as ASCII bytes. Since
+  Android 8 that id is 16 hex digits, one per app signing key, user and device. When there is
+  none, a random UUID is kept in the setting `telemetry/machine` and hashed the same way.
+- Test vectors for the hash: the id `abc` gives `3a8271ff2b263f300989f47f507a3804`; the Android
+  examples' machine, `97eaa8cc2fbe9a456389e6bd9d44a3fb`, is the `ANDROID_ID` `3f2b9c1d7a6e5048`.
 - `session`: a random UUID per run of the app.
 - `version`: the app's version in that run.
 
@@ -41,10 +50,10 @@ which the app could not send then (a crash report, the last `exit`).
 
 | `type` | When | What it adds |
 |---|---|---|
-| `start` | The app started | The system (`os`, `osName`, `osVersion`, `kernel`, `arch`, the `qt` it runs on, its `locale`), the build (`package`, `milkdropBuilt`, `jamBuilt`), the state it starts in (`language`, `scale`, `screens`, `dpr`, `skin`, `vis`, `equalizer`, `milkdropVisible`, `audioBackend`, `loggedIn`) and `firstRun` |
-| `exit` | The app closed normally | `seconds` it ran; `tracks` started; `playMinutes`; `milkdropMinutes` with the Milkdrop window shown; `jams` hosted; `errorsDropped` over the per-session limit |
-| `crash` | The next run, after a crash | `signal` (`SIGSEGV`, `SIGABRT`…, `EXCEPTION_ACCESS_VIOLATION`…, or `TERMINATE` for an uncaught exception), `frames`, `seconds` the crashed run lasted, `exceptionType` for `TERMINATE` |
-| `unclean_exit` | The next run, after a run that neither closed nor left a crash report | `seconds` it ran, to the last minute it noted |
+| `start` | The app started | The system (`os`, `osName`, `osVersion`, `kernel`, `arch`, the `qt` it runs on, its `locale`), the build (`package`, `milkdropBuilt`, `jamBuilt`), the state it starts in (`language`, `scale`, `screens`, `dpr`, `skin`, `vis`, `equalizer`, `milkdropVisible`, `audioBackend`, `loggedIn`) and `firstRun`. Android: the system (`os` `android`, `osVersion`, `sdk`, `device`, `kernel`, `arch`, the system's `locale`), the build (`package`: `apk` for a release build, `debug` otherwise), the state it starts in (`language`, `dpr`, `theme`, `vis`, `equalizer`, `quality`, `qualityMetered`, `loggedIn`) and `firstRun` |
+| `exit` | The app closed normally; Android: the next run, for a run that ended without a crash ([TEL-16](#the-app)) | `seconds` it ran (Android: on screen or playing); `tracks` started; `playMinutes`; `milkdropMinutes` with the Milkdrop window shown (desktop only); `jams` hosted; `errorsDropped` over the per-session limit |
+| `crash` | The next run, after a crash | `signal` (`SIGSEGV`, `SIGABRT`…, `EXCEPTION_ACCESS_VIOLATION`…, or `TERMINATE` for an uncaught exception; Android: `SIGNAL_<n>` for a signal with no name), `frames` (none for a native crash on Android), `seconds` the crashed run lasted ([Android](#android): two kinds), `exceptionType` for `TERMINATE` |
+| `unclean_exit` | The next run, after a run that neither closed nor left a crash report; Android: after an ANR, or a Java crash that left no report ([TEL-16](#the-app)) | `seconds` it ran, to the last minute it noted (Android: on screen or playing) |
 | `error` | Something failed | `area` and `kind` from the table below, `httpStatus` for `api` |
 | `feature` | A switch or a choice | `name` and `value` from the table below |
 
@@ -53,6 +62,19 @@ A frame is `<the module's file name>+0x<offset in it>` (`QiYaa+0x4f2a10`,
 module name may not have become `_`. Offsets do not
 change between machines for one build, so one bug gives one list of frames everywhere; with the
 build's debug symbols they turn into function names.
+
+On Android a frame is `<class>.<method>:<line>` of the root cause, the last exception of the
+`cause` chain (`io.github.kickoman.qiyaa.queue.QueueController.onFailure:291`); when the root
+cause has no frames, the outer exception's. The line is `0` when it is unknown or the method is
+native. Characters outside `A-Za-z0-9_$.<>-` become `_`; a frame over the length cuts its class
+and method and keeps `:<line>`. `exceptionType` is the root cause's class name
+(`java.lang.IllegalStateException`), left out when it does not fit; the exception's message is
+never sent. Release builds are minified with R8, so their frames arrive obfuscated as
+`<R8 class>.<R8 method>:<pc>` (ART gives the instruction's offset in place of the line), apart
+from the system's own (`java.*`, `android.*`). Like the desktop's debug symbols, the
+`mapping.txt` published with each release turns them back: write each frame `c.m:N` as a stack
+trace line `at c.m(SourceFile:N)` and run R8's `retrace` with the mapping of the event's
+`version`.
 
 | `error.area` | `kind` |
 |---|---|
@@ -73,13 +95,17 @@ build's debug symbols they turn into function names.
 | `equalizer` | `on`, `off` |
 | `vis` | `spectrum`, `oscilloscope`, `off` |
 
+Android has no skins and no Milkdrop: it sends neither the `skin` and `milkdrop` areas nor those
+features.
+
 ## Never sent
 
 The Yandex token, the account's name or id, track titles, artists, search texts, file paths (a
-skin from a file is `custom`), any error's or exception's text, the OS's own machine id, and the
-user's or the computer's name. The schema allows only the fields above, each with a pattern, so
-a batch with anything else is refused. The landing sends no id of the visitor and, of the page it
-was opened from, only the host.
+skin from a file is `custom`), any error's or exception's text (on Android, any exception's
+message or `toString()`), the OS's own machine id (on Android, the raw `ANDROID_ID`), and the
+user's or the computer's name (on Android, the name the user gave the device). The schema allows
+only the fields above, each with a pattern, so a batch with anything else is refused. The landing
+sends no id of the visitor and, of the page it was opened from, only the host.
 
 ## Limits
 
@@ -93,26 +119,41 @@ was opened from, only the host.
 | Batches from one IP | 30 a minute | server (429) |
 | Batches from one `machine` | 10 a minute | server (429) |
 
+## Android
+
+- A run is the app's process. Android ends processes by itself, so the app never "closes": the
+  app is in use while it is on screen or playing, and where the desktop closes, Android stops
+  being in use.
+- It sends at the start, every 5 minutes while in use, when it stops being in use and when the
+  network comes back; never while offline.
+- A run saves its counts every minute it is in use. The next run sends that run's `exit` from
+  them, or its `crash` or `unclean_exit` ([TEL-16](#the-app)).
+- Two kinds of `seconds`: a `crash` from the crash report counts the time since the process
+  started; `exit`, `unclean_exit` and a `crash` from Android's report count the time the run was
+  in use, to the last minute it saved.
+- It has no Milkdrop, no skins and no screenshot runs.
+
 ## The app
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| TEL-01 | A build without telemetry (the default) | — | No telemetry code, nothing is sent, the menu has no switch. | yes | n/a |
-| TEL-02 | A build with telemetry | The first start | Telemetry is on. The menu's switch turns it off: nothing more is sent, events waiting on disk are deleted. On again, new events go from then on. The choice is the app's setting. | yes | no |
-| TEL-03 | On | The app starts | `start` is queued. Waiting events go at the start, every 5 minutes and when the app closes (within the wait it already makes for its own requests). What did not go stays on disk for the next run. | yes | no |
+| TEL-01 | A build without telemetry (the default) | — | Nothing is recorded or sent and there is no switch. The desktop build has no telemetry code; the Android app has it but never starts it. | yes | no |
+| TEL-02 | A build with telemetry | The first start | Telemetry is on. The switch (desktop: the menu; Android: the bottom of Library) turns it off: nothing more is sent, events waiting on disk are deleted. On again, new events go from then on. The choice is the app's setting. | yes | no |
+| TEL-03 | On | The app starts | `start` is queued. Waiting events go at the start, every 5 minutes and when the app closes (within the wait it already makes for its own requests; on Android, "closes" is "stops being in use", see [Android](#android)). What did not go stays on disk for the next run. | yes | no |
 | TEL-04 | On, events sent | The answer | As in the transport table. More than 500 waiting: the oldest are dropped. | yes | no |
 | TEL-05 | On | The app crashes (a signal, an unhandled exception, an uncaught C++ exception) | The crash handler writes the signal or the exception's code, the frames and, for an uncaught exception, its type to a file. The next run sends `crash` with the crashed run's `session` and `version` before its own `start`. | yes | no |
-| TEL-06 | On | A run starts and the previous one neither closed nor left a crash report | `unclean_exit` with the previous run's `session`, `version` and `seconds`. | yes | no |
+| TEL-06 | On | A run starts and the previous one neither closed nor left a crash report | `unclean_exit` with the previous run's `session`, `version` and `seconds`. | yes | differs: TEL-16 |
 | TEL-07 | On | Something fails | `error` with the category; at most 50 in a session, the rest only counted. | yes | no |
-| TEL-08 | On | The app closes normally | `exit` with the session's counts. | yes | no |
+| TEL-08 | On | The app closes normally | `exit` with the session's counts. | yes | differs: TEL-16 |
 | TEL-09 | On | The user shows Milkdrop, starts or ends a jam, picks a skin, a language, the equalizer, a visualization | `feature`. | yes | no |
 | TEL-10 | Any build | A screenshot run, tests, temporary settings | Nothing is recorded or sent. | yes | no |
+| TEL-16 | Android, on | A run starts and an earlier run's files are on disk | Before its own `start`, the earlier run's waiting events and then how it ended: `crash` from its crash report; otherwise, on Android 11+, `crash` with the signal and no frames when Android reports a native crash, `unclean_exit` when it reports an ANR or a Java crash that left no report; otherwise `exit` with the counts the run saved, `seconds` being the time it was on screen or playing. A run that left neither a crash report nor counts gets no such event. | n/a | no |
 
 ## The server
 
 | ID | Given | When | Then |
 |---|---|---|---|
-| TEL-11 | — | A valid batch | 204. Each event becomes one log line: `service: qiyaa-desktop`, `stream: telemetry`, `event: app_<type>`, the level `error` for `crash`, `warn` for `error` and `unclean_exit`, `info` for the rest. The line holds `machine`, the client's address, the event's `at` as `client_at`, and the event's fields in snake_case. |
+| TEL-11 | — | A valid batch | 204. Each event becomes one log line: `service: qiyaa-desktop` or `qiyaa-android`, by the batch's `app`; `stream: telemetry`, `event: app_<type>`, the level `error` for `crash`, `warn` for `error` and `unclean_exit`, `info` for the rest. The line holds `machine`, the client's address, the event's `at` as `client_at`, and the event's fields in snake_case. |
 | TEL-12 | — | Not JSON, not a batch of the schema, over 64 KiB, or over a rate limit | 400, 400, 413 or 429 with `Retry-After`. Nothing of the body is logged, only the request itself. |
 
 ## The landing

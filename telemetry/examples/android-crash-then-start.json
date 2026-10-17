@@ -1,0 +1,49 @@
+{
+  "app": "android",
+  "machine": "97eaa8cc2fbe9a456389e6bd9d44a3fb",
+  "events": [
+    {
+      "type": "crash",
+      "at": "2026-10-17T09:59:58.000Z",
+      "session": "5b0f2e7c-91d4-4c3a-b8e6-2a7d9f1c0e53",
+      "version": "0.6.0",
+      "signal": "TERMINATE",
+      "frames": [
+        "io.github.kickoman.qiyaa.queue.QueueController.onFailure:291",
+        "io.github.kickoman.qiyaa.playback.Media3Engine$listener$1.onPlayerError:41",
+        "androidx.media3.common.util.ListenerSet$ListenerHolder.invoke:351",
+        "androidx.media3.common.util.ListenerSet.flushEvents:183",
+        "android.os.Handler.dispatchMessage:99",
+        "android.os.Looper.loopOnce:205",
+        "android.os.Looper.loop:294",
+        "android.app.ActivityThread.main:8177",
+        "java.lang.reflect.Method.invoke:0"
+      ],
+      "seconds": 5423,
+      "exceptionType": "java.lang.IllegalStateException"
+    },
+    {
+      "type": "start",
+      "at": "2026-10-17T10:00:00.000Z",
+      "session": "932ed840-cd47-4d41-af7c-cc89f199171f",
+      "version": "0.6.0",
+      "os": "android",
+      "osVersion": "14",
+      "sdk": 34,
+      "device": "Google Pixel 7",
+      "kernel": "5.10.198-android13-4-00050-g12f3388846c3-ab11920634",
+      "arch": "arm64",
+      "package": "apk",
+      "locale": "be_BY",
+      "language": "be",
+      "dpr": 2.625,
+      "theme": "amber",
+      "vis": "spectrum",
+      "equalizer": true,
+      "quality": "standard",
+      "qualityMetered": "economy",
+      "loggedIn": true,
+      "firstRun": false
+    }
+  ]
+}

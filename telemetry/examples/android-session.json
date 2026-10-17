@@ -1,0 +1,65 @@
+{
+  "app": "android",
+  "machine": "97eaa8cc2fbe9a456389e6bd9d44a3fb",
+  "events": [
+    {
+      "type": "unclean_exit",
+      "at": "2026-10-16T18:00:01.000Z",
+      "session": "026dd2da-999e-469f-ae7f-2a343875cd3e",
+      "version": "0.5.0",
+      "seconds": 840
+    },
+    {
+      "type": "error",
+      "at": "2026-10-16T18:12:40.000Z",
+      "session": "33691813-d7ab-47ec-b621-747be6192eee",
+      "version": "0.5.9",
+      "area": "playback",
+      "kind": "network"
+    },
+    {
+      "type": "error",
+      "at": "2026-10-16T18:13:05.000Z",
+      "session": "33691813-d7ab-47ec-b621-747be6192eee",
+      "version": "0.5.9",
+      "area": "api",
+      "kind": "http",
+      "httpStatus": 502
+    },
+    {
+      "type": "feature",
+      "at": "2026-10-16T18:15:00.000Z",
+      "session": "33691813-d7ab-47ec-b621-747be6192eee",
+      "version": "0.5.9",
+      "name": "equalizer",
+      "value": "off"
+    },
+    {
+      "type": "error",
+      "at": "2026-10-16T18:20:00.000Z",
+      "session": "33691813-d7ab-47ec-b621-747be6192eee",
+      "version": "0.5.9",
+      "area": "jam",
+      "kind": "server-full"
+    },
+    {
+      "type": "feature",
+      "at": "2026-10-16T18:22:30.000Z",
+      "session": "33691813-d7ab-47ec-b621-747be6192eee",
+      "version": "0.5.9",
+      "name": "jam",
+      "value": "on"
+    },
+    {
+      "type": "exit",
+      "at": "2026-10-17T10:00:00.000Z",
+      "session": "33691813-d7ab-47ec-b621-747be6192eee",
+      "version": "0.5.9",
+      "seconds": 6120,
+      "tracks": 23,
+      "playMinutes": 87,
+      "jams": 1,
+      "errorsDropped": 0
+    }
+  ]
+}

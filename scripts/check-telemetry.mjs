@@ -1,6 +1,7 @@
 // Validates telemetry/: the schema compiles, every example passes or fails as its name says,
 // every invalid example is explained in examples/README.md, every JSON file is formatted as the
-// spec requires, and the TEL- scenario IDs are unique.
+// spec requires, the TEL- scenario IDs are unique, and every scenario of the app gives its status
+// on the desktop and on Android.
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -37,8 +38,23 @@ for (const name of readdirSync(exampleDir).filter((file) => file.endsWith(".json
   }
 }
 
-const ids = [...readFileSync(join(root, "README.md"), "utf8").matchAll(/^\| (TEL-\d{2}) \|/gm)].map((m) => m[1]);
+const readme = readFileSync(join(root, "README.md"), "utf8");
+const ids = [...readme.matchAll(/^\| (TEL-\d{2}) \|/gm)].map((m) => m[1]);
 for (const id of ids.filter((id, index) => ids.indexOf(id) !== index)) failures.push(`${id}: defined twice`);
+
+const appSection = readme.split(/^## /m).find((section) => section.startsWith("The app\n")) ?? "";
+if (!appSection.includes("| TEL-")) failures.push(`README.md: no scenarios under "## The app"`);
+const status = /^(yes|no|n\/a|not checked|differs)(: .+)?$/;
+for (const row of appSection.split("\n").filter((line) => line.startsWith("| TEL-"))) {
+  const cells = row.split("|").slice(1, -1).map((cell) => cell.trim());
+  if (cells.length !== 6) {
+    failures.push(`${cells[0]}: ${cells.length} columns in "The app", not 6`);
+    continue;
+  }
+  for (const [column, value] of [["Desktop", cells[4]], ["Android", cells[5]]]) {
+    if (!status.test(value)) failures.push(`${cells[0]}: ${column} is "${value}", not yes, no, n/a, not checked or differs`);
+  }
+}
 
 if (failures.length) {
   console.error(failures.join("\n"));

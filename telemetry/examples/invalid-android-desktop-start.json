@@ -1,0 +1,33 @@
+{
+  "app": "android",
+  "machine": "97eaa8cc2fbe9a456389e6bd9d44a3fb",
+  "events": [
+    {
+      "type": "start",
+      "at": "2026-10-17T10:00:00.000Z",
+      "session": "0d6e4c8a-6a3b-4f1e-9a57-3c2b1d0e9f84",
+      "version": "0.6.0",
+      "os": "linux",
+      "osName": "Ubuntu 24.04.1 LTS",
+      "osVersion": "24.04",
+      "kernel": "6.8.0-45-generic",
+      "arch": "x86_64",
+      "qt": "6.4.2",
+      "package": "deb",
+      "locale": "be_BY",
+      "language": "be",
+      "scale": 2,
+      "screens": 1,
+      "dpr": 1,
+      "skin": "base",
+      "vis": "spectrum",
+      "equalizer": true,
+      "milkdropBuilt": true,
+      "milkdropVisible": false,
+      "jamBuilt": true,
+      "audioBackend": "PulseAudio",
+      "loggedIn": true,
+      "firstRun": false
+    }
+  ]
+}

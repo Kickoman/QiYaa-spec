@@ -1,0 +1,18 @@
+{
+  "app": "android",
+  "machine": "97eaa8cc2fbe9a456389e6bd9d44a3fb",
+  "events": [
+    {
+      "type": "crash",
+      "at": "2026-10-17T09:59:58.000Z",
+      "session": "5b0f2e7c-91d4-4c3a-b8e6-2a7d9f1c0e53",
+      "version": "0.6.0",
+      "signal": "TERMINATE",
+      "frames": [
+        "QiYaa+0x4f2a10"
+      ],
+      "seconds": 5423,
+      "exceptionType": "java.lang.IllegalStateException"
+    }
+  ]
+}

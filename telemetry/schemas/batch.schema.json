@@ -3,55 +3,111 @@
   "$id": "https://github.com/Kickoman/QiYaa-spec/telemetry/schemas/batch.schema.json",
   "title": "TelemetryBatch",
   "description": "One POST /api/telemetry: events of one machine, oldest first",
-  "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "app",
-    "machine",
-    "events"
-  ],
-  "properties": {
-    "app": {
-      "enum": [
-        "desktop"
-      ]
+  "oneOf": [
+    {
+      "$ref": "#/$defs/desktopBatch"
     },
-    "machine": {
-      "$ref": "#/$defs/machine"
-    },
-    "events": {
-      "type": "array",
-      "minItems": 1,
-      "maxItems": 50,
-      "items": {
-        "oneOf": [
-          {
-            "$ref": "#/$defs/start"
-          },
-          {
-            "$ref": "#/$defs/exit"
-          },
-          {
-            "$ref": "#/$defs/crash"
-          },
-          {
-            "$ref": "#/$defs/unclean_exit"
-          },
-          {
-            "$ref": "#/$defs/error"
-          },
-          {
-            "$ref": "#/$defs/feature"
-          }
-        ]
-      }
+    {
+      "$ref": "#/$defs/androidBatch"
     }
-  },
+  ],
   "$defs": {
+    "desktopBatch": {
+      "title": "DesktopBatch",
+      "description": "A batch of the desktop app",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "app",
+        "machine",
+        "events"
+      ],
+      "properties": {
+        "app": {
+          "const": "desktop"
+        },
+        "machine": {
+          "$ref": "#/$defs/machine"
+        },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/start"
+              },
+              {
+                "$ref": "#/$defs/exit"
+              },
+              {
+                "$ref": "#/$defs/crash"
+              },
+              {
+                "$ref": "#/$defs/unclean_exit"
+              },
+              {
+                "$ref": "#/$defs/error"
+              },
+              {
+                "$ref": "#/$defs/feature"
+              }
+            ]
+          }
+        }
+      }
+    },
+    "androidBatch": {
+      "title": "AndroidBatch",
+      "description": "A batch of the Android app",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "app",
+        "machine",
+        "events"
+      ],
+      "properties": {
+        "app": {
+          "const": "android"
+        },
+        "machine": {
+          "$ref": "#/$defs/machine"
+        },
+        "events": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 50,
+          "items": {
+            "oneOf": [
+              {
+                "$ref": "#/$defs/androidStart"
+              },
+              {
+                "$ref": "#/$defs/androidExit"
+              },
+              {
+                "$ref": "#/$defs/androidCrash"
+              },
+              {
+                "$ref": "#/$defs/unclean_exit"
+              },
+              {
+                "$ref": "#/$defs/error"
+              },
+              {
+                "$ref": "#/$defs/feature"
+              }
+            ]
+          }
+        }
+      }
+    },
     "machine": {
       "type": "string",
       "pattern": "^[0-9a-f]{32}$",
-      "description": "HMAC-SHA256 of the OS machine id with the app's key, first 16 bytes in hex"
+      "description": "HMAC-SHA256 of the OS machine id (Android: ANDROID_ID) with the app's key, first 16 bytes in hex"
     },
     "session": {
       "type": "string",
@@ -441,6 +497,237 @@
         "value": {
           "type": "string",
           "pattern": "^[A-Za-z0-9 ._-]{1,48}$"
+        }
+      }
+    },
+    "androidFrame": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9_$.<>-]{1,200}:[0-9]{1,7}$",
+      "description": "<class>.<method>:<line> of the root cause; the line is 0 when unknown or native"
+    },
+    "androidStart": {
+      "title": "AndroidStartEvent",
+      "description": "The Android app started: the phone, the build and the state it starts in",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "os",
+        "osVersion",
+        "sdk",
+        "device",
+        "kernel",
+        "arch",
+        "package",
+        "locale",
+        "language",
+        "dpr",
+        "theme",
+        "vis",
+        "equalizer",
+        "quality",
+        "qualityMetered",
+        "loggedIn",
+        "firstRun"
+      ],
+      "properties": {
+        "type": {
+          "const": "start"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "os": {
+          "const": "android"
+        },
+        "osVersion": {
+          "$ref": "#/$defs/text32",
+          "description": "Build.VERSION.RELEASE"
+        },
+        "sdk": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000,
+          "description": "Build.VERSION.SDK_INT"
+        },
+        "device": {
+          "type": "string",
+          "pattern": "^[\\x20-\\x7e]{1,64}$",
+          "description": "Build.MANUFACTURER and Build.MODEL, the manufacturer left out when the model starts with it"
+        },
+        "kernel": {
+          "$ref": "#/$defs/text64",
+          "description": "System.getProperty(\"os.version\")"
+        },
+        "arch": {
+          "type": "string",
+          "pattern": "^[a-z0-9_]{1,16}$",
+          "description": "Build.SUPPORTED_ABIS[0]: arm64-v8a is arm64, armeabi-v7a arm, x86 i386"
+        },
+        "package": {
+          "enum": [
+            "apk",
+            "debug"
+          ],
+          "description": "apk for a release build, debug otherwise"
+        },
+        "locale": {
+          "type": "string",
+          "pattern": "^(C|[a-z]{2,3}(_[A-Za-z0-9]{2,4})?)$",
+          "description": "The system's locale, not the app's language"
+        },
+        "language": {
+          "enum": [
+            "be",
+            "ru",
+            "en"
+          ]
+        },
+        "dpr": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 8
+        },
+        "theme": {
+          "enum": [
+            "green",
+            "amber",
+            "ice"
+          ]
+        },
+        "vis": {
+          "enum": [
+            "spectrum",
+            "oscilloscope",
+            "off"
+          ]
+        },
+        "equalizer": {
+          "type": "boolean"
+        },
+        "quality": {
+          "enum": [
+            "standard",
+            "economy"
+          ]
+        },
+        "qualityMetered": {
+          "enum": [
+            "standard",
+            "economy"
+          ],
+          "description": "The quality on a metered network"
+        },
+        "loggedIn": {
+          "type": "boolean"
+        },
+        "firstRun": {
+          "type": "boolean"
+        }
+      }
+    },
+    "androidExit": {
+      "title": "AndroidExitEvent",
+      "description": "The Android run named by session and version ended; the next run sends this",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "seconds",
+        "tracks",
+        "playMinutes",
+        "jams",
+        "errorsDropped"
+      ],
+      "properties": {
+        "type": {
+          "const": "exit"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "seconds": {
+          "$ref": "#/$defs/count",
+          "description": "How long it was on screen or playing, to the last minute it saved"
+        },
+        "tracks": {
+          "$ref": "#/$defs/count"
+        },
+        "playMinutes": {
+          "$ref": "#/$defs/count"
+        },
+        "jams": {
+          "$ref": "#/$defs/count"
+        },
+        "errorsDropped": {
+          "$ref": "#/$defs/count"
+        }
+      }
+    },
+    "androidCrash": {
+      "title": "AndroidCrashEvent",
+      "description": "The Android run named by session and version crashed: an uncaught exception, or a native crash Android reported; the next run sends this",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "at",
+        "session",
+        "version",
+        "signal",
+        "frames",
+        "seconds"
+      ],
+      "properties": {
+        "type": {
+          "const": "crash"
+        },
+        "at": {
+          "$ref": "#/$defs/at"
+        },
+        "session": {
+          "$ref": "#/$defs/session"
+        },
+        "version": {
+          "$ref": "#/$defs/version"
+        },
+        "signal": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{0,39}$"
+        },
+        "frames": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "$ref": "#/$defs/androidFrame"
+          }
+        },
+        "seconds": {
+          "$ref": "#/$defs/count",
+          "description": "From a crash report, how long the process had run; from Android's report, how long the run was on screen or playing"
+        },
+        "exceptionType": {
+          "type": "string",
+          "pattern": "^[A-Za-z_$][A-Za-z0-9_$.]{0,159}$",
+          "description": "The root cause's class name"
         }
       }
     }

@@ -12,6 +12,11 @@ whose files they are.
 The protocol is in [protocol/](protocol/README.md#listening-along), the numbers in
 [limits.md](limits.md#listening-along).
 
+Only the web guest listens along. The QiYaa guest plays nothing
+([GUEST-13](guest.md#the-guests-own-account)). Once Android has verified jam links
+([GUEST-21](guest.md#app-links)), a jam link opens the app on a phone that has it. The app's user
+then reaches listening along only by opening the link in a browser.
+
 ## The host
 
 | ID | Given | When | Then | Desktop | Android |

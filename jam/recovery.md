@@ -4,7 +4,7 @@ What happens when connections drop, when the host goes away, and when the server
 format and the terms are those of [room.md](room.md). The `resume` rules are in
 [protocol/](protocol/README.md#snapshot-and-resume). What the host app does while offline is in
 [host.md](host.md#without-the-server). **Client** marks scenarios that a guest client follows,
-with the issue of the web guest.
+with the issue of the web guest and the scenario of the QiYaa guest ([guest.md](guest.md)).
 
 ## The host goes away and comes back
 
@@ -38,5 +38,5 @@ with the issue of the web guest.
 | ID | Given | When | Then | Server |
 |---|---|---|---|---|
 | REC-13 | A guest's connection dropped | It reconnects and joins with its `participantId` | Its `publicId`, name and items are as before (ROOM-05). The first `state` of the new connection is taken whatever its `version` ([protocol](protocol/README.md#state)). | no: #7 |
-| REC-14 | A web guest was in a room | On reconnecting it gets `room-not-found` | It keeps reconnecting with the usual backoff for 10 min from the first `room-not-found`, since the host may raise the room (REC-06). After that it shows that the jam is not there and stops. **Client**: Kickoman/QiYaa-jam#16. | — |
-| REC-15 | A guest | It gets `ended` or `kicked` | It shows why and does not reconnect. **Client**: Kickoman/QiYaa-jam#16. | — |
+| REC-14 | A guest was in a room | On reconnecting it gets `room-not-found` | It sends `join` again with the guest backoff of [limits.md](limits.md#connections), for the room wait from the first `room-not-found`, since the host may raise the room (REC-06). `rate-limited` for its `join` is waited out the same way. After the room wait it shows that the jam is not there and stops. **Client**: Kickoman/QiYaa-jam#16, [GUEST-16](guest.md#connection-and-the-end). | — |
+| REC-15 | A guest | It gets `ended` or `kicked` | It shows why and does not reconnect. **Client**: Kickoman/QiYaa-jam#16, [GUEST-17](guest.md#connection-and-the-end). | — |

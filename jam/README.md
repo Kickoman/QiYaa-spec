@@ -15,6 +15,7 @@ server and both apps.
 | [recovery.md](recovery.md) | The host gone and back, raising a room from a snapshot, server restarts, guests reconnecting | `REC-` |
 | [seeds.md](seeds.md) | How the jam wave's seeds are chosen and when `seedsVersion` changes | `SEED-` |
 | [host.md](host.md) | What the host app does: the queue mirror over the host's own queue (the base), the jam wave, not learning, storage, offline, search for guests, the end | `HOST-` |
+| [guest.md](guest.md) | What the QiYaa app does as a guest: the link, joining, adding from its own account, what it shows, reconnecting and the end, hosting and being a guest, App Links | `GUEST-` |
 | [listen.md](listen.md) | Guests listening along on their own devices: what the host sends, the server keeps and the web guest plays | `LISTEN-` |
 
 ## Rules

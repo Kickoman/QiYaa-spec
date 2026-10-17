@@ -19,6 +19,9 @@ that side enforces or follows it.
 | Protocol violations (closes with 1008 or 1009) before a ban | 3 from one IP | server |
 | Ban | 10 min | server |
 | Reconnect backoff | 1, 2, 4 … 30 s; at once when the network returns | client |
+| Guest backoff: a guest that was in the room sends `join` again on the open connection after `room-not-found` or `rate-limited` | 5, 10, 20, 30, 30 … s, each ±20 % | client |
+| Room wait: a guest that was in the room stops sending `join` again | 10 min after the first `room-not-found` | client |
+| Membership life: a QiYaa guest keeps a room's `participantId`, name and join secret | 12 h from the first join, or until sign-out | client |
 
 ## Rooms
 

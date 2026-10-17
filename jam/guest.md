@@ -34,6 +34,7 @@ The table is the one from [player/README.md](../player/README.md#reading-a-scena
   first join (GUEST-03).
 - **Guest session**: the room the app shows as a guest, from opening a link until the user
   leaves, a `join` is refused for good, or `ended` or `kicked` arrives. The app has at most one.
+  A link that has no secret and no membership (GUEST-05) opens none.
 - **In the room**: the guest session got `joined`. It stays in the room while its connection
   drops and comes back (GUEST-15) and while it waits for the room (GUEST-16).
 - **Connected**: in the room, with an open connection whose `join` got `joined`.

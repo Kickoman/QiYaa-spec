@@ -39,10 +39,10 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Play, pause, stop, next, previous, seek | yes | yes | |
 | Seeking: the position shows the target at once; a seek into the downloaded part does not wait for a stalled download | yes | differs: gap A3, Kickoman/QiYaa-android#89 | [TR-08, TR-09](player/transport.md); Android holds at most the last 10 minutes before the play position (TR-09); TR-08 is not checked on a device yet (Kickoman/QiYaa-android#91) |
 | Previous: the previous track within 3 s, otherwise restart | yes | yes | [TR-01, TR-02](player/transport.md) |
-| Previous while shuffle is on | yes | differs: gap A5, Kickoman/QiYaa-android#99 | Without repeats: the track before in the pass; Random track: the head's track before in source order ([SHUF-02, SHUF-07](player/shuffle.md)). Android has Without repeats only, and from the first track of a continuation goes to the last track of the pass |
-| Shuffle | yes | differs: gap A4, Kickoman/QiYaa-android#99 | Orders the head only ([shuffle.md](player/shuffle.md)). Android keeps the pass when tracks of the head are removed ([SHUF-04](player/shuffle.md#either-algorithm)). The switch is kept with the queue: Android restores it with its saved queue; the desktop restores no queue and starts with shuffle off |
-| Shuffle algorithm: without repeats or random track | yes | no: Kickoman/QiYaa-android#99 | [SHUF-06 to SHUF-09](player/shuffle.md); Android has only "without repeats", with no choice |
-| The algorithm is saved | yes | no: Kickoman/QiYaa-android#99 | [SHUF-10](player/shuffle.md) |
+| Previous while shuffle is on | yes | yes | Without repeats: the track before in the pass; Random track: the head's track before in source order ([SHUF-02, SHUF-07](player/shuffle.md)) |
+| Shuffle | yes | yes | Orders the head only ([shuffle.md](player/shuffle.md)). Android: the track fetched ahead (SHUF-05) is not checked on a device yet (Kickoman/QiYaa-android#91). The switch is kept with the queue: Android restores it with its saved queue; the desktop restores no queue and starts with shuffle off |
+| Shuffle algorithm: without repeats or random track | yes | yes | [SHUF-06 to SHUF-09](player/shuffle.md); the desktop chooses in the main menu, Android in the library |
+| The algorithm is saved | yes | yes | [SHUF-10](player/shuffle.md) |
 | Repeat (whole queue; no repeat-one) | yes | yes | [TR-06](player/transport.md) |
 | Gapless: the next track is fetched ahead and follows without silence | yes | not checked: Kickoman/QiYaa-android#91 | Android: ExoPlayer's playlist. The next track's link is signed and its download starts once the current file is downloaded, about a minute or more before the end (up to about 3 min at economy), and the next track plays on in the same audio output. Not across the head's wrap of CONT-10 while vibe tracks wait: Android pauses at the head's end |
 | Volume and balance | yes | yes | |

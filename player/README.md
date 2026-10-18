@@ -64,6 +64,4 @@ scenario names its ID in its name or in a comment.
 Where an app does not follow a scenario. Each entry is closed by the issue it links. When an
 issue is fixed, remove its tag from the scenario rows and delete the entry here.
 
-| Gap | App | What the app does instead | Scenarios | Issue |
-|---|---|---|---|---|
-| A3 | Android | A seek plays at once from what the player holds of the current track: the last 10 minutes before the play position and the part downloaded after it. A seek further back in a longer track reads the file again and waits for the network. So does a seek back to before an earlier seek past the downloaded part: that seek started a new download and dropped what was held. Once the network status of ERR-03 shows, the player holds nothing, and any seek waits for the network. Keeping more costs the phone's memory, about 2.4 MB a minute at 320 kbps | TR-09 | Kickoman/QiYaa-android#89 |
+None at the moment: both apps follow every scenario that is checked for them.

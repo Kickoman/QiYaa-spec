@@ -37,7 +37,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
 | Play, pause, stop, next, previous, seek | yes | yes | |
-| Seeking: the position shows the target at once; a seek into the downloaded part does not wait for a stalled download | yes | differs: gap A3, Kickoman/QiYaa-android#89 | [TR-08, TR-09](player/transport.md); Android holds at most the last 10 minutes before the play position (TR-09); TR-08 is not checked on a device yet (Kickoman/QiYaa-android#91) |
+| Seeking: the position shows the target at once; a seek into the downloaded part does not wait for a stalled download | yes | not checked: Kickoman/QiYaa-android#91 | [TR-08, TR-09](player/transport.md); Android keeps the last 10 minutes in memory and the current track's download on disk, up to 512 MiB (about 3 h 43 min at 320 kbps); not checked on a device yet |
 | Previous: the previous track within 3 s, otherwise restart | yes | yes | [TR-01, TR-02](player/transport.md) |
 | Previous while shuffle is on | yes | yes | Without repeats: the track before in the pass; Random track: the head's track before in source order ([SHUF-02, SHUF-07](player/shuffle.md)) |
 | Shuffle | yes | yes | Orders the head only ([shuffle.md](player/shuffle.md)). Android: the track fetched ahead (SHUF-05) is not checked on a device yet (Kickoman/QiYaa-android#91). The switch is kept with the queue: Android restores it with its saved queue; the desktop restores no queue and starts with shuffle off |

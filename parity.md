@@ -143,7 +143,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Paste a token or a URL with `#access_token=` | yes | yes | |
 | Token from a file or `QIYAA_TOKEN` | yes | n/a | |
 | Log out | yes | yes | |
-| Covers cached on disk | yes | not checked: Kickoman/QiYaa-android#91 | Android: Coil's disk cache in the app's cache folder (2% of the storage size, 10 to 250 MB, so 250 MB on a phone with 12.5 GB of storage or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
+| Covers cached on disk | yes | not checked: Kickoman/QiYaa-android#91 | Android: Coil's disk cache in the app's cache folder (2% of the size of the data partition, 10 to 250 MiB, so 250 MiB on a data partition of 12.5 GiB or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
 | Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | not checked: Kickoman/QiYaa-android#91 (builds with `-PqiyaaWithTelemetry=true`; the jam server accepts Android batches once Kickoman/QiYaa-jam#19 is deployed) | [telemetry/](telemetry/README.md) |
 

@@ -44,7 +44,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Shuffle algorithm: without repeats or random track | yes | no: Kickoman/QiYaa-android#99 | [SHUF-06 to SHUF-09](player/shuffle.md); Android has only "without repeats", with no choice |
 | The algorithm is saved | yes | no: Kickoman/QiYaa-android#99 | [SHUF-10](player/shuffle.md) |
 | Repeat (whole queue; no repeat-one) | yes | yes | [TR-06](player/transport.md) |
-| Gapless: the next track is fetched ahead and follows without silence | yes | unclear | Android relies on ExoPlayer's playlist |
+| Gapless: the next track is fetched ahead and follows without silence | yes | not checked: Kickoman/QiYaa-android#91 | Android: ExoPlayer's playlist. The next track's link is signed and its download starts once the current file is downloaded, about a minute or more before the end (up to about 3 min at economy), and the next track plays on in the same audio output. Not across the head's wrap of CONT-10 while vibe tracks wait: Android pauses at the head's end |
 | Volume and balance | yes | yes | |
 | Bitrate, sample rate and channels shown | yes | yes | |
 | Quality: standard or economy (HE-AAC 64 kbps) | yes | not checked: Kickoman/QiYaa-android#91 | [quality.md](player/quality.md); Android: QUAL-05 (a preloaded next track fetched again) waits for a check on a phone |
@@ -143,7 +143,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Paste a token or a URL with `#access_token=` | yes | yes | |
 | Token from a file or `QIYAA_TOKEN` | yes | n/a | |
 | Log out | yes | yes | |
-| Covers cached on disk | yes | unclear | |
+| Covers cached on disk | yes | not checked: Kickoman/QiYaa-android#91 | Android: Coil's disk cache in the app's cache folder (2% of the storage size, 10 to 250 MB, so 250 MB on a phone with 12.5 GB of storage or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
 | Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | not checked: Kickoman/QiYaa-android#91 (builds with `-PqiyaaWithTelemetry=true`; the jam server accepts Android batches once Kickoman/QiYaa-jam#19 is deployed) | [telemetry/](telemetry/README.md) |
 

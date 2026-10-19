@@ -1,0 +1,8 @@
+{
+  "type": "create",
+  "id": "h1",
+  "hostName": "Маша ",
+  "settings": {
+    "order": "fifo"
+  }
+}

@@ -12,6 +12,7 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `rejected/invalid-unknown-reason.json` | `reason` is not in the reason table. |
 | `ack/invalid-no-id.json` | `id` is missing: an `ack` always answers a request. |
 | `create/invalid-long-name.json` | `hostName` is longer than 24 characters. |
+| `create/invalid-name-ending-in-nbsp.json` | `hostName` ends in a no-break space (U+00A0), white space to the pattern's `\s` like any other. |
 | `created/invalid-url-without-secret.json` | `joinUrl` has no `#<joinSecret>` fragment. |
 | `resume/invalid-snapshot-with-join-secret.json` | The snapshot carries `joinSecret`; a snapshot holds secrets only as hashes. |
 | `resume/invalid-outbox-with-playing.json` | The outbox holds only `started` events. |
@@ -24,9 +25,11 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `playing/invalid-host-track-with-next-url.json` | Nor a `listenNextUrl` next to such a track: a guest that listens has paused. |
 | `playing/invalid-host-track-with-cover.json` | A `host` track has no `coverUri`: the cover template is the Yandex catalog's. |
 | `started/invalid-number-id.json` | `itemId` is not `i` + a number. |
+| `started/invalid-item-id-with-newline.json` | `itemId` ends in a line feed: a pattern covers the whole string, so `$` is its end, not the place before a final line feed. |
 | `add/invalid-both.json` | Both `trackId` and `track`: exactly one of them is allowed. |
 | `add/invalid-neither.json` | Neither `trackId` nor `track`. |
 | `add/invalid-cover-without-size.json` | `coverUri` is not a template: it has no `%%` for the size. |
+| `add/invalid-cover-with-nbsp.json` | `coverUri` ends in a no-break space (U+00A0), and `\S` does not take it: `\s` is ECMAScript's white space. |
 | `pin/invalid-no-item-id.json` | `itemId` is missing. |
 | `remove/invalid-no-id.json` | `id` is missing: every request carries one. |
 | `kick/invalid-participant-id.json` | A guest is named by `publicId`; the host never sees a `participantId`. |
@@ -41,10 +44,12 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `validateResult/invalid-no-results.json` | `results` is empty. |
 | `validateResult/invalid-host-track.json` | A checked track is a track of the Yandex catalog, never a `host` one. |
 | `join/invalid-name-with-spaces.json` | `name` has spaces at its ends: the client trims it before sending. |
+| `join/invalid-name-ending-in-bom.json` | `name` ends in U+FEFF, white space in ECMAScript though not by Unicode properties. |
 | `join/invalid-participant-not-uuid.json` | `participantId` is not a UUID v4. |
 | `join/invalid-upper-case-room.json` | `roomId` is upper case; room ids are lower-case Crockford base32. |
 | `search/invalid-blank.json` | `text` is only spaces. |
 | `search/invalid-too-long.json` | `text` is longer than 100 characters. |
+| `search/invalid-control-character.json` | `text` has a control character (U+0001). |
 | `skip/invalid-no-item-id.json` | `itemId` is missing: a skip names the item it means. |
 | `searchResults/invalid-no-tracks.json` | `tracks` is missing; an empty result is `[]`. |
 | `validateRequest/invalid-empty.json` | `trackIds` is empty. |

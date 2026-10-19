@@ -72,7 +72,7 @@ that side enforces or follows it.
 | What | Value | Enforced by |
 |---|---|---|
 | Participant name, `hostName` | 1–24 characters, no spaces at the ends, no control characters; clients trim | schema |
-| Search text | 1–100 characters, not only spaces | schema |
+| Search text | 1–100 characters, not only spaces, no control characters | schema |
 | Request `id`, `requestId` | 1–36 characters of `A-Z a-z 0-9 _ -` | schema |
 | Track `title` | 1–150 characters | schema |
 | Track `artists` | at most 10 names of 1–64 characters; senders cut longer ones | schema |

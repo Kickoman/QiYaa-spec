@@ -257,6 +257,10 @@ Reconnecting waits 1, 2, 4 … up to 30 s, and happens at once when the network 
   folder. json-schema-to-typescript needs `cwd` set to the folder of the file it compiles.
 - `title` is the type name (`AddMessage`, `Track`, `SnapshotRoom`), `description` says what it is.
 - A `$ref` never has sibling keywords; composition goes through `allOf`.
+- A `pattern` is an ECMAScript regular expression with the `u` flag, as Ajv runs it. A decoder
+  written by hand must read it the same way: the pattern covers the whole string, so `$` is its end
+  and not also the place before a final line feed, and `\s` is ECMAScript's white space, U+00A0 and
+  U+FEFF included, U+0085 not. The examples check both (`examples/README.md`).
 - A large `maxItems` (the queue's 300) turns into a union of tuples unless the generator is told not
   to (`maxItems: -1` in json-schema-to-typescript).
 

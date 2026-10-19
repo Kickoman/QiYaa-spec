@@ -50,7 +50,7 @@
       "type": "string",
       "minLength": 1,
       "maxLength": 100,
-      "pattern": "^[^\\u0000-\\u001F\\u007F]*\\S[^\\u0000-\\u001F\\u007F]*$"
+      "pattern": "^[^\\u0000-\\u001F\\u007F]*[^\\s\\u0000-\\u001F\\u007F][^\\u0000-\\u001F\\u007F]*$"
     },
     "time": {
       "type": "integer",

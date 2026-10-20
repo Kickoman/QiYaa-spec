@@ -31,7 +31,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Empty source, or one whose tracks are all unavailable, keeps the queue | yes | yes | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
-| Local files and folders: open files or a folder, tags and covers, read from the disk; no wave from history after them | no: Kickoman/QiYaa#30 | no: Kickoman/QiYaa-android#111 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag) |
+| Local files and folders: open files or a folder, tags and covers, read from the disk; no wave from history after them | yes | no: Kickoman/QiYaa-android#111 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag) |
 
 ## Playback
 
@@ -160,7 +160,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 | Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | yes | yes | |
 | The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own; the host edits the base during the jam | yes | yes | [HOST-10 to HOST-14, HOST-21, HOST-32, HOST-36](jam/host.md#the-base) |
 | Guests listen along on the jam page: the host shares the files it plays | yes | yes | [jam/listen.md](jam/listen.md); off by default, the host's subscription's files |
-| A base track that is not from the Yandex catalog (a local file) plays in the jam: guests see its title and artists, with no cover and no listening along | yes | n/a | [HOST-37](jam/host.md#the-base), [LISTEN-14](jam/listen.md#the-host), `track.source: host` in the [protocol](jam/protocol/README.md#tracks); Android plays only tracks of the Yandex catalog, and on the desktop no source gives such a track before the local files of Kickoman/QiYaa#30 |
+| A base track that is not from the Yandex catalog (a local file) plays in the jam: guests see its title and artists, with no cover and no listening along | yes | n/a | [HOST-37](jam/host.md#the-base), [LISTEN-14](jam/listen.md#the-host), `track.source: host` in the [protocol](jam/protocol/README.md#tracks); Android plays only tracks of the Yandex catalog; on the desktop these are local files ([local.md](player/local.md)) |
 | Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | not checked: Kickoman/QiYaa-android#91 | [jam/guest.md](jam/guest.md); browser guests need no app |
 
 ## Desktop only: running without an account

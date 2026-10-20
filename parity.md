@@ -31,6 +31,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Empty source, or one whose tracks are all unavailable, keeps the queue | yes | yes | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
+| Local files and folders: open files or a folder, tags and covers, read from the disk; no wave from history after them | no: Kickoman/QiYaa#30 | no: Kickoman/QiYaa-android#111 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag) |
 
 ## Playback
 

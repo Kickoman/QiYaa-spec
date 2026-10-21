@@ -9,7 +9,8 @@ input and compares.
 
 - `limits`: `maxBytes` (a text over it, in UTF-8, is not taken), `maxLines` (the lines kept, after
   the time tags are expanded), `maxLineCharacters` (a line is cut after this many characters,
-  counted as UTF-16 code units, as both apps' strings count them).
+  counted as UTF-16 code units, as both apps' strings count them; a surrogate pair that the cut
+  would split is left out whole).
 - `cases[]`: `{name, text, kind, lines}`.
   - `kind` is `synced`, `plain`, or `null` when the text gives nothing to show.
   - `lines[]` is `{ms, text}`, with `ms` `null` in a plain text.

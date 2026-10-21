@@ -108,8 +108,9 @@ features nor the lyrics counts.
 What the lyrics view ([player/lyrics.md](../player/lyrics.md)) found, as counts in `exit`. They are
 there only when the session looked up at least one track, and then all of them are.
 
-- **A lookup** is one track in the open view for which at least one request went out. An answer
-  from memory (LYR-14) is not a lookup.
+- **A lookup** is one track in the open view that the app asked its source or the service about.
+  A track whose answers all come from memory (LYR-14) is not a lookup. A Yandex track asked about
+  without a login is one, and ends with no text.
   - Opening the view during a track starts a lookup of it.
   - Turning the service on during a track (LYR-15) starts a new lookup of the same track.
 - **A lookup ends** when everyone asked has answered or the waits are over, when the track

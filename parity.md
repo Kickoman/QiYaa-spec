@@ -38,17 +38,17 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
 | Play, pause, stop, next, previous, seek | yes | yes | |
-| Seeking: the position shows the target at once; a seek into the downloaded part does not wait for a stalled download | yes | not checked: Kickoman/QiYaa-android#91 | [TR-08, TR-09](player/transport.md); Android keeps the last 10 minutes in memory and the current track's download on disk, up to 512 MiB (about 3 h 43 min at 320 kbps); not checked on a device yet |
+| Seeking: the position shows the target at once; a seek into the downloaded part does not wait for a stalled download | yes | yes | [TR-08, TR-09](player/transport.md); Android keeps the last 10 minutes in memory and the current track's download on disk, up to 512 MiB (about 3 h 43 min at 320 kbps) |
 | Previous: the previous track within 3 s, otherwise restart | yes | yes | [TR-01, TR-02](player/transport.md) |
 | Previous while shuffle is on | yes | yes | Without repeats: the track before in the pass; Random track: the head's track before in source order ([SHUF-02, SHUF-07](player/shuffle.md)) |
-| Shuffle | yes | yes | Orders the head only ([shuffle.md](player/shuffle.md)). Android: the track fetched ahead (SHUF-05) is not checked on a device yet (Kickoman/QiYaa-android#91). The switch is kept with the queue: Android restores it with its saved queue; the desktop restores no queue and starts with shuffle off |
+| Shuffle | yes | yes | Orders the head only ([shuffle.md](player/shuffle.md)). Android: at the head's wrap of CONT-10 while vibe tracks wait, the track fetched ahead is the first vibe track, while the wrap plays the head's first one after a pause (see Gapless). The switch is kept with the queue: Android restores it with its saved queue; the desktop restores no queue and starts with shuffle off |
 | Shuffle algorithm: without repeats or random track | yes | yes | [SHUF-06 to SHUF-09](player/shuffle.md); the desktop chooses in the main menu, Android in the library |
 | The algorithm is saved | yes | yes | [SHUF-10](player/shuffle.md) |
 | Repeat (whole queue; no repeat-one) | yes | yes | [TR-06](player/transport.md) |
-| Gapless: the next track is fetched ahead and follows without silence | yes | not checked: Kickoman/QiYaa-android#91 | Android: ExoPlayer's playlist. The next track's link is signed and its download starts once the current file is downloaded, about a minute or more before the end (up to about 3 min at economy), and the next track plays on in the same audio output. Not across the head's wrap of CONT-10 while vibe tracks wait: Android pauses at the head's end |
+| Gapless: the next track is fetched ahead and follows without silence | yes | yes | Android: ExoPlayer's playlist. The next track's link is signed and its download starts once the current file is downloaded, about a minute or more before the end (up to about 3 min at economy), and the next track plays on in the same audio output. Not across the head's wrap of CONT-10 while vibe tracks wait: Android pauses at the head's end |
 | Volume and balance | yes | yes | |
 | Bitrate, sample rate and channels shown | yes | yes | |
-| Quality: standard or economy (HE-AAC 64 kbps) | yes | not checked: Kickoman/QiYaa-android#91 | [quality.md](player/quality.md); Android: QUAL-05 (a preloaded next track fetched again) waits for a check on a phone |
+| Quality: standard or economy (HE-AAC 64 kbps) | yes | yes | [quality.md](player/quality.md) |
 | Separate quality for Wi-Fi and mobile data | n/a | yes | [QUAL-07](player/quality.md) |
 | Lossless | no | no | Waits for a tester with access to lossless ([quality.md](player/quality.md#lossless-not-yet), #1) |
 | Elapsed or remaining time | yes | yes | |
@@ -144,9 +144,9 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Paste a token or a URL with `#access_token=` | yes | yes | |
 | Token from a file or `QIYAA_TOKEN` | yes | n/a | |
 | Log out | yes | yes | |
-| Covers cached on disk | yes | not checked: Kickoman/QiYaa-android#91 | Android: Coil's disk cache in the app's cache folder (2% of the size of the data partition, 10 to 250 MiB, so 250 MiB on a data partition of 12.5 GiB or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
+| Covers cached on disk | yes | yes | Android: Coil's disk cache in the app's cache folder (2% of the size of the data partition, 10 to 250 MiB, so 250 MiB on a data partition of 12.5 GiB or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
-| Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | not checked: Kickoman/QiYaa-android#91 (builds with `-PqiyaaWithTelemetry=true`; the jam server accepts Android batches once Kickoman/QiYaa-jam#19 is deployed) | [telemetry/](telemetry/README.md) |
+| Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | yes (builds with `-PqiyaaWithTelemetry=true`) | [telemetry/](telemetry/README.md) |
 
 ## Jam
 
@@ -161,7 +161,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 | The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own; the host edits the base during the jam | yes | yes | [HOST-10 to HOST-14, HOST-21, HOST-32, HOST-36](jam/host.md#the-base) |
 | Guests listen along on the jam page: the host shares the files it plays | yes | yes | [jam/listen.md](jam/listen.md); off by default, the host's subscription's files |
 | A base track that is not from the Yandex catalog (a local file) plays in the jam: guests see its title and artists, with no cover and no listening along | yes | n/a | [HOST-37](jam/host.md#the-base), [LISTEN-14](jam/listen.md#the-host), `track.source: host` in the [protocol](jam/protocol/README.md#tracks); Android plays only tracks of the Yandex catalog; on the desktop these are local files ([local.md](player/local.md)) |
-| Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | not checked: Kickoman/QiYaa-android#91 | [jam/guest.md](jam/guest.md); browser guests need no app |
+| Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | yes | [jam/guest.md](jam/guest.md); browser guests need no app |
 
 ## Desktop only: running without an account
 

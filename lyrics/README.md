@@ -17,7 +17,8 @@ input and compares.
 ## The rules
 
 **Lines.** The text is split at `\r\n`, `\r` and `\n`, after a leading byte order mark is
-dropped. Each line is trimmed of white space at both ends and cut to `maxLineCharacters`.
+dropped. Each line is trimmed of white space at both ends. What a line shows, after its time tags
+and word tags are taken off and it is trimmed again, is cut to `maxLineCharacters`.
 
 **Time tags.** A time tag is `[m:ss]`, `[m:ss.f]` or `[m:ss:f]`.
 - `m` is one or more digits.

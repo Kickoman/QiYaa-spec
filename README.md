@@ -14,6 +14,8 @@ both apps read.
 | [fixtures/yandex/](fixtures/yandex/README.md) | Yandex Music API responses as the server sends them | QiYaa#3 |
 | [expected/yandex/](expected/yandex/README.md) | What parsing each fixture must produce, in neutral JSON | QiYaa#3 |
 | [dsp/](dsp/README.md) | Reference vectors for the equalizer and the spectrum, with tolerances | QiYaa#4 |
+| [lyrics/](lyrics/README.md) | How a lyrics text (LRC or plain) becomes the lines the lyrics view shows | QiYaa#51 |
+| [fixtures/lrclib/](fixtures/lrclib/README.md) | Replies of LRCLIB, the lyrics service; [expected/lrclib/](expected/lrclib/README.md) holds what the app must make of them | QiYaa#51 |
 | [parity.md](parity.md) | Feature × platform table | QiYaa#7 |
 | [jam/](jam/README.md) | The jam (a shared queue): protocol, limits, room and host scenarios | QiYaa-jam#3 to #5 |
 | [telemetry/](telemetry/README.md) | Usage statistics and crash reports: the batch the apps post, the events, what is never sent; the landing's download clicks | — |

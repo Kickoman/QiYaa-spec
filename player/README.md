@@ -13,6 +13,7 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 | [shuffle.md](shuffle.md) | Shuffle: the pass without repeats, the random track, Previous with shuffle, the choice of algorithm | `SHUF-` |
 | [quality.md](quality.md) | The audio quality the user chooses, and what is known about lossless | `QUAL-` |
 | [local.md](local.md) | Local files: opening files and a folder, their tags and covers, reading from the disk | `LOCAL-` |
+| [lyrics.md](lyrics.md) | Lyrics: the text of the current track from its source or a lyrics service, synced lines and seeking by them | `LYR-` |
 
 ## Reading a scenario
 

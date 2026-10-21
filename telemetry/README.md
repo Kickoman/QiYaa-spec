@@ -51,7 +51,7 @@ which the app could not send then (a crash report, the last `exit`).
 | `type` | When | What it adds |
 |---|---|---|
 | `start` | The app started | The system (`os`, `osName`, `osVersion`, `kernel`, `arch`, the `qt` it runs on, its `locale`), the build (`package`, `milkdropBuilt`, `jamBuilt`), the state it starts in (`language`, `scale`, `screens`, `dpr`, `skin`, `vis`, `equalizer`, `milkdropVisible`, `audioBackend`, `loggedIn`) and `firstRun`. Android: the system (`os` `android`, `osVersion`, `sdk`, `device`, `kernel`, `arch`, the system's `locale`), the build (`package`: `apk` for a release build, `debug` otherwise), the state it starts in (`language`, `dpr`, `theme`, `vis`, `equalizer`, `quality`, `qualityMetered`, `loggedIn`) and `firstRun` |
-| `exit` | The app closed normally; Android: the next run, for a run that ended without a crash ([TEL-16](#the-app)) | `seconds` it ran (Android: on screen or playing); `tracks` started; `playMinutes`; `milkdropMinutes` with the Milkdrop window shown (desktop only); `jams` hosted; `errorsDropped` over the per-session limit |
+| `exit` | The app closed normally; Android: the next run, for a run that ended without a crash ([TEL-16](#the-app)) | `seconds` it ran (Android: on screen or playing); `tracks` started; `playMinutes`; `milkdropMinutes` with the Milkdrop window shown (desktop only); `jams` hosted; `errorsDropped` over the per-session limit; the [lyrics counts](#lyrics-counts) when the lyrics view looked anything up (desktop only) |
 | `crash` | The next run, after a crash | `signal` (`SIGSEGV`, `SIGABRT`…, `EXCEPTION_ACCESS_VIOLATION`…, or `TERMINATE` for an uncaught exception; Android: `SIGNAL_<n>` for a signal with no name), `frames` (none for a native crash on Android), `seconds` the crashed run lasted ([Android](#android): two kinds), `exceptionType` for `TERMINATE` |
 | `unclean_exit` | The next run, after a run that neither closed nor left a crash report; Android: after an ANR, or a Java crash that left no report ([TEL-16](#the-app)) | `seconds` it ran, to the last minute it noted (Android: on screen or playing) |
 | `error` | Something failed | `area` and `kind` from the table below, `httpStatus` for `api` |
@@ -94,13 +94,42 @@ trace line `at c.m(SourceFile:N)` and run R8's `retrace` with the mapping of the
 | `language` | `be`, `ru`, `en` |
 | `equalizer` | `on`, `off` |
 | `vis` | `spectrum`, `oscilloscope`, `off` |
+| `lyrics` | `on`, `off` (the lyrics view shown or hidden) |
+| `lyrics-services` | `on`, `off` (lyrics from a service such as LRCLIB turned on or off, [lyrics.md](../player/lyrics.md)) |
 
 Android has no skins and no Milkdrop: it sends neither the `skin` and `milkdrop` areas nor those
-features.
+features. It has no lyrics view yet (Kickoman/QiYaa-android#112), so it sends neither the `lyrics`
+features nor the lyrics counts.
+
+### Lyrics counts
+
+What the lyrics view ([player/lyrics.md](../player/lyrics.md)) found, as counts in `exit`. They are
+there only when the session looked up at least one track, and then all of them are.
+
+- **A lookup** is one track in the open view for which at least one request went out. An answer
+  from memory (LYR-14) is not a lookup.
+  - Opening the view during a track starts a lookup of it.
+  - Turning the service on during a track (LYR-15) starts a new lookup of the same track.
+- **A lookup ends** when everyone asked has answered or the waits are over, when the track
+  changes, or when the view closes. Then it is counted once, by what the view shows at that
+  moment.
+
+| Field | Counts lookups that ended with |
+|---|---|
+| `lyricsLookups` | anything: the sum of the next six |
+| `lyricsSourceSynced` | the source's synced text |
+| `lyricsThirdPartySynced` | the service's synced text |
+| `lyricsSourceText` | the source's plain text |
+| `lyricsThirdPartyText` | the service's plain text |
+| `lyricsInstrumental` | no text, and the service says the track is instrumental |
+| `lyricsNone` | no text: nothing found, not logged in, a failure, or the lookup ended before an answer came |
+| `lyricsThirdPartyFailed` | a failure of the service after its retry, a final 503 included (whatever was shown) |
+
+Nothing else about lyrics is sent: no text, no title, no track id.
 
 ## Never sent
 
-The Yandex token, the account's name or id, track titles, artists, search texts, file paths (a
+The Yandex token, the account's name or id, track titles, artists, lyrics, search texts, file paths (a
 skin from a file is `custom`), any error's or exception's text (on Android, any exception's
 message or `toString()`), the OS's own machine id (on Android, the raw `ANDROID_ID`), and the
 user's or the computer's name (on Android, the name the user gave the device). The schema allows
@@ -147,6 +176,7 @@ sends no id of the visitor and, of the page it was opened from, only the host.
 | TEL-08 | On | The app closes normally | `exit` with the session's counts. | yes | differs: TEL-16 |
 | TEL-09 | On | The user shows Milkdrop, starts or ends a jam, picks a skin, a language, the equalizer, a visualization | `feature`. | yes | yes |
 | TEL-10 | Any build | A screenshot run, tests, temporary settings | Nothing is recorded or sent. | yes | yes |
+| TEL-17 | On | The user shows or hides the lyrics view, turns the lyrics service on or off; the app closes | `feature` `lyrics` or `lyrics-services`; `exit` with the [lyrics counts](#lyrics-counts). | no: #51 | no: #112 |
 | TEL-16 | Android, on | A run starts and an earlier run's files are on disk | Before its own `start`, the earlier run's waiting events and then how it ended: `crash` from its crash report; otherwise, on Android 11+, `crash` with the signal and no frames when Android reports a native crash, `unclean_exit` when it reports an ANR or a Java crash that left no report; otherwise `exit` with the counts the run saved, `seconds` being the time it was on screen or playing. A run that left neither a crash report nor counts gets no such event. | n/a | yes |
 
 ## The server

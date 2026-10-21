@@ -1,0 +1,29 @@
+{
+  "picks": [
+    {
+      "durationMs": 215500,
+      "kind": "synced",
+      "id": 1003
+    },
+    {
+      "durationMs": 214000,
+      "kind": "synced",
+      "id": 1003
+    },
+    {
+      "durationMs": 212500,
+      "kind": "plain",
+      "id": 1002
+    },
+    {
+      "durationMs": 0,
+      "kind": "synced",
+      "id": 1001
+    },
+    {
+      "durationMs": 300000,
+      "kind": "missing",
+      "id": null
+    }
+  ]
+}

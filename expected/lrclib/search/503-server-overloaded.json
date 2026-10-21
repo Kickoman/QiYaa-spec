@@ -1,0 +1,6 @@
+{
+  "error": {
+    "status": 503,
+    "message": "The server is busy, please retry in a moment"
+  }
+}

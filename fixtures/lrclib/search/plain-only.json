@@ -1,0 +1,28 @@
+[
+  {
+    "id": 2001,
+    "name": "Paper Boats",
+    "trackName": "Paper Boats",
+    "artistName": "The Example Band",
+    "albumName": "Harbour Lights",
+    "duration": 215.0,
+    "instrumental": false,
+    "hasWordSync": false,
+    "plainLyrics": "Paper boats along the gutter\nCarry every word I said\n\nRain is only borrowed water\nGiving back what it was lent",
+    "syncedLyrics": "Paper boats along the gutter\nCarry every word I said",
+    "lyricsfile": null
+  },
+  {
+    "id": 2002,
+    "name": "Paper Boats",
+    "trackName": "Paper Boats",
+    "artistName": "The Example Band",
+    "albumName": "Harbour Lights",
+    "duration": 215.0,
+    "instrumental": false,
+    "hasWordSync": false,
+    "plainLyrics": "Paper boats along the gutter\nCarry every word I said\n\nRain is only borrowed water\nGiving back what it was lent",
+    "syncedLyrics": null,
+    "lyricsfile": null
+  }
+]

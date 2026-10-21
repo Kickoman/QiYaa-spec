@@ -1,0 +1,26 @@
+{
+  "app": "desktop",
+  "machine": "5d41402abc4b2a76b9719d911017c592",
+  "events": [
+    {
+      "type": "exit",
+      "at": "2026-10-08T12:00:00.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "seconds": 7200,
+      "tracks": 31,
+      "playMinutes": 104,
+      "milkdropMinutes": 0,
+      "jams": 0,
+      "errorsDropped": 0,
+      "lyricsLookups": 1,
+      "lyricsSourceSynced": 0,
+      "lyricsThirdPartySynced": "Paper Boats",
+      "lyricsSourceText": 0,
+      "lyricsThirdPartyText": 0,
+      "lyricsInstrumental": 0,
+      "lyricsNone": 0,
+      "lyricsThirdPartyFailed": 0
+    }
+  ]
+}

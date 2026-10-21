@@ -1,0 +1,10 @@
+{
+  "invocationInfo": {
+    "req-id": "1727600000000000-0000000000000000000",
+    "hostname": "hostname"
+  },
+  "error": {
+    "name": "validate",
+    "message": "Parameters requirements are not met"
+  }
+}

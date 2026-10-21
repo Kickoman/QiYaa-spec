@@ -1,0 +1,14 @@
+{
+  "picks": [
+    {
+      "durationMs": 276000,
+      "kind": "instrumental",
+      "id": 3001
+    },
+    {
+      "durationMs": 198000,
+      "kind": "synced",
+      "id": 3002
+    }
+  ]
+}

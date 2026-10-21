@@ -16,4 +16,5 @@ listed here with the reason.
 | `invalid-android-raw-id.json` | `machine` is the raw `ANDROID_ID`, not the app's 32-hex hash of it. |
 | `invalid-android-module-frame.json` | An Android frame is `<class>.<method>:<line>`; a desktop frame, `QiYaa+0x4f2a10`, does not fit. |
 | `invalid-android-exception-message.json` | `exceptionType` is a class name only: the exception's message could carry a path or a title. |
+| `invalid-lyrics-not-count.json` | The lyrics counts are counts; a track's title in one of them does not fit. |
 | `invalid-android-desktop-start.json` | An Android batch carries the Android `start`; the desktop's fields (`qt`, `skin`, `milkdropBuilt`…) do not fit. |

@@ -1,0 +1,328 @@
+{
+  "limits": {
+    "maxBytes": 262144,
+    "maxLines": 2000,
+    "maxLineCharacters": 500
+  },
+  "cases": [
+    {
+      "name": "basic",
+      "text": "[00:01.00]Morning comes slowly\n[00:03.50]Over the river\n[00:07.25]And the town wakes up",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "Morning comes slowly"
+        },
+        {
+          "ms": 3500,
+          "text": "Over the river"
+        },
+        {
+          "ms": 7250,
+          "text": "And the town wakes up"
+        }
+      ]
+    },
+    {
+      "name": "fraction-forms",
+      "text": "[0:01]one\n[00:02.5]two\n[00:03.25]three\n[00:04.125]four\n[00:05:50]five\n[00:06.12345]six",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "one"
+        },
+        {
+          "ms": 2500,
+          "text": "two"
+        },
+        {
+          "ms": 3250,
+          "text": "three"
+        },
+        {
+          "ms": 4125,
+          "text": "four"
+        },
+        {
+          "ms": 5500,
+          "text": "five"
+        },
+        {
+          "ms": 6123,
+          "text": "six"
+        }
+      ]
+    },
+    {
+      "name": "minutes-over-99",
+      "text": "[100:00.00]late",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 6000000,
+          "text": "late"
+        }
+      ]
+    },
+    {
+      "name": "seconds-over-59-is-not-a-tag",
+      "text": "[00:01.00]first\n[00:75.00]second",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "first"
+        }
+      ]
+    },
+    {
+      "name": "several-tags",
+      "text": "[00:10.00][00:30.00]Sing it again\n[00:20.00]A verse in between",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 10000,
+          "text": "Sing it again"
+        },
+        {
+          "ms": 20000,
+          "text": "A verse in between"
+        },
+        {
+          "ms": 30000,
+          "text": "Sing it again"
+        }
+      ]
+    },
+    {
+      "name": "unsorted-stable",
+      "text": "[00:05.00]second\n[00:01.00]first\n[00:05.00]third",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "first"
+        },
+        {
+          "ms": 5000,
+          "text": "second"
+        },
+        {
+          "ms": 5000,
+          "text": "third"
+        }
+      ]
+    },
+    {
+      "name": "offset-positive",
+      "text": "[offset:+500]\n[00:01.00]one\n[00:00.20]zero",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 0,
+          "text": "zero"
+        },
+        {
+          "ms": 500,
+          "text": "one"
+        }
+      ]
+    },
+    {
+      "name": "offset-negative",
+      "text": "[offset:-250]\n[00:01.00]one",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1250,
+          "text": "one"
+        }
+      ]
+    },
+    {
+      "name": "id-tags",
+      "text": "[ar:Somebody]\n[ti:Something]\n[al:Some album]\n[au:Someone else]\n[by:me]\n[re:A tool]\n[ve:1.0]\n[length:03:20]\n[#:a comment]\n[00:01.00]the only line",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "the only line"
+        }
+      ]
+    },
+    {
+      "name": "word-timing",
+      "text": "[00:01.00]<00:01.00>Word <00:01.50>by <00:02.00>word",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "Word by word"
+        }
+      ]
+    },
+    {
+      "name": "untagged-lines-dropped",
+      "text": "A title line\n[00:01.00]first\na stray line\n[00:02.00]second",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "first"
+        },
+        {
+          "ms": 2000,
+          "text": "second"
+        }
+      ]
+    },
+    {
+      "name": "empty-timed-line",
+      "text": "[00:01.00]before the pause\n[00:04.00]\n[00:06.00]after the pause",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "before the pause"
+        },
+        {
+          "ms": 4000,
+          "text": ""
+        },
+        {
+          "ms": 6000,
+          "text": "after the pause"
+        }
+      ]
+    },
+    {
+      "name": "whitespace-and-line-ends",
+      "text": "[00:01.00]  spaced  \r\n[00:02.00]\ttabbed\r[00:03.00] last",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "spaced"
+        },
+        {
+          "ms": 2000,
+          "text": "tabbed"
+        },
+        {
+          "ms": 3000,
+          "text": "last"
+        }
+      ]
+    },
+    {
+      "name": "byte-order-mark",
+      "text": "﻿[00:01.00]first",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "first"
+        }
+      ]
+    },
+    {
+      "name": "long-line",
+      "text": "[00:01.00]la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la ",
+      "kind": "synced",
+      "lines": [
+        {
+          "ms": 1000,
+          "text": "la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la la"
+        }
+      ]
+    },
+    {
+      "name": "plain",
+      "text": "First line\nSecond line\n\n\n\nAfter a gap\n",
+      "kind": "plain",
+      "lines": [
+        {
+          "ms": null,
+          "text": "First line"
+        },
+        {
+          "ms": null,
+          "text": "Second line"
+        },
+        {
+          "ms": null,
+          "text": ""
+        },
+        {
+          "ms": null,
+          "text": "After a gap"
+        }
+      ]
+    },
+    {
+      "name": "plain-trimmed",
+      "text": "\n\n  Hello there  \n\n",
+      "kind": "plain",
+      "lines": [
+        {
+          "ms": null,
+          "text": "Hello there"
+        }
+      ]
+    },
+    {
+      "name": "plain-section-labels-kept",
+      "text": "[Chorus]\nLa la la\n[Verse 2: Somebody]\nLa la",
+      "kind": "plain",
+      "lines": [
+        {
+          "ms": null,
+          "text": "[Chorus]"
+        },
+        {
+          "ms": null,
+          "text": "La la la"
+        },
+        {
+          "ms": null,
+          "text": "[Verse 2: Somebody]"
+        },
+        {
+          "ms": null,
+          "text": "La la"
+        }
+      ]
+    },
+    {
+      "name": "plain-with-id-tags",
+      "text": "[ar:Somebody]\n[ti:Something]\nJust words",
+      "kind": "plain",
+      "lines": [
+        {
+          "ms": null,
+          "text": "Just words"
+        }
+      ]
+    },
+    {
+      "name": "empty",
+      "text": "",
+      "kind": null,
+      "lines": []
+    },
+    {
+      "name": "blank",
+      "text": "  \n\n\t\n",
+      "kind": null,
+      "lines": []
+    },
+    {
+      "name": "only-id-tags",
+      "text": "[ar:Somebody]\n[ti:Something]",
+      "kind": null,
+      "lines": []
+    }
+  ]
+}

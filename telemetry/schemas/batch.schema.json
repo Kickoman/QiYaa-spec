@@ -328,7 +328,42 @@
         },
         "errorsDropped": {
           "$ref": "#/$defs/count"
+        },
+        "lyricsLookups": {
+          "$ref": "#/$defs/count"
+        },
+        "lyricsSourceSynced": {
+          "$ref": "#/$defs/count"
+        },
+        "lyricsThirdPartySynced": {
+          "$ref": "#/$defs/count"
+        },
+        "lyricsSourceText": {
+          "$ref": "#/$defs/count"
+        },
+        "lyricsThirdPartyText": {
+          "$ref": "#/$defs/count"
+        },
+        "lyricsInstrumental": {
+          "$ref": "#/$defs/count"
+        },
+        "lyricsNone": {
+          "$ref": "#/$defs/count"
+        },
+        "lyricsThirdPartyFailed": {
+          "$ref": "#/$defs/count"
         }
+      },
+      "dependentRequired": {
+        "lyricsLookups": [
+          "lyricsSourceSynced",
+          "lyricsThirdPartySynced",
+          "lyricsSourceText",
+          "lyricsThirdPartyText",
+          "lyricsInstrumental",
+          "lyricsNone",
+          "lyricsThirdPartyFailed"
+        ]
       }
     },
     "crash": {
@@ -491,7 +526,9 @@
             "skin",
             "language",
             "equalizer",
-            "vis"
+            "vis",
+            "lyrics",
+            "lyrics-services"
           ]
         },
         "value": {

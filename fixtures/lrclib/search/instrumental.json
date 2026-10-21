@@ -1,0 +1,28 @@
+[
+  {
+    "id": 3001,
+    "name": "Low Tide",
+    "trackName": "Low Tide",
+    "artistName": "The Example Orchestra",
+    "albumName": "Night Scores",
+    "duration": 275.0,
+    "instrumental": true,
+    "hasWordSync": false,
+    "plainLyrics": null,
+    "syncedLyrics": null,
+    "lyricsfile": null
+  },
+  {
+    "id": 3002,
+    "name": "Low Tide",
+    "trackName": "Low Tide",
+    "artistName": "The Example Orchestra",
+    "albumName": "Night Scores (Covers)",
+    "duration": 198.0,
+    "instrumental": false,
+    "hasWordSync": false,
+    "plainLyrics": "Paper boats along the gutter\nCarry every word I said\n\nRain is only borrowed water\nGiving back what it was lent",
+    "syncedLyrics": "[00:12.40] Paper boats along the gutter\n[00:17.90] Carry every word I said\n[00:23.10] \n[00:31.75] Rain is only borrowed water\n[00:37.20] Giving back what it was lent",
+    "lyricsfile": null
+  }
+]

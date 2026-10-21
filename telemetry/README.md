@@ -5,7 +5,7 @@ fails and what people use. Only builds made with telemetry have it (the desktop 
 `QIYAA_WITH_TELEMETRY`, the Android app's `-PqiyaaWithTelemetry=true`, both off by default; the
 releases on GitHub have it). In such a build it is on from the first start, and a switch turns it
 off: in the menu on the desktop, in the settings at the bottom of Library on Android. The Android
-app has it since Kickoman/QiYaa-android#75; its device check is Kickoman/QiYaa-android#91 ([parity](../parity.md), [Android](#android)).
+app has it since Kickoman/QiYaa-android#75 ([parity](../parity.md), [Android](#android)).
 
 The app posts batches of events to the jam server, which writes each event as a line of its log;
 the host's log store keeps them and draws the dashboard. The landing counts clicks on its download
@@ -137,17 +137,17 @@ sends no id of the visitor and, of the page it was opened from, only the host.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| TEL-01 | A build without telemetry (the default) | — | Nothing is recorded or sent and there is no switch. The desktop build has no telemetry code; the Android app has it but never starts it. | yes | not checked: Kickoman/QiYaa-android#91 |
-| TEL-02 | A build with telemetry | The first start | Telemetry is on. The switch (desktop: the menu; Android: the bottom of Library) turns it off: nothing more is sent, events waiting on disk are deleted. On again, new events go from then on. The choice is the app's setting. | yes | not checked: Kickoman/QiYaa-android#91 |
-| TEL-03 | On | The app starts | `start` is queued. Waiting events go at the start, every 5 minutes and when the app closes (within the wait it already makes for its own requests; on Android, "closes" is "stops being in use", see [Android](#android)). What did not go stays on disk for the next run. | yes | not checked: Kickoman/QiYaa-android#91 |
-| TEL-04 | On, events sent | The answer | As in the transport table. More than 500 waiting: the oldest are dropped. | yes | not checked: Kickoman/QiYaa-android#91 |
-| TEL-05 | On | The app crashes (a signal, an unhandled exception, an uncaught C++ exception) | The crash handler writes the signal or the exception's code, the frames and, for an uncaught exception, its type to a file. The next run sends `crash` with the crashed run's `session` and `version` before its own `start`. | yes | not checked: Kickoman/QiYaa-android#91 |
+| TEL-01 | A build without telemetry (the default) | — | Nothing is recorded or sent and there is no switch. The desktop build has no telemetry code; the Android app has it but never starts it. | yes | yes |
+| TEL-02 | A build with telemetry | The first start | Telemetry is on. The switch (desktop: the menu; Android: the bottom of Library) turns it off: nothing more is sent, events waiting on disk are deleted. On again, new events go from then on. The choice is the app's setting. | yes | yes |
+| TEL-03 | On | The app starts | `start` is queued. Waiting events go at the start, every 5 minutes and when the app closes (within the wait it already makes for its own requests; on Android, "closes" is "stops being in use", see [Android](#android)). What did not go stays on disk for the next run. | yes | yes |
+| TEL-04 | On, events sent | The answer | As in the transport table. More than 500 waiting: the oldest are dropped. | yes | yes |
+| TEL-05 | On | The app crashes (a signal, an unhandled exception, an uncaught C++ exception) | The crash handler writes the signal or the exception's code, the frames and, for an uncaught exception, its type to a file. The next run sends `crash` with the crashed run's `session` and `version` before its own `start`. | yes | yes |
 | TEL-06 | On | A run starts and the previous one neither closed nor left a crash report | `unclean_exit` with the previous run's `session`, `version` and `seconds`. | yes | differs: TEL-16 |
-| TEL-07 | On | Something fails | `error` with the category; at most 50 in a session, the rest only counted. | yes | not checked: Kickoman/QiYaa-android#91 |
+| TEL-07 | On | Something fails | `error` with the category; at most 50 in a session, the rest only counted. | yes | yes |
 | TEL-08 | On | The app closes normally | `exit` with the session's counts. | yes | differs: TEL-16 |
-| TEL-09 | On | The user shows Milkdrop, starts or ends a jam, picks a skin, a language, the equalizer, a visualization | `feature`. | yes | not checked: Kickoman/QiYaa-android#91 |
-| TEL-10 | Any build | A screenshot run, tests, temporary settings | Nothing is recorded or sent. | yes | not checked: Kickoman/QiYaa-android#91 |
-| TEL-16 | Android, on | A run starts and an earlier run's files are on disk | Before its own `start`, the earlier run's waiting events and then how it ended: `crash` from its crash report; otherwise, on Android 11+, `crash` with the signal and no frames when Android reports a native crash, `unclean_exit` when it reports an ANR or a Java crash that left no report; otherwise `exit` with the counts the run saved, `seconds` being the time it was on screen or playing. A run that left neither a crash report nor counts gets no such event. | n/a | not checked: Kickoman/QiYaa-android#91 |
+| TEL-09 | On | The user shows Milkdrop, starts or ends a jam, picks a skin, a language, the equalizer, a visualization | `feature`. | yes | yes |
+| TEL-10 | Any build | A screenshot run, tests, temporary settings | Nothing is recorded or sent. | yes | yes |
+| TEL-16 | Android, on | A run starts and an earlier run's files are on disk | Before its own `start`, the earlier run's waiting events and then how it ended: `crash` from its crash report; otherwise, on Android 11+, `crash` with the signal and no frames when Android reports a native crash, `unclean_exit` when it reports an ANR or a Java crash that left no report; otherwise `exit` with the counts the run saved, `seconds` being the time it was on screen or playing. A run that left neither a crash report nor counts gets no such event. | n/a | yes |
 
 ## The server
 

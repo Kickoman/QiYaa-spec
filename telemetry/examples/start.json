@@ -27,6 +27,7 @@
       "jamBuilt": true,
       "audioBackend": "PulseAudio",
       "loggedIn": true,
+      "spotifyLoggedIn": false,
       "firstRun": false
     }
   ]

@@ -32,9 +32,9 @@ When a feature lands on one platform, add its row here and open an issue for the
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
 | Local files and folders: open files or a folder, tags and covers, read from the disk; no wave from history after them | yes | no: Kickoman/QiYaa-android#111 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag) |
-| Ogg Vorbis among local files | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#111 | [LOCAL-09](player/local.md#tracks) |
-| Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search with the best result, radio by a track | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#113 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
-| Spotify tracks: Ogg Vorbis 320 or 96 kbps by the quality, refused audio keys stop playback, Spotify's autoplay after a queue | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#113 | [SPOT-13 to SPOT-22](player/spotify.md#playing-a-track) |
+| Ogg Vorbis among local files | yes | no: Kickoman/QiYaa-android#111 | [LOCAL-09](player/local.md#tracks) |
+| Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search with the best result, radio by a track | yes | no: Kickoman/QiYaa-android#113 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
+| Spotify tracks: Ogg Vorbis 320 or 96 kbps by the quality, refused audio keys stop playback, Spotify's autoplay after a queue | yes | no: Kickoman/QiYaa-android#113 | [SPOT-13 to SPOT-22](player/spotify.md#playing-a-track) |
 
 ## Playback
 
@@ -148,7 +148,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Paste a token or a URL with `#access_token=` | yes | yes | |
 | Token from a file or `QIYAA_TOKEN` | yes | n/a | |
 | Log out | yes | yes | |
-| Spotify: login with a code at spotify.com/pair or in the browser, log out | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#113 | [SPOT-01 to SPOT-06](player/spotify.md#account) |
+| Spotify: login with a code at spotify.com/pair or in the browser, log out | yes | no: Kickoman/QiYaa-android#113 | [SPOT-01 to SPOT-06](player/spotify.md#account) |
 | Covers cached on disk | yes | yes | Android: Coil's disk cache in the app's cache folder (2% of the size of the data partition, 10 to 250 MiB, so 250 MiB on a data partition of 12.5 GiB or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
 | Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | yes (builds with `-PqiyaaWithTelemetry=true`) | [telemetry/](telemetry/README.md) |

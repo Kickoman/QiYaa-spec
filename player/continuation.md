@@ -7,20 +7,22 @@ What plays after a queue's head. Terms and the status columns are explained in t
 A queue's source has two parts:
 
 - The **head**: a fixed list of tracks. Likes, a playlist, an album, an artist's tracks, search
-  results and local files ([local.md](local.md)) are heads. A head may be empty.
+  results, local files ([local.md](local.md)) and the picks of Spotify ([spotify.md](spotify.md))
+  are heads. A head may be empty.
 - The **continuation**, which a source may have: an endless supply of tracks that follows the head
   and hears the events of its tracks, for feedback. My Wave and a station are an empty head with a
   wave as the continuation ([wave.md](wave.md)).
 
 A queue whose source has no continuation of its own can go on with a **wave from history**: a rotor
 wave seeded with the tracks this queue has played. Each queue has a flag, "continue with a wave",
-that says whether it does. A queue of local files cannot (CONT-12).
+that says whether it does. A queue of local files cannot (CONT-12). A queue of Spotify tracks goes
+on with Spotify's autoplay instead, under the same flag ([SPOT-20](spotify.md#continuation)).
 
 ## The flag
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| CONT-01 | Any queue | A source request replaces the queue ([SRC-06](sources.md#what-gets-queued), [WAVE-01](wave.md#start)) | The new queue's flag "continue with a wave" takes the value of the setting of the same name. The setting is on by default. For a source with a continuation of its own (My Wave, a station) the flag changes nothing. A queue of local files is the exception: CONT-12. | yes | yes |
+| CONT-01 | Any queue | A source request replaces the queue ([SRC-06](sources.md#what-gets-queued), [WAVE-01](wave.md#start)) | The new queue's flag "continue with a wave" takes the value of the setting of the same name. The setting is on by default. For a source with a continuation of its own (My Wave, a station, a Spotify radio) the flag changes nothing. A queue of local files is the exception: CONT-12. For a queue of Spotify tracks the flag decides Spotify's autoplay ([SPOT-20](spotify.md#continuation)), not the wave from history. | yes | yes |
 | CONT-02 | A queue whose source has no continuation of its own and is not of local files (CONT-12) | The user switches the flag | Only this queue's flag changes, not the setting. Switched on: the wave from history follows the head, and starts at once if remaining ≤ 2 already (CONT-04). Switched off: the wave from history asks for no more tracks; the tracks it gave stay in the queue and play, and after the last one playback stops as in [TR-04](transport.md). | yes | yes |
 | CONT-03 | The flag is off, playback stopped at the end of the head (TR-04) | The user switches the flag on and presses Next | The wave from history starts (CONT-04), and its first track plays when it comes, as in [WAVE-08](wave.md#loading-more). | yes | yes |
 | CONT-12 | Any queue | A source request of local files replaces it ([LOCAL-01, LOCAL-02](local.md#opening)) | The new queue has no wave from history: its flag is off whatever the setting, the user cannot switch it, and the setting does not change. When the head ends, playback stops as in TR-04, in a jam too: the last state's seeds start no jam wave under such a base ([HOST-11, HOST-13](../jam/host.md#the-base)). A queue that replaces this one takes the flag by CONT-01 again, and so does a base cleared by [HOST-36](../jam/host.md#editing-the-playlist), which is no longer a queue of local files. | yes | no: #111 |

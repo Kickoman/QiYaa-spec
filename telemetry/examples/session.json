@@ -42,6 +42,22 @@
       "value": "on"
     },
     {
+      "type": "feature",
+      "at": "2026-10-08T10:02:45.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "name": "spotify",
+      "value": "login-code"
+    },
+    {
+      "type": "error",
+      "at": "2026-10-08T10:02:50.000Z",
+      "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",
+      "version": "0.5.0",
+      "area": "spotify",
+      "kind": "key-refused"
+    },
+    {
       "type": "error",
       "at": "2026-10-08T10:03:00.000Z",
       "session": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed",

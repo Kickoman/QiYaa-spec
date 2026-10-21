@@ -177,7 +177,7 @@ an unknown field now and ignored, and the name stays on the list above so that i
 `track = {id, source?, albumId?, title, artists[], durationMs, coverUri?}`:
 
 - `source`: `yandex`, a track of the Yandex catalog, is the default and is usually left out.
-  `host` is a track that only the host can play, a local file for one.
+  `host` is a track that only the host can play: a local file or a Spotify track.
 - `id` and `albumId`: catalogue ids as strings. A `host` track's `id` is the host's own: the same
   for the same track during a jam session, and never a path or a file name, since every guest gets
   it. It keeps the pattern of catalogue ids, so a decoder that does not know `source` still reads

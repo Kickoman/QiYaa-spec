@@ -7,8 +7,9 @@ A local file is not from Yandex Music: nothing about it goes to the Yandex API, 
 history never takes it as a seed ([CONT-05](continuation.md#the-wave-from-history)), and in a jam
 it is a track that only the host can play ([HOST-37](../jam/host.md#the-base)).
 
-The formats are mp3, FLAC, WAV and AAC in MP4 (`.m4a`, `.mp4`). An MP4 file with another codec
-(ALAC, for one) is not taken.
+The formats are mp3, FLAC, WAV, AAC in MP4 (`.m4a`, `.mp4`) and Ogg Vorbis (`.ogg`, `.oga`,
+LOCAL-09). An MP4 file with another codec (ALAC, for one) is not taken, and neither is an Ogg file
+with another codec (Opus, FLAC).
 
 ## Opening
 
@@ -27,3 +28,4 @@ The formats are mp3, FLAC, WAV and AAC in MP4 (`.m4a`, `.mp4`). An MP4 file with
 | LOCAL-06 | A local file is current | It plays, or the user seeks | It is read from the disk: nothing is downloaded, a seek plays from the target at once as in [TR-09](transport.md), and the file is never held whole in memory. A file that is cut short while it plays ends the track at the cut, with no status. | yes | no: #111 |
 | LOCAL-07 | A local file | It cannot be opened or decoded: removed before it plays, broken, or not of its format | A track failure: [ERR-04 to ERR-07](errors.md) apply. A network wait (ERR-01 to ERR-03) never does. | yes | no: #111 |
 | LOCAL-08 | A local file | It starts and closes | No `/play-audio` ([TRK-01](tracking.md#play-audio)) and no rotor feedback. Like, dislike and opening the track in the browser are not offered for it. | yes | no: #111 |
+| LOCAL-09 | An Ogg Vorbis file | It is opened, read or played | As the other formats: LOCAL-01 to LOCAL-08 apply. Its tags are its Vorbis comments, its cover their `METADATA_BLOCK_PICTURE`. Its duration is exact, from the last page's granule position: a seek lands where it should ([TR-08](transport.md)), and the next track follows without a gap. | no: #52 | no: #111 |

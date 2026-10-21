@@ -14,7 +14,7 @@ to its end and its download completed. In every other case it closes as a **skip
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| TRK-01 | Any queue | A track starts | `POST /play-audio` (form) with these fields: `track-id`; `album-id`; `from=web-own_tracks-track-track-main`; `play-id`, a new UUID; `uid`; `timestamp` and `client-now`, both the current UTC time as `yyyy-MM-ddTHH:mm:ss.SSSZ`; `track-length-seconds`; `total-played-seconds=0`; `end-position-seconds=0`. A failure is only logged and does not change playback. No report is sent when a track ends. A local file sends none ([LOCAL-08](local.md#tracks)). | yes | yes |
+| TRK-01 | Any queue | A track starts | `POST /play-audio` (form) with these fields: `track-id`; `album-id`; `from=web-own_tracks-track-track-main`; `play-id`, a new UUID; `uid`; `timestamp` and `client-now`, both the current UTC time as `yyyy-MM-ddTHH:mm:ss.SSSZ`; `track-length-seconds`; `total-played-seconds=0`; `end-position-seconds=0`. A failure is only logged and does not change playback. No report is sent when a track ends. A local file sends none ([LOCAL-08](local.md#tracks)), and neither does a Spotify track ([SPOT-19](spotify.md#playing-a-track)). | yes | yes |
 | TRK-02 | A track is playing | The same track starts again: a restart, or repeat of a one-track queue | A new `/play-audio` with a new `play-id`. | yes | yes |
 
 ## Rotor feedback

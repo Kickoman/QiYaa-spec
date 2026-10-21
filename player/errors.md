@@ -9,7 +9,8 @@ A failure is classified by its type and code, never by the text of its message.
   timed out (DNS, refused, reset or closed midway, unreachable, timeout, a failed TLS handshake as
   behind a captive portal). This covers the link request (`download-info`) and the stream. A
   broken connection counts as a network failure even when a status line had arrived.
-- **Account failure**: HTTP 401 or 403 on `download-info` or on the stream (ERR-08).
+- **Account failure**: HTTP 401 or 403 on `download-info` or on the stream (ERR-08), and a
+  Spotify audio key refused for the account ([SPOT-17](spotify.md#playing-a-track)).
 - **Track failure**: everything else. That is any other HTTP error on `download-info` or on the
   stream, no usable download variant, or audio the decoder cannot read.
 

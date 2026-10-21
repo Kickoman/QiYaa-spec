@@ -13,6 +13,7 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 | [shuffle.md](shuffle.md) | Shuffle: the pass without repeats, the random track, Previous with shuffle, the choice of algorithm | `SHUF-` |
 | [quality.md](quality.md) | The audio quality the user chooses, and what is known about lossless | `QUAL-` |
 | [local.md](local.md) | Local files: opening files and a folder, their tags and covers, reading from the disk | `LOCAL-` |
+| [spotify.md](spotify.md) | Spotify: the login, the picks, playing a track, the keys Spotify refuses, autoplay after a queue | `SPOT-` |
 | [lyrics.md](lyrics.md) | Lyrics: the text of the current track from its source or a lyrics service, synced lines and seeking by them | `LYR-` |
 
 ## Reading a scenario
@@ -56,7 +57,8 @@ scenario names its ID in its name or in a comment.
   counting the current track. It is endless while repeat holds the head (CONT-10) and with Random
   track (SHUF-08).
 - **Source request**: a request that replaces the queue. It covers likes, a playlist, an album, an
-  artist, a station, a wave, a search, and local files or a folder ([local.md](local.md)).
+  artist, a station, a wave, a search, local files or a folder ([local.md](local.md)), and the picks
+  of Spotify ([spotify.md](spotify.md)).
 - **Status**: a short message the user sees. On desktop this is the main window's status line,
   and on Android a toast or snackbar. The wording is up to each app; the spec only fixes when a
   status appears.

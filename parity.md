@@ -32,6 +32,9 @@ When a feature lands on one platform, add its row here and open an issue for the
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
 | Local files and folders: open files or a folder, tags and covers, read from the disk; no wave from history after them | yes | no: Kickoman/QiYaa-android#111 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag) |
+| Ogg Vorbis among local files | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#111 | [LOCAL-09](player/local.md#tracks) |
+| Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search with the best result, radio by a track | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#113 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
+| Spotify tracks: Ogg Vorbis 320 or 96 kbps by the quality, refused audio keys stop playback, Spotify's autoplay after a queue | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#113 | [SPOT-13 to SPOT-22](player/spotify.md#playing-a-track) |
 
 ## Playback
 
@@ -145,6 +148,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Paste a token or a URL with `#access_token=` | yes | yes | |
 | Token from a file or `QIYAA_TOKEN` | yes | n/a | |
 | Log out | yes | yes | |
+| Spotify: login with a code at spotify.com/pair or in the browser, log out | no: Kickoman/QiYaa#52 | no: Kickoman/QiYaa-android#113 | [SPOT-01 to SPOT-06](player/spotify.md#account) |
 | Covers cached on disk | yes | yes | Android: Coil's disk cache in the app's cache folder (2% of the size of the data partition, 10 to 250 MiB, so 250 MiB on a data partition of 12.5 GiB or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
 | Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | yes (builds with `-PqiyaaWithTelemetry=true`) | [telemetry/](telemetry/README.md) |
@@ -161,7 +165,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 | Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | yes | yes | |
 | The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own; the host edits the base during the jam | yes | yes | [HOST-10 to HOST-14, HOST-21, HOST-32, HOST-36](jam/host.md#the-base) |
 | Guests listen along on the jam page: the host shares the files it plays | yes | yes | [jam/listen.md](jam/listen.md); off by default, the host's subscription's files |
-| A base track that is not from the Yandex catalog (a local file) plays in the jam: guests see its title and artists, with no cover and no listening along | yes | n/a | [HOST-37](jam/host.md#the-base), [LISTEN-14](jam/listen.md#the-host), `track.source: host` in the [protocol](jam/protocol/README.md#tracks); Android plays only tracks of the Yandex catalog; on the desktop these are local files ([local.md](player/local.md)) |
+| A base track that is not from the Yandex catalog (a local file, a Spotify track) plays in the jam: guests see its title and artists, with no cover and no listening along | yes | n/a | [HOST-37](jam/host.md#the-base), [LISTEN-14](jam/listen.md#the-host), `track.source: host` in the [protocol](jam/protocol/README.md#tracks); Android plays only tracks of the Yandex catalog; on the desktop these are local files ([local.md](player/local.md)) |
 | Join a jam as a guest from the app, searching with your own account | no: Kickoman/QiYaa#16 | yes | [jam/guest.md](jam/guest.md); browser guests need no app |
 
 ## Desktop only: running without an account

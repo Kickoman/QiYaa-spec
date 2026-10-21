@@ -8,6 +8,10 @@ The user chooses how much data a track costs. Terms and the status columns are e
 | `standard`, the default | The link of [SRC](sources.md) playback as it always was: `download-info`, the best mp3, a `/get-mp3/` link | mp3 192 kbps, about 1.4 MB a minute |
 | `economy` | `get-file-info` at level `lq` | HE-AAC 64 kbps in MP4, about a third of standard |
 
+A Spotify track takes an Ogg Vorbis file of its own by the same choice: `standard` 320 kbps,
+`economy` 96 kbps ([SPOT-13](spotify.md#playing-a-track)). QUAL-01 to QUAL-04 are about Yandex Music's
+files; QUAL-05 to QUAL-08 apply to Spotify tracks too.
+
 The stored value is the name in the first column. Any other stored value reads as `standard`.
 Android keeps two choices, one for Wi-Fi (an unmetered network) and one for mobile data (a
 metered one), both `standard` until changed (QUAL-07).

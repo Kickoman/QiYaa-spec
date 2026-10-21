@@ -276,6 +276,10 @@
         "loggedIn": {
           "type": "boolean"
         },
+        "spotifyLoggedIn": {
+          "type": "boolean",
+          "description": "Logged in to Spotify (saved credentials); left out by builds before Spotify"
+        },
         "firstRun": {
           "type": "boolean"
         }
@@ -479,7 +483,8 @@
             "login",
             "skin",
             "milkdrop",
-            "jam"
+            "jam",
+            "spotify"
           ]
         },
         "kind": {
@@ -528,7 +533,8 @@
             "equalizer",
             "vis",
             "lyrics",
-            "lyrics-services"
+            "lyrics-services",
+            "spotify"
           ]
         },
         "value": {

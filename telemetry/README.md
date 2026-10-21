@@ -50,11 +50,11 @@ which the app could not send then (a crash report, the last `exit`).
 
 | `type` | When | What it adds |
 |---|---|---|
-| `start` | The app started | The system (`os`, `osName`, `osVersion`, `kernel`, `arch`, the `qt` it runs on, its `locale`), the build (`package`, `milkdropBuilt`, `jamBuilt`), the state it starts in (`language`, `scale`, `screens`, `dpr`, `skin`, `vis`, `equalizer`, `milkdropVisible`, `audioBackend`, `loggedIn`) and `firstRun`. Android: the system (`os` `android`, `osVersion`, `sdk`, `device`, `kernel`, `arch`, the system's `locale`), the build (`package`: `apk` for a release build, `debug` otherwise), the state it starts in (`language`, `dpr`, `theme`, `vis`, `equalizer`, `quality`, `qualityMetered`, `loggedIn`) and `firstRun` |
+| `start` | The app started | The system (`os`, `osName`, `osVersion`, `kernel`, `arch`, the `qt` it runs on, its `locale`), the build (`package`, `milkdropBuilt`, `jamBuilt`), the state it starts in (`language`, `scale`, `screens`, `dpr`, `skin`, `vis`, `equalizer`, `milkdropVisible`, `audioBackend`, `loggedIn`, `spotifyLoggedIn`) and `firstRun`. Android: the system (`os` `android`, `osVersion`, `sdk`, `device`, `kernel`, `arch`, the system's `locale`), the build (`package`: `apk` for a release build, `debug` otherwise), the state it starts in (`language`, `dpr`, `theme`, `vis`, `equalizer`, `quality`, `qualityMetered`, `loggedIn`) and `firstRun` |
 | `exit` | The app closed normally; Android: the next run, for a run that ended without a crash ([TEL-16](#the-app)) | `seconds` it ran (Android: on screen or playing); `tracks` started; `playMinutes`; `milkdropMinutes` with the Milkdrop window shown (desktop only); `jams` hosted; `errorsDropped` over the per-session limit; the [lyrics counts](#lyrics-counts) when the lyrics view looked anything up (desktop only) |
 | `crash` | The next run, after a crash | `signal` (`SIGSEGV`, `SIGABRT`…, `EXCEPTION_ACCESS_VIOLATION`…, or `TERMINATE` for an uncaught exception; Android: `SIGNAL_<n>` for a signal with no name), `frames` (none for a native crash on Android), `seconds` the crashed run lasted ([Android](#android): two kinds), `exceptionType` for `TERMINATE` |
 | `unclean_exit` | The next run, after a run that neither closed nor left a crash report; Android: after an ANR, or a Java crash that left no report ([TEL-16](#the-app)) | `seconds` it ran, to the last minute it noted (Android: on screen or playing) |
-| `error` | Something failed | `area` and `kind` from the table below, `httpStatus` for `api` |
+| `error` | Something failed | `area` and `kind` from the table below, `httpStatus` for `api` and for `spotify` `http` |
 | `feature` | A switch or a choice | `name` and `value` from the table below |
 
 A frame is `<the module's file name>+0x<offset in it>` (`QiYaa+0x4f2a10`,
@@ -82,6 +82,7 @@ trace line `at c.m(SourceFile:N)` and run R8's `retrace` with the mapping of the
 | `audio` | `init` (no sound device could be opened), `device` (the device failed while playing), `undecodable` |
 | `api` | `network`, `http` (with `httpStatus`), `content` (the answer could not be read) |
 | `login` | `failed` |
+| `spotify` | `login-expired` (saved credentials refused, [SPOT-04](../player/spotify.md#account)), `premium-required` (SPOT-05), `key-refused` (an audio key refused for the account, SPOT-17), `key-failed` (an audio key failed twice, SPOT-16), `access-point` (the AP connection failed without a network failure), `http` (with `httpStatus`: a request to Spotify's servers, a CDN's included), `content` (an answer could not be read), `query-outdated` (Pathfinder refused every query hash it was given) |
 | `skin` | `load` |
 | `milkdrop` | `no-opengl`, `gles`, `old-opengl`, `projectm` |
 | `jam` | the server's refusal reason (`server-full`, `rate-limited`, `update-required`, `not-allowed`, `queue-limit`, `duplicate`, `stale`), or `gone`, `expired`, `ended-by-server` when a jam ends that way |
@@ -96,6 +97,7 @@ trace line `at c.m(SourceFile:N)` and run R8's `retrace` with the mapping of the
 | `vis` | `spectrum`, `oscilloscope`, `off` |
 | `lyrics` | `on`, `off` (the lyrics view shown or hidden) |
 | `lyrics-services` | `on`, `off` (lyrics from a service such as LRCLIB turned on or off, [lyrics.md](../player/lyrics.md)) |
+| `spotify` | `login-code`, `login-browser` (a Spotify login succeeded that way, [spotify.md](../player/spotify.md#account)), `logout` |
 
 Android has no skins and no Milkdrop: it sends neither the `skin` and `milkdrop` areas nor those
 features. It has no lyrics view yet (Kickoman/QiYaa-android#112), so it sends neither the `lyrics`
@@ -129,7 +131,7 @@ Nothing else about lyrics is sent: no text, no title, no track id.
 
 ## Never sent
 
-The Yandex token, the account's name or id, track titles, artists, lyrics, search texts, file paths (a
+The Yandex token, the account's name or id, Spotify's credentials, tokens and username, track titles, artists, lyrics, search texts, file paths (a
 skin from a file is `custom`), any error's or exception's text (on Android, any exception's
 message or `toString()`), the OS's own machine id (on Android, the raw `ANDROID_ID`), and the
 user's or the computer's name (on Android, the name the user gave the device). The schema allows
@@ -176,6 +178,7 @@ sends no id of the visitor and, of the page it was opened from, only the host.
 | TEL-08 | On | The app closes normally | `exit` with the session's counts. | yes | differs: TEL-16 |
 | TEL-09 | On | The user shows Milkdrop, starts or ends a jam, picks a skin, a language, the equalizer, a visualization | `feature`. | yes | yes |
 | TEL-10 | Any build | A screenshot run, tests, temporary settings | Nothing is recorded or sent. | yes | yes |
+| TEL-18 | On | The app starts; the user logs in to Spotify or logs out; a Spotify login, key or request fails | `start` with `spotifyLoggedIn`; `feature` `spotify`; `error` with area `spotify` and its kind. Nothing about the account or its tracks. | no: #52 | no: #113 |
 | TEL-17 | On | The user shows or hides the lyrics view, turns the lyrics service on or off; the app closes | `feature` `lyrics` or `lyrics-services`; `exit` with the [lyrics counts](#lyrics-counts). | no: #51 | no: #112 |
 | TEL-16 | Android, on | A run starts and an earlier run's files are on disk | Before its own `start`, the earlier run's waiting events and then how it ended: `crash` from its crash report; otherwise, on Android 11+, `crash` with the signal and no frames when Android reports a native crash, `unclean_exit` when it reports an ANR or a Java crash that left no report; otherwise `exit` with the counts the run saved, `seconds` being the time it was on screen or playing. A run that left neither a crash report nor counts gets no such event. | n/a | yes |
 

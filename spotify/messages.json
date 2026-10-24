@@ -1,0 +1,231 @@
+{
+  "description": "Request bodies the Spotify protocol code builds: login5, client-token and its hashcash answer, extended-metadata, autoplay and the collection, and hashcash solutions.",
+  "cases": [
+    {
+      "kind": "hashcash",
+      "name": "client-token: no context",
+      "context": "",
+      "prefix": "0123456789abcdef",
+      "length": 10,
+      "suffix": "95601890afd807ba00000000000000b1"
+    },
+    {
+      "kind": "hashcash",
+      "name": "login5: with the reply's context",
+      "context": "73796e746865746963206c6f67696e3520636f6e74657874",
+      "prefix": "031425364758697a8b9cadbecfe0f102",
+      "length": 14,
+      "suffix": "ffc47e8fd2f37dfc0000000000000c23"
+    },
+    {
+      "kind": "hashcash",
+      "name": "length 0: the first suffix",
+      "context": "637478",
+      "prefix": "000102030405060708090a0b0c0d0e0f",
+      "length": 0,
+      "suffix": "e23ba54c20b0907c0000000000000000"
+    },
+    {
+      "kind": "login5",
+      "name": "stored credentials, the first request",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "username": "owner",
+      "data": "01020304",
+      "context": "",
+      "hashcash": null,
+      "body": "0a4c0a203635623730383037336663303438306561393261303737323333636138376264122864646464646464646464646464646464646464646464646464646464646464646464646464646464a2060d0a056f776e6572120401020304"
+    },
+    {
+      "kind": "login5",
+      "name": "the answer to a hashcash challenge that took 1.5 s",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "username": "owner",
+      "data": "01020304",
+      "context": "73796e746865746963206c6f67696e3520636f6e74657874",
+      "hashcash": {
+        "suffix": "ffc47e8fd2f37dfc0000000000000c23",
+        "tookNanos": 1500000000
+      },
+      "body": "0a4c0a203635623730383037336663303438306561393261303737323333636138376264122864646464646464646464646464646464646464646464646464646464646464646464646464646464121873796e746865746963206c6f67696e3520636f6e746578741a200a1e0a1c0a10ffc47e8fd2f37dfc0000000000000c23120808011080cab5ee01a2060d0a056f776e6572120401020304"
+    },
+    {
+      "kind": "login5",
+      "name": "a solution under a second: no seconds",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "username": "owner",
+      "data": "01020304",
+      "context": "73796e746865746963206c6f67696e3520636f6e74657874",
+      "hashcash": {
+        "suffix": "ffc47e8fd2f37dfc0000000000000c23",
+        "tookNanos": 12345678
+      },
+      "body": "0a4c0a203635623730383037336663303438306561393261303737323333636138376264122864646464646464646464646464646464646464646464646464646464646464646464646464646464121873796e746865746963206c6f67696e3520636f6e746578741a1d0a1b0a190a10ffc47e8fd2f37dfc0000000000000c23120510cec2f105a2060d0a056f776e6572120401020304"
+    },
+    {
+      "kind": "login5",
+      "name": "a solution of exactly 2 s: no nanoseconds",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "username": "owner",
+      "data": "01020304",
+      "context": "73796e746865746963206c6f67696e3520636f6e74657874",
+      "hashcash": {
+        "suffix": "ffc47e8fd2f37dfc0000000000000c23",
+        "tookNanos": 2000000000
+      },
+      "body": "0a4c0a203635623730383037336663303438306561393261303737323333636138376264122864646464646464646464646464646464646464646464646464646464646464646464646464646464121873796e746865746963206c6f67696e3520636f6e746578741a1a0a180a160a10ffc47e8fd2f37dfc0000000000000c2312020802a2060d0a056f776e6572120401020304"
+    },
+    {
+      "kind": "login5",
+      "name": "a solution of 0 ns: an empty duration",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "username": "owner",
+      "data": "01020304",
+      "context": "73796e746865746963206c6f67696e3520636f6e74657874",
+      "hashcash": {
+        "suffix": "ffc47e8fd2f37dfc0000000000000c23",
+        "tookNanos": 0
+      },
+      "body": "0a4c0a203635623730383037336663303438306561393261303737323333636138376264122864646464646464646464646464646464646464646464646464646464646464646464646464646464121873796e746865746963206c6f67696e3520636f6e746578741a180a160a140a10ffc47e8fd2f37dfc0000000000000c231200a2060d0a056f776e6572120401020304"
+    },
+    {
+      "kind": "clientToken",
+      "name": "Linux on x86_64",
+      "clientVersion": "1.2.52.442",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "platform": {
+        "os": "linux",
+        "release": "6.8.0-45-generic",
+        "version": "24.04",
+        "hardware": "x86_64"
+      },
+      "body": "08011286010a0a312e322e35322e343432122036356237303830373366633034383065613932613037373233336361383762641a560a2a2a280a054c696e75781210362e382e302d34352d67656e657269631a0532342e303422067838365f3634122864646464646464646464646464646464646464646464646464646464646464646464646464646464"
+    },
+    {
+      "kind": "clientToken",
+      "name": "Android, as Linux on ARM",
+      "clientVersion": "1.2.52.442",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "platform": {
+        "os": "linux",
+        "release": "5.15.148-android14-11",
+        "version": "14",
+        "hardware": "aarch64"
+      },
+      "body": "08011289010a0a312e322e35322e343432122036356237303830373366633034383065613932613037373233336361383762641a590a2d2a2b0a054c696e75781215352e31352e3134382d616e64726f696431342d31311a023134220761617263683634122864646464646464646464646464646464646464646464646464646464646464646464646464646464"
+    },
+    {
+      "kind": "clientToken",
+      "name": "Windows on x86_64 (desktop only)",
+      "clientVersion": "1.2.52.442",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "platform": {
+        "os": "windows",
+        "osVersion": 10,
+        "osBuild": 21370,
+        "imageFileMachine": 34404,
+        "peMachine": 34404
+      },
+      "body": "080112720a0a312e322e35322e343432122036356237303830373366633034383065613932613037373233336361383762641a420a162214080a18faa6012002300938e48c0240e48c025001122864646464646464646464646464646464646464646464646464646464646464646464646464646464"
+    },
+    {
+      "kind": "clientToken",
+      "name": "macOS (desktop only)",
+      "clientVersion": "1.2.52.442",
+      "clientId": "65b708073fc0480ea92a077233ca87bd",
+      "deviceId": "dddddddddddddddddddddddddddddddddddddddd",
+      "platform": {
+        "os": "macos",
+        "systemVersion": "15.4",
+        "cpuType": "arm64"
+      },
+      "body": "080112750a0a312e322e35322e343432122036356237303830373366633034383065613932613037373233336361383762641a450a191a170a0431352e341208694d616332312c311a0561726d3634122864646464646464646464646464646464646464646464646464646464646464646464646464646464"
+    },
+    {
+      "kind": "clientTokenAnswer",
+      "name": "the answer to client-token's hashcash: the suffix in upper-case hex",
+      "state": "synthetic-state",
+      "suffix": "95601890afd807ba00000000000000b1",
+      "body": "08021a390a0f73796e7468657469632d73746174651226080322220a203935363031383930414644383037424130303030303030303030303030304231"
+    },
+    {
+      "kind": "metadata",
+      "name": "one track: TRACK_V4",
+      "uris": [
+        "spotify:track:6PCoZdjSPbRMehHviTrpB3"
+      ],
+      "extensionKind": 10,
+      "body": "122a0a2473706f746966793a747261636b3a3650436f5a646a535062524d656848766954727042331202080a"
+    },
+    {
+      "kind": "metadata",
+      "name": "two albums at once: ALBUM_V4",
+      "uris": [
+        "spotify:album:0000000000000000000001",
+        "spotify:album:0000000000000000000002"
+      ],
+      "extensionKind": 9,
+      "body": "122a0a2473706f746966793a616c62756d3a3030303030303030303030303030303030303030303112020809122a0a2473706f746966793a616c62756d3a3030303030303030303030303030303030303030303212020809"
+    },
+    {
+      "kind": "metadata",
+      "name": "an artist: ARTIST_V4",
+      "uris": [
+        "spotify:artist:0000000000000000000003"
+      ],
+      "extensionKind": 8,
+      "body": "122b0a2573706f746966793a6172746973743a3030303030303030303030303030303030303030303312020808"
+    },
+    {
+      "kind": "autoplay",
+      "name": "liked songs with two recent tracks",
+      "contextUri": "spotify:user:owner:collection",
+      "recentTrackUris": [
+        "spotify:track:0000000000000000000001",
+        "spotify:track:0000000000000000000002"
+      ],
+      "body": "0a1d73706f746966793a757365723a6f776e65723a636f6c6c656374696f6e122473706f746966793a747261636b3a30303030303030303030303030303030303030303031122473706f746966793a747261636b3a30303030303030303030303030303030303030303032"
+    },
+    {
+      "kind": "autoplay",
+      "name": "a track, no recent tracks",
+      "contextUri": "spotify:track:6PCoZdjSPbRMehHviTrpB3",
+      "recentTrackUris": [],
+      "body": "0a2473706f746966793a747261636b3a3650436f5a646a535062524d65684876695472704233"
+    },
+    {
+      "kind": "collection",
+      "name": "the first page of liked songs and saved albums",
+      "username": "owner",
+      "set": "collection",
+      "pageToken": "",
+      "limit": 300,
+      "body": "0a056f776e6572120a636f6c6c656374696f6e20ac02"
+    },
+    {
+      "kind": "collection",
+      "name": "the next page",
+      "username": "owner",
+      "set": "collection",
+      "pageToken": "synthetic-page-token",
+      "limit": 300,
+      "body": "0a056f776e6572120a636f6c6c656374696f6e1a1473796e7468657469632d706167652d746f6b656e20ac02"
+    },
+    {
+      "kind": "collection",
+      "name": "followed artists",
+      "username": "owner",
+      "set": "artist",
+      "pageToken": "",
+      "limit": 50,
+      "body": "0a056f776e657212066172746973742032"
+    }
+  ]
+}

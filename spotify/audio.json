@@ -1,0 +1,158 @@
+{
+  "description": "Decrypting a Spotify audio file: AES-128-CTR with the fixed IV 72e067fbddcbcf77ebe8bc643f630d93 from any byte offset, and the 167-byte header in front of the Ogg Vorbis stream.",
+  "cases": [
+    {
+      "kind": "decrypt",
+      "name": "a whole 200-byte file",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 0,
+      "encrypted": "988472db0ff33fe15f995452a68ce46d0f942be38bc1d3a1ec3357b42142e1fc5d48a411fc4e0c2fa3cf4244d049883e50d01df09ef8bf6ecdccfd62c0e1d933808e1a8b2bcb82658b262be3d29d626bae798c59ac47524ca29f2894c76ef42ef04acd9179aa70b702b6f70d44a648f06be6b5d232dc4af6850c82d6a5fbd5321b50aa16a4a5656fc4c6886249b7341ca269d7edfc8a51c572be4a3d5ffbd29d7099b1bbfa33bb1e0a13310a7ba3ff81ebb0c17c82676506cc007d3b3be020c47f4b9b9e4d462c37",
+      "decrypted": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f808182838485868788898a8b8c8d8e8f909192939495969798999a9b9c9d9e9fa0a1a2a3a4a5a6a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7"
+    },
+    {
+      "kind": "decrypt",
+      "name": "3 bytes from byte 5",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 5,
+      "encrypted": "f33fe1",
+      "decrypted": "050607"
+    },
+    {
+      "kind": "decrypt",
+      "name": "77 bytes from byte 21",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 21,
+      "encrypted": "c1d3a1ec3357b42142e1fc5d48a411fc4e0c2fa3cf4244d049883e50d01df09ef8bf6ecdccfd62c0e1d933808e1a8b2bcb82658b262be3d29d626bae798c59ac47524ca29f2894c76ef42ef04a",
+      "decrypted": "15161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f6061"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 160",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 160,
+      "encrypted": "7099b1bbfa33bb1e0a13",
+      "decrypted": "a0a1a2a3a4a5a6a7a8a9"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 161",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 161,
+      "encrypted": "99b1bbfa33bb1e0a1331",
+      "decrypted": "a1a2a3a4a5a6a7a8a9aa"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 162",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 162,
+      "encrypted": "b1bbfa33bb1e0a13310a",
+      "decrypted": "a2a3a4a5a6a7a8a9aaab"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 163",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 163,
+      "encrypted": "bbfa33bb1e0a13310a7b",
+      "decrypted": "a3a4a5a6a7a8a9aaabac"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 164",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 164,
+      "encrypted": "fa33bb1e0a13310a7ba3",
+      "decrypted": "a4a5a6a7a8a9aaabacad"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 165",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 165,
+      "encrypted": "33bb1e0a13310a7ba3ff",
+      "decrypted": "a5a6a7a8a9aaabacadae"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 166",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 166,
+      "encrypted": "bb1e0a13310a7ba3ff81",
+      "decrypted": "a6a7a8a9aaabacadaeaf"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 167",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 167,
+      "encrypted": "1e0a13310a7ba3ff81eb",
+      "decrypted": "a7a8a9aaabacadaeafb0"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 168",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 168,
+      "encrypted": "0a13310a7ba3ff81ebb0",
+      "decrypted": "a8a9aaabacadaeafb0b1"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 169",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 169,
+      "encrypted": "13310a7ba3ff81ebb0c1",
+      "decrypted": "a9aaabacadaeafb0b1b2"
+    },
+    {
+      "kind": "decrypt",
+      "name": "10 bytes from byte 170",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 170,
+      "encrypted": "310a7ba3ff81ebb0c17c",
+      "decrypted": "aaabacadaeafb0b1b2b3"
+    },
+    {
+      "kind": "decrypt",
+      "name": "a huge offset: the counter's low word wraps",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 51704178376,
+      "encrypted": "0000000000000000000000000000000000000000000000000000000000000000",
+      "decrypted": "591339bd960f72e8dd834449981c0d189c71c767b70123038cc23b888f74e3f8"
+    },
+    {
+      "kind": "decrypt",
+      "name": "a huge offset: block 2^32",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "offset": 68719476728,
+      "encrypted": "0000000000000000000000000000000000000000000000000000000000000000",
+      "decrypted": "8c60737a753156d0ef3ae5d6f087e32c330b842c2686e0795f975407ad4f4f3c"
+    },
+    {
+      "kind": "header",
+      "name": "the 200-byte file: the first 167 decrypted bytes are Spotify's header",
+      "key": "07070707070707070707070707070707",
+      "iv": "72e067fbddcbcf77ebe8bc643f630d93",
+      "encrypted": "988472db0ff33fe15f995452a68ce46d0f942be38bc1d3a1ec3357b42142e1fc5d48a411fc4e0c2fa3cf4244d049883e50d01df09ef8bf6ecdccfd62c0e1d933808e1a8b2bcb82658b262be3d29d626bae798c59ac47524ca29f2894c76ef42ef04acd9179aa70b702b6f70d44a648f06be6b5d232dc4af6850c82d6a5fbd5321b50aa16a4a5656fc4c6886249b7341ca269d7edfc8a51c572be4a3d5ffbd29d7099b1bbfa33bb1e0a13310a7ba3ff81ebb0c17c82676506cc007d3b3be020c47f4b9b9e4d462c37",
+      "headerSize": 167,
+      "audio": "a7a8a9aaabacadaeafb0b1b2b3b4b5b6b7b8b9babbbcbdbebfc0c1c2c3c4c5c6c7"
+    }
+  ]
+}

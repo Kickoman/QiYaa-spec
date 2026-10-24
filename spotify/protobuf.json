@@ -1,0 +1,459 @@
+{
+  "description": "The protobuf wire format the Spotify protocol code writes and reads: fields to bytes, bytes to the fields a reader sees, and bytes a reader must reject.",
+  "cases": [
+    {
+      "kind": "write",
+      "name": "a varint and a string",
+      "fields": [
+        {
+          "field": 1,
+          "varint": "300"
+        },
+        {
+          "field": 2,
+          "string": "name"
+        }
+      ],
+      "bytes": "08ac0212046e616d65"
+    },
+    {
+      "kind": "write",
+      "name": "a nested message",
+      "fields": [
+        {
+          "field": 10,
+          "message": [
+            {
+              "field": 1,
+              "varint": "300"
+            },
+            {
+              "field": 2,
+              "string": "name"
+            }
+          ]
+        },
+        {
+          "field": 100,
+          "varint": "1"
+        }
+      ],
+      "bytes": "520908ac0212046e616d65a00601"
+    },
+    {
+      "kind": "write",
+      "name": "varints of every length",
+      "fields": [
+        {
+          "field": 1,
+          "varint": "0"
+        },
+        {
+          "field": 1,
+          "varint": "1"
+        },
+        {
+          "field": 1,
+          "varint": "127"
+        },
+        {
+          "field": 1,
+          "varint": "128"
+        },
+        {
+          "field": 1,
+          "varint": "16383"
+        },
+        {
+          "field": 1,
+          "varint": "16384"
+        },
+        {
+          "field": 1,
+          "varint": "2097151"
+        },
+        {
+          "field": 1,
+          "varint": "2097152"
+        },
+        {
+          "field": 1,
+          "varint": "268435455"
+        },
+        {
+          "field": 1,
+          "varint": "268435456"
+        },
+        {
+          "field": 1,
+          "varint": "4294967295"
+        },
+        {
+          "field": 1,
+          "varint": "34359738368"
+        },
+        {
+          "field": 1,
+          "varint": "4398046511104"
+        },
+        {
+          "field": 1,
+          "varint": "562949953421312"
+        },
+        {
+          "field": 1,
+          "varint": "72057594037927936"
+        },
+        {
+          "field": 1,
+          "varint": "9223372036854775807"
+        },
+        {
+          "field": 1,
+          "varint": "9223372036854775808"
+        },
+        {
+          "field": 1,
+          "varint": "18446744073709551615"
+        }
+      ],
+      "bytes": "08000801087f08800108ff7f0880800108ffff7f088080800108ffffff7f08808080800108ffffffff0f0880808080800108808080808080010880808080808080010880808080808080800108ffffffffffffffff7f088080808080808080800108ffffffffffffffffff01"
+    },
+    {
+      "kind": "write",
+      "name": "field numbers with tags of one to five bytes",
+      "fields": [
+        {
+          "field": 1,
+          "varint": "1"
+        },
+        {
+          "field": 15,
+          "varint": "1"
+        },
+        {
+          "field": 16,
+          "varint": "1"
+        },
+        {
+          "field": 2047,
+          "varint": "1"
+        },
+        {
+          "field": 2048,
+          "varint": "1"
+        },
+        {
+          "field": 262143,
+          "varint": "1"
+        },
+        {
+          "field": 262144,
+          "varint": "1"
+        },
+        {
+          "field": 33554431,
+          "varint": "1"
+        },
+        {
+          "field": 33554432,
+          "varint": "1"
+        },
+        {
+          "field": 536870911,
+          "varint": "1"
+        }
+      ],
+      "bytes": "08017801800101f87f0180800101f8ff7f018080800101f8ffff7f01808080800101f8ffffff0f01"
+    },
+    {
+      "kind": "write",
+      "name": "an empty message, empty bytes and an empty string",
+      "fields": [
+        {
+          "field": 20,
+          "message": []
+        },
+        {
+          "field": 30,
+          "bytes": ""
+        },
+        {
+          "field": 40,
+          "string": ""
+        }
+      ],
+      "bytes": "a20100f20100c20200"
+    },
+    {
+      "kind": "write",
+      "name": "130 bytes take a two-byte length",
+      "fields": [
+        {
+          "field": 3,
+          "bytes": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f8081"
+        }
+      ],
+      "bytes": "1a8201000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f202122232425262728292a2b2c2d2e2f303132333435363738393a3b3c3d3e3f404142434445464748494a4b4c4d4e4f505152535455565758595a5b5c5d5e5f606162636465666768696a6b6c6d6e6f707172737475767778797a7b7c7d7e7f8081"
+    },
+    {
+      "kind": "write",
+      "name": "a string is written as its UTF-8 bytes",
+      "fields": [
+        {
+          "field": 2,
+          "string": "Песня — Ø"
+        }
+      ],
+      "bytes": "1211d09fd0b5d181d0bdd18f20e2809420c398"
+    },
+    {
+      "kind": "write",
+      "name": "fields stay in the order written, repeated ones too",
+      "fields": [
+        {
+          "field": 3,
+          "string": "a"
+        },
+        {
+          "field": 1,
+          "varint": "1"
+        },
+        {
+          "field": 3,
+          "string": "b"
+        }
+      ],
+      "bytes": "1a016108011a0162"
+    },
+    {
+      "kind": "read",
+      "name": "a nested message is a length-delimited field",
+      "bytes": "520908ac0212046e616d65a00601",
+      "fields": [
+        {
+          "field": 10,
+          "wire": 2,
+          "bytes": "08ac0212046e616d65"
+        },
+        {
+          "field": 100,
+          "wire": 0,
+          "varint": "1",
+          "zigzag": "-1"
+        }
+      ]
+    },
+    {
+      "kind": "read",
+      "name": "fixed32 and fixed64 are little-endian",
+      "bytes": "0d01020304110102030405060708",
+      "fields": [
+        {
+          "field": 1,
+          "wire": 5,
+          "bytes": "01020304",
+          "value": "67305985"
+        },
+        {
+          "field": 2,
+          "wire": 1,
+          "bytes": "0102030405060708",
+          "value": "578437695752307201"
+        }
+      ]
+    },
+    {
+      "kind": "read",
+      "name": "varints as zigzag: 0, -1, 1, -2, 222546, 2^31 - 1, -2^31",
+      "bytes": "380038013802380338a4951b38feffffff0f38ffffffff0f",
+      "fields": [
+        {
+          "field": 7,
+          "wire": 0,
+          "varint": "0",
+          "zigzag": "0"
+        },
+        {
+          "field": 7,
+          "wire": 0,
+          "varint": "1",
+          "zigzag": "-1"
+        },
+        {
+          "field": 7,
+          "wire": 0,
+          "varint": "2",
+          "zigzag": "1"
+        },
+        {
+          "field": 7,
+          "wire": 0,
+          "varint": "3",
+          "zigzag": "-2"
+        },
+        {
+          "field": 7,
+          "wire": 0,
+          "varint": "445092",
+          "zigzag": "222546"
+        },
+        {
+          "field": 7,
+          "wire": 0,
+          "varint": "4294967294",
+          "zigzag": "2147483647"
+        },
+        {
+          "field": 7,
+          "wire": 0,
+          "varint": "4294967295",
+          "zigzag": "-2147483648"
+        }
+      ]
+    },
+    {
+      "kind": "read",
+      "name": "the largest varint",
+      "bytes": "08ffffffffffffffffff01",
+      "fields": [
+        {
+          "field": 1,
+          "wire": 0,
+          "varint": "18446744073709551615",
+          "zigzag": "-9223372036854775808"
+        }
+      ]
+    },
+    {
+      "kind": "read",
+      "name": "the largest field number",
+      "bytes": "f8ffffff0f00",
+      "fields": [
+        {
+          "field": 536870911,
+          "wire": 0,
+          "varint": "0",
+          "zigzag": "0"
+        }
+      ]
+    },
+    {
+      "kind": "read",
+      "name": "an empty length-delimited field",
+      "bytes": "0a00",
+      "fields": [
+        {
+          "field": 1,
+          "wire": 2,
+          "bytes": ""
+        }
+      ]
+    },
+    {
+      "kind": "read",
+      "name": "a varint in more bytes than needed",
+      "bytes": "088000",
+      "fields": [
+        {
+          "field": 1,
+          "wire": 0,
+          "varint": "0",
+          "zigzag": "0"
+        }
+      ]
+    },
+    {
+      "kind": "reject",
+      "name": "a length past the end",
+      "bytes": "0a0568656c",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "a varint cut short",
+      "bytes": "08ff",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "a tag cut short after a whole field",
+      "bytes": "0801ff",
+      "fieldsBefore": [
+        {
+          "field": 1,
+          "wire": 0,
+          "varint": "1",
+          "zigzag": "-1"
+        }
+      ]
+    },
+    {
+      "kind": "reject",
+      "name": "a group start (wire type 3)",
+      "bytes": "0b",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "a group end (wire type 4)",
+      "bytes": "08010c",
+      "fieldsBefore": [
+        {
+          "field": 1,
+          "wire": 0,
+          "varint": "1",
+          "zigzag": "-1"
+        }
+      ]
+    },
+    {
+      "kind": "reject",
+      "name": "wire type 6",
+      "bytes": "0e00",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "wire type 7",
+      "bytes": "0f00",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "field number 0",
+      "bytes": "0001",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "a field number above 2^29 - 1",
+      "bytes": "808080801000",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "fixed32 cut short",
+      "bytes": "0d0102",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "fixed64 cut short",
+      "bytes": "0901020304050607",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "a varint of more than ten bytes",
+      "bytes": "08ffffffffffffffffffff01",
+      "fieldsBefore": []
+    },
+    {
+      "kind": "reject",
+      "name": "a length of 2^64 - 1",
+      "bytes": "0affffffffffffffffff0100",
+      "fieldsBefore": []
+    }
+  ]
+}

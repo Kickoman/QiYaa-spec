@@ -1,0 +1,775 @@
+{
+  "description": "Access point sessions against a fake access point: the handshake, the login, packets both ways, the audio keys and the keep-alive, with the client's randomness fixed.",
+  "cases": [
+    {
+      "name": "stored credentials: login, country, product, two audio keys, the keep-alive",
+      "identity": {
+        "platform": 8,
+        "cpuFamily": 2,
+        "os": 5,
+        "protocolVersion": 124200290,
+        "systemInformation": "QiYaa 0.7.2",
+        "versionString": "QiYaa 0.7.2",
+        "deviceId": "dddddddddddddddddddddddddddddddddddddddd"
+      },
+      "credentials": {
+        "username": "owner",
+        "type": 1,
+        "data": "01020304"
+      },
+      "random": [
+        "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98a5b2bfccd9e6f3000d1a2734414e5b6875828f9ca9b6c3d0ddeaf704111e2b3845525f6c798693a0adbac7d4e1eefb0815222f3c495663707d8a97a4b1becb",
+        "05121f2c394653606d7a8794a1aebbc8"
+      ],
+      "trustedKey": {
+        "modulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "exponent": 65537
+      },
+      "dhPrime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "server": {
+        "dhPrivate": "030a11181f262d343b424950575e656c737a81888f969da4abb2b9c0c7ced5dce3eaf1f8ff060d141b222930373e454c535a61686f767d848b9299a0a7aeb5bcc3cad1d8dfe6edf4fb020910171e252c333a41484f565d646b727980878e95",
+        "dhPublic": "d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134",
+        "rsaModulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "rsaExponent": 65537,
+        "signature": "16473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+      },
+      "keys": {
+        "clientPublic": "f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2",
+        "shared": "2f493713e525f66718e9fa7cc655598889c5446924eee1b5853cd6cc75972166e9542bcd40c7d8e6fd720716ef77b6bbdfddc3d8bc516e5f6d8ec3404a4f0fbb776119e8fae3f6222cc48c5e944f5a0469f5eecf917c460d5f13d3c1870409f8",
+        "material": "a44d799999f554a04f56f98467ce3e2a2b6bfd0a3d0396ee4fda002e039814dd1512b84252394a874159f025478c8fe06946e6a93945db66e985d52f8009faf31051a0a00aa304699b66637b27d4a9b7e46bc6a31ef79cf9737cb633ffb2c6f40329973a",
+        "challengeAnswer": "656ba4358ff6f9de3bf9ed8931c6b604f6e0bee2",
+        "clientToServer": "3d0396ee4fda002e039814dd1512b84252394a874159f025478c8fe06946e6a9",
+        "serverToClient": "3945db66e985d52f8009faf31051a0a00aa304699b66637b27d4a9b7e46bc6a3"
+      },
+      "steps": [
+        {
+          "call": "start",
+          "outgoing": [
+            {
+              "what": "ClientHello",
+              "wire": "00040000009a520e5000a00100f00108c002e2ca9c3bf0010092036752655260f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2a00101e2031005121f2c394653606d7a8794a1aebbc8b204011e"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 0,
+          "incoming": [
+            {
+              "what": "APResponseMessage",
+              "wire": "0000017652ef0252ec0252e9025260d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134a00101f201800216473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+            }
+          ],
+          "outgoing": [
+            {
+              "what": "ClientResponsePlaintext",
+              "wire": "00000024521852165214656ba4358ff6f9de3bf9ed8931c6b604f6e0bee2a20100f20100"
+            },
+            {
+              "what": "Login",
+              "nonce": 0,
+              "command": "ab",
+              "payload": "521152056f776e6572a00101f201040102030492033e5002e00305d2050b516959616120302e372e32a2062864646464646464646464646464646464646464646464646464646464646464646464646464646464b2040b516959616120302e372e32",
+              "wire": "cc2edb290a4c9a02949d5772db27c2fc93e47bd97ab165ecb928ebc86fd70890c91c702253037ef57a090fc5855989165c6df3ef8b0f05d405de0a9e25933dae80c3cd8291e54afd20038d07347490125c21a7bf3cdf3e993c4a52ad465c4f5eecdf48d541cd946d34"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 1000,
+          "incoming": [
+            {
+              "what": "APWelcome",
+              "nonce": 0,
+              "command": "ac",
+              "payload": "52056f776e6572a00101c80101f00101c20203090909",
+              "wire": "3cf9ed1f98887e609df58eaeed4f5078e1e4eca168a0f58567e3a225ad"
+            },
+            {
+              "what": "CountryCode",
+              "nonce": 1,
+              "command": "1b",
+              "payload": "4259",
+              "wire": "d0352921834f98748b"
+            },
+            {
+              "what": "ProductInfo",
+              "nonce": 2,
+              "command": "50",
+              "payload": "3c70726f64756374733e3c70726f647563743e3c747970653e7072656d69756d3c2f747970653e3c2f70726f647563743e3c2f70726f64756374733e",
+              "wire": "2b796e6c72030c26731b6c68170f68a6c7c723bf064052bf155e07af3e79309bdaae5d6f33eab4140f65739154148084feb6651718884f33da9fdbdae4aad9438e0ab5"
+            },
+            {
+              "what": "LicenseVersion",
+              "nonce": 3,
+              "command": "76",
+              "payload": "0000",
+              "wire": "eb4b2b6950fb01b57c"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "loggedIn",
+              "username": "owner",
+              "type": 1,
+              "data": "090909"
+            },
+            {
+              "event": "country",
+              "code": "BY"
+            },
+            {
+              "event": "product",
+              "type": "premium"
+            }
+          ],
+          "deadline": 21000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "requestAudioKey",
+          "track": "01000000000000000000000000000000",
+          "file": "0200000000000000000000000000000000000000",
+          "returns": 0,
+          "outgoing": [
+            {
+              "what": "RequestKey",
+              "nonce": 1,
+              "command": "0c",
+              "payload": "020000000000000000000000000000000000000001000000000000000000000000000000000000000000",
+              "wire": "f7586bb1b5fe5579373947a35a8d29d4cc95b74052a159cdb787f6bfbfd1457c27fd6bd05bfe5c137c8ceee1c122d66843"
+            }
+          ],
+          "events": [],
+          "deadline": 21000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 2000,
+          "incoming": [
+            {
+              "what": "AesKey",
+              "nonce": 4,
+              "command": "0d",
+              "payload": "0000000077777777777777777777777777777777",
+              "wire": "5765c2bcc1800435d46793153dcd5f8205d08ad71ae69ca0b05665"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "audioKey",
+              "sequence": 0,
+              "key": "77777777777777777777777777777777"
+            }
+          ],
+          "deadline": 21000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "requestAudioKey",
+          "track": "01000000000000000000000000000000",
+          "file": "0200000000000000000000000000000000000000",
+          "returns": 1,
+          "outgoing": [
+            {
+              "what": "RequestKey",
+              "nonce": 2,
+              "command": "0c",
+              "payload": "020000000000000000000000000000000000000001000000000000000000000000000000000000010000",
+              "wire": "e861829386d52eeeb01a0e91f634f71665a9b8b6824db5bb1ff189577d18ca8ef8e975215aa24c3b6f3f168ea47ae387ee"
+            }
+          ],
+          "events": [],
+          "deadline": 21000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 3000,
+          "incoming": [
+            {
+              "what": "AesKeyError",
+              "nonce": 5,
+              "command": "0e",
+              "payload": "000000010001",
+              "wire": "2cbf0a2408b6afa9d44d9cda76"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "audioKeyRefused",
+              "sequence": 1,
+              "code": 1
+            }
+          ],
+          "deadline": 21000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 5000,
+          "incoming": [
+            {
+              "what": "Ping",
+              "nonce": 6,
+              "command": "04",
+              "payload": "00000001",
+              "wire": "4b8362f4d429e23d8a2187"
+            }
+          ],
+          "outgoing": [],
+          "events": [],
+          "deadline": 65000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "advance",
+          "nowMs": 64999,
+          "outgoing": [],
+          "events": [],
+          "deadline": 65000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "advance",
+          "nowMs": 65000,
+          "outgoing": [
+            {
+              "what": "Pong",
+              "nonce": 3,
+              "command": "49",
+              "payload": "00000000",
+              "wire": "c75da1064a1da9d60a52dc"
+            }
+          ],
+          "events": [],
+          "deadline": 85000,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 65100,
+          "incoming": [
+            {
+              "what": "PongAck",
+              "nonce": 7,
+              "command": "4a",
+              "payload": "",
+              "wire": "11ce1619296692"
+            }
+          ],
+          "outgoing": [],
+          "events": [],
+          "deadline": 145100,
+          "loggedIn": true,
+          "failed": false
+        },
+        {
+          "call": "advance",
+          "nowMs": 145100,
+          "outgoing": [],
+          "events": [
+            {
+              "event": "failure"
+            }
+          ],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "an OAuth token: the login is refused",
+      "identity": {
+        "platform": 8,
+        "cpuFamily": 2,
+        "os": 5,
+        "protocolVersion": 124200290,
+        "systemInformation": "QiYaa 0.7.2",
+        "versionString": "QiYaa 0.7.2",
+        "deviceId": "dddddddddddddddddddddddddddddddddddddddd"
+      },
+      "credentials": {
+        "username": "",
+        "type": 3,
+        "data": "42512d746f6b656e"
+      },
+      "random": [
+        "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98a5b2bfccd9e6f3000d1a2734414e5b6875828f9ca9b6c3d0ddeaf704111e2b3845525f6c798693a0adbac7d4e1eefb0815222f3c495663707d8a97a4b1becb",
+        "05121f2c394653606d7a8794a1aebbc8"
+      ],
+      "trustedKey": {
+        "modulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "exponent": 65537
+      },
+      "dhPrime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "server": {
+        "dhPrivate": "030a11181f262d343b424950575e656c737a81888f969da4abb2b9c0c7ced5dce3eaf1f8ff060d141b222930373e454c535a61686f767d848b9299a0a7aeb5bcc3cad1d8dfe6edf4fb020910171e252c333a41484f565d646b727980878e95",
+        "dhPublic": "d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134",
+        "rsaModulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "rsaExponent": 65537,
+        "signature": "16473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+      },
+      "keys": {
+        "clientPublic": "f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2",
+        "shared": "2f493713e525f66718e9fa7cc655598889c5446924eee1b5853cd6cc75972166e9542bcd40c7d8e6fd720716ef77b6bbdfddc3d8bc516e5f6d8ec3404a4f0fbb776119e8fae3f6222cc48c5e944f5a0469f5eecf917c460d5f13d3c1870409f8",
+        "material": "a44d799999f554a04f56f98467ce3e2a2b6bfd0a3d0396ee4fda002e039814dd1512b84252394a874159f025478c8fe06946e6a93945db66e985d52f8009faf31051a0a00aa304699b66637b27d4a9b7e46bc6a31ef79cf9737cb633ffb2c6f40329973a",
+        "challengeAnswer": "656ba4358ff6f9de3bf9ed8931c6b604f6e0bee2",
+        "clientToServer": "3d0396ee4fda002e039814dd1512b84252394a874159f025478c8fe06946e6a9",
+        "serverToClient": "3945db66e985d52f8009faf31051a0a00aa304699b66637b27d4a9b7e46bc6a3"
+      },
+      "steps": [
+        {
+          "call": "start",
+          "outgoing": [
+            {
+              "what": "ClientHello",
+              "wire": "00040000009a520e5000a00100f00108c002e2ca9c3bf0010092036752655260f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2a00101e2031005121f2c394653606d7a8794a1aebbc8b204011e"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 0,
+          "incoming": [
+            {
+              "what": "APResponseMessage",
+              "wire": "0000017652ef0252ec0252e9025260d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134a00101f201800216473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+            }
+          ],
+          "outgoing": [
+            {
+              "what": "ClientResponsePlaintext",
+              "wire": "00000024521852165214656ba4358ff6f9de3bf9ed8931c6b604f6e0bee2a20100f20100"
+            },
+            {
+              "what": "Login",
+              "nonce": 0,
+              "command": "ab",
+              "payload": "520ea00103f2010842512d746f6b656e92033e5002e00305d2050b516959616120302e372e32a2062864646464646464646464646464646464646464646464646464646464646464646464646464646464b2040b516959616120302e372e32",
+              "wire": "cc2ee629291dabffaeb673057ab4bf2221b4ebdc8d421cd259f61a7f3ece900bdc878dac03f53107ef37f1324b7c0ef452a4f65e7ddf97011438afcd7f89f51bc8a62a74f0d9276675bb4192ad3b09b7335cba3e57cb378b66e7874a696f54c6530868c4e3f9"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 1000,
+          "incoming": [
+            {
+              "what": "AuthFailure",
+              "nonce": 0,
+              "command": "ad",
+              "payload": "500cc2020f6261642063726564656e7469616c73",
+              "wire": "3df9ef1d31a113055847b2e2d617e3b0527d7fba87c24809dca227"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "loginFailed",
+              "code": 12,
+              "description": "bad credentials"
+            }
+          ],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": true
+        },
+        {
+          "call": "requestAudioKey",
+          "track": "00000000000000000000000000000000",
+          "file": "0000000000000000000000000000000000000000",
+          "returns": null,
+          "outgoing": [],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "the handshake is refused: TryAnotherAP",
+      "identity": {
+        "platform": 8,
+        "cpuFamily": 2,
+        "os": 5,
+        "protocolVersion": 124200290,
+        "systemInformation": "QiYaa 0.7.2",
+        "versionString": "QiYaa 0.7.2",
+        "deviceId": "dddddddddddddddddddddddddddddddddddddddd"
+      },
+      "credentials": {
+        "username": "owner",
+        "type": 1,
+        "data": "01020304"
+      },
+      "random": [
+        "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98a5b2bfccd9e6f3000d1a2734414e5b6875828f9ca9b6c3d0ddeaf704111e2b3845525f6c798693a0adbac7d4e1eefb0815222f3c495663707d8a97a4b1becb",
+        "05121f2c394653606d7a8794a1aebbc8"
+      ],
+      "trustedKey": {
+        "modulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "exponent": 65537
+      },
+      "dhPrime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "server": {
+        "dhPrivate": "030a11181f262d343b424950575e656c737a81888f969da4abb2b9c0c7ced5dce3eaf1f8ff060d141b222930373e454c535a61686f767d848b9299a0a7aeb5bcc3cad1d8dfe6edf4fb020910171e252c333a41484f565d646b727980878e95",
+        "dhPublic": "d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134",
+        "rsaModulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "rsaExponent": 65537,
+        "signature": "16473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+      },
+      "keys": null,
+      "steps": [
+        {
+          "call": "start",
+          "outgoing": [
+            {
+              "what": "ClientHello",
+              "wire": "00040000009a520e5000a00100f00108c002e2ca9c3bf0010092036752655260f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2a00101e2031005121f2c394653606d7a8794a1aebbc8b204011e"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 0,
+          "incoming": [
+            {
+              "what": "APResponseMessage",
+              "wire": "00000009f201025002"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "loginFailed",
+              "code": 2,
+              "description": ""
+            }
+          ],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "an access point not signed by the trusted key",
+      "identity": {
+        "platform": 8,
+        "cpuFamily": 2,
+        "os": 5,
+        "protocolVersion": 124200290,
+        "systemInformation": "QiYaa 0.7.2",
+        "versionString": "QiYaa 0.7.2",
+        "deviceId": "dddddddddddddddddddddddddddddddddddddddd"
+      },
+      "credentials": {
+        "username": "owner",
+        "type": 1,
+        "data": "01020304"
+      },
+      "random": [
+        "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98a5b2bfccd9e6f3000d1a2734414e5b6875828f9ca9b6c3d0ddeaf704111e2b3845525f6c798693a0adbac7d4e1eefb0815222f3c495663707d8a97a4b1becb",
+        "05121f2c394653606d7a8794a1aebbc8"
+      ],
+      "trustedKey": {
+        "modulus": "ace0460bffc230aff46bfec3bfbf863da191c6cc336c93a14fb3b01612acac6af180e7f614d9429dbe2e346643e362d2327a1a0d923baedd1402b18155056104d52c96a44c1ecc024ad4b20c001f17edc22fc43521c8f0cbaed2add72b0f9db3c5321a2afe59f35a0dac68f1fa621efb2c8d0cb7392d9247e3d7351a6dbd24c2ae255b88ffab73298a0bcccd0c58673189e8bd3480784a5fc96b899d956bfc86d74f33a6781796c9c32d0d32a5abcd0527e2f710a39613c42f99c027bfed049c3c275804b6b219f9c12f02e94863eca1b642a09d4825f8b39dd0e86af9484da1c2ba863042ea9db3086c190e48b39d66eb0006a25aeea11b13873cd719e655bd",
+        "exponent": 65537
+      },
+      "dhPrime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "server": {
+        "dhPrivate": "030a11181f262d343b424950575e656c737a81888f969da4abb2b9c0c7ced5dce3eaf1f8ff060d141b222930373e454c535a61686f767d848b9299a0a7aeb5bcc3cad1d8dfe6edf4fb020910171e252c333a41484f565d646b727980878e95",
+        "dhPublic": "d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134",
+        "rsaModulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "rsaExponent": 65537,
+        "signature": "16473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+      },
+      "keys": null,
+      "steps": [
+        {
+          "call": "start",
+          "outgoing": [
+            {
+              "what": "ClientHello",
+              "wire": "00040000009a520e5000a00100f00108c002e2ca9c3bf0010092036752655260f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2a00101e2031005121f2c394653606d7a8794a1aebbc8b204011e"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 0,
+          "incoming": [
+            {
+              "what": "APResponseMessage",
+              "wire": "0000017652ef0252ec0252e9025260d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134a00101f201800216473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "failure"
+            }
+          ],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": true
+        }
+      ]
+    },
+    {
+      "name": "the client's public key has a leading zero byte",
+      "identity": {
+        "platform": 8,
+        "cpuFamily": 2,
+        "os": 5,
+        "protocolVersion": 124200290,
+        "systemInformation": "QiYaa 0.7.2",
+        "versionString": "QiYaa 0.7.2",
+        "deviceId": "dddddddddddddddddddddddddddddddddddddddd"
+      },
+      "credentials": {
+        "username": "owner",
+        "type": 1,
+        "data": "01020304"
+      },
+      "random": [
+        "6774818e9ba8b5c2cfdce9f603101d2a3744515e6b7885929facb9c6d3e0edfa0714212e3b4855626f7c8996a3b0bdcad7e4f1fe0b1825323f4c596673808d9aa7b4c1cedbe8f5020f1c293643505d6a7784919eabb8c5d2dfecf90613202d",
+        "6774818e9ba8b5c2cfdce9f603101d2a"
+      ],
+      "trustedKey": {
+        "modulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "exponent": 65537
+      },
+      "dhPrime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "server": {
+        "dhPrivate": "030a11181f262d343b424950575e656c737a81888f969da4abb2b9c0c7ced5dce3eaf1f8ff060d141b222930373e454c535a61686f767d848b9299a0a7aeb5bcc3cad1d8dfe6edf4fb020910171e252c333a41484f565d646b727980878e95",
+        "dhPublic": "d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134",
+        "rsaModulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "rsaExponent": 65537,
+        "signature": "16473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+      },
+      "keys": {
+        "clientPublic": "7707dd06adc1ec84e35b72658f58a88999a110b93a5e2e12541e2a797d535ce55b0d6d4082cf7f1f32b28f1beb0afd43efd66a228eb9d0ae61c91c2d5cbcfc18250f29af26f7854fcdcbcfb59d557a0149c38412317bddbd051c2012c21ea8",
+        "shared": "e66a89cbb1cc80b2e90be50e229f83352ae9dc89e28047e13c47e9080eb49c91e57851c3290555614bcaa26fbc4d4907033015552921b2b2bed0da3f541e3bc52ab717d701c7ed3b5c99eb21a93627ca87fe57222c380d610b2c6ef197b08603",
+        "material": "c646481a2afb2000c3e40699642c486d16417ebff8084375a5a91771c6c35ca7467bcc9889562513865899fb584edf9721bbd3798e3500b1b9e44c2ad1cb4cb31208c0216ccbdc807479adfc295f597f75a8e3a0acdd8585868ec113913d67dc1b23ba6a",
+        "challengeAnswer": "2e9dbc1f6a458ead85798c7d8f463a13ee1c64e7",
+        "clientToServer": "f8084375a5a91771c6c35ca7467bcc9889562513865899fb584edf9721bbd379",
+        "serverToClient": "8e3500b1b9e44c2ad1cb4cb31208c0216ccbdc807479adfc295f597f75a8e3a0"
+      },
+      "steps": [
+        {
+          "call": "start",
+          "outgoing": [
+            {
+              "what": "ClientHello",
+              "wire": "000400000099520e5000a00100f00108c002e2ca9c3bf001009203665264525f7707dd06adc1ec84e35b72658f58a88999a110b93a5e2e12541e2a797d535ce55b0d6d4082cf7f1f32b28f1beb0afd43efd66a228eb9d0ae61c91c2d5cbcfc18250f29af26f7854fcdcbcfb59d557a0149c38412317bddbd051c2012c21ea8a00101e203106774818e9ba8b5c2cfdce9f603101d2ab204011e"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 0,
+          "incoming": [
+            {
+              "what": "APResponseMessage",
+              "wire": "0000017652ef0252ec0252e9025260d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134a00101f201800216473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+            }
+          ],
+          "outgoing": [
+            {
+              "what": "ClientResponsePlaintext",
+              "wire": "000000245218521652142e9dbc1f6a458ead85798c7d8f463a13ee1c64e7a20100f20100"
+            },
+            {
+              "what": "Login",
+              "nonce": 0,
+              "command": "ab",
+              "payload": "521152056f776e6572a00101f201040102030492033e5002e00305d2050b516959616120302e372e32a2062864646464646464646464646464646464646464646464646464646464646464646464646464646464b2040b516959616120302e372e32",
+              "wire": "644c02e893641723f018b66ece4f42ecd7d894a37883f9b612630ad245b3544d942f79ca68793d93aceda7b7440819d69a62b5f37cb3f93f439cafb5fbc7028aa1f04ed906a9f191131319e73dd0f75c5f086304dcc72cb0889f67d3cbb38e1645878d6ee403b41b32"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 1000,
+          "incoming": [
+            {
+              "what": "APWelcome",
+              "nonce": 0,
+              "command": "ac",
+              "payload": "52056f776e6572a00101c80101f00101c20203090909",
+              "wire": "ef57de90f827b0e7b712bbafced605cf208325647ee6a07815053ca52a"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "loggedIn",
+              "username": "owner",
+              "type": 1,
+              "data": "090909"
+            }
+          ],
+          "deadline": 21000,
+          "loggedIn": true,
+          "failed": false
+        }
+      ]
+    },
+    {
+      "name": "the shared secret has a leading zero byte",
+      "identity": {
+        "platform": 8,
+        "cpuFamily": 2,
+        "os": 5,
+        "protocolVersion": 124200290,
+        "systemInformation": "QiYaa 0.7.2",
+        "versionString": "QiYaa 0.7.2",
+        "deviceId": "dddddddddddddddddddddddddddddddddddddddd"
+      },
+      "credentials": {
+        "username": "owner",
+        "type": 1,
+        "data": "01020304"
+      },
+      "random": [
+        "0815222f3c495663707d8a97a4b1becbd8e5f2ff0c192633404d5a6774818e9ba8b5c2cfdce9f603101d2a3744515e6b7885929facb9c6d3e0edfa0714212e3b4855626f7c8996a3b0bdcad7e4f1fe0b1825323f4c596673808d9aa7b4c1ce",
+        "0815222f3c495663707d8a97a4b1becb"
+      ],
+      "trustedKey": {
+        "modulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "exponent": 65537
+      },
+      "dhPrime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "server": {
+        "dhPrivate": "030a11181f262d343b424950575e656c737a81888f969da4abb2b9c0c7ced5dce3eaf1f8ff060d141b222930373e454c535a61686f767d848b9299a0a7aeb5bcc3cad1d8dfe6edf4fb020910171e252c333a41484f565d646b727980878e95",
+        "dhPublic": "d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134",
+        "rsaModulus": "bc84542f4bc0d900043c734b883eafd51fab91e634e6cb27be036da84505da2701ddf842c5dc37d9d13df0457e356951e9e3a1e3dfb7abcb7f501ac52454438e8bf38b84c7b180f7e9f82cfb26c421024cb674856b5552c9e14a35a3c35d32cd5512c9cdbc977bafb06692d4298d9af55606e29d3b9774b8cd3a2732fee997e240ddfc0ec599cc07b2c1d9e6eb605a05d11cb85a87cfba9f4f157cb646840ddffd5e07ee24172f9c3eb6959d2e61ba43a7bc2fbc52489ff9fad09b26cdda39b4c9175d77d0539b2b3ee9dd0691b76401f463a593002283eb67d6fed14b76172b13c7c813dbff23c8254cf368a34165099b934de13a31d416c248e0568113148b",
+        "rsaExponent": 65537,
+        "signature": "16473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+      },
+      "keys": {
+        "clientPublic": "eb5f36b5e5e31a2536735caf6557b61428b84bc14c30cf49acce6ad88ca6e52497b5b14d4433c7a0ce35d3b8f2859b0035e0a83dd4312c94de8cb0923e25707c1557dbb96e7db9764c928448b48e556460fb19ea6b6eee55f1f2666867c5714e",
+        "shared": "2086a80889dd78e8f7b830cc99e7b24a3f12e26ab89b3d17ead357e23ab3eaef7cbdb55666f2c98f82395dccae0db7e63a623efc05f58895041976b2f31457dddc70196f172f85e0839648a8b8bff7f08b7c2fe64b8cc1ab7a1f2ea9e20958",
+        "material": "95a4ddb2bf7d5942c830bb77c3221b2d27dc1d2c3b660e2a4da76926480ec332cdc3ed33d635824d912206db8133fad9835f07b5b5e5953b29c16a1268b4c3e0c9add2bfbce69dd55d324f7d57e43042fc7dc3d8629ba524251715a0906b317949b24e12",
+        "challengeAnswer": "40c6ca1225cc7e7efe6b5c800a101946588c1499",
+        "clientToServer": "3b660e2a4da76926480ec332cdc3ed33d635824d912206db8133fad9835f07b5",
+        "serverToClient": "b5e5953b29c16a1268b4c3e0c9add2bfbce69dd55d324f7d57e43042fc7dc3d8"
+      },
+      "steps": [
+        {
+          "call": "start",
+          "outgoing": [
+            {
+              "what": "ClientHello",
+              "wire": "00040000009a520e5000a00100f00108c002e2ca9c3bf0010092036752655260eb5f36b5e5e31a2536735caf6557b61428b84bc14c30cf49acce6ad88ca6e52497b5b14d4433c7a0ce35d3b8f2859b0035e0a83dd4312c94de8cb0923e25707c1557dbb96e7db9764c928448b48e556460fb19ea6b6eee55f1f2666867c5714ea00101e203100815222f3c495663707d8a97a4b1becbb204011e"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 0,
+          "incoming": [
+            {
+              "what": "APResponseMessage",
+              "wire": "0000017652ef0252ec0252e9025260d15d5ac9ee0a866599a2aaaceeb7f1ec6caa1d2e0420c2fc3a8b2b81ed46632109be52227c4c0216866af715977ce95a139c8890c511e2eff06400dc9f946c23aac8287f1a3e847c804802449ac74d090498818f1cf318eb22315c738de00134a00101f201800216473ab622628535ee8c0864c1969307527c309b099bf17dffff55c4444a28aa8d611b847427425ff884cde4f793d0b2ae226d90ca81efe7273a079cddec0d48eca3cd33ff04fe957145c93dd9450d224c763b0b548b4bd764112ea22eea261ee0dd58633be46164f1daecff4827c1f7c11b5d248c93d97ee9eb65a14ce87b0fc1032d34e01c3f49916fb3c62290d16aaac0c4f79a944a3b433a0139c027160470365ce040494aff0ad0ffde882fb5ca13baa7c468f48e72f3175ff75f19d26461bb314e50cff88d147c33770854633b6d914e597d298dbcb39740464be63db36b0c4c19eb618aa5570f9b373e1cd95e89d534a5f38629bc8f9f89de9a0ed6c0"
+            }
+          ],
+          "outgoing": [
+            {
+              "what": "ClientResponsePlaintext",
+              "wire": "0000002452185216521440c6ca1225cc7e7efe6b5c800a101946588c1499a20100f20100"
+            },
+            {
+              "what": "Login",
+              "nonce": 0,
+              "command": "ab",
+              "payload": "521152056f776e6572a00101f201040102030492033e5002e00305d2050b516959616120302e372e32a2062864646464646464646464646464646464646464646464646464646464646464646464646464646464b2040b516959616120302e372e32",
+              "wire": "18b5a2c62f88be3b4fa6604aee9d1a9f4ca4eeef8be684b11ec8f27553334b006ea818eb7a493ef62d02a11bd7f29de525d0d767c8081360136e392012791558c8d25b2bab2ffd18a05f87d88e3a7a8043fca5b2b52be77cdf1ddd37e24936fe19a2b6dc0b4751873d"
+            }
+          ],
+          "events": [],
+          "deadline": null,
+          "loggedIn": false,
+          "failed": false
+        },
+        {
+          "call": "receive",
+          "nowMs": 1000,
+          "incoming": [
+            {
+              "what": "APWelcome",
+              "nonce": 0,
+              "command": "ac",
+              "payload": "52056f776e6572a00101c80101f00101c20203090909",
+              "wire": "d7648612c011c089fdded7b7584663870f3ffb67fa0c4d963b5a40fe04"
+            }
+          ],
+          "outgoing": [],
+          "events": [
+            {
+              "event": "loggedIn",
+              "username": "owner",
+              "type": 1,
+              "data": "090909"
+            }
+          ],
+          "deadline": 21000,
+          "loggedIn": true,
+          "failed": false
+        }
+      ]
+    }
+  ]
+}

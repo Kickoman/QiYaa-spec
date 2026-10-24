@@ -1,0 +1,407 @@
+{
+  "entities": [
+    {
+      "uri": "spotify:track:0f9BKR1UkRPl8OEDsItFu8",
+      "status": 200,
+      "track": null
+    },
+    {
+      "uri": "spotify:track:0dg9MKoV2L6aKsP3wSpXy7",
+      "status": 404,
+      "track": null
+    },
+    {
+      "uri": "spotify:track:0bmHODLVKEn0m6ZtB2mfC6",
+      "status": 200,
+      "track": {
+        "id": "0bmHODLVKEn0m6ZtB2mfC6",
+        "name": "Restricted elsewhere",
+        "artists": [
+          {
+            "id": "4T6b76CaJmyOQl6JglznIA",
+            "name": "Band"
+          }
+        ],
+        "album": {
+          "id": "5dW8Mhx2WyzFadg6wAeb0L",
+          "name": "Album",
+          "year": 1991,
+          "covers": [
+            {
+              "id": "6464646464646464646464646464646464646464",
+              "pixels": 64
+            },
+            {
+              "id": "3030303030303030303030303030303030303030",
+              "pixels": 300
+            },
+            {
+              "id": "4040404040404040404040404040404040404040",
+              "pixels": 640
+            }
+          ]
+        },
+        "durationMs": 200000,
+        "files": [
+          {
+            "id": "6262626262626262626262626262626262626262",
+            "format": 1
+          }
+        ],
+        "alternatives": [],
+        "available": true,
+        "coverUrls": {
+          "64": "https://i.scdn.co/image/6464646464646464646464646464646464646464",
+          "400": "https://i.scdn.co/image/4040404040404040404040404040404040404040",
+          "1000": "https://i.scdn.co/image/4040404040404040404040404040404040404040"
+        },
+        "play": {
+          "96": {
+            "trackId": "0bmHODLVKEn0m6ZtB2mfC6",
+            "fileId": "6262626262626262626262626262626262626262",
+            "format": 1
+          },
+          "160": {
+            "trackId": "0bmHODLVKEn0m6ZtB2mfC6",
+            "fileId": "6262626262626262626262626262626262626262",
+            "format": 1
+          },
+          "320": {
+            "trackId": "0bmHODLVKEn0m6ZtB2mfC6",
+            "fileId": "6262626262626262626262626262626262626262",
+            "format": 1
+          }
+        }
+      }
+    },
+    {
+      "uri": "spotify:track:09tfQx8WsxDPXL9TFcixG5",
+      "status": 200,
+      "track": {
+        "id": "09tfQx8WsxDPXL9TFcixG5",
+        "name": "Middle",
+        "artists": [
+          {
+            "id": "4T6b76CaJmyOQl6JglznIA",
+            "name": "Band"
+          }
+        ],
+        "album": {
+          "id": "5dW8Mhx2WyzFadg6wAeb0L",
+          "name": "Album",
+          "year": 0,
+          "covers": []
+        },
+        "durationMs": 200000,
+        "files": [
+          {
+            "id": "5151515151515151515151515151515151515151",
+            "format": 16
+          },
+          {
+            "id": "5252525252525252525252525252525252525252",
+            "format": 1
+          },
+          {
+            "id": "5353535353535353535353535353535353535353",
+            "format": 4
+          }
+        ],
+        "alternatives": [],
+        "available": true,
+        "coverUrls": {
+          "64": null,
+          "400": null,
+          "1000": null
+        },
+        "play": {
+          "96": {
+            "trackId": "09tfQx8WsxDPXL9TFcixG5",
+            "fileId": "5252525252525252525252525252525252525252",
+            "format": 1
+          },
+          "160": {
+            "trackId": "09tfQx8WsxDPXL9TFcixG5",
+            "fileId": "5252525252525252525252525252525252525252",
+            "format": 1
+          },
+          "320": {
+            "trackId": "09tfQx8WsxDPXL9TFcixG5",
+            "fileId": "5252525252525252525252525252525252525252",
+            "format": 1
+          }
+        }
+      }
+    },
+    {
+      "uri": "spotify:track:07zNSqvXaqUFzpkjJmePK4",
+      "status": 200,
+      "track": {
+        "id": "07zNSqvXaqUFzpkjJmePK4",
+        "name": "Lossless only",
+        "artists": [
+          {
+            "id": "4T6b76CaJmyOQl6JglznIA",
+            "name": "Band"
+          }
+        ],
+        "album": {
+          "id": "5dW8Mhx2WyzFadg6wAeb0L",
+          "name": "Album",
+          "year": 1991,
+          "covers": [
+            {
+              "id": "4545454545454545454545454545454545454545",
+              "pixels": 1280
+            },
+            {
+              "id": "4444444444444444444444444444444444444444",
+              "pixels": 640
+            }
+          ]
+        },
+        "durationMs": 200000,
+        "files": [
+          {
+            "id": "4141414141414141414141414141414141414141",
+            "format": 16
+          },
+          {
+            "id": "4242424242424242424242424242424242424242",
+            "format": 22
+          },
+          {
+            "id": "4343434343434343434343434343434343434343",
+            "format": 8
+          }
+        ],
+        "alternatives": [],
+        "available": false,
+        "coverUrls": {
+          "64": "https://i.scdn.co/image/4444444444444444444444444444444444444444",
+          "400": "https://i.scdn.co/image/4444444444444444444444444444444444444444",
+          "1000": "https://i.scdn.co/image/4545454545454545454545454545454545454545"
+        },
+        "play": {
+          "96": null,
+          "160": null,
+          "320": null
+        }
+      }
+    },
+    {
+      "uri": "spotify:track:05GlUjSXSkbvb3uJNwb7O3",
+      "status": 200,
+      "track": {
+        "id": "05GlUjSXSkbvb3uJNwb7O3",
+        "name": "Gone",
+        "artists": [
+          {
+            "id": "4T6b76CaJmyOQl6JglznIA",
+            "name": "Band"
+          }
+        ],
+        "album": {
+          "id": "5dW8Mhx2WyzFadg6wAeb0L",
+          "name": "Album",
+          "year": 1991,
+          "covers": [
+            {
+              "id": "6464646464646464646464646464646464646464",
+              "pixels": 64
+            },
+            {
+              "id": "3030303030303030303030303030303030303030",
+              "pixels": 300
+            },
+            {
+              "id": "4040404040404040404040404040404040404040",
+              "pixels": 640
+            }
+          ]
+        },
+        "durationMs": 200000,
+        "files": [],
+        "alternatives": [],
+        "available": false,
+        "coverUrls": {
+          "64": "https://i.scdn.co/image/6464646464646464646464646464646464646464",
+          "400": "https://i.scdn.co/image/4040404040404040404040404040404040404040",
+          "1000": "https://i.scdn.co/image/4040404040404040404040404040404040404040"
+        },
+        "play": {
+          "96": null,
+          "160": null,
+          "320": null
+        }
+      }
+    },
+    {
+      "uri": "spotify:track:03MTWdfYAdskMHF9RG7pS2",
+      "status": 200,
+      "track": {
+        "id": "03MTWdfYAdskMHF9RG7pS2",
+        "name": "Relinked",
+        "artists": [
+          {
+            "id": "4T6b76CaJmyOQl6JglznIA",
+            "name": "Band"
+          }
+        ],
+        "album": {
+          "id": "5dW8Mhx2WyzFadg6wAeb0L",
+          "name": "Album",
+          "year": 1991,
+          "covers": [
+            {
+              "id": "6464646464646464646464646464646464646464",
+              "pixels": 64
+            },
+            {
+              "id": "3030303030303030303030303030303030303030",
+              "pixels": 300
+            },
+            {
+              "id": "4040404040404040404040404040404040404040",
+              "pixels": 640
+            }
+          ]
+        },
+        "durationMs": 200000,
+        "files": [],
+        "alternatives": [
+          {
+            "id": "12pkXDnBVGLHlYhHIy25Oy",
+            "name": "",
+            "artists": [],
+            "album": {
+              "id": "0000000000000000000000",
+              "name": "",
+              "year": 0,
+              "covers": []
+            },
+            "durationMs": 0,
+            "files": [
+              {
+                "id": "2222222222222222222222222222222222222222",
+                "format": 2
+              }
+            ],
+            "alternatives": []
+          }
+        ],
+        "available": true,
+        "coverUrls": {
+          "64": "https://i.scdn.co/image/6464646464646464646464646464646464646464",
+          "400": "https://i.scdn.co/image/4040404040404040404040404040404040404040",
+          "1000": "https://i.scdn.co/image/4040404040404040404040404040404040404040"
+        },
+        "play": {
+          "96": {
+            "trackId": "12pkXDnBVGLHlYhHIy25Oy",
+            "fileId": "2222222222222222222222222222222222222222",
+            "format": 2
+          },
+          "160": {
+            "trackId": "12pkXDnBVGLHlYhHIy25Oy",
+            "fileId": "2222222222222222222222222222222222222222",
+            "format": 2
+          },
+          "320": {
+            "trackId": "12pkXDnBVGLHlYhHIy25Oy",
+            "fileId": "2222222222222222222222222222222222222222",
+            "format": 2
+          }
+        }
+      }
+    },
+    {
+      "uri": "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+      "status": 200,
+      "track": {
+        "id": "01TrY6CZi6JaolPzVQ3HW1",
+        "name": "Plays",
+        "artists": [
+          {
+            "id": "4T6b76CaJmyOQl6JglznIA",
+            "name": "Band"
+          },
+          {
+            "id": "4UZD5dfa1thZeGWjcbD5EB",
+            "name": "Guest"
+          }
+        ],
+        "album": {
+          "id": "5dW8Mhx2WyzFadg6wAeb0L",
+          "name": "Album",
+          "year": 1991,
+          "covers": [
+            {
+              "id": "6464646464646464646464646464646464646464",
+              "pixels": 64
+            },
+            {
+              "id": "3030303030303030303030303030303030303030",
+              "pixels": 300
+            },
+            {
+              "id": "4040404040404040404040404040404040404040",
+              "pixels": 640
+            }
+          ]
+        },
+        "durationMs": 200000,
+        "files": [
+          {
+            "id": "0101010101010101010101010101010101010101",
+            "format": 0
+          },
+          {
+            "id": "0202020202020202020202020202020202020202",
+            "format": 1
+          },
+          {
+            "id": "0303030303030303030303030303030303030303",
+            "format": 2
+          },
+          {
+            "id": "0404040404040404040404040404040404040404",
+            "format": 4
+          },
+          {
+            "id": "0505050505050505050505050505050505050505",
+            "format": 16
+          },
+          {
+            "id": "0606060606060606060606060606060606060606",
+            "format": 8
+          }
+        ],
+        "alternatives": [],
+        "available": true,
+        "coverUrls": {
+          "64": "https://i.scdn.co/image/6464646464646464646464646464646464646464",
+          "400": "https://i.scdn.co/image/4040404040404040404040404040404040404040",
+          "1000": "https://i.scdn.co/image/4040404040404040404040404040404040404040"
+        },
+        "play": {
+          "96": {
+            "trackId": "01TrY6CZi6JaolPzVQ3HW1",
+            "fileId": "0101010101010101010101010101010101010101",
+            "format": 0
+          },
+          "160": {
+            "trackId": "01TrY6CZi6JaolPzVQ3HW1",
+            "fileId": "0202020202020202020202020202020202020202",
+            "format": 1
+          },
+          "320": {
+            "trackId": "01TrY6CZi6JaolPzVQ3HW1",
+            "fileId": "0303030303030303030303030303030303030303",
+            "format": 2
+          }
+        }
+      }
+    }
+  ]
+}

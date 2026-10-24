@@ -1,0 +1,82 @@
+{
+  "data": {
+    "home": {
+      "__typename": "Home",
+      "sectionContainer": {
+        "sections": {
+          "items": [
+            {
+              "__typename": "HomeGenericSectionData",
+              "uri": "spotify:section:0JQ5DAnM3wGh0gz1MXnu3B",
+              "data": {
+                "title": {
+                  "text": "Recently played"
+                }
+              },
+              "sectionItems": {
+                "items": [
+                  {
+                    "content": {
+                      "__typename": "PlaylistResponseWrapper",
+                      "data": {
+                        "__typename": "Playlist",
+                        "uri": "spotify:playlist:2VRj4gmU2pW5HNRDyBK1Py",
+                        "name": "Chill"
+                      }
+                    }
+                  }
+                ],
+                "totalCount": 3
+              }
+            },
+            {
+              "__typename": "HomeGenericSectionData",
+              "uri": "spotify:section:0JQ5DAUnp4wcj0bCb3wh3S",
+              "data": {
+                "title": {
+                  "text": "Made For You"
+                }
+              },
+              "sectionItems": {
+                "items": [
+                  {
+                    "content": {
+                      "__typename": "PlaylistResponseWrapper",
+                      "data": {
+                        "__typename": "Playlist",
+                        "uri": "spotify:playlist:2XKL2mZTkwFg69HdurNJLz",
+                        "name": "Mix 1"
+                      }
+                    }
+                  },
+                  {
+                    "content": {
+                      "__typename": "PlaylistResponseWrapper",
+                      "data": {
+                        "__typename": "NotFound",
+                        "uri": "spotify:playlist:2ZEd0tCSCDoquvwNqhRrHA",
+                        "name": "DJ"
+                      }
+                    }
+                  },
+                  {
+                    "content": {
+                      "__typename": "PlaylistResponseWrapper",
+                      "data": {
+                        "__typename": "Playlist",
+                        "uri": "spotify:playlist:31xEYAfRUK7ASRmnm7V9DB",
+                        "name": "Weekly"
+                      }
+                    }
+                  }
+                ],
+                "totalCount": 3
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "extensions": {}
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Road",
+  "length": 1003,
+  "from": 0,
+  "truncated": true,
+  "items": [
+    {
+      "uri": "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+      "name": ""
+    },
+    {
+      "uri": "spotify:episode:6Sev83uqIpUIneboTVsrxD",
+      "name": ""
+    },
+    {
+      "uri": "spotify:local:Some+Band:Some+Album:Own+recording:241",
+      "name": ""
+    },
+    {
+      "uri": "spotify:track:03MTWdfYAdskMHF9RG7pS2",
+      "name": ""
+    }
+  ],
+  "more": true,
+  "trackUris": [
+    "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+    "spotify:track:03MTWdfYAdskMHF9RG7pS2"
+  ]
+}

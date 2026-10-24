@@ -1,0 +1,24 @@
+{
+  "uri": "spotify:station:user:owner:collection",
+  "pages": [
+    {
+      "tracks": [
+        {
+          "uri": "spotify:track:0kPXFaUSdc0QjS9ngeENib",
+          "uid": "synthetic-uid-ENib",
+          "metadata": {
+            "decision_id": "synthetic-decision"
+          }
+        },
+        {
+          "uri": "spotify:track:0mJpDhxRviK0IdYXc4Ivec",
+          "uid": "synthetic-uid-Ivec",
+          "metadata": {
+            "decision_id": "synthetic-decision"
+          }
+        }
+      ],
+      "next_page_url": "hm://radio-apollo/v5/tracks/spotify:station:x?salt=1&prev_tracks=a,b"
+    }
+  ]
+}

@@ -19,6 +19,8 @@ both apps read.
 | [parity.md](parity.md) | Feature × platform table | QiYaa#7 |
 | [jam/](jam/README.md) | The jam (a shared queue): protocol, limits, room and host scenarios | QiYaa-jam#3 to #5 |
 | [telemetry/](telemetry/README.md) | Usage statistics and crash reports: the batch the apps post, the events, what is never sent; the landing's download clicks | — |
+| [fixtures/spotify/](fixtures/spotify/README.md) | Spotify's catalogue and playback replies (extended-metadata, collection, playlists, storage-resolve, contexts, Pathfinder, apresolve); protobuf bodies wrapped in base64 | QiYaa-android#113 |
+| [expected/spotify/](expected/spotify/README.md) | What parsing each Spotify fixture must produce, in neutral JSON, written by the desktop's parsers | QiYaa-android#113 |
 | [spotify/](spotify/README.md) | Test vectors of Spotify's client protocol: crypto, the audio decryption, an access point session, protobuf, ids, request bodies | QiYaa-android#113 |
 
 ## Where it lives

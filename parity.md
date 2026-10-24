@@ -32,9 +32,9 @@ When a feature lands on one platform, add its row here and open an issue for the
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
 | Local files: open files or a folder | yes | n/a | [LOCAL-01 to LOCAL-03](player/local.md#opening); Android takes them from the phone's media library instead |
-| Local files from the phone's media library: all tracks, albums, artists and folders, with the permission to read audio | n/a | no: Kickoman/QiYaa-android#111 | [LOCAL-10 to LOCAL-14](player/local.md#the-phones-media-library-android) |
-| Local files: tags and covers, read from the disk; no wave from history after them | yes | no: Kickoman/QiYaa-android#111 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag). Android: the media library's tags (one line of artists) and pictures ([LOCAL-04, LOCAL-05](player/local.md#tracks)); a codec the phone cannot decode fails when it plays, and FLAC without a decoder is not taken ([LOCAL-13](player/local.md#the-phones-media-library-android)) |
-| Ogg Vorbis among local files | yes | no: Kickoman/QiYaa-android#111 | [LOCAL-09](player/local.md#tracks) |
+| Local files from the phone's media library: all tracks, albums, artists and folders, with the permission to read audio | n/a | not checked: Kickoman/QiYaa-android#118 | [LOCAL-10 to LOCAL-14](player/local.md#the-phones-media-library-android) |
+| Local files: tags and covers, read from the disk; no wave from history after them | yes | not checked: Kickoman/QiYaa-android#118 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag). Android: the media library's tags (one line of artists) and pictures ([LOCAL-04, LOCAL-05](player/local.md#tracks)); a codec the phone cannot decode fails when it plays, and FLAC without a decoder is not taken ([LOCAL-13](player/local.md#the-phones-media-library-android)) |
+| Ogg Vorbis among local files | yes | not checked: Kickoman/QiYaa-android#118 | [LOCAL-09](player/local.md#tracks) |
 | Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search with the best result, radio by a track | yes | no: Kickoman/QiYaa-android#113 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
 | Spotify tracks: Ogg Vorbis 320 or 96 kbps by the quality, refused audio keys stop playback, Spotify's autoplay after a queue | yes | no: Kickoman/QiYaa-android#113 | [SPOT-13 to SPOT-22](player/spotify.md#playing-a-track) |
 
@@ -84,7 +84,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
 | No network: pause, continue when it returns, as the same play | yes | yes | [ERR-01 to ERR-03, ERR-09](player/errors.md) |
-| Broken track: next, stop after 3 in a row | yes | yes | [ERR-04 to ERR-07](player/errors.md) |
+| Broken track: next, stop after 3 in a row | yes | yes | [ERR-04 to ERR-07, ERR-10](player/errors.md) |
 | Rejected token: back to login | differs | not checked: Kickoman/QiYaa-android#118 | Desktop stops with "Ошибка доступа" ([ERR-08](player/errors.md)) and does not open the login dialog. Android opens its login, which can be left for the Library (Kickoman/QiYaa-android#115) |
 
 ## Likes

@@ -51,7 +51,7 @@ which the app could not send then (a crash report, the last `exit`).
 | `type` | When | What it adds |
 |---|---|---|
 | `start` | The app started | The system (`os`, `osName`, `osVersion`, `kernel`, `arch`, the `qt` it runs on, its `locale`), the build (`package`, `milkdropBuilt`, `jamBuilt`), the state it starts in (`language`, `scale`, `screens`, `dpr`, `skin`, `vis`, `equalizer`, `milkdropVisible`, `audioBackend`, `loggedIn`, `spotifyLoggedIn`) and `firstRun`. Android: the system (`os` `android`, `osVersion`, `sdk`, `device`, `kernel`, `arch`, the system's `locale`), the build (`package`: `apk` for a release build, `debug` otherwise), the state it starts in (`language`, `dpr`, `theme`, `vis`, `equalizer`, `quality`, `qualityMetered`, `loggedIn`) and `firstRun` |
-| `exit` | The app closed normally; Android: the next run, for a run that ended without a crash ([TEL-16](#the-app)) | `seconds` it ran (Android: on screen or playing); `tracks` started; `playMinutes`; `milkdropMinutes` with the Milkdrop window shown (desktop only); `jams` hosted; `errorsDropped` over the per-session limit; the [lyrics counts](#lyrics-counts) when the lyrics view looked anything up (desktop only) |
+| `exit` | The app closed normally; Android: the next run, for a run that ended without a crash ([TEL-16](#the-app)) | `seconds` it ran (Android: on screen or playing); `tracks` started; `playMinutes`; `milkdropMinutes` with the Milkdrop window shown (desktop only); `jams` hosted; `errorsDropped` over the per-session limit; the [lyrics counts](#lyrics-counts) when the lyrics view looked anything up |
 | `crash` | The next run, after a crash | `signal` (`SIGSEGV`, `SIGABRT`…, `EXCEPTION_ACCESS_VIOLATION`…, or `TERMINATE` for an uncaught exception; Android: `SIGNAL_<n>` for a signal with no name), `frames` (none for a native crash on Android), `seconds` the crashed run lasted ([Android](#android): two kinds), `exceptionType` for `TERMINATE` |
 | `unclean_exit` | The next run, after a run that neither closed nor left a crash report; Android: after an ANR, or a Java crash that left no report ([TEL-16](#the-app)) | `seconds` it ran, to the last minute it noted (Android: on screen or playing) |
 | `error` | Something failed | `area` and `kind` from the table below, `httpStatus` for `api` and for `spotify` `http` |
@@ -100,8 +100,9 @@ trace line `at c.m(SourceFile:N)` and run R8's `retrace` with the mapping of the
 | `spotify` | `login-code`, `login-browser` (a Spotify login succeeded that way, [spotify.md](../player/spotify.md#account)), `logout` |
 
 Android has no skins and no Milkdrop: it sends neither the `skin` and `milkdrop` areas nor those
-features. It has no lyrics view yet (Kickoman/QiYaa-android#112), so it sends neither the `lyrics`
-features nor the lyrics counts.
+features. Its lyrics view takes the cover's place on the player screen
+(Kickoman/QiYaa-android#112): `lyrics` is `on` when the text replaces the cover and `off` when the
+cover comes back; switching tabs or leaving the app is neither.
 
 ### Lyrics counts
 

@@ -18,3 +18,4 @@ listed here with the reason.
 | `invalid-android-exception-message.json` | `exceptionType` is a class name only: the exception's message could carry a path or a title. |
 | `invalid-lyrics-not-count.json` | The lyrics counts are counts; a track's title in one of them does not fit. |
 | `invalid-android-desktop-start.json` | An Android batch carries the Android `start`; the desktop's fields (`qt`, `skin`, `milkdropBuilt`…) do not fit. |
+| `invalid-android-lyrics-partial.json` | An Android `exit` with `lyricsLookups` carries all the lyrics counts, as the desktop `exit` does; one alone does not fit. |

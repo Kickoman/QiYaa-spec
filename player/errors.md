@@ -30,11 +30,11 @@ feedback in [tracking.md](tracking.md) (TRK-11).
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| ERR-04 | A track is starting, a next track exists ([TR-03](transport.md)) | It hits a track failure, and it is the first or second track failure in a row | A status names the failure. The player goes to the next track and plays it. | yes | yes |
+| ERR-04 | A track is starting, a next track exists ([TR-03](transport.md)) | It hits a track failure, and it is the first or second track failure in a row | A status names the failure. The player goes to the next track and plays it; when paused, ERR-10. | yes | yes |
 | ERR-05 | Two track failures in a row | A third track in a row hits a track failure | The player stops on that track. A status says that playback stopped after 3 failed tracks. | yes | yes |
 | ERR-06 | Some track failures in a row | A track actually starts playing audio, or a new queue is set | The count of failures in a row goes back to 0. | yes | yes |
 | ERR-07 | A track is starting, and there is no next track (the end of the queue, repeat off) | It hits a track failure | The player stops on it with the status of ERR-04. When a continuation follows (a wave, or a wave from history, [CONT-04](continuation.md#the-wave-from-history)), it waits for more instead ([WAVE-08](wave.md)). | yes | yes |
-| ERR-10 | Playback is paused on a track the player has loaded ahead of Play (Android loads the current track while paused: a queue restored when the app starts, a jam item that waits for Play) | It hits a track failure | As ERR-04 to ERR-07, but nothing starts by itself: the player goes to the next track and stays paused there. The desktop loads a track only when it plays, so this does not arise there. | n/a | yes |
+| ERR-10 | Playback is paused, and the current track has not played yet: the user paused it while it was starting, the queue was restored when the app started, or a jam item became current while playback was paused | It hits a track failure | As ERR-04 to ERR-07, but nothing starts by itself: the player goes to the next track and stays paused there. When there is no next track and a continuation follows, it waits for more as in ERR-07 and stays paused on the first new track. | no: Kickoman/QiYaa#70 | yes |
 
 ## Account
 

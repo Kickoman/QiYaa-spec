@@ -12,6 +12,8 @@ in the [README](README.md).
   - For a Yandex Music track, Yandex Music ([below](#yandex-music)).
   - For a local file ([local.md](local.md)), the file itself: an `.lrc` file next to it and the
     lyrics in its tags (LYR-10).
+  - For a Spotify track ([spotify.md](spotify.md)), none: Spotify's own lyrics are not asked for,
+    so only a lyrics service can give a text.
 - **A lyrics service**, only when the user turns it on; it is off until then. The one service is
   [LRCLIB](#lrclib), an open database of lyrics with and without times.
   - It learns what the user listens to: the title and the first artist of each track it is asked

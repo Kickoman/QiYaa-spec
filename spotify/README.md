@@ -129,11 +129,12 @@ Sessions of the access point client against a fake access point, the one the des
     and `payload`, decrypted.
 - **Rules the steps follow:**
   - `deadline` is `null` whenever `loggedIn` is false;
-  - a refused login is `loginFailed` alone, without `failure`; an `AuthFailure` the client cannot
-    read is a refused login with code 0. `failure` ends the session for every other reason: a
-    signature the trusted key does not verify, a bad MAC, a server response the client cannot read,
-    a handshake message whose length is below 4 or above 64 KiB, a missed keep-alive. Packets of a
-    known command but the wrong length (`AesKey`, `AesKeyError`) are ignored, not failures;
+  - a refused login is `loginFailed` alone, without `failure`; an `AuthFailure` packet (0xad) the
+    client cannot read is a refused login with code 0. `failure` ends the session for every other
+    reason: a signature the trusted key does not verify, a bad MAC, a server response the client
+    cannot read, an `APWelcome` it cannot read, a handshake message whose length is below 4 or
+    above 64 KiB, a missed keep-alive. An `AesKey` that is not 20 bytes and an `AesKeyError` under
+    6 bytes are ignored, not failures;
   - audio key requests are numbered from 0 on each connection, one up per request.
 
 **The wire:**
@@ -184,9 +185,12 @@ Sessions of the access point client against a fake access point, the one the des
   `{field, wire, bytes}` for wire type 2. Spotify's signed fields (a track's duration, an image's
   width, a year, a list item's status) are zigzag.
 - `kind: "reject"`: `{bytes, fieldsBefore}`. The reader must fail; `fieldsBefore` are the fields it
-  returned first. A top-level message whose reader failed is dropped whole. The desktop does not
-  apply this to nested messages in three places, where a failed nested reader keeps what it read:
-  the AP's response, login5's `ok` and `challenges`, and client-token's hashcash parameters. Groups (wire types 3 and 4), wire
+  returned first. A top-level message whose reader failed is dropped whole. In the access point, login5
+  and client-token messages the desktop does not apply this to some nested messages, where a
+  failed nested reader keeps what it read: the challenge chain of the AP's response (10 → 10 → 10
+  → Diffie-Hellman), login5's `ok` and `challenges`, and client-token's hashcash parameters. The
+  response's `APLoginFailed` (field 30) is the opposite: a failed reader drops it, and the field
+  counts as absent. The catalog messages are left to their fixtures. Groups (wire types 3 and 4), wire
   types 6 and 7, field number 0 and numbers above 2^29 − 1 are refused, and so are a varint of more
   than ten bytes and anything cut short.
 - A ten-byte varint whose last byte is above 1 does not fit in 64 bits. The desktop takes it and

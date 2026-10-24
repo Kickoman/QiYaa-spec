@@ -25,16 +25,18 @@ The fields the servers check are what librespot sends; the free-form strings nam
 | AP login `system_information_string` and `version_string`; the HTTP `User-Agent` | `QiYaa X.Y.Z`; `Spotify/124200290 <OS>/0 (QiYaa X.Y.Z)` |
 | Device id | 20 random bytes as 40 hex digits, made once per installation and kept |
 
-On Android the app presents itself as the desktop on Linux does: the AP platform is
-`PLATFORM_LINUX_ARM` (`PLATFORM_LINUX_X86_64` on an x86-64 phone or emulator), the OS `OS_LINUX`,
-client-token's platform is the desktop's Linux one (the kernel release, the Android version as the
-distribution's, the CPU `aarch64` or `arm`), and the `User-Agent` says `Linux`. librespot does the
-same in the AP handshake on Android, since the APs answer an Android platform with `TryAnotherAP`;
-Android's own values together with the desktop's client ID were never tried.
-
 These values were accepted on 2026-10-21. If Spotify starts refusing them, librespot's own strings
 are the first thing to try; the desktop's `src/spotify/protocol/README.md` keeps them and where
 librespot defines the checked ones.
+
+On Android the app presents itself as the desktop on Linux does: the AP platform is
+`PLATFORM_LINUX_ARM` (`PLATFORM_LINUX_X86_64` on an x86-64 phone or emulator), client-token's
+platform is the desktop's Linux one (the kernel release, the Android version as the
+distribution's, the CPU `aarch64`, `arm` or `x86_64`), the login's CPU family `CPU_ARM` (`CPU_X86_64`)
+and OS `OS_LINUX`, and the `User-Agent` says `Linux`. librespot does the same in the AP handshake on
+Android, since the APs answer an Android platform with `TryAnotherAP`; Android's own values together
+with the desktop's client ID were never tried. These Android values are not tried on a phone yet
+(Kickoman/QiYaa-android#118).
 
 ## Account
 
@@ -67,12 +69,12 @@ out. Track metadata comes from `POST /extended-metadata/v0/extended-metadata` (`
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| SPOT-13 | A Spotify track | It needs its file (to start or to preload) | The file of the quality in effect from the track's `TRACK_V4` metadata: `standard` Ogg Vorbis 320 kbps, `economy` 96 kbps; when that one is missing, 160, then any Ogg Vorbis ([quality.md](quality.md)). MP3, AAC and FLAC files are never taken. Then the audio key over the AP (`RequestKey` with the file id and the track's id), the CDN links from `GET /storage-resolve/files/audio/interactive/<file id>`, and the file from the first link with range requests. It is decrypted with AES-128-CTR (the key, Spotify's fixed initial counter block) and its first 167 bytes, Spotify's own header, are dropped: the rest is Ogg Vorbis and plays as any downloaded file ([TR-09](transport.md)). The bitrate shown is the file's. On Android the file is not downloaded whole: it is read in ranges as it plays, and the decrypted Ogg goes to the play's cache, as a Yandex Music track's does (TR-09). | yes | no: #113 |
-| SPOT-14 | A Spotify track's file is downloading | A CDN link fails: a network failure, or a status other than 200 or 206 | The next link of the list continues from the same byte. When every link has failed: a network failure ([ERR-01 to ERR-03](errors.md#network)) if the last one failed by the network, otherwise a track failure ([ERR-04](errors.md#broken-tracks)). On Android, where a seek long after the start can reach links that have expired: when every link answers 403 or 410, `storage-resolve` is asked once more and its links continue from the same byte before the failure. | yes | no: #113 |
+| SPOT-13 | A Spotify track | It needs its file (to start or to preload) | The file of the quality in effect from the track's `TRACK_V4` metadata: `standard` Ogg Vorbis 320 kbps, `economy` 96 kbps; when that one is missing, 160, then any Ogg Vorbis ([quality.md](quality.md)). MP3, AAC and FLAC files are never taken. Then the audio key over the AP (`RequestKey` with the file id and the track's id), the CDN links from `GET /storage-resolve/files/audio/interactive/<file id>`, and the file from the first link with range requests. It is decrypted with AES-128-CTR (the key, Spotify's fixed initial counter block) and its first 167 bytes, Spotify's own header, are dropped: the rest is Ogg Vorbis and plays as any downloaded file ([TR-09](transport.md)). The bitrate shown is the file's. On Android the file is not downloaded whole: it is read in ranges as it plays, and the decrypted Ogg goes to the same disk cache as a Yandex Music track's download (TR-09). | yes | no: #113 |
+| SPOT-14 | A Spotify track's file is downloading | A CDN link fails: a network failure, or a status other than 200 or 206 | The next link of the list continues from the same byte. A 401 or 403 from the CDN is such a failed link, not the account failure of ERR-08. When every link has failed: a network failure ([ERR-01 to ERR-03](errors.md#network)) if the last one failed by the network, otherwise a track failure ([ERR-04](errors.md#broken-tracks)). On Android, where a seek long after the start can reach links that have expired: when every link answers 403 or 410, `storage-resolve` is asked once more and its links continue from the same byte before the failure. | yes | no: #113 |
 | SPOT-15 | A Spotify track | Its metadata has no Ogg Vorbis file, or it is restricted in the account's country and has no playable alternative | A track failure (ERR-04 to ERR-07). | yes | no: #113 |
 | SPOT-16 | A Spotify track needs its audio key | The AP answers with `AesKeyError` code 2, or nothing comes in 5 s | It asks once more after 1 s. A second failure is a track failure (ERR-04). | yes | no: #113 |
 | SPOT-17 | A Spotify track needs its audio key | The AP answers with `AesKeyError` code 1 | Spotify does not let this account play outside its own apps. Playback stops on the track and a status says so: no next track, not a track failure (ERR-05), as an account failure ([ERR-08](errors.md#account)). The same happens again for any Spotify track until the account changes. | yes | no: #113 |
-| SPOT-18 | Logged in | The AP connection drops, or the app wakes up | It connects again with the saved credentials, retrying as in ERR-02. A track that waits for its key or its links meanwhile waits as a network failure (ERR-01). On Android, while the app is in the background and plays nothing, a dropped connection is not restored: the next audio key it needs, or the app coming back to the screen, connects again. | yes | no: #113 |
+| SPOT-18 | Logged in | The AP connection drops, or the app wakes up | It connects again with the saved credentials, retrying as in ERR-02. A track that waits for its key or its links meanwhile waits as a network failure (ERR-01). On Android, while the app is in the background and plays nothing, a dropped connection is not restored: playback starting, the next audio key it needs, or the app coming back to the screen connects again. | yes | no: #113 |
 | SPOT-19 | A Spotify track | It starts and closes | Nothing is reported, to Spotify or to Yandex: no `/play-audio` ([TRK-01](tracking.md#play-audio)), no rotor feedback. The loudness values of Spotify's header are not applied. Dislike is not offered; like is not offered yet. Opening the track in the browser opens `https://open.spotify.com/track/<id>`. Its cover is the album's image from `https://i.scdn.co/image/<image id>`, the smallest one at least as large as shown. | yes | no: #113 |
 
 ## Continuation

@@ -27,7 +27,7 @@ then reaches listening along only by opening the link in a browser.
 | LISTEN-04 | Sharing on | A link that is not a file of Yandex Music's storage (a test server) | It is left out: the server refuses a `playing` with such a link. | yes | yes |
 | LISTEN-05 | A jam session | The user switches sharing on or off | The next `playing` follows the new choice. The choice is the app's setting, not the room's: it outlives the jam. | yes | yes |
 | LISTEN-13 | Sharing on, the host plays at quality `economy` ([player/quality.md](../player/quality.md)) | `playing` | Its file is not a `/get-mp3/` link, so it is left out as in LISTEN-04, and so is a preloaded next file of that kind. The web guest pauses (LISTEN-10). The setting of sharing says that listening along needs quality `standard`. | yes | yes |
-| LISTEN-14 | Sharing on | `playing` while a track that only the host can play (`track.source: host`, [HOST-37](host.md#the-base)) is current or next | While such a track is current, `playing` carries neither link: there is no file a guest could fetch, and the server refuses one. While one is next, `listenNextUrl` is left out. The web guest pauses (LISTEN-10) and shows the track by its title and artists. | yes | no: #116 |
+| LISTEN-14 | Sharing on | `playing` while a track that only the host can play (`track.source: host`, [HOST-37](host.md#the-base)) is current or next | While such a track is current, `playing` carries neither link: there is no file a guest could fetch, and the server refuses one. While one is next, `listenNextUrl` is left out. The web guest pauses (LISTEN-10) and shows the track by its title and artists. | yes | yes |
 
 ## The server
 

@@ -673,6 +673,10 @@
         "loggedIn": {
           "type": "boolean"
         },
+        "spotifyLoggedIn": {
+          "type": "boolean",
+          "description": "Logged in to Spotify (saved credentials); left out by builds before Spotify"
+        },
         "firstRun": {
           "type": "boolean"
         }

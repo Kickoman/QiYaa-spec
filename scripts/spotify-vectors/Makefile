@@ -30,4 +30,4 @@ $(BUILD)/spotify-vectors:
 		$(GENERATOR_SOURCES) $(PROTOCOL_SOURCES) $(BUILD)/c/*.o
 
 clean:
-	rm -rf $(BUILD)
+	rm -rf $(BUILD)/c $(BUILD)/spotify-vectors

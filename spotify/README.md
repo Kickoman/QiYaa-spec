@@ -55,7 +55,8 @@ test computes from the inputs and compares.
   per counter, avoids that.
 - **`modpow`'s result has exactly the modulus's length**, leading zero bytes kept (`0002` for
   2 mod 0x0101). `result` is `null` where the desktop refuses: a base that is not below the modulus,
-  an even modulus. A library that reduces such a base silently must refuse it itself.
+  an even modulus. It also refuses an empty modulus and one longer than 512 bytes; no case covers
+  those. A library that reduces such a base silently must refuse it itself.
 - **`dh`:** the public keys and the secret also keep the prime's length, 96 bytes. In the second case
   the secret starts with a zero byte.
 - **`rsa-pkcs1-sha1`:** `valid` holds when the signature, read as a number s, is below the modulus
@@ -128,9 +129,11 @@ Sessions of the access point client against a fake access point, the one the des
     and `payload`, decrypted.
 - **Rules the steps follow:**
   - `deadline` is `null` whenever `loggedIn` is false;
-  - a refused login is `loginFailed` alone, without `failure`. `failure` ends the session for every
-    other reason: a signature the trusted key does not verify, a bad MAC, a malformed message, a
-    missed keep-alive;
+  - a refused login is `loginFailed` alone, without `failure`; an `AuthFailure` the client cannot
+    read is a refused login with code 0. `failure` ends the session for every other reason: a
+    signature the trusted key does not verify, a bad MAC, a server response the client cannot read,
+    a handshake message whose length is below 4 or above 64 KiB, a missed keep-alive. Packets of a
+    known command but the wrong length (`AesKey`, `AesKeyError`) are ignored, not failures;
   - audio key requests are numbered from 0 on each connection, one up per request.
 
 **The wire:**
@@ -144,7 +147,8 @@ Sessions of the access point client against a fake access point, the one the des
   `advance` 60 s later. Commands the client does not know (0x76 in the first case) are ignored.
 - `RequestKey` (0x0c) is the file id (20 bytes), the track's gid (16), the sequence (32 bits) and
   `00 00`. `AesKey` (0x0d) is the sequence and the 16-byte key; another length is ignored.
-  `AesKeyError` (0x0e) is the sequence and a 16-bit code.
+  `AesKeyError` (0x0e) is the sequence and a 16-bit code; a payload under 6 bytes is ignored, a
+  longer one is read from its first 6.
 - `CountryCode` (0x1b) is ASCII. `ProductInfo` (0x50) is XML, and the product is the text between
   its first `<type>` and `</type>`.
 - The keep-alive: the first ping is due 20 s after `APWelcome`, the pong 60 s after a ping, the
@@ -180,7 +184,9 @@ Sessions of the access point client against a fake access point, the one the des
   `{field, wire, bytes}` for wire type 2. Spotify's signed fields (a track's duration, an image's
   width, a year, a list item's status) are zigzag.
 - `kind: "reject"`: `{bytes, fieldsBefore}`. The reader must fail; `fieldsBefore` are the fields it
-  returned first. A message whose reader failed is dropped whole. Groups (wire types 3 and 4), wire
+  returned first. A top-level message whose reader failed is dropped whole. The desktop does not
+  apply this to nested messages in three places, where a failed nested reader keeps what it read:
+  the AP's response, login5's `ok` and `challenges`, and client-token's hashcash parameters. Groups (wire types 3 and 4), wire
   types 6 and 7, field number 0 and numbers above 2^29 − 1 are refused, and so are a varint of more
   than ten bytes and anything cut short.
 - A ten-byte varint whose last byte is above 1 does not fit in 64 bits. The desktop takes it and

@@ -1,0 +1,12 @@
+{
+  "stale": false,
+  "kind": "artist",
+  "best": {
+    "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+    "name": "Band"
+  },
+  "trackUris": [
+    "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+    "spotify:track:03MTWdfYAdskMHF9RG7pS2"
+  ]
+}

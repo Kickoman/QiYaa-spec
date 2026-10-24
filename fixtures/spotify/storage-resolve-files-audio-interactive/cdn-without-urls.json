@@ -1,0 +1,14 @@
+{
+  "contentType": "application/x-protobuf",
+  "base64": "CAAiFAMDAwMDAwMDAwMDAwMDAwMDAwMD",
+  "fields": [
+    {
+      "field": 1,
+      "varint": "0"
+    },
+    {
+      "field": 4,
+      "bytes": "0303030303030303030303030303030303030303"
+    }
+  ]
+}

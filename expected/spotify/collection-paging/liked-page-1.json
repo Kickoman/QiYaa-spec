@@ -1,0 +1,22 @@
+{
+  "items": [
+    {
+      "uri": "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+      "addedAt": 1729000600
+    },
+    {
+      "uri": "spotify:album:3s3Yy53I0gjWnN0upSL4JP",
+      "addedAt": 1729000500
+    },
+    {
+      "uri": "spotify:track:03MTWdfYAdskMHF9RG7pS2",
+      "addedAt": 1729000400
+    },
+    {
+      "uri": "spotify:track:05GlUjSXSkbvb3uJNwb7O3",
+      "addedAt": 1729000300
+    }
+  ],
+  "nextPageToken": "synthetic-page-2",
+  "last": false
+}

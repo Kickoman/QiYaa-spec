@@ -1,0 +1,102 @@
+{
+  "contentType": "application/x-protobuf",
+  "base64": "CgwDCA0SFxwhJiswNToQ6wcaBgoEUm9hZCqtAQjoBxAAGjYKJHNwb3RpZnk6dHJhY2s6MDVHbFVqU1hTa2J2YjN1Sk53YjdPMxIOCgVvd25lchCAlLmDqTIaNgokc3BvdGlmeTp0cmFjazowN3pOU3F2WGFxVUZ6cGtqSm1lUEs0Eg4KBW93bmVyEICUuYOpMho2CiRzcG90aWZ5OnRyYWNrOjA5dGZReDhXc3hEUFhMOVRGY2l4RzUSDgoFb3duZXIQgJS5g6ky",
+  "fields": [
+    {
+      "field": 1,
+      "bytes": "03080d12171c21262b30353a"
+    },
+    {
+      "field": 2,
+      "varint": "1003"
+    },
+    {
+      "field": 3,
+      "message": [
+        {
+          "field": 1,
+          "string": "Road"
+        }
+      ]
+    },
+    {
+      "field": 5,
+      "message": [
+        {
+          "field": 1,
+          "varint": "1000"
+        },
+        {
+          "field": 2,
+          "varint": "0"
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:track:05GlUjSXSkbvb3uJNwb7O3"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "owner"
+                },
+                {
+                  "field": 2,
+                  "varint": "1729000000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:track:07zNSqvXaqUFzpkjJmePK4"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "owner"
+                },
+                {
+                  "field": 2,
+                  "varint": "1729000000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:track:09tfQx8WsxDPXL9TFcixG5"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "owner"
+                },
+                {
+                  "field": 2,
+                  "varint": "1729000000000"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "",
+  "length": 6,
+  "from": 0,
+  "truncated": false,
+  "items": [
+    {
+      "uri": "spotify:start-group:2d5f9a0c3b1e4a7f:Road trips",
+      "name": ""
+    },
+    {
+      "uri": "spotify:playlist:2trxwEW4EN0zOwnWz0QoNj",
+      "name": "Road"
+    },
+    {
+      "uri": "spotify:end-group:2d5f9a0c3b1e4a7f",
+      "name": ""
+    },
+    {
+      "uri": "spotify:playlist:2vkZuLz3WTJKcSdwuQU6Jk",
+      "name": "Home"
+    },
+    {
+      "uri": "spotify:playlist:2z7TqYP2x7c4ZzSGmx1wBm",
+      "name": "Status 200"
+    }
+  ],
+  "more": false,
+  "playlists": [
+    {
+      "uri": "spotify:playlist:2trxwEW4EN0zOwnWz0QoNj",
+      "name": "Road"
+    },
+    {
+      "uri": "spotify:playlist:2vkZuLz3WTJKcSdwuQU6Jk",
+      "name": "Home"
+    },
+    {
+      "uri": "spotify:playlist:2z7TqYP2x7c4ZzSGmx1wBm",
+      "name": "Status 200"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "uri": "spotify:station:track:01TrY6CZi6JaolPzVQ3HW1",
+  "url": "context://spotify:station:track:01TrY6CZi6JaolPzVQ3HW1",
+  "metadata": {
+    "context_description": "Plays Radio"
+  },
+  "pages": [
+    {
+      "tracks": [
+        {
+          "uri": "spotify:track:0DMtmfcL8hiwfotaADfSEl",
+          "uid": "synthetic-uid-fSEl",
+          "metadata": {
+            "decision_id": "synthetic-decision"
+          }
+        },
+        {
+          "uri": "spotify:episode:6U7X6a7q0wDSLA0YPLw9tE",
+          "uid": "synthetic-uid-w9tE",
+          "metadata": {
+            "decision_id": "synthetic-decision"
+          }
+        },
+        {
+          "uri": "spotify:track:0FFVklPKqo1GDKiKwtjAAm",
+          "uid": "synthetic-uid-jAAm",
+          "metadata": {
+            "decision_id": "synthetic-decision"
+          }
+        }
+      ],
+      "next_page_url": "hm://radio-apollo/v5/tracks/spotify:station:track:01TrY6CZi6JaolPzVQ3HW1?salt=2&prev_tracks=21,22"
+    },
+    {
+      "tracks": [
+        {
+          "uri": "spotify:track:0HznissJIuKR268ksjniwn",
+          "uid": "synthetic-uid-niwn",
+          "metadata": {
+            "decision_id": "synthetic-decision"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "data": {
+    "searchV2": {
+      "topResultsV2": {
+        "itemsV2": [
+          {
+            "item": {
+              "data": {
+                "__typename": "Album",
+                "uri": "spotify:album:3s3Yy53I0gjWnN0upSL4JP",
+                "name": "Double"
+              }
+            }
+          }
+        ]
+      },
+      "tracksV2": {
+        "items": [
+          {
+            "item": {
+              "data": {
+                "__typename": "Track",
+                "uri": "spotify:track:05GlUjSXSkbvb3uJNwb7O3",
+                "name": "3"
+              }
+            }
+          },
+          {
+            "item": {
+              "data": {
+                "__typename": "Track",
+                "uri": "spotify:track:07zNSqvXaqUFzpkjJmePK4",
+                "name": "4"
+              }
+            }
+          }
+        ],
+        "totalCount": 2
+      }
+    }
+  },
+  "extensions": {}
+}

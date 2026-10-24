@@ -1,0 +1,52 @@
+{
+  "data": {
+    "searchV2": {
+      "topResultsV2": {
+        "itemsV2": [
+          {
+            "item": {
+              "data": {
+                "__typename": "Track",
+                "uri": "spotify:track:03MTWdfYAdskMHF9RG7pS2",
+                "name": "Found"
+              }
+            }
+          },
+          {
+            "item": {
+              "data": {
+                "__typename": "Artist",
+                "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+                "profile": {
+                  "name": "Band"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "tracksV2": {
+        "items": [
+          {
+            "item": {
+              "data": {
+                "__typename": "Track",
+                "uri": "spotify:track:03MTWdfYAdskMHF9RG7pS2",
+                "name": "Found"
+              }
+            }
+          },
+          {
+            "item": {
+              "__typename": "Track",
+              "uri": "spotify:track:09tfQx8WsxDPXL9TFcixG5",
+              "name": "Bare"
+            }
+          }
+        ],
+        "totalCount": 2
+      }
+    }
+  },
+  "extensions": {}
+}

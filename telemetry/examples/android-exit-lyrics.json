@@ -1,0 +1,41 @@
+{
+  "app": "android",
+  "machine": "97eaa8cc2fbe9a456389e6bd9d44a3fb",
+  "events": [
+    {
+      "type": "feature",
+      "at": "2026-10-25T09:00:00.000Z",
+      "session": "5f0c1d2e-3a4b-4c5d-8e6f-7a8b9c0d1e2f",
+      "version": "0.9.0",
+      "name": "lyrics",
+      "value": "on"
+    },
+    {
+      "type": "feature",
+      "at": "2026-10-25T09:01:10.000Z",
+      "session": "5f0c1d2e-3a4b-4c5d-8e6f-7a8b9c0d1e2f",
+      "version": "0.9.0",
+      "name": "lyrics-services",
+      "value": "on"
+    },
+    {
+      "type": "exit",
+      "at": "2026-10-25T12:00:00.000Z",
+      "session": "5f0c1d2e-3a4b-4c5d-8e6f-7a8b9c0d1e2f",
+      "version": "0.9.0",
+      "seconds": 3600,
+      "tracks": 15,
+      "playMinutes": 52,
+      "jams": 0,
+      "errorsDropped": 0,
+      "lyricsLookups": 9,
+      "lyricsSourceSynced": 2,
+      "lyricsThirdPartySynced": 3,
+      "lyricsSourceText": 1,
+      "lyricsThirdPartyText": 1,
+      "lyricsInstrumental": 1,
+      "lyricsNone": 1,
+      "lyricsThirdPartyFailed": 1
+    }
+  ]
+}

@@ -57,7 +57,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Separate quality for Wi-Fi and mobile data | n/a | yes | [QUAL-07](player/quality.md) |
 | Lossless | no | no | Waits for a tester with access to lossless ([quality.md](player/quality.md#lossless-not-yet), #1) |
 | Elapsed or remaining time | yes | yes | |
-| Lyrics: the current track's text from Yandex Music (`supplement`) or the file (`.lrc`, tags), and from LRCLIB when the user turns it on; the synced line follows the position and a click seeks to it | yes | no: Kickoman/QiYaa-android#112 | [lyrics.md](player/lyrics.md); Yandex's synced lyrics not yet ([lyrics.md](player/lyrics.md#synced-lyrics-not-yet)) |
+| Lyrics: the current track's text from Yandex Music (`supplement`) or the file (`.lrc`, tags), and from LRCLIB when the user turns it on; the synced line follows the position and a click seeks to it | yes | not checked: Kickoman/QiYaa-android#118 | [lyrics.md](player/lyrics.md); Yandex's synced lyrics not yet ([lyrics.md](player/lyrics.md#synced-lyrics-not-yet)). Android: in the cover's place, after a tap on the cover; no `.lrc` on Android 10 |
 | Queue editing: select, remove, play a chosen track | yes | yes | |
 | Audio focus; pause when headphones are unplugged | n/a | yes | |
 

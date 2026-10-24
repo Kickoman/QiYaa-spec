@@ -12,7 +12,7 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 | [transport.md](transport.md) | Previous, next, repeat, shuffle and seeking | `TR-` |
 | [shuffle.md](shuffle.md) | Shuffle: the pass without repeats, the random track, Previous with shuffle, the choice of algorithm | `SHUF-` |
 | [quality.md](quality.md) | The audio quality the user chooses, and what is known about lossless | `QUAL-` |
-| [local.md](local.md) | Local files: opening files and a folder, their tags and covers, reading from the disk | `LOCAL-` |
+| [local.md](local.md) | Local files: opening files and a folder, or the phone's media library; their tags and covers, reading from the disk | `LOCAL-` |
 | [spotify.md](spotify.md) | Spotify: the login, the picks, playing a track, the keys Spotify refuses, autoplay after a queue | `SPOT-` |
 | [lyrics.md](lyrics.md) | Lyrics: the text of the current track from its source or a lyrics service, synced lines and seeking by them | `LYR-` |
 

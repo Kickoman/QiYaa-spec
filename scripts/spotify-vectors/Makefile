@@ -23,7 +23,7 @@ vectors: $(BUILD)/spotify-vectors
 	$(BUILD)/spotify-vectors $(OUT)
 
 $(BUILD)/spotify-vectors:
-	@rm -rf $(BUILD) && mkdir -p $(BUILD)/c
+	@rm -rf $(BUILD)/c $(BUILD)/spotify-vectors && mkdir -p $(BUILD)/c
 	cd $(BUILD)/c && $(CC) -std=c99 -O2 -w -c -I$(abspath $(BEARSSL))/inc -I$(abspath $(BEARSSL))/src \
 		-I$(abspath $(DESKTOP))/src $(abspath $(BEARSSL_SOURCES)) $(abspath $(PROTOCOL))/modpow.c
 	$(CXX) -std=c++20 -O2 -Wall -Wextra -I$(DESKTOP)/src -I$(BEARSSL)/inc -I. -o $@ \

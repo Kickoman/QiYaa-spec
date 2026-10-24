@@ -83,7 +83,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 |---|---|---|---|
 | No network: pause, continue when it returns, as the same play | yes | yes | [ERR-01 to ERR-03, ERR-09](player/errors.md) |
 | Broken track: next, stop after 3 in a row | yes | yes | [ERR-04 to ERR-07](player/errors.md) |
-| Rejected token: back to login | differs | yes | Desktop stops with "Ошибка доступа" ([ERR-08](player/errors.md)) and does not open the login dialog |
+| Rejected token: back to login | differs | not checked: Kickoman/QiYaa-android#118 | Desktop stops with "Ошибка доступа" ([ERR-08](player/errors.md)) and does not open the login dialog. Android opens its login, which can be left for the Library (Kickoman/QiYaa-android#115) |
 
 ## Likes
 
@@ -148,6 +148,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Paste a token or a URL with `#access_token=` | yes | yes | |
 | Token from a file or `QIYAA_TOKEN` | yes | n/a | |
 | Log out | yes | yes | |
+| Runs without a Yandex Music login: the app starts, the login opens from the menu (desktop) or the Library (Android) and can be left | yes | not checked: Kickoman/QiYaa-android#118 | The desktop opens its login dialog at the start on its own; Android starts on the Library (Kickoman/QiYaa-android#115) |
 | Spotify: login with a code at spotify.com/pair or in the browser, log out | yes | no: Kickoman/QiYaa-android#113 | [SPOT-01 to SPOT-06](player/spotify.md#account) |
 | Covers cached on disk | yes | yes | Android: Coil's disk cache in the app's cache folder (2% of the size of the data partition, 10 to 250 MiB, so 250 MiB on a data partition of 12.5 GiB or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
@@ -162,7 +163,7 @@ scenarios in Kickoman/QiYaa-jam#3, #4, #5, the server in #6 to #12, the web gues
 
 | Feature | Desktop | Android | Notes |
 |---|---|---|---|
-| Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | yes | yes | |
+| Host a jam: room with a QR link, the jam queue and the jam wave in the player, guest search through the host's account, jam tracks not reported as plays | yes | yes | Android starts a jam only with a Yandex Music login; the desktop starts one without it, and the guests' searches get `unauthorized` ([HOST-29](jam/host.md)) |
 | The jam plays over the host's own queue: the guests' items on top, the host's source (the base) under them, no wave of the jam's own; the host edits the base during the jam | yes | yes | [HOST-10 to HOST-14, HOST-21, HOST-32, HOST-36](jam/host.md#the-base) |
 | Guests listen along on the jam page: the host shares the files it plays | yes | yes | [jam/listen.md](jam/listen.md); off by default, the host's subscription's files |
 | A base track that is not from the Yandex catalog (a local file, a Spotify track) plays in the jam: guests see its title and artists, with no cover and no listening along | yes | no: Kickoman/QiYaa-android#116 | [HOST-37](jam/host.md#the-base), [LISTEN-14](jam/listen.md#the-host), `track.source: host` in the [protocol](jam/protocol/README.md#tracks); on the desktop these are local files ([local.md](player/local.md)) and Spotify tracks ([spotify.md](player/spotify.md)) |

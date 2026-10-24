@@ -57,8 +57,8 @@ scenario names its ID in its name or in a comment.
   counting the current track. It is endless while repeat holds the head (CONT-10) and with Random
   track (SHUF-08).
 - **Source request**: a request that replaces the queue. It covers likes, a playlist, an album, an
-  artist, a station, a wave, a search, local files or a folder ([local.md](local.md)), and the picks
-  of Spotify ([spotify.md](spotify.md)).
+  artist, a station, a wave, a search, local files or a folder, a pick of the phone's media library
+  ([local.md](local.md)), and the picks of Spotify ([spotify.md](spotify.md)).
 - **Status**: a short message the user sees. On desktop this is the main window's status line,
   and on Android a toast or snackbar. The wording is up to each app; the spec only fixes when a
   status appears.

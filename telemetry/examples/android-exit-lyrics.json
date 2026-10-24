@@ -6,7 +6,7 @@
       "type": "feature",
       "at": "2026-10-25T09:00:00.000Z",
       "session": "5f0c1d2e-3a4b-4c5d-8e6f-7a8b9c0d1e2f",
-      "version": "0.9.0",
+      "version": "0.6.0",
       "name": "lyrics",
       "value": "on"
     },
@@ -14,7 +14,7 @@
       "type": "feature",
       "at": "2026-10-25T09:01:10.000Z",
       "session": "5f0c1d2e-3a4b-4c5d-8e6f-7a8b9c0d1e2f",
-      "version": "0.9.0",
+      "version": "0.6.0",
       "name": "lyrics-services",
       "value": "on"
     },
@@ -22,7 +22,7 @@
       "type": "exit",
       "at": "2026-10-25T12:00:00.000Z",
       "session": "5f0c1d2e-3a4b-4c5d-8e6f-7a8b9c0d1e2f",
-      "version": "0.9.0",
+      "version": "0.6.0",
       "seconds": 3600,
       "tracks": 15,
       "playMinutes": 52,

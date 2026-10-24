@@ -1,0 +1,13 @@
+{
+  "accesspoint": [
+    "ap-gew4.spotify.com:4070",
+    "ap-gew4.spotify.com:443",
+    "ap-gew4.spotify.com:80"
+  ],
+  "dealer": [
+    "gew4-dealer.spotify.com:443"
+  ],
+  "spclient": [
+    "gew4-spclient.spotify.com:443"
+  ]
+}

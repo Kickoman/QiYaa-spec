@@ -1,0 +1,139 @@
+{
+  "entities": [
+    {
+      "uri": "spotify:artist:40a600nvgdqXs7YVcZPPA7",
+      "status": 200,
+      "artist": {
+        "id": "40a600nvgdqXs7YVcZPPA7",
+        "name": "No country",
+        "topTracks": [
+          {
+            "country": "",
+            "trackIds": [
+              "5a9eQ4h4ml7knvAWEU6L8J"
+            ]
+          }
+        ],
+        "topTracksIn": {
+          "BY": [
+            "5a9eQ4h4ml7knvAWEU6L8J"
+          ],
+          "PL": [
+            "5a9eQ4h4ml7knvAWEU6L8J"
+          ],
+          "": [
+            "5a9eQ4h4ml7knvAWEU6L8J"
+          ]
+        }
+      }
+    },
+    {
+      "uri": "spotify:artist:3YgE1TKvY6HN3M9lh9M7E6",
+      "status": 200,
+      "artist": {
+        "id": "3YgE1TKvY6HN3M9lh9M7E6",
+        "name": "Worldwide",
+        "topTracks": [
+          {
+            "country": "BY",
+            "trackIds": []
+          },
+          {
+            "country": "ZZ",
+            "trackIds": [
+              "4qGpzvbllJDiX3D2gKFKGl",
+              "4szRxBOkDQmtlpsCcAJsCm",
+              "4utjvIrjVX5DJLic8qNayn",
+              "4wmLtP4je3OO877M4gQSuo",
+              "4ygdrVHiwaxYwsXm06UAqp",
+              "4A9Fq2khOhh8UOMVVWYimq",
+              "4C37o8Xh6o0jjaCvRN20ir",
+              "4DWzmfAgouJtHws5ND5Ies",
+              "4FQ1kmdfGBsE5ShFJt9qat",
+              "4HJtisQeYIbOue7fFjd86u",
+              "4JCVgztegOUYSzWPB9gQ2v",
+              "4LwneG6dyVE9gVMpwZkxYw"
+            ]
+          }
+        ],
+        "topTracksIn": {
+          "BY": [
+            "4qGpzvbllJDiX3D2gKFKGl",
+            "4szRxBOkDQmtlpsCcAJsCm",
+            "4utjvIrjVX5DJLic8qNayn",
+            "4wmLtP4je3OO877M4gQSuo",
+            "4ygdrVHiwaxYwsXm06UAqp",
+            "4A9Fq2khOhh8UOMVVWYimq",
+            "4C37o8Xh6o0jjaCvRN20ir",
+            "4DWzmfAgouJtHws5ND5Ies",
+            "4FQ1kmdfGBsE5ShFJt9qat",
+            "4HJtisQeYIbOue7fFjd86u",
+            "4JCVgztegOUYSzWPB9gQ2v",
+            "4LwneG6dyVE9gVMpwZkxYw"
+          ],
+          "PL": [
+            "4qGpzvbllJDiX3D2gKFKGl",
+            "4szRxBOkDQmtlpsCcAJsCm",
+            "4utjvIrjVX5DJLic8qNayn",
+            "4wmLtP4je3OO877M4gQSuo",
+            "4ygdrVHiwaxYwsXm06UAqp",
+            "4A9Fq2khOhh8UOMVVWYimq",
+            "4C37o8Xh6o0jjaCvRN20ir",
+            "4DWzmfAgouJtHws5ND5Ies",
+            "4FQ1kmdfGBsE5ShFJt9qat",
+            "4HJtisQeYIbOue7fFjd86u",
+            "4JCVgztegOUYSzWPB9gQ2v",
+            "4LwneG6dyVE9gVMpwZkxYw"
+          ],
+          "": [
+            "4qGpzvbllJDiX3D2gKFKGl",
+            "4szRxBOkDQmtlpsCcAJsCm",
+            "4utjvIrjVX5DJLic8qNayn",
+            "4wmLtP4je3OO877M4gQSuo",
+            "4ygdrVHiwaxYwsXm06UAqp",
+            "4A9Fq2khOhh8UOMVVWYimq",
+            "4C37o8Xh6o0jjaCvRN20ir",
+            "4DWzmfAgouJtHws5ND5Ies",
+            "4FQ1kmdfGBsE5ShFJt9qat",
+            "4HJtisQeYIbOue7fFjd86u",
+            "4JCVgztegOUYSzWPB9gQ2v",
+            "4LwneG6dyVE9gVMpwZkxYw"
+          ]
+        }
+      }
+    },
+    {
+      "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+      "status": 200,
+      "artist": {
+        "id": "3Wnc3N7wFZYCFqjLljIpI5",
+        "name": "Band",
+        "topTracks": [
+          {
+            "country": "ZZ",
+            "trackIds": [
+              "0bmHODLVKEn0m6ZtB2mfC6"
+            ]
+          },
+          {
+            "country": "BY",
+            "trackIds": [
+              "0dg9MKoV2L6aKsP3wSpXy7"
+            ]
+          }
+        ],
+        "topTracksIn": {
+          "BY": [
+            "0dg9MKoV2L6aKsP3wSpXy7"
+          ],
+          "PL": [
+            "0bmHODLVKEn0m6ZtB2mfC6"
+          ],
+          "": [
+            "0bmHODLVKEn0m6ZtB2mfC6"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "contentType": "application/vnd.collection-v2.spotify.proto",
+  "base64": "Ci0KJXNwb3RpZnk6YXJ0aXN0OjNXbmMzTjd3RlpZQ0ZxakxsaklwSTUQpOW5uAYKLQolc3BvdGlmeTphcnRpc3Q6M1lnRTFUS3ZZNkhOM005bGg5TTdFNhDA5Lm4Bg==",
+  "fields": [
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5"
+        },
+        {
+          "field": 2,
+          "varint": "1729000100"
+        }
+      ]
+    },
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:artist:3YgE1TKvY6HN3M9lh9M7E6"
+        },
+        {
+          "field": 2,
+          "varint": "1729000000"
+        }
+      ]
+    }
+  ]
+}

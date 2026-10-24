@@ -1,0 +1,221 @@
+{
+  "contentType": "application/x-protobuf",
+  "base64": "CgwCCRAXHiUsMzpBSE8QBiq4AwgAEAAaMQovc3BvdGlmeTpzdGFydC1ncm91cDoyZDVmOWEwYzNiMWU0YTdmOlJvYWQgdHJpcHMaKQonc3BvdGlmeTpwbGF5bGlzdDoydHJ4d0VXNEVOMHpPd25XejBRb05qGikKJ3Nwb3RpZnk6cGxheWxpc3Q6MnhlcnNTYzNmMHNVQmUzNnFHWE9GbBokCiJzcG90aWZ5OmVuZC1ncm91cDoyZDVmOWEwYzNiMWU0YTdmGikKJ3Nwb3RpZnk6cGxheWxpc3Q6MnZrWnVMejNXVEpLY1Nkd3VRVTZKaxopCidzcG90aWZ5OnBsYXlsaXN0OjJ6N1RxWVAyeDdjNFp6U0dteDF3Qm0iFAoMAQQHCg0QExYZHB8iEgIKABgDIhgKDAEEBwoNEBMWGRwfIhIGCgRSb2FkGAMiKgoMAQQHCg0QExYZHB8iEhUKE1NoYXJlZCwgdGhlbiBoaWRkZW4YA0imBiIUCgwBBAcKDRATFhkcHyISAgoAGAMiGAoMAQQHCg0QExYZHB8iEgYKBEhvbWUYAyIhCgwBBAcKDRATFhkcHyISDAoKU3RhdHVzIDIwMBgDSJAD",
+  "fields": [
+    {
+      "field": 1,
+      "bytes": "020910171e252c333a41484f"
+    },
+    {
+      "field": 2,
+      "varint": "6"
+    },
+    {
+      "field": 5,
+      "message": [
+        {
+          "field": 1,
+          "varint": "0"
+        },
+        {
+          "field": 2,
+          "varint": "0"
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:start-group:2d5f9a0c3b1e4a7f:Road trips"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2trxwEW4EN0zOwnWz0QoNj"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2xersSc3f0sUBe36qGXOFl"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:end-group:2d5f9a0c3b1e4a7f"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2vkZuLz3WTJKcSdwuQU6Jk"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2z7TqYP2x7c4ZzSGmx1wBm"
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "message": [
+            {
+              "field": 1,
+              "bytes": "0104070a0d101316191c1f22"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": ""
+                }
+              ]
+            },
+            {
+              "field": 3,
+              "varint": "3"
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "message": [
+            {
+              "field": 1,
+              "bytes": "0104070a0d101316191c1f22"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "Road"
+                }
+              ]
+            },
+            {
+              "field": 3,
+              "varint": "3"
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "message": [
+            {
+              "field": 1,
+              "bytes": "0104070a0d101316191c1f22"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "Shared, then hidden"
+                }
+              ]
+            },
+            {
+              "field": 3,
+              "varint": "3"
+            },
+            {
+              "field": 9,
+              "varint": "806"
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "message": [
+            {
+              "field": 1,
+              "bytes": "0104070a0d101316191c1f22"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": ""
+                }
+              ]
+            },
+            {
+              "field": 3,
+              "varint": "3"
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "message": [
+            {
+              "field": 1,
+              "bytes": "0104070a0d101316191c1f22"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "Home"
+                }
+              ]
+            },
+            {
+              "field": 3,
+              "varint": "3"
+            }
+          ]
+        },
+        {
+          "field": 4,
+          "message": [
+            {
+              "field": 1,
+              "bytes": "0104070a0d101316191c1f22"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "Status 200"
+                }
+              ]
+            },
+            {
+              "field": 3,
+              "varint": "3"
+            },
+            {
+              "field": 9,
+              "varint": "400"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

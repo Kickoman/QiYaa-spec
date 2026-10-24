@@ -185,14 +185,18 @@ Sessions of the access point client against a fake access point, the one the des
   `{field, wire, bytes}` for wire type 2. Spotify's signed fields (a track's duration, an image's
   width, a year, a list item's status) are zigzag.
 - `kind: "reject"`: `{bytes, fieldsBefore}`. The reader must fail; `fieldsBefore` are the fields it
-  returned first. A top-level message whose reader failed is dropped whole. In the access point, login5
-  and client-token messages the desktop does not apply this to some nested messages, where a
-  failed nested reader keeps what it read: the challenge chain of the AP's response (10 → 10 → 10
-  → Diffie-Hellman), login5's `ok` and `challenges`, and client-token's hashcash parameters. The
-  response's `APLoginFailed` (field 30) is the opposite: a failed reader drops it, and the field
-  counts as absent. The catalog messages are left to their fixtures. Groups (wire types 3 and 4), wire
-  types 6 and 7, field number 0 and numbers above 2^29 − 1 are refused, and so are a varint of more
-  than ten bytes and anything cut short.
+  returned first. A top-level message whose reader failed is dropped whole, except a client-token
+  reply: its parser returns the first readable `granted_token` (field 2) or `challenges` (field 3)
+  as soon as it has read it, so a break after that field is never seen, and only a break before it
+  makes the reply a failure. In the access point, login5 and client-token messages the desktop does
+  not apply this to some nested messages, where a failed nested reader keeps what it read: the
+  challenge chain of the AP's response (10 → 10 → 10 → Diffie-Hellman), login5's `ok` and
+  `challenges`, and client-token's hashcash parameters. The response's `APLoginFailed` (field 30) is
+  the opposite: a failed reader drops it, and the field counts as absent. The catalogue's messages
+  are in [fixtures/spotify/](../fixtures/spotify/README.md), and their rules in
+  [expected/spotify/](../expected/spotify/README.md#the-parsing-rules). Groups (wire types 3 and 4),
+  wire types 6 and 7, field number 0 and numbers above 2^29 − 1 are refused, and so are a varint of
+  more than ten bytes and anything cut short.
 - A ten-byte varint whose last byte is above 1 does not fit in 64 bits. The desktop takes it and
   drops the high bits (`08ffffffffffffffffff02` reads as 2^63 − 1); no vector covers it, and an
   implementation may refuse it instead.
@@ -227,7 +231,8 @@ Sessions of the access point client against a fake access point, the one the des
 - **client-token's answer carries the suffix as upper-case hex text.**
 - `platform` is one of:
   - `{os: "linux", release, version, hardware}`: the kernel release, the distribution's version
-    and the CPU. Android sends this form (`os.version`, `Build.VERSION.RELEASE`, `aarch64` or `arm`);
+    and the CPU. Android sends this form (`os.version`, `Build.VERSION.RELEASE`, `aarch64`, `arm`
+    or `x86_64`);
   - `{os: "windows", osVersion, osBuild, imageFileMachine, peMachine}`, the desktop's on Windows;
   - `{os: "macos", systemVersion, cpuType}`, the desktop's on macOS; the model is always `iMac21,1`.
 
@@ -287,6 +292,8 @@ make -C scripts/spotify-vectors DESKTOP=/path/to/QiYaa BUILD=/tmp/spotify-vector
 - The generator is compiled from `DESKTOP` on every run (about half a minute), so it never writes
   the files from other or older sources. The output is deterministic: running it again on unchanged
   code gives the same files.
+- The same Makefile's `catalog` target writes the catalogue's fixtures and their expected files; it
+  also needs Qt ([expected/spotify/](../expected/spotify/README.md#changing-them)).
 - Then run `npm run check`, update the desktop commit above and commit, following the spec workflow
   in the [top README](../README.md). A change in these bytes is a change in behaviour: it needs an
   issue for the other app.

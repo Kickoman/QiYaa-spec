@@ -1,0 +1,45 @@
+{
+  "entities": [
+    {
+      "uri": "spotify:album:3vQSuijGAtMhauFEhySuBR",
+      "status": 404,
+      "album": null
+    },
+    {
+      "uri": "spotify:album:3tXqwbGHin36M8Q4lIOMFQ",
+      "status": 200,
+      "album": {
+        "id": "3tXqwbGHin36M8Q4lIOMFQ",
+        "name": "Single",
+        "artists": [
+          {
+            "id": "3YgE1TKvY6HN3M9lh9M7E6",
+            "name": "Worldwide"
+          }
+        ],
+        "trackIds": [
+          "0h33IXETCYyvxaudoyxnq9"
+        ]
+      }
+    },
+    {
+      "uri": "spotify:album:3s3Yy53I0gjWnN0upSL4JP",
+      "status": 200,
+      "album": {
+        "id": "3s3Yy53I0gjWnN0upSL4JP",
+        "name": "Double",
+        "artists": [
+          {
+            "id": "3Wnc3N7wFZYCFqjLljIpI5",
+            "name": "Band"
+          }
+        ],
+        "trackIds": [
+          "05GlUjSXSkbvb3uJNwb7O3",
+          "07zNSqvXaqUFzpkjJmePK4",
+          "09tfQx8WsxDPXL9TFcixG5"
+        ]
+      }
+    }
+  ]
+}

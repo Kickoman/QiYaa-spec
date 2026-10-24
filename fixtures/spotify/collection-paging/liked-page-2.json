@@ -1,0 +1,23 @@
+{
+  "contentType": "application/vnd.collection-v2.spotify.proto",
+  "base64": "CiwKJHNwb3RpZnk6dHJhY2s6MDd6TlNxdlhhcVVGenBrakptZVBLNBCI5rm4BhoUc3ludGhldGljLXN5bmMtdG9rZW4=",
+  "fields": [
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:track:07zNSqvXaqUFzpkjJmePK4"
+        },
+        {
+          "field": 2,
+          "varint": "1729000200"
+        }
+      ]
+    },
+    {
+      "field": 3,
+      "string": "synthetic-sync-token"
+    }
+  ]
+}

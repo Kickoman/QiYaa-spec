@@ -1,0 +1,83 @@
+{
+  "contentType": "application/vnd.collection-v2.spotify.proto",
+  "base64": "CiwKJHNwb3RpZnk6dHJhY2s6MDFUclk2Q1ppNkphb2xQelZRM0hXMRCY6bm4BgosCiRzcG90aWZ5OmFsYnVtOjNzM1l5NTNJMGdqV25OMHVwU0w0SlAQtOi5uAYKLgokc3BvdGlmeTp0cmFjazowa1BYRmFVU2RjMFFqUzluZ2VFTmliEILoubgGGAEKLAokc3BvdGlmeTp0cmFjazowM01UV2RmWUFkc2tNSEY5Ukc3cFMyENDnubgGCiwKJHNwb3RpZnk6dHJhY2s6MDVHbFVqU1hTa2J2YjN1Sk53YjdPMxDs5rm4BhIQc3ludGhldGljLXBhZ2UtMhoUc3ludGhldGljLXN5bmMtdG9rZW4=",
+  "fields": [
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:track:01TrY6CZi6JaolPzVQ3HW1"
+        },
+        {
+          "field": 2,
+          "varint": "1729000600"
+        }
+      ]
+    },
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:album:3s3Yy53I0gjWnN0upSL4JP"
+        },
+        {
+          "field": 2,
+          "varint": "1729000500"
+        }
+      ]
+    },
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:track:0kPXFaUSdc0QjS9ngeENib"
+        },
+        {
+          "field": 2,
+          "varint": "1729000450"
+        },
+        {
+          "field": 3,
+          "varint": "1"
+        }
+      ]
+    },
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:track:03MTWdfYAdskMHF9RG7pS2"
+        },
+        {
+          "field": 2,
+          "varint": "1729000400"
+        }
+      ]
+    },
+    {
+      "field": 1,
+      "message": [
+        {
+          "field": 1,
+          "string": "spotify:track:05GlUjSXSkbvb3uJNwb7O3"
+        },
+        {
+          "field": 2,
+          "varint": "1729000300"
+        }
+      ]
+    },
+    {
+      "field": 2,
+      "string": "synthetic-page-2"
+    },
+    {
+      "field": 3,
+      "string": "synthetic-sync-token"
+    }
+  ]
+}

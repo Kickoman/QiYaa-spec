@@ -1,0 +1,77 @@
+{
+  "contentType": "application/x-protobuf",
+  "base64": "EAYqiQIIABAAGjEKL3Nwb3RpZnk6c3RhcnQtZ3JvdXA6MmQ1ZjlhMGMzYjFlNGE3ZjpSb2FkIHRyaXBzGikKJ3Nwb3RpZnk6cGxheWxpc3Q6MnRyeHdFVzRFTjB6T3duV3owUW9OahopCidzcG90aWZ5OnBsYXlsaXN0OjJ4ZXJzU2MzZjBzVUJlMzZxR1hPRmwaJAoic3BvdGlmeTplbmQtZ3JvdXA6MmQ1ZjlhMGMzYjFlNGE3ZhopCidzcG90aWZ5OnBsYXlsaXN0OjJ2a1p1THozV1RKS2NTZHd1UVU2SmsaKQonc3BvdGlmeTpwbGF5bGlzdDoyejdUcVlQMng3YzRaelNHbXgxd0Jt",
+  "fields": [
+    {
+      "field": 2,
+      "varint": "6"
+    },
+    {
+      "field": 5,
+      "message": [
+        {
+          "field": 1,
+          "varint": "0"
+        },
+        {
+          "field": 2,
+          "varint": "0"
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:start-group:2d5f9a0c3b1e4a7f:Road trips"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2trxwEW4EN0zOwnWz0QoNj"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2xersSc3f0sUBe36qGXOFl"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:end-group:2d5f9a0c3b1e4a7f"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2vkZuLz3WTJKcSdwuQU6Jk"
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:playlist:2z7TqYP2x7c4ZzSGmx1wBm"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

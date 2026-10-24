@@ -1,0 +1,26 @@
+{
+  "contentType": "application/x-protobuf",
+  "base64": "CAASYmh0dHBzOi8vYXVkaW8tZmEuc2Nkbi5jby9hdWRpby8wMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzPzE3MjkwMDM2MDBfc3ludGhldGljLXRva2VuEmhodHRwczovL2F1ZGlvLWFrLnNwb3RpZnljZG4uY29tL2F1ZGlvLzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDMwMzAzMDM/X190b2tlbl9fPXN5bnRoZXRpYy10b2tlbiIUAwMDAwMDAwMDAwMDAwMDAwMDAwMogKMF",
+  "fields": [
+    {
+      "field": 1,
+      "varint": "0"
+    },
+    {
+      "field": 2,
+      "string": "https://audio-fa.scdn.co/audio/0303030303030303030303030303030303030303?1729003600_synthetic-token"
+    },
+    {
+      "field": 2,
+      "string": "https://audio-ak.spotifycdn.com/audio/0303030303030303030303030303030303030303?__token__=synthetic-token"
+    },
+    {
+      "field": 4,
+      "bytes": "0303030303030303030303030303030303030303"
+    },
+    {
+      "field": 5,
+      "varint": "86400"
+    }
+  ]
+}

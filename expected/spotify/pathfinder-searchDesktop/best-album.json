@@ -1,0 +1,12 @@
+{
+  "stale": false,
+  "kind": "album",
+  "best": {
+    "uri": "spotify:album:3s3Yy53I0gjWnN0upSL4JP",
+    "name": "Double"
+  },
+  "trackUris": [
+    "spotify:track:05GlUjSXSkbvb3uJNwb7O3",
+    "spotify:track:07zNSqvXaqUFzpkjJmePK4"
+  ]
+}

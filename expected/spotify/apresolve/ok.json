@@ -1,0 +1,10 @@
+{
+  "accessPoints": [
+    "ap-gew4.spotify.com:4070",
+    "ap-gew4.spotify.com:443",
+    "ap-gew4.spotify.com:80"
+  ],
+  "spclients": [
+    "gew4-spclient.spotify.com:443"
+  ]
+}

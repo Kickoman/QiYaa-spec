@@ -211,9 +211,12 @@ TBytes Sign(const TBytes& encoded) {
 Json RsaCase(const std::string& name, const TBytes& modulus, const TBytes& message, const TBytes& signature,
              bool withPrivateExponent) {
     const bool valid = SpotifyProtocol::VerifyRsaSha1(modulus, 65537, Sha1(message), signature);
-    TBytes padded(modulus.size() - std::min(modulus.size(), signature.size()), 0);
-    padded.insert(padded.end(), signature.begin(), signature.end());
-    const std::optional<TBytes> encoded = ModPow(padded, Bytes("010001"), modulus);
+    std::optional<TBytes> encoded;
+    if (signature.size() <= modulus.size()) {
+        TBytes padded(modulus.size() - signature.size(), 0);
+        padded.insert(padded.end(), signature.begin(), signature.end());
+        encoded = ModPow(padded, Bytes("010001"), modulus);
+    }
     Json json = Json::Object();
     json.set("kind", "rsa-pkcs1-sha1").set("name", name).set("modulus", Hex(modulus)).set("exponent", 65537);
     if (withPrivateExponent) {
@@ -456,6 +459,12 @@ Json CryptoVectors() {
                            found->first, found->second, true));
     }
     cases.push(RsaCase("a signature not below the modulus", modulus, Text("abc"), modulus, true));
+    {
+        const TBytes longer = Join({0}, withNull);
+        Check(!SpotifyProtocol::VerifyRsaSha1(modulus, 65537, Sha1(Text("abc")), longer), "a longer signature");
+        cases.push(RsaCase("a signature longer than the modulus, even by a leading zero byte", modulus, Text("abc"),
+                           longer, true));
+    }
 
     return Json::Object()
         .set("description",

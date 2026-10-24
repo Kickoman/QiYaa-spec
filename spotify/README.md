@@ -13,8 +13,8 @@ test computes from the inputs and compares.
   [top README](../README.md#rules-for-files) requires.
 - Bytes are lower-case hex strings, two digits per byte; `""` is no bytes. Multi-byte numbers
   inside bytes are big-endian unless a file says otherwise.
-- Numbers are JSON integers, all below 2^53. Protobuf varints, which go up to 2^64 − 1, are decimal
-  strings.
+- Numbers are JSON integers, all below 2^53. The numbers of `protobuf.json` (`varint`, `zigzag`,
+  `value`), which go up to 2^64 − 1, are decimal strings; `zigzag` is signed.
 - Text is a JSON string, UTF-8.
 - `null` is "nothing": an input that is refused, or a value that never comes to exist.
 - A file with several kinds of case gives each one a `kind`.
@@ -63,8 +63,9 @@ test computes from the inputs and compares.
   `00 01 FF…FF 00 ‖ DigestInfo ‖ SHA-1(message)` with either DigestInfo:
   `3021300906052b0e03021a05000414` (with the `05 00` NULL parameters) or
   `301f300706052b0e03021a0414` (without), as BearSSL accepts both. A signature shorter than the
-  modulus is read as a number, that is left-padded with zeros. `encoded` is `null` when s is not
-  below the modulus. Two keys: the desktop test's 1024-bit key, whose private half is not known
+  modulus is read as a number, that is left-padded with zeros. A signature longer than the modulus is
+  refused before any arithmetic, even when its extra leading bytes are zero. `encoded` is `null` when
+  the signature is refused that way or s is not below the modulus. Two keys: the desktop test's 1024-bit key, whose private half is not known
   (its signature of `abc` comes from that test), and a 1024-bit key made for these vectors, given
   with its `privateExponent` so that a test can sign more.
 
@@ -105,10 +106,14 @@ Sessions of the access point client against a fake access point, the one the des
 - **`keys`:** what the handshake derives, `null` when the client never gets that far:
   - `clientPublic` and `shared`: the client's public key and the shared secret with their leading
     zero bytes dropped, as the client sends and uses them;
-  - `material`: HMAC-SHA1(`shared`, transcript ‖ i) for i = 1 to 5, 100 bytes. The transcript is the
-    client hello and the server's response, both whole, with their length prefixes;
+  - `material`: HMAC-SHA1(`shared`, transcript ‖ i) for i = 1 to 5, each i one byte (`01` to `05`),
+    the five digests joined: 100 bytes. The transcript is the client hello and the server's response,
+    both whole, with their length prefixes;
   - `challengeAnswer`: HMAC-SHA1(`material[0..20]`, transcript);
   - `clientToServer`, `serverToClient`: the Shannon keys, `material[20..52]` and `material[52..84]`.
+
+  `[a..b]` here is bytes a to b − 1: the end is excluded, unlike Kotlin's `a..b`
+  (`copyOfRange(a, b)` takes the same bytes).
 - **`steps[]`:** the calls on the client in order, and what comes out of each.
   - `call` is `start`; `receive`, with `nowMs` and `incoming`, the messages the server sends (the
     client gets their `wire` bytes joined); `advance`, with `nowMs`; or `requestAudioKey`, with
@@ -121,6 +126,12 @@ Sessions of the access point client against a fake access point, the one the des
     the call.
   - A message is `{what, wire}`. A packet after the handshake also has `nonce`, `command` (one byte)
     and `payload`, decrypted.
+- **Rules the steps follow:**
+  - `deadline` is `null` whenever `loggedIn` is false;
+  - a refused login is `loginFailed` alone, without `failure`. `failure` ends the session for every
+    other reason: a signature the trusted key does not verify, a bad MAC, a malformed message, a
+    missed keep-alive;
+  - audio key requests are numbered from 0 on each connection, one up per request.
 
 **The wire:**
 - The client hello is `00 04`, a 32-bit length of the whole message (these six bytes included) and
@@ -144,7 +155,7 @@ Sessions of the access point client against a fake access point, the one the des
 | Message | Fields |
 |---|---|
 | `ClientHello` | 10 build info {10 product 0, 20 product flags 0, 30 platform, 40 version}, 30 crypto suite 0, 50 {10 Diffie-Hellman {10 public key, 20 server keys known 1}}, 60 nonce, 70 padding `1e` |
-| `APResponseMessage` | 10 challenge {10 {10 Diffie-Hellman {10 gs, 20 server signature key, 30 gs signature}}}, 30 `APLoginFailed` |
+| `APResponseMessage` | 10 challenge {10 {10 Diffie-Hellman {10 gs, 20 server signature key 1, 30 gs signature}}}, 30 `APLoginFailed` |
 | `ClientResponsePlaintext` | 10 {10 Diffie-Hellman {10 HMAC}}, 20 {} and 30 {}: two empty messages that are still written |
 | `Login` (0xab) | 10 credentials {10 username, left out when empty, 20 type, 30 data}, 50 system info {10 CPU family, 60 OS, 90 system information, 100 device id}, 70 version string |
 | `APWelcome` (0xac) | 10 username, 30 reusable credentials type, 40 reusable credentials; the rest is ignored |
@@ -154,8 +165,10 @@ Sessions of the access point client against a fake access point, the one the des
 - The client: replay the steps against its own access point code, feeding it `random`, and compare
   `outgoing`, `events`, `deadline`, `loggedIn` and `failed` after each call. Feeding the incoming
   bytes one at a time must give the same.
-- A fake access point: send the response wire to a client hello, derive `keys`, check the client's
-  answer and packets, send the `incoming` packets.
+- A fake access point: answer a client hello with the response, which it can copy from the case or
+  build from `server` by the table above (`APResponseMessage` {10 {10 {10 {10 `dhPublic`, 20 1,
+  30 `signature`}}}}, after its length); derive `keys`; check the client's answer and packets; send
+  the `incoming` packets.
 
 ### `protobuf.json`: the wire format
 
@@ -170,6 +183,9 @@ Sessions of the access point client against a fake access point, the one the des
   returned first. A message whose reader failed is dropped whole. Groups (wire types 3 and 4), wire
   types 6 and 7, field number 0 and numbers above 2^29 − 1 are refused, and so are a varint of more
   than ten bytes and anything cut short.
+- A ten-byte varint whose last byte is above 1 does not fit in 64 bits. The desktop takes it and
+  drops the high bits (`08ffffffffffffffffff02` reads as 2^63 − 1); no vector covers it, and an
+  implementation may refuse it instead.
 
 ### `ids.json`: base62 ids
 
@@ -199,13 +215,19 @@ Sessions of the access point client against a fake access point, the one the des
   the remaining nanoseconds, each left out when 0. The protocol code does not read the clock: that
   time is an input.
 - **client-token's answer carries the suffix as upper-case hex text.**
-- `platform` is `{os: "linux", release, version, hardware}`, `{os: "windows", …}` or
-  `{os: "macos", …}`. Android sends the Linux form; Windows and macOS are the desktop's.
+- `platform` is one of:
+  - `{os: "linux", release, version, hardware}`: the kernel release, the distribution's version
+    and the CPU. Android sends this form (`os.version`, `Build.VERSION.RELEASE`, `aarch64` or `arm`);
+  - `{os: "windows", osVersion, osBuild, imageFileMachine, peMachine}`, the desktop's on Windows;
+  - `{os: "macos", systemVersion, cpuType}`, the desktop's on macOS; the model is always `iMac21,1`.
 
 | Body | Fields |
 |---|---|
 | login5 | 1 client info {1 client id, 2 device id}, 2 the challenge's context when there is one, 3 {1 {1 hashcash {1 suffix, 2 duration {1 seconds, 2 nanoseconds}}}}, 100 stored credential {1 username, 2 data} |
-| client-token | 1 request type 1, 2 client data {1 client version, 2 client id, 3 {1 platform data {5 Linux {1 `Linux`, 2 release, 3 version, 4 hardware}}, 2 device id}} |
+| client-token | 1 request type 1, 2 client data {1 client version, 2 client id, 3 {1 platform data, 2 device id}} |
+| platform data, Linux | 5 {1 `Linux`, 2 release, 3 version, 4 hardware} |
+| platform data, Windows | 4 {1 `osVersion`, 3 `osBuild`, 4 2, 6 9, 7 `imageFileMachine`, 8 `peMachine`, 10 1} |
+| platform data, macOS | 3 {1 `systemVersion`, 2 `iMac21,1`, 3 `cpuType`} |
 | client-token answer | 1 request type 2, 3 {1 state, 2 {1 challenge type 3, 4 {1 suffix as text}}} |
 | extended-metadata | 2 for each URI {1 URI, 2 {1 extension kind}} |
 | autoplay | 1 context URI, 2 each recent track URI |
@@ -229,12 +251,16 @@ Sessions of the access point client against a fake access point, the one the des
   generated against Kickoman/QiYaa `b99c1dfb8a8eb90b49316b2e146a9c753448a0d3` (v0.9.0).
 
 `npm run check` ([scripts/check-spotify-vectors.mjs](../scripts/check-spotify-vectors.mjs)) checks
-the format and recomputes with `node:crypto` and `BigInt` what standard tools can: SHA-1, HMAC-SHA1,
-AES-128-CTR (through AES-ECB, one block per counter), the audio decryption, `modpow`, `dh`, the RSA
-checks in both DigestInfo forms, the handshake's public keys, secret, material, answer and Shannon
-keys, the base62 ids, the hashcash solutions and the protobuf `write` cases. It does **not**
-recompute Shannon (`shannon.json` and the handshake's packets), protobuf reading, or the message
-bodies: those come only from the desktop's code, which works against Spotify's servers.
+the format, fails on a `kind` or a `call` this README does not describe, and recomputes every result
+from its inputs, independently of the desktop's code:
+- with `node:crypto` and `BigInt`: SHA-1, HMAC-SHA1, AES-128-CTR (through AES-ECB, one block per
+  counter), the audio decryption, `modpow`, `dh`, the RSA checks in both DigestInfo forms, the
+  hashcash solutions;
+- with its own Shannon, protobuf, base62 and access point client, written from this README:
+  `shannon.json`, `protobuf.json`, `ids.json`, the request bodies, and every handshake session. The
+  client replays each session's steps, whole and byte by byte, and must give the same messages,
+  events, deadlines and flags; the fake access point's side (the response, `keys`, the packets in
+  both directions with their MACs) is rebuilt from `server`.
 
 ## Changing them
 
@@ -248,7 +274,9 @@ make -C scripts/spotify-vectors DESKTOP=/path/to/QiYaa BUILD=/tmp/spotify-vector
 - `DESKTOP`, `BUILD` and `OUT` are absolute or relative to `scripts/spotify-vectors`. `DESKTOP`
   defaults to `../../..`, the desktop checkout when this spec is its `spec/` submodule; `BUILD` to
   `scripts/spotify-vectors/build` (ignored by git); `OUT` to this folder.
-- The output is deterministic: running it again on unchanged code gives the same files.
+- The generator is compiled from `DESKTOP` on every run (about half a minute), so it never writes
+  the files from other or older sources. The output is deterministic: running it again on unchanged
+  code gives the same files.
 - Then run `npm run check`, update the desktop commit above and commit, following the spec workflow
   in the [top README](../README.md). A change in these bytes is a change in behaviour: it needs an
   issue for the other app.

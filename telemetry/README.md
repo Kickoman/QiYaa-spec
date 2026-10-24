@@ -102,7 +102,10 @@ trace line `at c.m(SourceFile:N)` and run R8's `retrace` with the mapping of the
 Android has no skins and no Milkdrop: it sends neither the `skin` and `milkdrop` areas nor those
 features. Its lyrics view takes the cover's place on the player screen
 (Kickoman/QiYaa-android#112): `lyrics` is `on` when the text replaces the cover and `off` when the
-cover comes back; switching tabs or leaving the app is neither.
+cover comes back; switching tabs or leaving the app is neither. The choice lives as long as the
+process: a new run shows the cover again and sends no `off`, unlike the desktop, which restores its
+LYRICS window at start. For the counts below, Android's view is open only while it is on screen:
+another tab, the app in the background or the screen off end a lookup, as a closed view does.
 
 ### Lyrics counts
 

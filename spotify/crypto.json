@@ -1,0 +1,318 @@
+{
+  "description": "SHA-1, HMAC-SHA1, AES-128-CTR from any offset, modular power, Diffie-Hellman in Oakley group 1 and RSA PKCS#1 v1.5 SHA-1 signature checks, as the Spotify protocol uses them.",
+  "cases": [
+    {
+      "kind": "sha1",
+      "name": "FIPS 180-2 A.1: abc",
+      "message": "616263",
+      "digest": "a9993e364706816aba3e25717850c26c9cd0d89d"
+    },
+    {
+      "kind": "sha1",
+      "name": "FIPS 180-2 A.2: two blocks",
+      "message": "6162636462636465636465666465666765666768666768696768696a68696a6b696a6b6c6a6b6c6d6b6c6d6e6c6d6e6f6d6e6f706e6f7071",
+      "digest": "84983e441c3bd26ebaae4aa1f95129e5e54670f1"
+    },
+    {
+      "kind": "sha1",
+      "name": "an empty message",
+      "message": "",
+      "digest": "da39a3ee5e6b4b0d3255bfef95601890afd80709"
+    },
+    {
+      "kind": "hmac-sha1",
+      "name": "RFC 2202 case 1",
+      "key": "0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b0b",
+      "message": "4869205468657265",
+      "digest": "b617318655057264e28bc0b6fb378c8ef146be00"
+    },
+    {
+      "kind": "hmac-sha1",
+      "name": "RFC 2202 case 2",
+      "key": "4a656665",
+      "message": "7768617420646f2079612077616e7420666f72206e6f7468696e673f",
+      "digest": "effcdf6ae5eb2fa2d27416d5f184df9c259a7c79"
+    },
+    {
+      "kind": "hmac-sha1",
+      "name": "RFC 2202 case 3",
+      "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "message": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "digest": "125d7342b9ac11cd91a39af48aa17b4f63f175d3"
+    },
+    {
+      "kind": "hmac-sha1",
+      "name": "RFC 2202 case 4",
+      "key": "0102030405060708090a0b0c0d0e0f10111213141516171819",
+      "message": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+      "digest": "4c9007f4026250c6bc8414f9bf50c86c2d7235da"
+    },
+    {
+      "kind": "hmac-sha1",
+      "name": "RFC 2202 case 5",
+      "key": "0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c",
+      "message": "546573742057697468205472756e636174696f6e",
+      "digest": "4c1a03424b55e07fe7f27be1d58bb9324a9a5a04"
+    },
+    {
+      "kind": "hmac-sha1",
+      "name": "RFC 2202 case 6",
+      "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "message": "54657374205573696e67204c6172676572205468616e20426c6f636b2d53697a65204b6579202d2048617368204b6579204669727374",
+      "digest": "aa4ae5e15272d00e95705637ce8a3b55ed402112"
+    },
+    {
+      "kind": "hmac-sha1",
+      "name": "RFC 2202 case 7",
+      "key": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "message": "54657374205573696e67204c6172676572205468616e20426c6f636b2d53697a65204b657920616e64204c6172676572205468616e204f6e6520426c6f636b2d53697a652044617461",
+      "digest": "e8e99d0f45237d786d6bbaa7965c7808bbff1a91"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "SP 800-38A F.5.1: CTR-AES128.Encrypt",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "offset": 0,
+      "input": "6bc1bee22e409f96e93d7e117393172aae2d8a571e03ac9c9eb76fac45af8e5130c81c46a35ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+      "output": "874d6191b620e3261bef6864990db6ce9806f66b7970fdff8617187bb9fffdff5ae4df3edbd5d35e5b4f09020db03eab1e031dda2fbe03d1792170a0f3009cee"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "F.5.1 from byte 5, inside the first block",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "offset": 5,
+      "input": "409f96",
+      "output": "20e326"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "F.5.1 from byte 13, across a block boundary",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "offset": 13,
+      "input": "93172aae2d8a571e03ac",
+      "output": "0db6ce9806f66b7970fd"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "F.5.1 from byte 16, the second block",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "offset": 16,
+      "input": "ae2d8a571e03ac9c9eb76fac45af8e51",
+      "output": "9806f66b7970fdff8617187bb9fffdff"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "F.5.1 from byte 37 to the end",
+      "key": "2b7e151628aed2a6abf7158809cf4f3c",
+      "iv": "f0f1f2f3f4f5f6f7f8f9fafbfcfdfeff",
+      "offset": 37,
+      "input": "5ce411e5fbc1191a0a52eff69f2445df4f9b17ad2b417be66c3710",
+      "output": "d5d35e5b4f09020db03eab1e031dda2fbe03d1792170a0f3009cee"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "the counter carries past its low 32-bit word",
+      "key": "03030303030303030303030303030303",
+      "iv": "000000000000000000000001fffffffe",
+      "offset": 0,
+      "input": "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "output": "ab365f2e09aceac60a40be7ebaf6829c6d466f4974ee7749bd670c68d23c3cc6463dee47186320f75214fc0b6562d9c2e758b59f22dc7a1ee7b0af5258b92035"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "the third block of that run alone",
+      "key": "03030303030303030303030303030303",
+      "iv": "000000000000000000000001fffffffe",
+      "offset": 32,
+      "input": "00000000000000000000000000000000",
+      "output": "463dee47186320f75214fc0b6562d9c2"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "the same block from the carried counter",
+      "key": "03030303030303030303030303030303",
+      "iv": "00000000000000000000000200000000",
+      "offset": 0,
+      "input": "00000000000000000000000000000000",
+      "output": "463dee47186320f75214fc0b6562d9c2"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "from inside a block, across the low word's wrap",
+      "key": "03030303030303030303030303030303",
+      "iv": "000000000000000000000001fffffffe",
+      "offset": 25,
+      "input": "404142434445464748494a4b4c4d4e4f50515253",
+      "output": "274d2a917879800175a70d532f6db91d44ad5936"
+    },
+    {
+      "kind": "aes-128-ctr",
+      "name": "the counter wraps around 2^128",
+      "key": "03030303030303030303030303030303",
+      "iv": "fffffffffffffffffffffffffffffffe",
+      "offset": 0,
+      "input": "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+      "output": "acd93fde1e76287148f2cde6e173d7e99bf88e230872adebd0fee17bf5f7884ce5b5077f9346462c62a075c0c708ee96"
+    },
+    {
+      "kind": "modpow",
+      "name": "4^13 mod 497",
+      "base": "04",
+      "exponent": "0d",
+      "modulus": "01f1",
+      "result": "01bd"
+    },
+    {
+      "kind": "modpow",
+      "name": "a base with leading zero bytes",
+      "base": "000004",
+      "exponent": "0d",
+      "modulus": "01f1",
+      "result": "01bd"
+    },
+    {
+      "kind": "modpow",
+      "name": "the result keeps the modulus's length",
+      "base": "02",
+      "exponent": "01",
+      "modulus": "0101",
+      "result": "0002"
+    },
+    {
+      "kind": "modpow",
+      "name": "exponent zero",
+      "base": "07",
+      "exponent": "00",
+      "modulus": "01f1",
+      "result": "0001"
+    },
+    {
+      "kind": "modpow",
+      "name": "a base not below the modulus is refused",
+      "base": "01f1",
+      "exponent": "03",
+      "modulus": "01f1",
+      "result": null
+    },
+    {
+      "kind": "modpow",
+      "name": "an even modulus is refused",
+      "base": "03",
+      "exponent": "03",
+      "modulus": "01f0",
+      "result": null
+    },
+    {
+      "kind": "dh",
+      "name": "Oakley group 1, the private keys of the desktop test",
+      "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "generator": "02",
+      "privateA": "01080f161d242b323940474e555c636a71787f868d949ba2a9b0b7bec5ccd3dae1e8eff6fd040b121920272e353c434a51585f666d747b828990979ea5acb3bac1c8cfd6dde4ebf2f900070e151c232a31383f464d545b626970777e858c93",
+      "privateB": "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98a5b2bfccd9e6f3000d1a2734414e5b6875828f9ca9b6c3d0ddeaf704111e2b3845525f6c798693a0adbac7d4e1eefb0815222f3c495663707d8a97a4b1becb",
+      "publicA": "a2256cebff72e2a12762ef4f26efe63ffe84149b8f9f9e6c0dfa34c8a34251d45a9ad5a462a07b0cb158e1778976f20790c185f429cc3d54b77287c3fdcb9452ca1b77da086d44301337c6340cd1e0c13a341e5e834ce6f0dd6bca7e80cddff0",
+      "publicB": "f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2",
+      "shared": "63a0e300756c3844bb09b902404c0cd8516d374f9f90e105f03f2c0cf19fc4db1ece94d066567393f76ada58d88903143e1b159c00d6d858f9fc0b173785482b28daae018a07acce963185038f9106c4dcb43dcd3e56e593046aeac84a99309f"
+    },
+    {
+      "kind": "dh",
+      "name": "a shared secret with a leading zero byte",
+      "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a63a3620ffffffffffffffff",
+      "generator": "02",
+      "privateA": "e5ecf3fa01080f161d242b323940474e555c636a71787f868d949ba2a9b0b7bec5ccd3dae1e8eff6fd040b121920272e353c434a51585f666d747b828990979ea5acb3bac1c8cfd6dde4ebf2f900070e151c232a31383f464d545b62697077",
+      "privateB": "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98a5b2bfccd9e6f3000d1a2734414e5b6875828f9ca9b6c3d0ddeaf704111e2b3845525f6c798693a0adbac7d4e1eefb0815222f3c495663707d8a97a4b1becb",
+      "publicA": "a6646cec1b129d795945e2db387d82e91759bede2f965acde7faf5a46fc927d4ce84191bedc5c427af5ba3eb3689d69169f95ac4ecc1a68a44d83c25b5140b256bd816c8788e5fc0a09836a15cb015e528e7e2b552ab7f3e69306c024fb4b972",
+      "publicB": "f129f2bb21fb6b12011d910858ac544c0eb9dd6ec267d94fcf33b1d6d9cbe67fcb4ef996777040791b195868637d1dfd24d23a92b7497412e8178ab6564e489d08d9c3cf2c7f671b4c04db3043170b4148550d763453667b505031342ee7ecf2",
+      "shared": "002c0fef1631892e96b24c522bc497a23a05e458b8d34b3d6d225aa0810ead78c62c52d4d8d0b833e89f365ba03ba740521f9ed908d1006a94242c0ab9878b1092e1d62e279a90f917ae8ac1e7c7895e98504b11e6a20a3f144049cb63b8aa57"
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "the desktop test key: abc",
+      "modulus": "b2b1db1fb64016e7dbd118224e634e09efeb0368b00a236a315ebc4c341d41c852996075f0055b5ec1246215758f9ae3e2ab8994f686cb3eae1896b1606eb89eaf8d034270fcc9e4a2e04c299480c524c4f4c30d1c53e1a4e0a2dd154b75a4b52deeb9d95c5ca22c3a4e4561450e6facfabdbd30ea919b9ce1317322ee1f1723",
+      "exponent": 65537,
+      "message": "616263",
+      "signature": "219cd729834f6b39182a7403a7325ba061d85b34558fef39b2ec95ff453b67f74e37ab903499422d8ab1d3e0c78917748783ed01dcb48c493ddcdc2237cfbc1319d6fbf49981c5f22515ce5968271e3c761a62b245289c7418b6657f8958f4a7117cdd6768a0f6a1353cfe3a90f04c25ca54e7cb203cc4fb41fe0c5a0cbe8ede",
+      "encoded": "0001ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff003021300906052b0e03021a05000414a9993e364706816aba3e25717850c26c9cd0d89d",
+      "valid": true
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "the desktop test key: abc's signature on abd",
+      "modulus": "b2b1db1fb64016e7dbd118224e634e09efeb0368b00a236a315ebc4c341d41c852996075f0055b5ec1246215758f9ae3e2ab8994f686cb3eae1896b1606eb89eaf8d034270fcc9e4a2e04c299480c524c4f4c30d1c53e1a4e0a2dd154b75a4b52deeb9d95c5ca22c3a4e4561450e6facfabdbd30ea919b9ce1317322ee1f1723",
+      "exponent": 65537,
+      "message": "616264",
+      "signature": "219cd729834f6b39182a7403a7325ba061d85b34558fef39b2ec95ff453b67f74e37ab903499422d8ab1d3e0c78917748783ed01dcb48c493ddcdc2237cfbc1319d6fbf49981c5f22515ce5968271e3c761a62b245289c7418b6657f8958f4a7117cdd6768a0f6a1353cfe3a90f04c25ca54e7cb203cc4fb41fe0c5a0cbe8ede",
+      "encoded": "0001ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff003021300906052b0e03021a05000414a9993e364706816aba3e25717850c26c9cd0d89d",
+      "valid": false
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "DigestInfo with the 05 00 NULL parameters",
+      "modulus": "d4cb966609aa300f34366dc881ecfa3d466940a8711f2b1d16d5d60ff4312dec2bc9a67974e0213ba6297a9370abbcd058853fc7fe3fa412464ae3ce4a37ecda06a3a30eb987692a861bfd1777eae3b2197b49520217132f83e0018bea0eab1a04fb82705160f31b42ed778aac94e5d0b81cccd97fb58a42ed81671ecf38818f",
+      "exponent": 65537,
+      "privateExponent": "a89edb02e84dafdf9c64350259d24b491aee748a0579c95437b022fc69683f17926b2c3bba5d90780fe7767637261f6c8978ad5df11ec508a622d9f9b1de3713eb5f49b6cb3b329607688a6580c8d9d4d03ab28b9146ab0126f838d2db29849c7511d346a202a7c5f28dfecd980a5190df12f97253bc1072e7014c682c653521",
+      "message": "616263",
+      "signature": "650c5845d06f2c1baf3b29c7e4d72b1d10bbc981efd92c31d1175a5c17c35e39f0356730b431926ce29b73fb9fea6f1ca3c19cf9fc7c218e12113da42c22cfd9c882e5f89cee07e5b25dae5e533d4582e757aede6f7167a0befd9a960a44b3e4e238d83ce1bf90fdd3370ea4e864f1f677585ff0a4a971ed8a595f761ca4db77",
+      "encoded": "0001ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff003021300906052b0e03021a05000414a9993e364706816aba3e25717850c26c9cd0d89d",
+      "valid": true
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "DigestInfo without the NULL parameters",
+      "modulus": "d4cb966609aa300f34366dc881ecfa3d466940a8711f2b1d16d5d60ff4312dec2bc9a67974e0213ba6297a9370abbcd058853fc7fe3fa412464ae3ce4a37ecda06a3a30eb987692a861bfd1777eae3b2197b49520217132f83e0018bea0eab1a04fb82705160f31b42ed778aac94e5d0b81cccd97fb58a42ed81671ecf38818f",
+      "exponent": 65537,
+      "privateExponent": "a89edb02e84dafdf9c64350259d24b491aee748a0579c95437b022fc69683f17926b2c3bba5d90780fe7767637261f6c8978ad5df11ec508a622d9f9b1de3713eb5f49b6cb3b329607688a6580c8d9d4d03ab28b9146ab0126f838d2db29849c7511d346a202a7c5f28dfecd980a5190df12f97253bc1072e7014c682c653521",
+      "message": "616263",
+      "signature": "22bcbce369340bd9ebc795d0e979cc1cb0a89db4b9222d52ec32f7b6eff9336bbfc0bc7f8c5ab9a455441d9e05674b81ce4f6865141e1422e424ae9892e0c40bd6ea244eabd5bacb8d79f6b0a6865825a5c132840dc9e59545f2d7a4471d40e330abf10cd9a0ae2aaecb56d39d441fb9fcec47827692ec8820af0307e1ed595e",
+      "encoded": "0001ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff00301f300706052b0e03021a0414a9993e364706816aba3e25717850c26c9cd0d89d",
+      "valid": true
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "abc's signature on abd",
+      "modulus": "d4cb966609aa300f34366dc881ecfa3d466940a8711f2b1d16d5d60ff4312dec2bc9a67974e0213ba6297a9370abbcd058853fc7fe3fa412464ae3ce4a37ecda06a3a30eb987692a861bfd1777eae3b2197b49520217132f83e0018bea0eab1a04fb82705160f31b42ed778aac94e5d0b81cccd97fb58a42ed81671ecf38818f",
+      "exponent": 65537,
+      "privateExponent": "a89edb02e84dafdf9c64350259d24b491aee748a0579c95437b022fc69683f17926b2c3bba5d90780fe7767637261f6c8978ad5df11ec508a622d9f9b1de3713eb5f49b6cb3b329607688a6580c8d9d4d03ab28b9146ab0126f838d2db29849c7511d346a202a7c5f28dfecd980a5190df12f97253bc1072e7014c682c653521",
+      "message": "616264",
+      "signature": "650c5845d06f2c1baf3b29c7e4d72b1d10bbc981efd92c31d1175a5c17c35e39f0356730b431926ce29b73fb9fea6f1ca3c19cf9fc7c218e12113da42c22cfd9c882e5f89cee07e5b25dae5e533d4582e757aede6f7167a0befd9a960a44b3e4e238d83ce1bf90fdd3370ea4e864f1f677585ff0a4a971ed8a595f761ca4db77",
+      "encoded": "0001ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff003021300906052b0e03021a05000414a9993e364706816aba3e25717850c26c9cd0d89d",
+      "valid": false
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "block type 02 instead of 01",
+      "modulus": "d4cb966609aa300f34366dc881ecfa3d466940a8711f2b1d16d5d60ff4312dec2bc9a67974e0213ba6297a9370abbcd058853fc7fe3fa412464ae3ce4a37ecda06a3a30eb987692a861bfd1777eae3b2197b49520217132f83e0018bea0eab1a04fb82705160f31b42ed778aac94e5d0b81cccd97fb58a42ed81671ecf38818f",
+      "exponent": 65537,
+      "privateExponent": "a89edb02e84dafdf9c64350259d24b491aee748a0579c95437b022fc69683f17926b2c3bba5d90780fe7767637261f6c8978ad5df11ec508a622d9f9b1de3713eb5f49b6cb3b329607688a6580c8d9d4d03ab28b9146ab0126f838d2db29849c7511d346a202a7c5f28dfecd980a5190df12f97253bc1072e7014c682c653521",
+      "message": "616263",
+      "signature": "998bad870c449be3c999399aed4447e9b1279d2742d42788a6fb6f9a23eef9ec00339eb157a869c8d3d1ea18fc637102b217968c27f602ea39434ac2d6a5778684e10f892a1de99a2078d1f5d94416af841bcc3dea6e6b5a40154d1bab97bdeefe8efedb7a3c0768f11b2b3aa6c48cd7476beaf63c4b9703b4f003f7491e2264",
+      "encoded": "0002ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff003021300906052b0e03021a05000414a9993e364706816aba3e25717850c26c9cd0d89d",
+      "valid": false
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "a signature one byte shorter than the modulus: its leading zero left out",
+      "modulus": "d4cb966609aa300f34366dc881ecfa3d466940a8711f2b1d16d5d60ff4312dec2bc9a67974e0213ba6297a9370abbcd058853fc7fe3fa412464ae3ce4a37ecda06a3a30eb987692a861bfd1777eae3b2197b49520217132f83e0018bea0eab1a04fb82705160f31b42ed778aac94e5d0b81cccd97fb58a42ed81671ecf38818f",
+      "exponent": 65537,
+      "privateExponent": "a89edb02e84dafdf9c64350259d24b491aee748a0579c95437b022fc69683f17926b2c3bba5d90780fe7767637261f6c8978ad5df11ec508a622d9f9b1de3713eb5f49b6cb3b329607688a6580c8d9d4d03ab28b9146ab0126f838d2db29849c7511d346a202a7c5f28dfecd980a5190df12f97253bc1072e7014c682c653521",
+      "message": "6c656164696e67207a65726f203630",
+      "signature": "c2332d599acf4fc3e6ac9bf3efc03376fd7955d7c14c1119073f2a1d0aa9b131537b64f888aee2b5ae55b40d7f9d14543894ea9bda16a330eb6ccf1f966588e45a2558ed3143d03b070cd31cd7197acfa41a16818d632019dc18d900b6da766d967a54fb9448c529398178179f323ad81827ba8aa4cf026b04e72ab8fe49ad",
+      "encoded": "0001ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff003021300906052b0e03021a05000414328695b895fe2261b8371764ee72de7a70f81aca",
+      "valid": true
+    },
+    {
+      "kind": "rsa-pkcs1-sha1",
+      "name": "a signature not below the modulus",
+      "modulus": "d4cb966609aa300f34366dc881ecfa3d466940a8711f2b1d16d5d60ff4312dec2bc9a67974e0213ba6297a9370abbcd058853fc7fe3fa412464ae3ce4a37ecda06a3a30eb987692a861bfd1777eae3b2197b49520217132f83e0018bea0eab1a04fb82705160f31b42ed778aac94e5d0b81cccd97fb58a42ed81671ecf38818f",
+      "exponent": 65537,
+      "privateExponent": "a89edb02e84dafdf9c64350259d24b491aee748a0579c95437b022fc69683f17926b2c3bba5d90780fe7767637261f6c8978ad5df11ec508a622d9f9b1de3713eb5f49b6cb3b329607688a6580c8d9d4d03ab28b9146ab0126f838d2db29849c7511d346a202a7c5f28dfecd980a5190df12f97253bc1072e7014c682c653521",
+      "message": "616263",
+      "signature": "d4cb966609aa300f34366dc881ecfa3d466940a8711f2b1d16d5d60ff4312dec2bc9a67974e0213ba6297a9370abbcd058853fc7fe3fa412464ae3ce4a37ecda06a3a30eb987692a861bfd1777eae3b2197b49520217132f83e0018bea0eab1a04fb82705160f31b42ed778aac94e5d0b81cccd97fb58a42ed81671ecf38818f",
+      "encoded": null,
+      "valid": false
+    }
+  ]
+}

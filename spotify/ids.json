@@ -1,0 +1,89 @@
+{
+  "description": "Spotify ids: a 22-character base62 id and its 16-byte gid, both ways, and the track URI made from it.",
+  "cases": [
+    {
+      "name": "a track id",
+      "base62": "6PCoZdjSPbRMehHviTrpB3",
+      "gid": "e07f2e47422d427b8c2be8415175b0f5",
+      "uri": "spotify:track:6PCoZdjSPbRMehHviTrpB3"
+    },
+    {
+      "name": "one",
+      "base62": "0000000000000000000001",
+      "gid": "00000000000000000000000000000001",
+      "uri": "spotify:track:0000000000000000000001"
+    },
+    {
+      "name": "zero",
+      "base62": "0000000000000000000000",
+      "gid": "00000000000000000000000000000000",
+      "uri": "spotify:track:0000000000000000000000"
+    },
+    {
+      "name": "10 is a: the digits are 0-9, a-z, A-Z",
+      "base62": "000000000000000000000a",
+      "gid": "0000000000000000000000000000000a",
+      "uri": "spotify:track:000000000000000000000a"
+    },
+    {
+      "name": "36 is A",
+      "base62": "000000000000000000000A",
+      "gid": "00000000000000000000000000000024",
+      "uri": "spotify:track:000000000000000000000A"
+    },
+    {
+      "name": "61 is Z",
+      "base62": "000000000000000000000Z",
+      "gid": "0000000000000000000000000000003d",
+      "uri": "spotify:track:000000000000000000000Z"
+    },
+    {
+      "name": "62 is 10",
+      "base62": "0000000000000000000010",
+      "gid": "0000000000000000000000000000003e",
+      "uri": "spotify:track:0000000000000000000010"
+    },
+    {
+      "name": "the track of handshake.json's key requests",
+      "base62": "01SZwviYzes2mjOamuMJWw",
+      "gid": "01000000000000000000000000000000",
+      "uri": "spotify:track:01SZwviYzes2mjOamuMJWw"
+    },
+    {
+      "name": "the largest gid",
+      "base62": "7N42dgm5tFLK9N8MT7fHC7",
+      "gid": "ffffffffffffffffffffffffffffffff",
+      "uri": "spotify:track:7N42dgm5tFLK9N8MT7fHC7"
+    },
+    {
+      "name": "too short",
+      "base62": "tooShort",
+      "gid": null,
+      "uri": null
+    },
+    {
+      "name": "23 characters",
+      "base62": "6PCoZdjSPbRMehHviTrpB3a",
+      "gid": null,
+      "uri": null
+    },
+    {
+      "name": "a character outside base62",
+      "base62": "6PCoZdjSPbRMehHviTrp-3",
+      "gid": null,
+      "uri": null
+    },
+    {
+      "name": "one above the largest gid",
+      "base62": "7N42dgm5tFLK9N8MT7fHC8",
+      "gid": null,
+      "uri": null
+    },
+    {
+      "name": "the largest 22 base62 digits",
+      "base62": "ZZZZZZZZZZZZZZZZZZZZZZ",
+      "gid": null,
+      "uri": null
+    }
+  ]
+}

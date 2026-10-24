@@ -1,0 +1,217 @@
+{
+  "description": "Shannon, the stream cipher and MAC of the access point's packets. Each case makes one cipher from its key and replays the calls in order.",
+  "cases": [
+    {
+      "name": "the reference's known answer: encrypt under nonce 0",
+      "key": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 0
+        },
+        {
+          "call": "encrypt",
+          "input": "73706f74696679207368616e6e6f6e206b6174",
+          "output": "b90d865fcc7f43ab9648a97e8dec605d95822a"
+        },
+        {
+          "call": "finish",
+          "mac": "bea0ba6c"
+        }
+      ]
+    },
+    {
+      "name": "the known answer decrypted: the MAC is over the plaintext",
+      "key": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 0
+        },
+        {
+          "call": "decrypt",
+          "input": "b90d865fcc7f43ab9648a97e8dec605d95822a",
+          "output": "73706f74696679207368616e6e6f6e206b6174"
+        },
+        {
+          "call": "finish",
+          "mac": "bea0ba6c"
+        }
+      ]
+    },
+    {
+      "name": "a received packet: the 3-byte header, then the payload, under one nonce",
+      "key": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 1
+        },
+        {
+          "call": "decrypt",
+          "input": "109736",
+          "output": "ab0010"
+        },
+        {
+          "call": "decrypt",
+          "input": "9f33bec9959eb9656da89b6edc8fc358",
+          "output": "30313233343536373839616263646566"
+        },
+        {
+          "call": "finish",
+          "mac": "8cc90655"
+        }
+      ]
+    },
+    {
+      "name": "the same packet in one call",
+      "key": "000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 1
+        },
+        {
+          "call": "decrypt",
+          "input": "1097369f33bec9959eb9656da89b6edc8fc358",
+          "output": "ab001030313233343536373839616263646566"
+        },
+        {
+          "call": "finish",
+          "mac": "8cc90655"
+        }
+      ]
+    },
+    {
+      "name": "words split over calls of 1, 2, 6 and 4 bytes",
+      "key": "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 2
+        },
+        {
+          "call": "encrypt",
+          "input": "74",
+          "output": "8c"
+        },
+        {
+          "call": "encrypt",
+          "input": "6869",
+          "output": "bd36"
+        },
+        {
+          "call": "encrypt",
+          "input": "727465656e20",
+          "output": "f372ec89a794"
+        },
+        {
+          "call": "encrypt",
+          "input": "62797465",
+          "output": "f9673b24"
+        },
+        {
+          "call": "finish",
+          "mac": "54558034"
+        }
+      ]
+    },
+    {
+      "name": "the same 13 bytes in one call",
+      "key": "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 2
+        },
+        {
+          "call": "encrypt",
+          "input": "746869727465656e2062797465",
+          "output": "8cbd36f372ec89a794f9673b24"
+        },
+        {
+          "call": "finish",
+          "mac": "54558034"
+        }
+      ]
+    },
+    {
+      "name": "the nonce is loaded as four big-endian bytes",
+      "key": "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 16909060
+        },
+        {
+          "call": "encrypt",
+          "input": "6269672d656e6421",
+          "output": "345b33dc08331a94"
+        },
+        {
+          "call": "finish",
+          "mac": "43ca7553"
+        }
+      ]
+    },
+    {
+      "name": "packets one after another: each nonce starts afresh",
+      "key": "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 0
+        },
+        {
+          "call": "encrypt",
+          "input": "04000400000001",
+          "output": "bce6da4c11cd05"
+        },
+        {
+          "call": "finish",
+          "mac": "d4b0807a"
+        },
+        {
+          "call": "nonce",
+          "value": 1
+        },
+        {
+          "call": "encrypt",
+          "input": "4a0000",
+          "output": "595ea0"
+        },
+        {
+          "call": "finish",
+          "mac": "7c08700b"
+        },
+        {
+          "call": "nonce",
+          "value": 0
+        },
+        {
+          "call": "encrypt",
+          "input": "04000400000001",
+          "output": "bce6da4c11cd05"
+        },
+        {
+          "call": "finish",
+          "mac": "d4b0807a"
+        }
+      ]
+    },
+    {
+      "name": "a MAC with nothing encrypted",
+      "key": "05121f2c394653606d7a8794a1aebbc8d5e2effc091623303d4a5764717e8b98",
+      "steps": [
+        {
+          "call": "nonce",
+          "value": 7
+        },
+        {
+          "call": "finish",
+          "mac": "dfff93eb"
+        }
+      ]
+    }
+  ]
+}

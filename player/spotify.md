@@ -71,19 +71,16 @@ of more than 1000 pages is unreadable, a `content` failure. The desktop has no s
 
 ## Playing a track
 
-On Android a login Spotify refuses while a track needs its file (the AP's refusal other than
-`BadCredentials`, or login5's) stops playback on that track as an account failure ([ERR-08](errors.md#account)),
-as SPOT-17 does; login5's temporary refusals (`TIMEOUT`, `TOO_MANY_ATTEMPTS`, `TRY_AGAIN_LATER`)
-wait as a network failure ([ERR-01](errors.md#network)) instead. When every CDN link has failed with a
-status, the track's file is not asked for again in that play: one more `storage-resolve` at most
-(SPOT-14). A reply that breaks after it has delivered bytes is not a failed link there: the next
-link continues from the same byte, and the links can still all count as expired. When every link
-has failed, it is a network failure if any of them failed by the network, not only the last.
+On Android a login refused while a track needs its file, at the AP or at login5, stops playback on
+that track as an account failure ([ERR-08](errors.md#account)), as SPOT-17 does; `BadCredentials` also
+forgets the saved login (SPOT-04), and `TryAnotherAP` is no refusal: the next AP is tried. login5's
+temporary refusals (`TIMEOUT`, `TOO_MANY_ATTEMPTS`, `TRY_AGAIN_LATER`) wait as a network failure
+([ERR-01](errors.md#network)) instead.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
 | SPOT-13 | A Spotify track | It needs its file (to start or to preload) | The file of the quality in effect from the track's `TRACK_V4` metadata: `standard` Ogg Vorbis 320 kbps, `economy` 96 kbps; when that one is missing, 160, then any Ogg Vorbis ([quality.md](quality.md)). MP3, AAC and FLAC files are never taken. Then the audio key over the AP (`RequestKey` with the file id and the track's id), the CDN links from `GET /storage-resolve/files/audio/interactive/<file id>`, and the file from the first link with range requests. It is decrypted with AES-128-CTR (the key, Spotify's fixed initial counter block) and its first 167 bytes, Spotify's own header, are dropped: the rest is Ogg Vorbis and plays as any downloaded file ([TR-09](transport.md)). The bitrate shown is the file's. On Android the file is not downloaded whole: it is read in ranges as it plays, and the decrypted Ogg goes to the same disk cache as a Yandex Music track's download (TR-09). | yes | not checked: Kickoman/QiYaa-android#118 |
-| SPOT-14 | A Spotify track's file is downloading | A CDN link fails: a network failure, or a status other than 200 or 206 | The next link of the list continues from the same byte. A 401 or 403 from the CDN is such a failed link, not the account failure of ERR-08. When every link has failed: a network failure ([ERR-01 to ERR-03](errors.md#network)) if the last one failed by the network, otherwise a track failure ([ERR-04](errors.md#broken-tracks)). On Android, where a seek long after the start can reach links that have expired: when every link answers 403 or 410, `storage-resolve` is asked once more and its links continue from the same byte before the failure. | yes | yes |
+| SPOT-14 | A Spotify track's file is downloading | A CDN link fails: a network failure, or a status other than 200 or 206 | The next link of the list continues from the same byte. A 401 or 403 from the CDN is such a failed link, not the account failure of ERR-08. When every link has failed: a network failure ([ERR-01 to ERR-03](errors.md#network)) if the last one failed by the network, otherwise a track failure ([ERR-04](errors.md#broken-tracks)). On Android the file is read in ranges as it plays (SPOT-13), so a seek or a read long after the start can reach links that have expired: when every link answers 403 or 410, `storage-resolve` is asked once more and its links continue from the same byte. That happens at most once per run of failed links; a run starts again with every seek and every byte read, so a later expiry in the same play asks again. A reply that breaks after it has delivered bytes is not a failed link: the next link continues from the same byte. When every link has failed, it is a network failure if any of them failed by the network, not only the last; a track failure by status ends the play, and the file is not prepared again for it. | yes | yes |
 | SPOT-15 | A Spotify track | Its metadata has no Ogg Vorbis file, or it is restricted in the account's country and has no playable alternative | A track failure (ERR-04 to ERR-07). | yes | yes |
 | SPOT-16 | A Spotify track needs its audio key | The AP answers with `AesKeyError` code 2, or nothing comes in 5 s | It asks once more after 1 s. A second failure is a track failure (ERR-04). | yes | yes |
 | SPOT-17 | A Spotify track needs its audio key | The AP answers with `AesKeyError` code 1 | Spotify does not let this account play outside its own apps. Playback stops on the track and a status says so: no next track, not a track failure (ERR-05), as an account failure ([ERR-08](errors.md#account)). The same happens again for any Spotify track until the account changes. | yes | yes |

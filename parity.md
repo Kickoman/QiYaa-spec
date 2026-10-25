@@ -35,8 +35,8 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Local files from the phone's media library: all tracks, albums, artists and folders, with the permission to read audio | n/a | not checked: Kickoman/QiYaa-android#118 | [LOCAL-10 to LOCAL-14](player/local.md#the-phones-media-library-android) |
 | Local files: tags and covers, read from the disk; no wave from history after them | yes | not checked: Kickoman/QiYaa-android#118 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag). Android: the media library's tags (one line of artists) and pictures ([LOCAL-04, LOCAL-05](player/local.md#tracks)); a codec the phone cannot decode fails when it plays, and FLAC without a decoder is not taken ([LOCAL-13](player/local.md#the-phones-media-library-android)) |
 | Ogg Vorbis among local files | yes | not checked: Kickoman/QiYaa-android#118 | [LOCAL-09](player/local.md#tracks) |
-| Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search with the best result, radio by a track | yes | no: Kickoman/QiYaa-android#113 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
-| Spotify tracks: Ogg Vorbis 320 or 96 kbps by the quality, refused audio keys stop playback, Spotify's autoplay after a queue | yes | no: Kickoman/QiYaa-android#113 | [SPOT-13 to SPOT-22](player/spotify.md#playing-a-track) |
+| Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search with the best result, radio by a track | yes | not checked: Kickoman/QiYaa-android#118 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
+| Spotify tracks: Ogg Vorbis 320 or 96 kbps by the quality, refused audio keys stop playback, Spotify's autoplay after a queue | yes | not checked: Kickoman/QiYaa-android#118 | [SPOT-13 to SPOT-22](player/spotify.md#playing-a-track) |
 
 ## Playback
 
@@ -152,7 +152,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Token from a file or `QIYAA_TOKEN` | yes | n/a | |
 | Log out | yes | yes | |
 | Runs without a Yandex Music login: the app starts, the login opens from the menu (desktop) or the Library (Android) and can be left | yes | not checked: Kickoman/QiYaa-android#118 | The desktop opens its login dialog at the start on its own; Android starts on the Library (Kickoman/QiYaa-android#115) |
-| Spotify: login with a code at spotify.com/pair or in the browser, log out | yes | no: Kickoman/QiYaa-android#113 | [SPOT-01 to SPOT-06](player/spotify.md#account) |
+| Spotify: login with a code at spotify.com/pair or in the browser, log out | yes | not checked: Kickoman/QiYaa-android#118 | [SPOT-01 to SPOT-06](player/spotify.md#account) |
 | Covers cached on disk | yes | yes | Android: Coil's disk cache in the app's cache folder (2% of the size of the data partition, 10 to 250 MiB, so 250 MiB on a data partition of 12.5 GiB or more; least recently used out first), for the player screen and the notification. Android may empty it when storage runs low |
 | Volume, balance, equalizer, visualisation and time mode saved | yes | yes | |
 | Telemetry: usage statistics and crash reports, off by a menu switch | yes (builds with `QIYAA_WITH_TELEMETRY`) | yes (builds with `-PqiyaaWithTelemetry=true`) | [telemetry/](telemetry/README.md) |

@@ -12,7 +12,7 @@ A failure is classified by its type and code, never by the text of its message.
 - **Account failure**: HTTP 401 or 403 on `download-info` or on the stream (ERR-08), and a
   Spotify audio key refused for the account ([SPOT-17](spotify.md#playing-a-track)). A Spotify track
   that needs its file without a Spotify login fails the same way ([SPOT-06](spotify.md#account)), and
-  on Android so does a login Spotify refuses meanwhile ([spotify.md](spotify.md#playing-a-track)).
+  on Android so does a login Spotify refuses meanwhile (not login5's temporary refusals) ([spotify.md](spotify.md#playing-a-track)).
 - **Track failure**: everything else. That is any other HTTP error on `download-info` or on the
   stream, no usable download variant, or audio the decoder cannot read.
 

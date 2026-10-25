@@ -139,15 +139,14 @@ What an app must get right, beyond the field numbers above.
    with the next known query hash. With none left, telemetry reports the `spotify` error
    `query-outdated` ([telemetry/](../../telemetry/README.md)), and the reply goes on to the steps
    below: a stale 412 then ends as an HTTP error, a stale 200 as unreadable (`withNoHashLeft`).
+   These statuses are those of the Pathfinder request itself: a client-token or login5 request that
+   fails before it with the same status is not a stale hash, and Android reports it as what it is.
+   The desktop counts it as stale too (Kickoman/QiYaa#72).
 2. **Any other status that is not 2xx** is an HTTP error ("Spotify: HTTP <status>"); its body is not
    read, even when it has `data` (`500-with-data`).
 3. **A 2xx reply whose `data` is not an object** is unreadable. Only a stale reply with no hash left
    gets here.
 4. **Otherwise** the reply is read from `data`, as below.
-
-The statuses of step 1 are those of the Pathfinder request itself. A client-token or login5 request
-that fails before it with the same status is not a stale hash: Android reports it as what it is.
-The desktop counts it as stale too (Kickoman/QiYaa#72).
 - **Search**, from `data.searchV2`; without it the reply is unreadable.
   - `trackUris` are `tracksV2.items[].item.data.uri` (or `item.uri` when `item` has no `data`) that
     start with `spotify:track:`.

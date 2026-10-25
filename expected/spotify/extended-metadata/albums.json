@@ -1,6 +1,24 @@
 {
   "entities": [
     {
+      "uri": "spotify:album:3xKksoWFSAvryQvedoWcxS",
+      "status": 200,
+      "album": {
+        "id": "3xKksoWFSAvryQvedoWcxS",
+        "name": "Discs out of order",
+        "artists": [
+          {
+            "id": "3Wnc3N7wFZYCFqjLljIpI5",
+            "name": "Band"
+          }
+        ],
+        "trackIds": [
+          "0oCRBoaQNptb6zOx7UMdad",
+          "0mJpDhxRviK0IdYXc4Ivec"
+        ]
+      }
+    },
+    {
       "uri": "spotify:album:3vQSuijGAtMhauFEhySuBR",
       "status": 404,
       "album": null

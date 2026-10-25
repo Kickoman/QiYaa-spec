@@ -1,0 +1,282 @@
+{
+  "contentType": "application/x-protobuf",
+  "base64": "EvkDEAoa7QMKAwjIARIkc3BvdGlmeTp0cmFjazowMVRyWTZDWmk2SmFvbFB6VlEzSFcxGr8DCip0eXBlLmdvb2dsZWFwaXMuY29tL3Nwb3RpZnkubWV0YWRhdGEuVHJhY2sSkAMKEAEBAQEBAQEBAQEBAQEBAQESBVBsYXlzGpkBChCrq6urq6urq6urq6urq6urEgVBbGJ1bRoYChCgoKCgoKCgoKCgoKCgoKCgEgRCYW5kMgcIjh8QDBgiigFaCh4KFGRkZGRkZGRkZGRkZGRkZGRkZGRkEAEYgAEggAEKHgoUMDAwMDAwMDAwMDAwMDAwMDAwMDAQABjYBCDYBAoYChRAQEBAQEBAQEBAQEBAQEBAQEBAQBACIhgKEKCgoKCgoKCgoKCgoKCgoKASBEJhbmQiGQoQoaGhoaGhoaGhoaGhoaGhoRIFR3Vlc3Q4gLUYKAEwAUA2YhgKFAEBAQEBAQEBAQEBAQEBAQEBAQEBEABiGAoUAgICAgICAgICAgICAgICAgICAgIQAWIYChQDAwMDAwMDAwMDAwMDAwMDAwMDAxACYhgKFAQEBAQEBAQEBAQEBAQEBAQEBAQEEARiGAoUBQUFBQUFBQUFBQUFBQUFBQUFBQUQEGIYChQGBgYGBgYGBgYGBgYGBgYGBgYGBhAIGgUKBWhlbA==",
+  "fields": [
+    {
+      "field": 2,
+      "message": [
+        {
+          "field": 2,
+          "varint": "10"
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "message": [
+                {
+                  "field": 1,
+                  "varint": "200"
+                }
+              ]
+            },
+            {
+              "field": 2,
+              "string": "spotify:track:01TrY6CZi6JaolPzVQ3HW1"
+            },
+            {
+              "field": 3,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "type.googleapis.com/spotify.metadata.Track"
+                },
+                {
+                  "field": 2,
+                  "message": [
+                    {
+                      "field": 1,
+                      "bytes": "01010101010101010101010101010101"
+                    },
+                    {
+                      "field": 2,
+                      "string": "Plays"
+                    },
+                    {
+                      "field": 3,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "abababababababababababababababab"
+                        },
+                        {
+                          "field": 2,
+                          "string": "Album"
+                        },
+                        {
+                          "field": 3,
+                          "message": [
+                            {
+                              "field": 1,
+                              "bytes": "a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0"
+                            },
+                            {
+                              "field": 2,
+                              "string": "Band"
+                            }
+                          ]
+                        },
+                        {
+                          "field": 6,
+                          "message": [
+                            {
+                              "field": 1,
+                              "varint": "3982"
+                            },
+                            {
+                              "field": 2,
+                              "varint": "12"
+                            },
+                            {
+                              "field": 3,
+                              "varint": "34"
+                            }
+                          ]
+                        },
+                        {
+                          "field": 17,
+                          "message": [
+                            {
+                              "field": 1,
+                              "message": [
+                                {
+                                  "field": 1,
+                                  "bytes": "6464646464646464646464646464646464646464"
+                                },
+                                {
+                                  "field": 2,
+                                  "varint": "1"
+                                },
+                                {
+                                  "field": 3,
+                                  "varint": "128"
+                                },
+                                {
+                                  "field": 4,
+                                  "varint": "128"
+                                }
+                              ]
+                            },
+                            {
+                              "field": 1,
+                              "message": [
+                                {
+                                  "field": 1,
+                                  "bytes": "3030303030303030303030303030303030303030"
+                                },
+                                {
+                                  "field": 2,
+                                  "varint": "0"
+                                },
+                                {
+                                  "field": 3,
+                                  "varint": "600"
+                                },
+                                {
+                                  "field": 4,
+                                  "varint": "600"
+                                }
+                              ]
+                            },
+                            {
+                              "field": 1,
+                              "message": [
+                                {
+                                  "field": 1,
+                                  "bytes": "4040404040404040404040404040404040404040"
+                                },
+                                {
+                                  "field": 2,
+                                  "varint": "2"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "field": 4,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0"
+                        },
+                        {
+                          "field": 2,
+                          "string": "Band"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 4,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1a1"
+                        },
+                        {
+                          "field": 2,
+                          "string": "Guest"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 7,
+                      "varint": "400000"
+                    },
+                    {
+                      "field": 5,
+                      "varint": "1"
+                    },
+                    {
+                      "field": 6,
+                      "varint": "1"
+                    },
+                    {
+                      "field": 8,
+                      "varint": "54"
+                    },
+                    {
+                      "field": 12,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "0101010101010101010101010101010101010101"
+                        },
+                        {
+                          "field": 2,
+                          "varint": "0"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 12,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "0202020202020202020202020202020202020202"
+                        },
+                        {
+                          "field": 2,
+                          "varint": "1"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 12,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "0303030303030303030303030303030303030303"
+                        },
+                        {
+                          "field": 2,
+                          "varint": "2"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 12,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "0404040404040404040404040404040404040404"
+                        },
+                        {
+                          "field": 2,
+                          "varint": "4"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 12,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "0505050505050505050505050505050505050505"
+                        },
+                        {
+                          "field": 2,
+                          "varint": "16"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 12,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "0606060606060606060606060606060606060606"
+                        },
+                        {
+                          "field": 2,
+                          "varint": "8"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "bytes": "0a0568656c"
+        }
+      ]
+    }
+  ]
+}

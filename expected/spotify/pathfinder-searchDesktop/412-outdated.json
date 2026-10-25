@@ -1,3 +1,8 @@
 {
-  "stale": true
+  "stale": true,
+  "withNoHashLeft": {
+    "error": {
+      "status": 412
+    }
+  }
 }

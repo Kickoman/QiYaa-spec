@@ -1,6 +1,74 @@
 {
   "entities": [
     {
+      "uri": "spotify:track:0h33IXETCYyvxaudoyxnq9",
+      "status": 200,
+      "track": {
+        "id": "0h33IXETCYyvxaudoyxnq9",
+        "name": "Width before size class",
+        "artists": [
+          {
+            "id": "4T6b76CaJmyOQl6JglznIA",
+            "name": "Band"
+          }
+        ],
+        "album": {
+          "id": "5dW8Mhx2WyzFadg6wAeb0L",
+          "name": "Album",
+          "year": 1991,
+          "covers": [
+            {
+              "id": "9595959595959595959595959595959595959595",
+              "pixels": 500
+            },
+            {
+              "id": "9696969696969696969696969696969696969696",
+              "pixels": 640
+            },
+            {
+              "id": "9797979797979797979797979797979797979797",
+              "pixels": 1280
+            },
+            {
+              "id": "9898989898989898989898989898989898989898",
+              "pixels": 120
+            }
+          ]
+        },
+        "durationMs": 200000,
+        "files": [
+          {
+            "id": "9292929292929292929292929292929292929292",
+            "format": 1
+          }
+        ],
+        "alternatives": [],
+        "available": true,
+        "coverUrls": {
+          "64": "https://i.scdn.co/image/9898989898989898989898989898989898989898",
+          "400": "https://i.scdn.co/image/9595959595959595959595959595959595959595",
+          "1000": "https://i.scdn.co/image/9797979797979797979797979797979797979797"
+        },
+        "play": {
+          "96": {
+            "trackId": "0h33IXETCYyvxaudoyxnq9",
+            "fileId": "9292929292929292929292929292929292929292",
+            "format": 1
+          },
+          "160": {
+            "trackId": "0h33IXETCYyvxaudoyxnq9",
+            "fileId": "9292929292929292929292929292929292929292",
+            "format": 1
+          },
+          "320": {
+            "trackId": "0h33IXETCYyvxaudoyxnq9",
+            "fileId": "9292929292929292929292929292929292929292",
+            "format": 1
+          }
+        }
+      }
+    },
+    {
       "uri": "spotify:track:0f9BKR1UkRPl8OEDsItFu8",
       "status": 200,
       "track": null

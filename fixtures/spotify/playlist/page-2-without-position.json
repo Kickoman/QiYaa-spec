@@ -1,0 +1,94 @@
+{
+  "contentType": "application/x-protobuf",
+  "base64": "CgwDCA0SFxwhJiswNToQ6wcaBgoEUm9hZCqoARo2CiRzcG90aWZ5OnRyYWNrOjA1R2xValNYU2tidmIzdUpOd2I3TzMSDgoFb3duZXIQgJS5g6kyGjYKJHNwb3RpZnk6dHJhY2s6MDd6TlNxdlhhcVVGenBrakptZVBLNBIOCgVvd25lchCAlLmDqTIaNgokc3BvdGlmeTp0cmFjazowOXRmUXg4V3N4RFBYTDlURmNpeEc1Eg4KBW93bmVyEICUuYOpMg==",
+  "fields": [
+    {
+      "field": 1,
+      "bytes": "03080d12171c21262b30353a"
+    },
+    {
+      "field": 2,
+      "varint": "1003"
+    },
+    {
+      "field": 3,
+      "message": [
+        {
+          "field": 1,
+          "string": "Road"
+        }
+      ]
+    },
+    {
+      "field": 5,
+      "message": [
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:track:05GlUjSXSkbvb3uJNwb7O3"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "owner"
+                },
+                {
+                  "field": 2,
+                  "varint": "1729000000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:track:07zNSqvXaqUFzpkjJmePK4"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "owner"
+                },
+                {
+                  "field": 2,
+                  "varint": "1729000000000"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "string": "spotify:track:09tfQx8WsxDPXL9TFcixG5"
+            },
+            {
+              "field": 2,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "owner"
+                },
+                {
+                  "field": 2,
+                  "varint": "1729000000000"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

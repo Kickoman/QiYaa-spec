@@ -1,6 +1,6 @@
 {
   "contentType": "application/x-protobuf",
-  "base64": "ErcDEAkaKwoDCJQDEiRzcG90aWZ5OmFsYnVtOjN2UVN1aWpHQXRNaGF1RkVoeVN1QlIarAEKAwjIARIkc3BvdGlmeTphbGJ1bTozdFhxd2JHSGluMzZNOFE0bElPTUZRGn8KKnR5cGUuZ29vZ2xlYXBpcy5jb20vc3BvdGlmeS5tZXRhZGF0YS5BbGJ1bRJRChBycnJycnJycnJycnJycnJyEgZTaW5nbGUaHQoQgoKCgoKCgoKCgoKCgoKCghIJV29ybGR3aWRlWhYIAhoSChAJCQkJCQkJCQkJCQkJCQkJGtYBCgMIyAESJHNwb3RpZnk6YWxidW06M3MzWXk1M0kwZ2pXbk4wdXBTTDRKUBqoAQoqdHlwZS5nb29nbGVhcGlzLmNvbS9zcG90aWZ5Lm1ldGFkYXRhLkFsYnVtEnoKEHFxcXFxcXFxcXFxcXFxcXESBkRvdWJsZRoYChCBgYGBgYGBgYGBgYGBgYGBEgRCYW5kIAFaKggCGhIKEAMDAwMDAwMDAwMDAwMDAwMaEgoQBAQEBAQEBAQEBAQEBAQEBFoWCAQaEgoQBQUFBQUFBQUFBQUFBQUFBQ==",
+  "base64": "EoYFEAkazAEKAwjIARIkc3BvdGlmeTphbGJ1bTozeEtrc29XRlNBdnJ5UXZlZG9XY3hTGp4BCip0eXBlLmdvb2dsZWFwaXMuY29tL3Nwb3RpZnkubWV0YWRhdGEuQWxidW0ScAoQdHR0dHR0dHR0dHR0dHR0dBISRGlzY3Mgb3V0IG9mIG9yZGVyGhgKEIGBgYGBgYGBgYGBgYGBgYESBEJhbmRaFggEGhIKEA0NDQ0NDQ0NDQ0NDQ0NDQ1aFggCGhIKEAwMDAwMDAwMDAwMDAwMDAwaKwoDCJQDEiRzcG90aWZ5OmFsYnVtOjN2UVN1aWpHQXRNaGF1RkVoeVN1QlIarAEKAwjIARIkc3BvdGlmeTphbGJ1bTozdFhxd2JHSGluMzZNOFE0bElPTUZRGn8KKnR5cGUuZ29vZ2xlYXBpcy5jb20vc3BvdGlmeS5tZXRhZGF0YS5BbGJ1bRJRChBycnJycnJycnJycnJycnJyEgZTaW5nbGUaHQoQgoKCgoKCgoKCgoKCgoKCghIJV29ybGR3aWRlWhYIAhoSChAJCQkJCQkJCQkJCQkJCQkJGtYBCgMIyAESJHNwb3RpZnk6YWxidW06M3MzWXk1M0kwZ2pXbk4wdXBTTDRKUBqoAQoqdHlwZS5nb29nbGVhcGlzLmNvbS9zcG90aWZ5Lm1ldGFkYXRhLkFsYnVtEnoKEHFxcXFxcXFxcXFxcXFxcXESBkRvdWJsZRoYChCBgYGBgYGBgYGBgYGBgYGBEgRCYW5kIAFaKggCGhIKEAMDAwMDAwMDAwMDAwMDAwMaEgoQBAQEBAQEBAQEBAQEBAQEBFoWCAQaEgoQBQUFBQUFBQUFBQUFBQUFBQ==",
   "fields": [
     {
       "field": 2,
@@ -8,6 +8,95 @@
         {
           "field": 2,
           "varint": "9"
+        },
+        {
+          "field": 3,
+          "message": [
+            {
+              "field": 1,
+              "message": [
+                {
+                  "field": 1,
+                  "varint": "200"
+                }
+              ]
+            },
+            {
+              "field": 2,
+              "string": "spotify:album:3xKksoWFSAvryQvedoWcxS"
+            },
+            {
+              "field": 3,
+              "message": [
+                {
+                  "field": 1,
+                  "string": "type.googleapis.com/spotify.metadata.Album"
+                },
+                {
+                  "field": 2,
+                  "message": [
+                    {
+                      "field": 1,
+                      "bytes": "74747474747474747474747474747474"
+                    },
+                    {
+                      "field": 2,
+                      "string": "Discs out of order"
+                    },
+                    {
+                      "field": 3,
+                      "message": [
+                        {
+                          "field": 1,
+                          "bytes": "81818181818181818181818181818181"
+                        },
+                        {
+                          "field": 2,
+                          "string": "Band"
+                        }
+                      ]
+                    },
+                    {
+                      "field": 11,
+                      "message": [
+                        {
+                          "field": 1,
+                          "varint": "4"
+                        },
+                        {
+                          "field": 3,
+                          "message": [
+                            {
+                              "field": 1,
+                              "bytes": "0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d0d"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "field": 11,
+                      "message": [
+                        {
+                          "field": 1,
+                          "varint": "2"
+                        },
+                        {
+                          "field": 3,
+                          "message": [
+                            {
+                              "field": 1,
+                              "bytes": "0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c0c"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         },
         {
           "field": 3,

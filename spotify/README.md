@@ -186,14 +186,15 @@ Sessions of the access point client against a fake access point, the one the des
   width, a year, a list item's status) are zigzag.
 - `kind: "reject"`: `{bytes, fieldsBefore}`. The reader must fail; `fieldsBefore` are the fields it
   returned first. A top-level message whose reader failed is dropped whole, except a client-token
-  reply: its parser returns the first readable `granted_token` (field 2) or `challenges` (field 3)
-  as soon as it has read it, so a break after that field is never seen, and only a break before it
-  makes the reply a failure. In the access point, login5 and client-token messages the desktop does
-  not apply this to some nested messages, where a failed nested reader keeps what it read: the
-  challenge chain of the AP's response (10 → 10 → 10 → Diffie-Hellman), login5's `ok` and
-  `challenges`, and client-token's hashcash parameters. The response's `APLoginFailed` (field 30) is
-  the opposite: a failed reader drops it, and the field counts as absent. The catalogue's messages
-  are in [fixtures/spotify/](../fixtures/spotify/README.md), and their rules in
+  reply: its parser returns the first readable `granted_token` (field 2) whose token is not empty,
+  or readable `challenges` (field 3), as soon as it has read it, so a break after that field is
+  never seen, and only a break before it makes the reply a failure. In the access point, login5 and
+  client-token messages the desktop does not apply this to some nested messages, where a failed
+  nested reader keeps what it read: the challenge chain of the AP's response (10 → 10 → 10 →
+  Diffie-Hellman), login5's `ok` and `challenges`, and client-token's hashcash parameters. The
+  response's `APLoginFailed` (field 30) is the opposite: a failed reader drops it, and the field
+  counts as absent. The catalogue's messages are in
+  [fixtures/spotify/](../fixtures/spotify/README.md), and their rules in
   [expected/spotify/](../expected/spotify/README.md#the-parsing-rules). Groups (wire types 3 and 4),
   wire types 6 and 7, field number 0 and numbers above 2^29 − 1 are refused, and so are a varint of
   more than ten bytes and anything cut short.

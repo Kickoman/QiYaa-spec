@@ -12,19 +12,29 @@ Every file is one JSON object. Bytes are lower-case hex. A track, album or artis
 
 | Fixtures | Expected object |
 |---|---|
-| `extended-metadata/tracks` | `{"entities": [{"uri", "status", "track": Track \| null}]}` |
+| `extended-metadata/tracks*` | `{"entities": [{"uri", "status", "track": Track \| null}]}` |
 | `extended-metadata/albums` | `{"entities": [{"uri", "status", "album": {"id", "name", "artists", "trackIds"} \| null}]}` |
 | `extended-metadata/artists` | `{"entities": [{"uri", "status", "artist": {"id", "name", "topTracks": [{"country", "trackIds"}], "topTracksIn": {"BY", "PL", ""}} \| null}]}` |
 | `collection-paging/*` | `{"items": [{"uri", "addedAt"}], "nextPageToken", "last"}` |
-| `playlist-user-rootlist/*` | `{"name", "length", "from", "truncated", "items": [{"uri", "name"}], "more", "playlists": [{"uri", "name"}]}` |
-| `playlist/*` | `{"name", "length", "from", "truncated", "items": [{"uri", "name"}], "more", "trackUris"}` |
+| `playlist-user-rootlist/*` | `{"requestedFrom", "name", "length", "from", "truncated", "items": [{"uri", "name"}], "more", "playlists": [{"uri", "name"}]}` |
+| `playlist/*` | `{"requestedFrom", "name", "length", "from", "truncated", "items": [{"uri", "name"}], "more", "trackUris"}` |
 | `storage-resolve-files-audio-interactive/*` | `{"result", "urls", "usable"}` |
 | `context-resolve/*`, `context-resolve-autoplay/*`, `radio-apollo-tracks/*` | `{"trackUris", "next"}`, or `{"unreadable": true}` |
-| `pathfinder-home/*` | `{"stale": false, "playlists": [{"uri", "name"}]}`, `{"stale": false, "unreadable": true}`, or `{"stale": true}` |
-| `pathfinder-searchDesktop/*` | `{"stale": false, "kind", "best": {"uri", "name"} \| null, "trackUris"}`, or `{"stale": true}` |
+| `pathfinder-home/*` | `{"stale": false, "playlists": [{"uri", "name"}]}`, or one of Pathfinder's other forms |
+| `pathfinder-searchDesktop/*` | `{"stale": false, "kind", "best": {"uri", "name"} \| null, "trackUris"}`, or one of Pathfinder's other forms |
 | `apresolve/*` | `{"accessPoints", "spclients"}` |
 
-`artists` is `[{"id", "name"}]` in order. `trackIds` are ids in order.
+- `artists` is `[{"id", "name"}]` in order. `trackIds` are ids in order.
+- **A protobuf reply that cannot be read as a whole** is `{"unreadable": true}`, at any of the
+  protobuf endpoints (`extended-metadata/tracks-broken-entity`).
+- **Pathfinder's other forms** (see [Pathfinder](#pathfinder)):
+  - `{"stale": false, "unreadable": true}`: `data` without the part to read;
+  - `{"stale": false, "error": {"status"}}`: an HTTP error, its body not read;
+  - `{"stale": true, "withNoHashLeft": {"error": {"status"}} | {"unreadable": true}}`: a stale
+    reply, and what it gives when it answers the last known hash.
+- **`requestedFrom` is not in the reply.** It is the `from` the page was asked with, given because
+  `more` depends on it. The fixtures' case names carry it: `page-<n>` is
+  `(n − 1) × 1000`, any other case 0.
 
 ### Track
 
@@ -52,6 +62,8 @@ What an app must get right, beyond the field numbers above.
   missing: a list of tracks leaves that track out. An entity whose reader fails makes the whole
   reply unreadable.
 - The desktop asks at most 100 URIs per request, sends the batches at once and asks each URI once.
+  The list of tracks it answers follows the URIs it was given, duplicates included: a track twice in
+  a playlist plays twice (`library.cpp:246–261`).
 - Everything not listed is ignored. That includes the restrictions (field 11): a track the
   account's country may not play comes without files, relinked to an alternative that has them.
 - **A file or an image without a 20-byte id is dropped.** So is a file, an image or an alternative
@@ -75,8 +87,9 @@ What an app must get right, beyond the field numbers above.
 - `available` is `play["320"] != null`. A track that is not available stays in its list, marked.
 
 **Albums and artists**
-- An album is {1 gid, 2 name, 3 artist, 11 disc {1 number, 3 {1 track gid}}}. `trackIds` are disc by
-  disc, then in the disc's order. A disc whose reader fails makes the album unreadable.
+- An album is {1 gid, 2 name, 3 artist, 11 disc {1 number, not read; 3 {1 track gid}}}. `trackIds`
+  are disc by disc in the order of the fields 11, not by their numbers, then in the disc's order. A
+  disc whose reader fails makes the album unreadable.
 - An artist is {1 gid, 2 name, 4 {1 country, 2 {1 track gid}}}. An entry whose reader fails makes the
   artist unreadable.
 - `topTracksIn[c]` is the first non-empty list for country c, else for `ZZ` (worldwide), else for
@@ -92,6 +105,9 @@ What an app must get right, beyond the field numbers above.
 - Liked Songs are the `spotify:track:` items of the `collection` set, saved albums its
   `spotify:album:` items, followed artists the `artist` set. They stay in Spotify's order, newest
   first.
+- Saved albums and followed artists (SPOT-09) take their names from their `ALBUM_V4` and `ARTIST_V4`
+  metadata (`Library::names`, `library.cpp:424–449`). One without metadata, with a payload that does
+  not parse, or with an empty name is left out.
 
 **The rootlist and playlists**
 - A page is {2 length, 3 {1 name}, 5 {1 from, 2 truncated, 3 item {1 URI}, 4 meta item {2 {1 name},
@@ -99,8 +115,10 @@ What an app must get right, beyond the field numbers above.
 - When there are as many meta items as items, item i takes meta item i's name, and it is left out
   unless that status is 0 or 200. When the counts differ (a request without attributes), every item
   stays, without a name.
-- `more` is `from + 1000 < length`: the app then asks again from `from + 1000`. `truncated` is not
-  read.
+- **`more` is `requestedFrom + 1000 < length`**, with the offset the app asked: 0, then 1000 more
+  each time (`library.cpp:335–338`). The app then asks again from `requestedFrom + 1000`. The reply's
+  own position (field 5.1, `from`) and `truncated` are parsed here, but the desktop reads neither: a
+  reply without a position (`playlist/page-2-without-position`) pages the same way.
 - `playlists` are the rootlist's `spotify:playlist:` items, so a folder's start and end markers fall
   away and folders flatten. A playlist plays its `trackUris`, the `spotify:track:` items: episodes
   and local files are never asked for.
@@ -116,11 +134,16 @@ What an app must get right, beyond the field numbers above.
   `hm://` cannot be followed.
 - `{"loading": true}`, or a body that is not a JSON object, is unreadable.
 
-**Pathfinder**
-- `stale` holds for status 400, 405 or 412, and for a 2xx reply whose `data` is not an object. The
-  app then asks with the next known query hash; with none left it fails, and telemetry reports the
-  `spotify` error `query-outdated` ([telemetry/](../../telemetry/README.md)). Any other reply is read
-  from `data`.
+**Pathfinder.** A reply is taken in this order (`library.cpp:499–512`):
+1. **Stale:** status 400, 405 or 412, or a 2xx reply whose `data` is not an object. The app asks again
+   with the next known query hash. With none left, telemetry reports the `spotify` error
+   `query-outdated` ([telemetry/](../../telemetry/README.md)), and the reply goes on to the steps
+   below: a stale 412 then ends as an HTTP error, a stale 200 as unreadable (`withNoHashLeft`).
+2. **Any other status that is not 2xx** is an HTTP error ("Spotify: HTTP <status>"); its body is not
+   read, even when it has `data` (`500-with-data`).
+3. **A 2xx reply whose `data` is not an object** is unreadable. Only a stale reply with no hash left
+   gets here.
+4. **Otherwise** the reply is read from `data`, as below.
 - **Search**, from `data.searchV2`; without it the reply is unreadable.
   - `trackUris` are `tracksV2.items[].item.data.uri` (or `item.uri` when `item` has no `data`) that
     start with `spotify:track:`.
@@ -139,6 +162,27 @@ What an app must get right, beyond the field numbers above.
 **apresolve:** the strings of `accesspoint` and `spclient`, without empty ones. An empty access point
 list becomes `ap.spotify.com:443`. An empty spclient list becomes `spclient.wg.spotify.com:443`,
 unless the session already had spclient hosts, which it then keeps; the files show a new session.
+The status is never looked at. A failed request, a network failure or any HTTP status, is read the
+same way: without usable lists in its body it gets both fallbacks (`session.cpp:120–138`,
+`503-no-body`).
+
+**Two kinds of unreadable.** Lines are those of `src/sources/spotify/library.cpp` at the commit
+below.
+- **A reply that cannot be used as a whole is an error.** The call fails with "Spotify sent an
+  answer QiYaa cannot read", and telemetry reports the `spotify` error `content`. This is
+  `{"unreadable": true}` in these files:
+  - the extended-metadata envelope (`:235`);
+  - a collection page (`:293`) and a list page (`:330`);
+  - a context (`:593`);
+  - Pathfinder's search and home (`:569`, `:539`).
+
+  Pathfinder's step 3 (`:510`) is the same error, with `query-outdated` reported instead.
+- **A payload inside a readable reply that does not parse is skipped, silently.**
+  - A track whose payload fails is left out of its list (`:258`).
+  - An album or artist whose payload fails plays nothing, without an error (`:386–388`, `:410–412`).
+  - A saved album or followed artist whose payload fails is left out of the list (`:437–445`).
+
+  No fixture has such a payload.
 
 ## Comparing
 

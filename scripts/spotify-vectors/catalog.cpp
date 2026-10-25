@@ -331,7 +331,9 @@ Json ArtistJson(const SpotifyProtocol::ArtistInfo& artist) {
 
 Json MetadataExpected(const TBytes& body, const char* key) {
     const auto entities = SpotifyProtocol::ParseMetadataReply(body);
-    Check(entities.has_value(), "metadata reply");
+    if (!entities) {
+        return Json::Object().set("unreadable", true);
+    }
     Json list = Json::Array();
     for (const SpotifyProtocol::EntityData& entity : *entities) {
         Json parsed;
@@ -373,6 +375,14 @@ void ExtendedMetadata(Output& out) {
                       {0x42, format(AudioFormat::Flac24Bit)},
                       {0x43, format(AudioFormat::Aac24)}};
     lossless.album.covers = {Image(0x45, 3, 0), Image(0x44, 2, 0)};
+    TrackSpec oddCovers = NewTrack(9, "Width before size class");
+    oddCovers.files = {{0x92, format(AudioFormat::OggVorbis160)}};
+    oddCovers.album.covers = {
+        Image(0x95, 1, 500),
+        {B(1, FileId(0x96)), V(2, 2), V(3, 0)},
+        {B(1, FileId(0x97)), V(2, 3), V(3, 1)},
+        Image(0x98, 0, 120),
+    };
     TrackSpec middle = NewTrack(5, "Middle");
     middle.files = {{0x51, format(AudioFormat::Flac)},
                     {0x52, format(AudioFormat::OggVorbis160)},
@@ -388,6 +398,7 @@ void ExtendedMetadata(Output& out) {
         kProtobufType,
         MetadataReply(SpotifyProtocol::ExtensionKind::TrackV4,
                       {
+                          Entity(Uri("track", 9), 200, "Track", TrackFields(oddCovers)),
                           Entity(Uri("track", 8), 200, "Track", std::nullopt),
                           Entity(Uri("track", 7), 404, "Track", std::nullopt),
                           Entity(Uri("track", 6), 200, "Track", TrackFields(restricted)),
@@ -399,6 +410,12 @@ void ExtendedMetadata(Output& out) {
                       }),
         &body);
     out.write("extended-metadata", "tracks", fixture, MetadataExpected(body, "track"));
+    const std::string broken = Wrapped(
+        kProtobufType,
+        {M(2, {V(2, static_cast<std::uint64_t>(SpotifyProtocol::ExtensionKind::TrackV4)),
+               Entity(Uri("track", 1), 200, "Track", TrackFields(plays)), B(3, Bytes("0a0568656c"))})},
+        &body);
+    out.write("extended-metadata", "tracks-broken-entity", broken, MetadataExpected(body, "track"));
 
     const auto disc = [](int number, std::initializer_list<std::uint8_t> tracks) {
         std::vector<Field> fields{V(1, static_cast<std::uint64_t>(number) * 2)};
@@ -411,10 +428,14 @@ void ExtendedMetadata(Output& out) {
         B(1, Gid(0x71)), S(2, "Double"), M(3, ArtistRef(0x81, "Band")), V(4, 1), disc(1, {3, 4}), disc(2, {5}),
     };
     const std::vector<Field> single{B(1, Gid(0x72)), S(2, "Single"), M(3, ArtistRef(0x82, "Worldwide")), disc(1, {9})};
+    const std::vector<Field> outOfOrder{
+        B(1, Gid(0x74)), S(2, "Discs out of order"), M(3, ArtistRef(0x81, "Band")), disc(2, {0x0d}), disc(1, {0x0c}),
+    };
     const std::string albums = Wrapped(
         kProtobufType,
         MetadataReply(SpotifyProtocol::ExtensionKind::AlbumV4,
                       {
+                          Entity(Uri("album", 0x74), 200, "Album", outOfOrder),
                           Entity(Uri("album", 0x73), 404, "Album", std::nullopt),
                           Entity(Uri("album", 0x72), 200, "Album", single),
                           Entity(Uri("album", 0x71), 200, "Album", doubleAlbum),
@@ -449,7 +470,9 @@ void ExtendedMetadata(Output& out) {
 
 Json CollectionExpected(const TBytes& body) {
     const auto page = SpotifyProtocol::ParseCollectionPage(body);
-    Check(page.has_value(), "collection page");
+    if (!page) {
+        return Json::Object().set("unreadable", true);
+    }
     Json items = Json::Array();
     for (const SpotifyProtocol::CollectionItem& item : page->items) {
         items.push(Json::Object().set("uri", item.uri).set("addedAt", item.addedAt));
@@ -496,20 +519,23 @@ Field ListContents(int from, bool truncated, const std::vector<std::vector<Field
     return M(5, fields);
 }
 
-Json ListExpected(const TBytes& body, bool rootlist) {
+Json ListExpected(const TBytes& body, bool rootlist, int requestedFrom) {
     const auto page = SpotifyProtocol::ParseListPage(body);
-    Check(page.has_value(), "list page");
+    if (!page) {
+        return Json::Object().set("unreadable", true);
+    }
     Json items = Json::Array();
     for (const SpotifyProtocol::ListItem& item : page->items) {
         items.push(Json::Object().set("uri", item.uri).set("name", item.name));
     }
     Json json = Json::Object()
+                    .set("requestedFrom", requestedFrom)
                     .set("name", page->name)
                     .set("length", page->length)
                     .set("from", page->from)
                     .set("truncated", page->truncated)
                     .set("items", std::move(items))
-                    .set("more", page->from + SpotifySource::Library::kListPage < page->length);
+                    .set("more", requestedFrom + SpotifySource::Library::kListPage < page->length);
     if (rootlist) {
         Json playlists = Json::Array();
         for (const SpotifyProtocol::ListItem& item : SpotifyProtocol::PlaylistsOf(*page)) {
@@ -553,9 +579,9 @@ void Playlists(Output& out) {
     std::string fixture = Wrapped(kProtobufType,
                                   {B(1, Counting(12, 7, 2)), V(2, rootlist.size()), ListContents(0, false, items, metas)},
                                   &body);
-    out.write("playlist-user-rootlist", "folders", fixture, ListExpected(body, true));
+    out.write("playlist-user-rootlist", "folders", fixture, ListExpected(body, true, 0));
     fixture = Wrapped(kProtobufType, {V(2, rootlist.size()), ListContents(0, false, items, {})}, &body);
-    out.write("playlist-user-rootlist", "without-attributes", fixture, ListExpected(body, true));
+    out.write("playlist-user-rootlist", "without-attributes", fixture, ListExpected(body, true, 0));
 
     const auto entry = [](const std::string& uri) {
         return std::vector<Field>{S(1, uri), M(2, {S(1, "owner"), V(2, 1729000000000)})};
@@ -569,13 +595,17 @@ void Playlists(Output& out) {
                                      entry(Uri("track", 2))},
                                     {})},
                       &body);
-    out.write("playlist", "page-1", fixture, ListExpected(body, false));
-    fixture = Wrapped(kProtobufType,
-                      {B(1, Counting(12, 5, 3)), V(2, 1003), M(3, name),
-                       ListContents(1000, false, {entry(Uri("track", 3)), entry(Uri("track", 4)), entry(Uri("track", 5))},
-                                    {})},
+    out.write("playlist", "page-1", fixture, ListExpected(body, false, 0));
+    const std::vector<std::vector<Field>> second{entry(Uri("track", 3)), entry(Uri("track", 4)), entry(Uri("track", 5))};
+    fixture = Wrapped(kProtobufType, {B(1, Counting(12, 5, 3)), V(2, 1003), M(3, name), ListContents(1000, false, second, {})},
                       &body);
-    out.write("playlist", "page-2", fixture, ListExpected(body, false));
+    out.write("playlist", "page-2", fixture, ListExpected(body, false, 1000));
+    std::vector<Field> withoutPosition;
+    for (const std::vector<Field>& item : second) {
+        withoutPosition.push_back(M(3, item));
+    }
+    fixture = Wrapped(kProtobufType, {B(1, Counting(12, 5, 3)), V(2, 1003), M(3, name), M(5, withoutPosition)}, &body);
+    out.write("playlist", "page-2-without-position", fixture, ListExpected(body, false, 1000));
 }
 
 void StorageResolve(Output& out) {
@@ -593,7 +623,10 @@ void StorageResolve(Output& out) {
         TBytes body;
         const std::string fixture = Wrapped(kProtobufType, fields, &body);
         const auto storage = SpotifyProtocol::ParseStorageResolve(body);
-        Check(storage.has_value(), "storage-resolve");
+        if (!storage) {
+            out.write("storage-resolve-files-audio-interactive", name, fixture, Json::Object().set("unreadable", true));
+            continue;
+        }
         const bool usable = storage->result == SpotifyProtocol::StorageResult::Cdn && !storage->urls.empty();
         out.write("storage-resolve-files-audio-interactive", name, fixture,
                   Json::Object()
@@ -664,10 +697,24 @@ Json PathfinderExpected(int status, const std::string& body, bool search) {
     reply.status = status;
     reply.body = QByteArray::fromStdString(body);
     const QJsonObject root = QJsonDocument::fromJson(reply.body).object();
+    const auto unparsed = [&reply, &root]() -> std::optional<Json> {
+        if (!reply.ok()) {
+            return Json::Object().set("error", Json::Object().set("status", reply.status));
+        }
+        if (!root.value(QStringLiteral("data")).isObject()) {
+            return Json::Object().set("unreadable", true);
+        }
+        return std::nullopt;
+    };
     if (SpotifySource::StaleQuery(reply, root)) {
-        return Json::Object().set("stale", true);
+        const std::optional<Json> last = unparsed();
+        Check(last.has_value(), "a stale reply ends unparsed");
+        return Json::Object().set("stale", true).set("withNoHashLeft", *last);
     }
-    Check(reply.ok() && root.value(QStringLiteral("data")).isObject(), "pathfinder reply");
+    if (!reply.ok()) {
+        return Json::Object().set("stale", false).set("error", Json::Object().set("status", reply.status));
+    }
+    Check(root.value(QStringLiteral("data")).isObject(), "a 2xx reply without data is stale");
     const QJsonObject data = root.value(QStringLiteral("data")).toObject();
     Json json = Json::Object().set("stale", false);
     if (search) {
@@ -783,6 +830,7 @@ void PathfinderSearch(Output& out) {
                          "item", Json::Object().set("__typename", "Track").set("uri", Uri("track", 5)).set("name", "Bare")))));
     write("nothing-found", Search(Json::Array(), Json::Array()));
     write("412-outdated", "", 412);
+    write("500-with-data", Search(Json::Array().push(artist), Json::Array().push(FoundTrack(1, "Hit"))), 500);
     write("no-data",
           Json::Object()
               .set("errors", Json::Array().push(Json::Object().set("message", "PersistedQueryNotFound")))
@@ -811,6 +859,7 @@ void ApResolve(Output& out) {
                     .set("spclient", Strings(std::vector<std::string>{"gew4-spclient.spotify.com:443"}))
                     .dump());
     write("empty", Json::Object().set("accesspoint", Json::Array()).set("spclient", Json::Array()).dump());
+    write("503-no-body", "");
     write("blank-entries",
           Json::Object()
               .set("accesspoint", Strings(std::vector<std::string>{"", "ap-gue1.spotify.com:443"}))

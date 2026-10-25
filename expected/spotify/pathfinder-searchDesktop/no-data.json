@@ -1,3 +1,6 @@
 {
-  "stale": true
+  "stale": true,
+  "withNoHashLeft": {
+    "unreadable": true
+  }
 }

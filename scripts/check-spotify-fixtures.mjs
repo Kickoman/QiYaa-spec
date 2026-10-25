@@ -3,7 +3,7 @@
 // case names carry their HTTP status as the spec requires, every file is formatted as the spec
 // requires, and a protobuf fixture is a {contentType, base64, fields} wrapper whose fields encode to
 // exactly its bytes. Then recomputes every expected file from its fixture with parsers written from
-// the two READMEs: extended-metadata (tracks with their availability, covers and the file to play,
+// the two READMEs (a list page's requested offset comes from its case name, `page-<n>`): extended-metadata (tracks with their availability, covers and the file to play,
 // albums, artists and their top tracks), the collection, the rootlist and playlists, storage-resolve,
 // context-resolve, Pathfinder's home and search, and apresolve.
 import { readdirSync, readFileSync, statSync } from "node:fs";
@@ -305,7 +305,7 @@ function artistOf(data) {
 }
 
 function metadataOf(body, name) {
-  const key = { tracks: "track", albums: "album", artists: "artist" }[name];
+  const key = { tracks: "track", albums: "album", artists: "artist" }[name.split("-")[0]];
   const parse = { track: (d) => (trackOf(d) ? trackJson(trackOf(d)) : null), album: albumOf, artist: artistOf }[key];
   if (!parse) return null;
   const entities = [];
@@ -358,7 +358,12 @@ const listName = (data) => {
   return name ? utf8(name.data) : "";
 };
 
-function listOf(body, rootlist) {
+function requestedFromOf(name) {
+  const page = /^page-([0-9]+)(-|$)/.exec(name);
+  return page ? (Number(page[1]) - 1) * listPage : 0;
+}
+
+function listOf(body, rootlist, requestedFrom) {
   const page = { name: "", length: 0, from: 0, truncated: false, items: [] };
   const metas = [];
   const { list, failed } = fieldsOf(body);
@@ -393,7 +398,7 @@ function listOf(body, rootlist) {
       .filter((item) => item.status === 0 || item.status === 200)
       .map(({ uri, name }) => ({ uri, name }));
   }
-  const result = { ...page, more: page.from + listPage < page.length };
+  const result = { requestedFrom, ...page, more: requestedFrom + listPage < page.length };
   if (rootlist) result.playlists = page.items.filter((item) => item.uri.startsWith("spotify:playlist:"));
   else result.trackUris = page.items.map((item) => item.uri).filter((uri) => uri.startsWith("spotify:track:"));
   return result;
@@ -438,7 +443,9 @@ function pathfinderOf(status, text, search) {
   const root = obj(parseJson(text));
   const ok = status >= 200 && status < 300;
   const dataIsObject = root.data !== null && typeof root.data === "object" && !Array.isArray(root.data);
-  if ([400, 405, 412].includes(status) || (ok && !dataIsObject)) return { stale: true };
+  const unparsed = !ok ? { error: { status } } : !dataIsObject ? { unreadable: true } : null;
+  if ([400, 405, 412].includes(status) || (ok && !dataIsObject)) return { stale: true, withNoHashLeft: unparsed };
+  if (unparsed) return { stale: false, ...unparsed };
   const data = root.data;
   if (search) {
     if (!has(data, "searchV2")) return { stale: false, unreadable: true };
@@ -490,8 +497,8 @@ function recompute(endpoint, name, status, body) {
   switch (endpoint) {
     case "extended-metadata": return metadataOf(body, name);
     case "collection-paging": return collectionOf(body);
-    case "playlist-user-rootlist": return listOf(body, true);
-    case "playlist": return listOf(body, false);
+    case "playlist-user-rootlist": return listOf(body, true, requestedFromOf(name));
+    case "playlist": return listOf(body, false, requestedFromOf(name));
     case "storage-resolve-files-audio-interactive": return storageOf(body);
     case "context-resolve":
     case "context-resolve-autoplay":

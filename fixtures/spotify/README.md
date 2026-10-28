@@ -104,7 +104,7 @@ What the cases hold:
   - the best result an artist, or an album;
   - the best result a track, and a found track without its `data` wrapper;
   - every part: a best track, tracks, artists and albums (an album, a single, one without a date),
-    each list with an entry that is not of its kind;
+    the artists and the albums each with an entry that is not of their kind;
   - nothing found;
   - an outdated query hash, as 412 with no body and as 200 without `data`;
   - a 500 whose body has `data` all the same.

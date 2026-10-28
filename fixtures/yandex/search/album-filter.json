@@ -1,0 +1,86 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000002",
+    "exec-duration-millis": 9
+  },
+  "result": {
+    "searchRequestId": "req-3",
+    "text": "кино",
+    "misspellCorrected": false,
+    "nocorrect": false,
+    "albums": {
+      "type": "album",
+      "total": 4,
+      "perPage": 10,
+      "order": 0,
+      "results": [
+        {
+          "id": 4053,
+          "title": "Звезда по имени Солнце",
+          "metaType": "music",
+          "available": true,
+          "artists": [
+            {
+              "id": 41,
+              "name": "Кино",
+              "various": false,
+              "composer": false
+            }
+          ],
+          "trackCount": 10,
+          "year": 1989
+        },
+        {
+          "id": 9001,
+          "title": "Подкаст о кино",
+          "metaType": "podcast",
+          "available": true,
+          "artists": [
+            {
+              "id": 41,
+              "name": "Кино",
+              "various": false,
+              "composer": false
+            }
+          ],
+          "trackCount": 10,
+          "type": "podcast",
+          "year": 2021
+        },
+        {
+          "id": 9002,
+          "title": "Группа крови",
+          "metaType": "music",
+          "available": false,
+          "artists": [
+            {
+              "id": 41,
+              "name": "Кино",
+              "various": false,
+              "composer": false
+            }
+          ],
+          "trackCount": 10,
+          "year": 1988
+        },
+        {
+          "id": 9003,
+          "title": "Кукушка",
+          "metaType": "music",
+          "available": true,
+          "artists": [
+            {
+              "id": 41,
+              "name": "Кино",
+              "various": false,
+              "composer": false
+            }
+          ],
+          "trackCount": 10,
+          "type": "single"
+        }
+      ]
+    }
+  }
+}

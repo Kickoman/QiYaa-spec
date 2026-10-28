@@ -21,7 +21,7 @@ Every file is one JSON object. Bytes are lower-case hex. A track, album or artis
 | `storage-resolve-files-audio-interactive/*` | `{"result", "urls", "usable"}` |
 | `context-resolve/*`, `context-resolve-autoplay/*`, `radio-apollo-tracks/*` | `{"trackUris", "next"}`, or `{"unreadable": true}` |
 | `pathfinder-home/*` | `{"stale": false, "playlists": [{"uri", "name"}]}`, or one of Pathfinder's other forms |
-| `pathfinder-searchDesktop/*` | `{"stale": false, "kind", "best": {"uri", "name"} \| null, "trackUris"}`, or one of Pathfinder's other forms |
+| `pathfinder-searchDesktop/*` | `{"stale": false, "kind", "best": {"uri", "name"} \| null, "trackUris", "artists": [{"uri", "name"}], "albums": [{"uri", "name", "artists", "year", "single"}]}`, or one of Pathfinder's other forms |
 | `apresolve/*` | `{"accessPoints", "spclients"}` |
 
 - `artists` is `[{"id", "name"}]` in order. `trackIds` are ids in order.
@@ -153,9 +153,18 @@ What an app must get right, beyond the field numbers above.
   - The best result is `topResultsV2.itemsV2[0]` alone, through the same `data`:
     - `__typename` `Artist` with a `spotify:artist:` URI is `kind` `artist`, its name
       `profile.name`;
+    - `Track` with a `spotify:track:` URI is `track`, its name `name`;
     - `Album` with a `spotify:album:` URI is `album`, its name `name`;
     - anything else is `tracks` with `best` `null`.
-  - Nothing found is `tracks` without `trackUris` ([SRC-19](../../player/sources.md#search)).
+  - `artists` are `artists.items[]`, through `item` when there is one and then `data`, whose `uri`
+    starts with `spotify:artist:`: the `uri` and `profile.name`, in order.
+  - `albums` are `albumsV2.items[]` the same way, with `spotify:album:` URIs: `uri`, `name`, the
+    `profile.name` of each of `artists.items`, `date.year` (`null` when missing or 0), and `single`
+    when `type` is `SINGLE`.
+  - The shape of `artists` and `albumsV2` is written from Pathfinder's web client, not checked
+    against a live reply yet.
+  - Nothing found is `tracks` without `trackUris` ([SRC-19](../../player/sources.md#search)); with
+    the parts of [SPOT-11](../../player/spotify.md#picks), also without `artists` and `albums`.
 - **Home**, from `data.home.sectionContainer`; without it the reply is unreadable.
   - The section is the item of `sections.items` whose `uri` is
     `spotify:section:0JQ5DAUnp4wcj0bCb3wh3S`, Made For You.
@@ -208,7 +217,8 @@ make -C scripts/spotify-vectors catalog DESKTOP=/path/to/QiYaa BUILD=/tmp/spotif
 - `SPEC` (default `../..`, this repository) is where it writes `fixtures/spotify/` and
   `expected/spotify/`. It replaces their endpoint folders whole, and leaves the READMEs alone.
 - The output is deterministic: running it again on unchanged code gives the same files. The files
-  were last generated against Kickoman/QiYaa `b99c1dfb8a8eb90b49316b2e146a9c753448a0d3` (v0.9.0).
+  were last generated against the desktop's `search-sources-73` branch (Kickoman/QiYaa#73), whose
+  commit is named in the spec commit that changed them.
 
 **Where each value comes from.** The generator parses each fixture's very bytes with the desktop's
 code:

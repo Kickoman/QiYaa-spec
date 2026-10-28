@@ -1,0 +1,54 @@
+{
+  "stale": false,
+  "kind": "track",
+  "best": {
+    "uri": "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+    "name": "Hit"
+  },
+  "trackUris": [
+    "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+    "spotify:track:03MTWdfYAdskMHF9RG7pS2"
+  ],
+  "artists": [
+    {
+      "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+      "name": "Band"
+    },
+    {
+      "uri": "spotify:artist:40a600nvgdqXs7YVcZPPA7",
+      "name": "Band Tribute"
+    }
+  ],
+  "albums": [
+    {
+      "uri": "spotify:album:3s3Yy53I0gjWnN0upSL4JP",
+      "name": "Double",
+      "artists": [
+        "Band",
+        "Guest"
+      ],
+      "year": 1991,
+      "single": false
+    },
+    {
+      "uri": "spotify:album:3tXqwbGHin36M8Q4lIOMFQ",
+      "name": "Hit",
+      "artists": [
+        "Band",
+        "Guest"
+      ],
+      "year": 1992,
+      "single": true
+    },
+    {
+      "uri": "spotify:album:3vQSuijGAtMhauFEhySuBR",
+      "name": "Undated",
+      "artists": [
+        "Band",
+        "Guest"
+      ],
+      "year": null,
+      "single": false
+    }
+  ]
+}

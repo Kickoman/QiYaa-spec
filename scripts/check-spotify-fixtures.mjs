@@ -462,12 +462,36 @@ function pathfinderOf(status, text, search) {
       if (str(item.__typename) === "Artist" && uri.startsWith("spotify:artist:")) {
         kind = "artist";
         best = { uri, name: str(obj(item.profile).name) };
+      } else if (str(item.__typename) === "Track" && uri.startsWith("spotify:track:")) {
+        kind = "track";
+        best = { uri, name: str(item.name) };
       } else if (str(item.__typename) === "Album" && uri.startsWith("spotify:album:")) {
         kind = "album";
         best = { uri, name: str(item.name) };
       }
     }
-    return { stale: false, kind, best, trackUris };
+    const foundItem = (value) => {
+      const wrapper = obj(value);
+      return dataOf(has(wrapper, "item") ? obj(wrapper.item) : wrapper);
+    };
+    const artists = arr(obj(found.artists).items)
+      .map(foundItem)
+      .filter((artist) => str(artist.uri).startsWith("spotify:artist:"))
+      .map((artist) => ({ uri: str(artist.uri), name: str(obj(artist.profile).name) }));
+    const albums = arr(obj(found.albumsV2).items)
+      .map(foundItem)
+      .filter((album) => str(album.uri).startsWith("spotify:album:"))
+      .map((album) => {
+        const year = obj(album.date).year;
+        return {
+          uri: str(album.uri),
+          name: str(album.name),
+          artists: arr(obj(album.artists).items).map((artist) => str(obj(obj(artist).profile).name)),
+          year: Number.isInteger(year) && year !== 0 ? year : null,
+          single: str(album.type) === "SINGLE",
+        };
+      });
+    return { stale: false, kind, best, trackUris, artists, albums };
   }
   const home = obj(data.home);
   if (!has(home, "sectionContainer")) return { stale: false, unreadable: true };

@@ -17,5 +17,8 @@
       "genre": "rusrock",
       "coverUri": "avatars.yandex.net/get-music-content/49876/7d0b2d8d.a.4053-1/%%"
     }
-  ]
+  ],
+  "bestTrack": null,
+  "artists": [],
+  "albums": []
 }

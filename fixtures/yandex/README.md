@@ -42,7 +42,7 @@ Response bodies as the server sends them, one file per case. What parsing each m
 | `rotor-session-feedback` | `POST /rotor/session/<id>/feedback` | `ok`, `404-not-found`, `503-string-error` |
 | `rotor-station-feedback` | `POST /rotor/station/<id>/feedback` | `ok` |
 | `wheel-new` | `POST /wheel/new` | `ok` |
-| `search` | `GET /search?type=all` | `best-artist`, `best-album`, `best-track`, `best-playlist`, `best-podcast`, `no-best` |
+| `search` | `GET /search?type=all` | `best-artist`, `best-album`, `best-track`, `best-playlist`, `best-podcast`, `no-best`, `all-parts` (a real reply for "кино", each part cut to its first few), `album-filter` (hand-written: a podcast and an unavailable album among the albums) |
 | `tracks-download-info` | `GET /tracks/<id>/download-info` | `variants`, `previews-only`, `empty` |
 | `storage-download-info` | `GET <downloadInfoUrl>&format=json` | `ok`, `number-ts`, `xml` |
 | `get-file-info` | `GET /get-file-info` ([quality.md](../../player/quality.md)) | `lq-he-aac-mp4`, `nq-mp3`, `encraw`, `no-url`, `403-not-allowed`, `429-concurrency-limit` |

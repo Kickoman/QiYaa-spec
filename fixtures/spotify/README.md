@@ -54,7 +54,7 @@ messages and the request bodies are test vectors in [spotify/](../../spotify/REA
 | `context-resolve-autoplay` | `POST /context-resolve/v1/autoplay` (spclient) | JSON | `liked-songs`, `loading` |
 | `radio-apollo-tracks` | `GET /radio-apollo/v5/tracks/<station>?…` (spclient), a `next_page_url` | JSON | `last-page` |
 | `pathfinder-home` | `POST /pathfinder/v2/query` (Pathfinder), operation `home` | JSON | `made-for-you`, `no-made-for-you`, `no-section-container` |
-| `pathfinder-searchDesktop` | `POST /pathfinder/v2/query` (Pathfinder), operation `searchDesktop` | JSON | `412-outdated`, `500-with-data`, `best-album`, `best-artist`, `no-data`, `nothing-found`, `tracks-only` |
+| `pathfinder-searchDesktop` | `POST /pathfinder/v2/query` (Pathfinder), operation `searchDesktop` | JSON | `412-outdated`, `500-with-data`, `all-parts`, `best-album`, `best-artist`, `no-data`, `nothing-found`, `tracks-only` |
 | `apresolve` | `GET /?type=accesspoint&type=spclient` (apresolve.spotify.com) | JSON | `503-no-body`, `blank-entries`, `empty`, `ok` |
 
 What the cases hold:
@@ -103,6 +103,8 @@ What the cases hold:
 - **`pathfinder-searchDesktop`:**
   - the best result an artist, or an album;
   - the best result a track, and a found track without its `data` wrapper;
+  - every part: a best track, tracks, artists and albums (an album, a single, one without a date),
+    each list with an entry that is not of its kind;
   - nothing found;
   - an outdated query hash, as 412 with no body and as 200 without `data`;
   - a 500 whose body has `data` all the same.

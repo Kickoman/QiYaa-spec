@@ -2,5 +2,7 @@
   "stale": false,
   "kind": "tracks",
   "best": null,
-  "trackUris": []
+  "trackUris": [],
+  "artists": [],
+  "albums": []
 }

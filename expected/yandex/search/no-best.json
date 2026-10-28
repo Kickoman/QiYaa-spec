@@ -2,5 +2,8 @@
   "bestType": "",
   "bestId": "",
   "bestName": "",
-  "tracks": []
+  "tracks": [],
+  "bestTrack": null,
+  "artists": [],
+  "albums": []
 }

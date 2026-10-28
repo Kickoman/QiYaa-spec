@@ -21,7 +21,7 @@ Every file is one JSON object.
 | `rotor-stations-list` | `{"stations": [{"id", "type", "name"}]}`: `id` is `"<type>:<tag>"` |
 | `rotor-session-new`, `rotor-session-tracks` | `{"sessionId", "batchId", "tracks": [Track]}` |
 | `wheel-new` | `{"waves": [{"name", "description", "seeds"}]}`: only items of type `WAVE` with a name and seeds |
-| `search/*` | `{"bestType", "bestId", "bestName", "tracks": [Track]}` |
+| `search/*` | `{"bestType", "bestId", "bestName", "tracks": [Track], "bestTrack": Track \| null, "artists": [{"id", "name"}], "albums": [{"id", "title", "artists", "year", "single"}]}` |
 | `tracks-download-info/*` | `{"variants": [{"codec", "bitrateKbps", "preview", "downloadInfoUrl"}], "best"}`: `best` is the `downloadInfoUrl` of the chosen variant, or `null` |
 | `storage-download-info/*` | `{"host", "path", "ts", "s", "trackUrl"}`: `trackUrl` is the signed `https://<host>/get-mp3/<sign>/<ts><path>`; `{"invalid": true}` when the reply is unusable |
 | `get-file-info/*` | `{"quality", "codec", "bitrateKbps", "transport", "url", "urls", "key"}`: `key` is `null` without one. `{"fallback": true}` for an HTTP error or a reply without an `https` `url`: the app takes the standard path ([QUAL-03](../../player/quality.md)) and reports nothing |
@@ -48,6 +48,13 @@ Every file is one JSON object.
 `bestType` in search is `artist`, `album`, `track`, `playlist`, `other` for any other type, or
 `""` without `best`. `bestName` is `name`, or `title` when there is no `name`. `bestId` is `""`
 when the result has no `id`.
+
+`bestTrack` is `best.result` as a Track when `bestType` is `track`, else `null`. `artists` are
+`artists.results` in order; `albums` are `albums.results` with `metaType` `music` and `available`
+not `false`, in order: `artists` their names, `year` `null` when missing, `single` when `type` is
+`single` ([sources.md](../../player/sources.md#search)). Leaving the best result out of the
+other parts and the unavailable tracks out of the shown ones is the app's showing, not the parse:
+`tracks` keeps them.
 
 ## Comparing
 

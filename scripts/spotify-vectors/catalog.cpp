@@ -724,11 +724,29 @@ Json PathfinderExpected(int status, const std::string& body, bool search) {
         }
         const char* kind = found->kind == SpotifySource::Found::Kind::Artist ? "artist"
             : found->kind == SpotifySource::Found::Kind::Album               ? "album"
+            : found->kind == SpotifySource::Found::Kind::Track               ? "track"
                                                                              : "tracks";
         const Json best = found->kind == SpotifySource::Found::Kind::Tracks
             ? Json()
             : Json(Json::Object().set("uri", Std(found->best.uri)).set("name", Std(found->best.name)));
-        return json.set("kind", kind).set("best", best).set("trackUris", Strings(found->trackUris));
+        Json artists = Json::Array();
+        for (const SpotifySource::Item& artist : found->artists) {
+            artists.push(Json::Object().set("uri", Std(artist.uri)).set("name", Std(artist.name)));
+        }
+        Json albums = Json::Array();
+        for (const SpotifySource::FoundAlbum& album : found->albums) {
+            albums.push(Json::Object()
+                            .set("uri", Std(album.album.uri))
+                            .set("name", Std(album.album.name))
+                            .set("artists", Strings(album.artists))
+                            .set("year", album.year ? Json(album.year) : Json())
+                            .set("single", album.single));
+        }
+        return json.set("kind", kind)
+            .set("best", best)
+            .set("trackUris", Strings(found->trackUris))
+            .set("artists", std::move(artists))
+            .set("albums", std::move(albums));
     }
     const std::optional<QList<SpotifySource::Item>> playlists = SpotifySource::MadeForYouOf(data);
     if (!playlists) {
@@ -798,15 +816,52 @@ Json FoundTrack(std::uint8_t mark, const std::string& name) {
     return Wrapped(Json::Object().set("__typename", "Track").set("uri", Uri("track", mark)).set("name", name));
 }
 
-std::string Search(Json top, Json tracks) {
+std::string Search(Json top, Json tracks, std::optional<Json> artists = std::nullopt, std::optional<Json> albums = std::nullopt) {
+    Json search = Json::Object()
+                      .set("topResultsV2", Json::Object().set("itemsV2", std::move(top)))
+                      .set("tracksV2", Json::Object().set("items", std::move(tracks)).set("totalCount", 2));
+    if (artists) {
+        search.set("artists", Json::Object().set("items", std::move(*artists)).set("totalCount", 3));
+    }
+    if (albums) {
+        search.set("albumsV2", Json::Object().set("items", std::move(*albums)).set("totalCount", 4));
+    }
     return Json::Object()
-        .set("data",
-             Json::Object().set("searchV2",
-                                Json::Object()
-                                    .set("topResultsV2", Json::Object().set("itemsV2", std::move(top)))
-                                    .set("tracksV2", Json::Object().set("items", std::move(tracks)).set("totalCount", 2))))
+        .set("data", Json::Object().set("searchV2", std::move(search)))
         .set("extensions", Json::Object())
         .dump();
+}
+
+Json FoundArtist(std::uint8_t mark, const std::string& name) {
+    return Json::Object()
+        .set("__typename", "ArtistResponseWrapper")
+        .set("data",
+             Json::Object()
+                 .set("__typename", "Artist")
+                 .set("uri", Uri("artist", mark))
+                 .set("profile", Json::Object().set("name", name)));
+}
+
+Json FoundAlbum(std::uint8_t mark, const std::string& name, const char* type, std::optional<int> year) {
+    Json album = Json::Object()
+                     .set("__typename", "Album")
+                     .set("uri", Uri("album", mark))
+                     .set("name", name)
+                     .set("type", type)
+                     .set("artists",
+                          Json::Object().set(
+                              "items",
+                              Json::Array()
+                                  .push(Json::Object()
+                                            .set("uri", Uri("artist", 0x81))
+                                            .set("profile", Json::Object().set("name", "Band")))
+                                  .push(Json::Object()
+                                            .set("uri", Uri("artist", 0x82))
+                                            .set("profile", Json::Object().set("name", "Guest")))));
+    if (year) {
+        album.set("date", Json::Object().set("year", *year));
+    }
+    return Json::Object().set("__typename", "AlbumResponseWrapper").set("data", std::move(album));
 }
 
 void PathfinderSearch(Output& out) {
@@ -828,6 +883,22 @@ void PathfinderSearch(Output& out) {
                      .push(FoundTrack(2, "Found"))
                      .push(Json::Object().set(
                          "item", Json::Object().set("__typename", "Track").set("uri", Uri("track", 5)).set("name", "Bare")))));
+    write("all-parts",
+          Search(Json::Array().push(FoundTrack(1, "Hit")).push(artist),
+                 Json::Array().push(FoundTrack(1, "Hit")).push(FoundTrack(2, "Found")),
+                 Json::Array()
+                     .push(FoundArtist(0x81, "Band"))
+                     .push(FoundArtist(0x83, "Band Tribute"))
+                     .push(Json::Object()
+                               .set("__typename", "ArtistResponseWrapper")
+                               .set("data", Json::Object().set("__typename", "NotFound").set("uri", Uri("playlist", 0x64)))),
+                 Json::Array()
+                     .push(FoundAlbum(0x71, "Double", "ALBUM", 1991))
+                     .push(FoundAlbum(0x72, "Hit", "SINGLE", 1992))
+                     .push(FoundAlbum(0x73, "Undated", "COMPILATION", std::nullopt))
+                     .push(Json::Object()
+                               .set("__typename", "AlbumResponseWrapper")
+                               .set("data", Json::Object().set("__typename", "NotFound").set("uri", Uri("playlist", 0x65))))));
     write("nothing-found", Search(Json::Array(), Json::Array()));
     write("412-outdated", "", 412);
     write("500-with-data", Search(Json::Array().push(artist), Json::Array().push(FoundTrack(1, "Hit"))), 500);

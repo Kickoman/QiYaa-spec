@@ -1,0 +1,28 @@
+{
+  "bestType": "",
+  "bestId": "",
+  "bestName": "",
+  "tracks": [],
+  "bestTrack": null,
+  "artists": [],
+  "albums": [
+    {
+      "id": "4053",
+      "title": "Звезда по имени Солнце",
+      "artists": [
+        "Кино"
+      ],
+      "year": 1989,
+      "single": false
+    },
+    {
+      "id": "9003",
+      "title": "Кукушка",
+      "artists": [
+        "Кино"
+      ],
+      "year": null,
+      "single": true
+    }
+  ]
+}

@@ -1,0 +1,179 @@
+{
+  "data": {
+    "searchV2": {
+      "topResultsV2": {
+        "itemsV2": [
+          {
+            "item": {
+              "data": {
+                "__typename": "Track",
+                "uri": "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+                "name": "Hit"
+              }
+            }
+          },
+          {
+            "item": {
+              "data": {
+                "__typename": "Artist",
+                "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+                "profile": {
+                  "name": "Band"
+                }
+              }
+            }
+          }
+        ]
+      },
+      "tracksV2": {
+        "items": [
+          {
+            "item": {
+              "data": {
+                "__typename": "Track",
+                "uri": "spotify:track:01TrY6CZi6JaolPzVQ3HW1",
+                "name": "Hit"
+              }
+            }
+          },
+          {
+            "item": {
+              "data": {
+                "__typename": "Track",
+                "uri": "spotify:track:03MTWdfYAdskMHF9RG7pS2",
+                "name": "Found"
+              }
+            }
+          }
+        ],
+        "totalCount": 2
+      },
+      "artists": {
+        "items": [
+          {
+            "__typename": "ArtistResponseWrapper",
+            "data": {
+              "__typename": "Artist",
+              "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+              "profile": {
+                "name": "Band"
+              }
+            }
+          },
+          {
+            "__typename": "ArtistResponseWrapper",
+            "data": {
+              "__typename": "Artist",
+              "uri": "spotify:artist:40a600nvgdqXs7YVcZPPA7",
+              "profile": {
+                "name": "Band Tribute"
+              }
+            }
+          },
+          {
+            "__typename": "ArtistResponseWrapper",
+            "data": {
+              "__typename": "NotFound",
+              "uri": "spotify:playlist:33r6WGSRcQQLhdbXhXYRzC"
+            }
+          }
+        ],
+        "totalCount": 3
+      },
+      "albumsV2": {
+        "items": [
+          {
+            "__typename": "AlbumResponseWrapper",
+            "data": {
+              "__typename": "Album",
+              "uri": "spotify:album:3s3Yy53I0gjWnN0upSL4JP",
+              "name": "Double",
+              "type": "ALBUM",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+                    "profile": {
+                      "name": "Band"
+                    }
+                  },
+                  {
+                    "uri": "spotify:artist:3YgE1TKvY6HN3M9lh9M7E6",
+                    "profile": {
+                      "name": "Guest"
+                    }
+                  }
+                ]
+              },
+              "date": {
+                "year": 1991
+              }
+            }
+          },
+          {
+            "__typename": "AlbumResponseWrapper",
+            "data": {
+              "__typename": "Album",
+              "uri": "spotify:album:3tXqwbGHin36M8Q4lIOMFQ",
+              "name": "Hit",
+              "type": "SINGLE",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+                    "profile": {
+                      "name": "Band"
+                    }
+                  },
+                  {
+                    "uri": "spotify:artist:3YgE1TKvY6HN3M9lh9M7E6",
+                    "profile": {
+                      "name": "Guest"
+                    }
+                  }
+                ]
+              },
+              "date": {
+                "year": 1992
+              }
+            }
+          },
+          {
+            "__typename": "AlbumResponseWrapper",
+            "data": {
+              "__typename": "Album",
+              "uri": "spotify:album:3vQSuijGAtMhauFEhySuBR",
+              "name": "Undated",
+              "type": "COMPILATION",
+              "artists": {
+                "items": [
+                  {
+                    "uri": "spotify:artist:3Wnc3N7wFZYCFqjLljIpI5",
+                    "profile": {
+                      "name": "Band"
+                    }
+                  },
+                  {
+                    "uri": "spotify:artist:3YgE1TKvY6HN3M9lh9M7E6",
+                    "profile": {
+                      "name": "Guest"
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "__typename": "AlbumResponseWrapper",
+            "data": {
+              "__typename": "NotFound",
+              "uri": "spotify:playlist:35kyUNvQuXzVFz1xdO2zvD"
+            }
+          }
+        ],
+        "totalCount": 4
+      }
+    }
+  },
+  "extensions": {}
+}

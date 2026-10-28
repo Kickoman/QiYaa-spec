@@ -1,0 +1,94 @@
+{
+  "bestType": "artist",
+  "bestId": "41075",
+  "bestName": "КИНО",
+  "tracks": [
+    {
+      "id": "145486974",
+      "albumId": "39362975",
+      "title": "Кино",
+      "artists": [
+        "ЛСП",
+        "GONE.Fludd"
+      ],
+      "durationMs": 210820,
+      "available": true,
+      "albumTitle": "Судный день",
+      "year": 2025,
+      "genre": "ruspop",
+      "coverUri": "avatars.yandex.net/get-music-content/16406615/cdd1df81.a.39362975-1/%%"
+    },
+    {
+      "id": "64072310",
+      "albumId": "10252343",
+      "title": "Кино",
+      "artists": [
+        "MACAN"
+      ],
+      "durationMs": 184440,
+      "available": true,
+      "albumTitle": "Кино",
+      "year": 2020,
+      "genre": "rusrap",
+      "coverUri": "avatars.yandex.net/get-music-content/2358262/d217c998.a.10252343-1/%%"
+    },
+    {
+      "id": "124904044",
+      "albumId": "30749264",
+      "title": "Кино",
+      "artists": [
+        "XOLIDAYBOY"
+      ],
+      "durationMs": 201040,
+      "available": true,
+      "albumTitle": "Кино",
+      "year": 2024,
+      "genre": "ruspop",
+      "coverUri": "avatars.yandex.net/get-music-content/10126140/9bb5155b.a.30749264-1/%%"
+    }
+  ],
+  "bestTrack": null,
+  "artists": [
+    {
+      "id": "41075",
+      "name": "КИНО"
+    },
+    {
+      "id": "17211163",
+      "name": "Кинотеатр"
+    },
+    {
+      "id": "953565",
+      "name": "Виктор Цой"
+    }
+  ],
+  "albums": [
+    {
+      "id": "10252343",
+      "title": "Кино",
+      "artists": [
+        "MACAN"
+      ],
+      "year": 2020,
+      "single": true
+    },
+    {
+      "id": "30749264",
+      "title": "Кино",
+      "artists": [
+        "XOLIDAYBOY"
+      ],
+      "year": 2024,
+      "single": true
+    },
+    {
+      "id": "43447453",
+      "title": "КИНО",
+      "artists": [
+        "NATCORN"
+      ],
+      "year": 2026,
+      "single": true
+    }
+  ]
+}

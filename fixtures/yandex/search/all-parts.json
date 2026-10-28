@@ -1,0 +1,1109 @@
+{
+  "invocationInfo": {
+    "hostname": "music-stable-back-vla-42.vla.yp-c.yandex.net",
+    "req-id": "1727600000000000-0000000000000000001",
+    "exec-duration-millis": 31
+  },
+  "result": {
+    "misspellCorrected": false,
+    "nocorrect": false,
+    "searchRequestId": "req-2",
+    "text": "кино",
+    "best": {
+      "type": "artist",
+      "result": {
+        "name": "КИНО",
+        "various": false,
+        "composer": false,
+        "cover": {
+          "type": "from-artist-photos",
+          "uri": "avatars.yandex.net/get-music-content/33216/c6d507c7.p.41075/%%",
+          "prefix": "c6d507c7.p.41075/"
+        },
+        "ogImage": "avatars.yandex.net/get-music-content/33216/c6d507c7.p.41075/%%",
+        "genres": [
+          "rusrock"
+        ],
+        "counts": {
+          "tracks": 146,
+          "directAlbums": 18,
+          "alsoAlbums": 5,
+          "alsoTracks": 7
+        },
+        "available": true,
+        "disclaimers": [],
+        "ratings": {
+          "week": 43,
+          "month": 43,
+          "day": 49
+        },
+        "links": [
+          {
+            "title": "kino.band",
+            "href": "http://kino.band",
+            "type": "official"
+          },
+          {
+            "title": "channel/UCX2Zz28HLCAO5NCSd5Y-Dgw",
+            "href": "https://www.youtube.com/channel/UCX2Zz28HLCAO5NCSd5Y-Dgw",
+            "type": "social",
+            "socialNetwork": "youtube"
+          },
+          {
+            "title": "kino.band.official",
+            "href": "https://vk.ru/kino.band.official",
+            "type": "social",
+            "socialNetwork": "vk"
+          }
+        ],
+        "ticketsAvailable": false,
+        "id": 41075,
+        "regions": [
+          "BELARUS",
+          "BELARUS_PREMIUM"
+        ]
+      }
+    },
+    "artists": {
+      "total": 39,
+      "perPage": 10,
+      "order": 0,
+      "results": [
+        {
+          "name": "КИНО",
+          "various": false,
+          "composer": false,
+          "cover": {
+            "type": "from-artist-photos",
+            "uri": "avatars.yandex.net/get-music-content/33216/c6d507c7.p.41075/%%",
+            "prefix": "c6d507c7.p.41075/"
+          },
+          "ogImage": "avatars.yandex.net/get-music-content/33216/c6d507c7.p.41075/%%",
+          "genres": [
+            "rusrock"
+          ],
+          "counts": {
+            "tracks": 146,
+            "directAlbums": 18,
+            "alsoAlbums": 5,
+            "alsoTracks": 7
+          },
+          "available": true,
+          "disclaimers": [],
+          "ratings": {
+            "week": 43,
+            "month": 43,
+            "day": 49
+          },
+          "links": [
+            {
+              "title": "kino.band",
+              "href": "http://kino.band",
+              "type": "official"
+            },
+            {
+              "title": "channel/UCX2Zz28HLCAO5NCSd5Y-Dgw",
+              "href": "https://www.youtube.com/channel/UCX2Zz28HLCAO5NCSd5Y-Dgw",
+              "type": "social",
+              "socialNetwork": "youtube"
+            },
+            {
+              "title": "kino.band.official",
+              "href": "https://vk.ru/kino.band.official",
+              "type": "social",
+              "socialNetwork": "vk"
+            }
+          ],
+          "ticketsAvailable": false,
+          "id": 41075,
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ]
+        },
+        {
+          "name": "Кинотеатр",
+          "various": false,
+          "composer": false,
+          "cover": {
+            "type": "from-album-cover",
+            "uri": "avatars.yandex.net/get-music-content/5576540/ab0041aa.a.24271873-1/%%",
+            "prefix": "ab0041aa.a.24271873-1"
+          },
+          "ogImage": "avatars.yandex.net/get-music-content/5576540/ab0041aa.a.24271873-1/%%",
+          "genres": [
+            "ruspop"
+          ],
+          "counts": {
+            "tracks": 2,
+            "directAlbums": 2,
+            "alsoAlbums": 0,
+            "alsoTracks": 0
+          },
+          "available": true,
+          "disclaimers": [],
+          "links": [],
+          "ticketsAvailable": false,
+          "id": 17211163,
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ]
+        },
+        {
+          "name": "Виктор Цой",
+          "various": false,
+          "composer": false,
+          "cover": {
+            "type": "from-artist-photos",
+            "uri": "avatars.yandex.net/get-music-content/42108/f6a1d2f9.p.953565/%%",
+            "prefix": "f6a1d2f9.p.953565/"
+          },
+          "ogImage": "avatars.yandex.net/get-music-content/42108/f6a1d2f9.p.953565/%%",
+          "genres": [
+            "rusrock"
+          ],
+          "counts": {
+            "tracks": 64,
+            "directAlbums": 5,
+            "alsoAlbums": 11,
+            "alsoTracks": 20
+          },
+          "available": true,
+          "disclaimers": [],
+          "ratings": {
+            "week": 1169,
+            "month": 1165,
+            "day": 1425
+          },
+          "links": [],
+          "ticketsAvailable": false,
+          "id": 953565,
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ]
+        }
+      ]
+    },
+    "playlists": {
+      "total": 126,
+      "perPage": 4,
+      "order": 1,
+      "results": [
+        {
+          "owner": {
+            "uid": 1000000001,
+            "login": "someone",
+            "name": "Someone",
+            "sex": "unknown",
+            "verified": false
+          },
+          "playlistUuid": "00000000-0000-0000-0000-000000000001",
+          "available": true,
+          "uid": 1000000001,
+          "kind": 1001,
+          "title": "Кино",
+          "revision": 2,
+          "snapshot": 4,
+          "trackCount": 12,
+          "visibility": "public",
+          "collective": false,
+          "created": "2021-05-28T15:28:10+00:00",
+          "modified": "2021-05-28T15:28:35+00:00",
+          "isBanner": false,
+          "isPremiere": false,
+          "durationMs": 3045540,
+          "cover": {
+            "type": "pic",
+            "dir": "/get-music-user-playlist/38125/1394200455.1001.87482/",
+            "version": "1622547868450",
+            "uri": "avatars.yandex.net/get-music-user-playlist/38125/1394200455.1001.87482/%%?1622547868450",
+            "custom": true
+          }
+        }
+      ]
+    },
+    "podcast_episodes": {
+      "total": 27157,
+      "perPage": 20,
+      "order": 6,
+      "results": [
+        {
+          "id": 128876274,
+          "realId": "128876274",
+          "title": "Кино",
+          "major": {
+            "id": 0,
+            "name": "-"
+          },
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableFullWithoutPermission": true,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "disclaimers": [],
+          "storageDir": "",
+          "durationMs": 79130,
+          "fileSize": 0,
+          "r128": {
+            "i": -12.0,
+            "tp": -0.25
+          },
+          "fade": {
+            "inStart": 0.0,
+            "inStop": 1.5,
+            "outStart": 77.6,
+            "outStop": 79.1
+          },
+          "previewDurationMs": 30000,
+          "artists": [],
+          "albums": [
+            {
+              "id": 32391836,
+              "title": "Стихи и песни для детей",
+              "type": "podcast",
+              "metaType": "podcast",
+              "coverUri": "avatars.yandex.net/get-music-content/10960834/f5cd89a1.a.32391836-1/%%",
+              "ogImage": "avatars.yandex.net/get-music-content/10960834/f5cd89a1.a.32391836-1/%%",
+              "genre": "podcasts",
+              "trackCount": 43,
+              "likesCount": 122,
+              "recent": false,
+              "veryImportant": false,
+              "artists": [],
+              "available": true,
+              "availableForPremiumUsers": true,
+              "availableForOptions": [
+                "bookmate"
+              ],
+              "availableForMobile": true,
+              "availablePartially": false,
+              "bests": [
+                128876284,
+                128876276,
+                128876277
+              ],
+              "disclaimers": [],
+              "listeningFinished": false,
+              "labels": [],
+              "storageDir": "f5cd89a1.a.32391836-1",
+              "trackPosition": {
+                "volume": 1,
+                "index": 33
+              },
+              "regions": [
+                "BELARUS",
+                "BELARUS_PREMIUM"
+              ],
+              "availableRegions": []
+            }
+          ],
+          "coverUri": "avatars.yandex.net/get-music-content/10960834/f5cd89a1.a.32391836-1/%%",
+          "derivedColors": {
+            "average": "#73bebe",
+            "waveText": "#c1ffff",
+            "miniPlayer": "#9dd1d1",
+            "accent": "#73bebe"
+          },
+          "ogImage": "avatars.yandex.net/get-music-content/10960834/f5cd89a1.a.32391836-1/%%",
+          "lyricsAvailable": false,
+          "type": "podcast-episode",
+          "rememberPosition": true,
+          "shortDescription": "Стихи и песни для детей — с добром о самом важном!",
+          "podcastEpisodeType": "full",
+          "pubDate": "2024-07-17",
+          "trackSharingFlag": "COVER_ONLY",
+          "lyricsInfo": {
+            "hasAvailableSyncLyrics": false,
+            "hasAvailableTextLyrics": false
+          },
+          "trackSource": "OWN",
+          "availableAsRbt": true,
+          "explicit": false,
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ]
+        }
+      ]
+    },
+    "clips": {
+      "total": 52,
+      "perPage": 10,
+      "order": 5,
+      "results": [
+        {
+          "clipId": 520434,
+          "title": "Кино",
+          "playerId": "11767907588806552344",
+          "uuid": "43c39c9c923835eabea23bfb7ad6e874",
+          "thumbnail": "https://avatars.yandex.net/get-music-content/14183125/a080b5aa.a.32860638-2/%%",
+          "previewUrl": "https://video-preview.s3.yandex.net/vh/9263085078211751611/d1d25266-77c1-4242-85a4-948b625f7c92_vmaf-preview-4s-720.mp4",
+          "duration": 29,
+          "trackIds": [
+            129943174
+          ],
+          "artists": [
+            {
+              "id": 8119443,
+              "name": "G4OUR",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/10099790/fe3c6afd.p.8119443/%%",
+                "prefix": "fe3c6afd.p.8119443/"
+              },
+              "genres": [],
+              "disclaimers": []
+            },
+            {
+              "id": 7483085,
+              "name": "DooMee",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/14350511/6ae1b278.p.7483085/%%",
+                "prefix": "6ae1b278.p.7483085/"
+              },
+              "genres": [],
+              "disclaimers": []
+            }
+          ],
+          "disclaimers": [],
+          "explicit": false
+        }
+      ]
+    },
+    "tracks": {
+      "total": 46022,
+      "perPage": 20,
+      "order": 2,
+      "results": [
+        {
+          "id": 145486974,
+          "realId": "145486974",
+          "title": "Кино",
+          "contentWarning": "explicit",
+          "major": {
+            "id": 0,
+            "name": "-"
+          },
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableFullWithoutPermission": false,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "disclaimers": [
+            "age18",
+            "age18Icon:671a23afcec5646906723a53",
+            "descriptionText:67370c8e13b92b0a60256675"
+          ],
+          "storageDir": "",
+          "durationMs": 210820,
+          "fileSize": 0,
+          "r128": {
+            "i": -7.93,
+            "tp": -0.24
+          },
+          "fade": {
+            "inStart": 0.3,
+            "inStop": 1.5,
+            "outStart": 208.3,
+            "outStop": 209.5
+          },
+          "previewDurationMs": 30000,
+          "artists": [
+            {
+              "id": 3313381,
+              "name": "ЛСП",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/5375761/ab269aae.p.3313381/%%",
+                "prefix": "ab269aae.p.3313381/"
+              },
+              "genres": [],
+              "disclaimers": [],
+              "cutoutCover": {
+                "uri": "avatars.yandex.net/get-music-content/17740720/92c6400f.c.960456/%%"
+              }
+            },
+            {
+              "id": 4865954,
+              "name": "GONE.Fludd",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/18132539/b4e18f3b.p.4865954/%%",
+                "prefix": "b4e18f3b.p.4865954/"
+              },
+              "genres": [],
+              "disclaimers": [],
+              "cutoutCover": {
+                "uri": "avatars.yandex.net/get-music-content/17674835/36c6e04d.c.974230/%%"
+              }
+            }
+          ],
+          "albums": [
+            {
+              "id": 39362975,
+              "title": "Судный день",
+              "metaType": "music",
+              "contentWarning": "explicit",
+              "year": 2025,
+              "releaseDate": "2025-11-28T00:00:00+03:00",
+              "coverUri": "avatars.yandex.net/get-music-content/16406615/cdd1df81.a.39362975-1/%%",
+              "ogImage": "avatars.yandex.net/get-music-content/16406615/cdd1df81.a.39362975-1/%%",
+              "genre": "ruspop",
+              "trackCount": 14,
+              "likesCount": 81961,
+              "recent": false,
+              "veryImportant": false,
+              "artists": [
+                {
+                  "id": 3313381,
+                  "name": "ЛСП",
+                  "various": false,
+                  "composer": false,
+                  "available": true,
+                  "cover": {
+                    "type": "from-artist-photos",
+                    "uri": "avatars.yandex.net/get-music-content/5375761/ab269aae.p.3313381/%%",
+                    "prefix": "ab269aae.p.3313381/"
+                  },
+                  "genres": [],
+                  "disclaimers": [],
+                  "cutoutCover": {
+                    "uri": "avatars.yandex.net/get-music-content/17740720/92c6400f.c.960456/%%"
+                  }
+                }
+              ],
+              "available": true,
+              "availableForPremiumUsers": true,
+              "availableForOptions": [
+                "bookmate"
+              ],
+              "availableForMobile": true,
+              "availablePartially": false,
+              "bests": [
+                145486968,
+                145486974,
+                131788963
+              ],
+              "disclaimers": [
+                "descriptionText:67370c8e13b92b0a60256675"
+              ],
+              "listeningFinished": false,
+              "labels": [
+                "Lotus Music"
+              ],
+              "storageDir": "cdd1df81.a.39362975-1",
+              "trackPosition": {
+                "volume": 1,
+                "index": 7
+              },
+              "regions": [
+                "BELARUS",
+                "BELARUS_PREMIUM"
+              ],
+              "availableRegions": []
+            }
+          ],
+          "coverUri": "avatars.yandex.net/get-music-content/16406615/cdd1df81.a.39362975-1/%%",
+          "derivedColors": {
+            "average": "#203040",
+            "waveText": "#c1e0ff",
+            "miniPlayer": "#9fb7cf",
+            "accent": "#7799bb"
+          },
+          "ogImage": "avatars.yandex.net/get-music-content/16406615/cdd1df81.a.39362975-1/%%",
+          "lyricsAvailable": false,
+          "type": "music",
+          "rememberPosition": false,
+          "backgroundVideoUri": "https://runtime.strm.yandex.ru/videos/vplv47sb6afhqgpxq42f/outputs/d01f618ec459a8ad9247cebeb851a1.mp4",
+          "trackSharingFlag": "COVER_ONLY",
+          "playerId": "vplv47sb6afhqgpxq42f",
+          "lyricsInfo": {
+            "hasAvailableSyncLyrics": true,
+            "hasAvailableTextLyrics": true
+          },
+          "trackSource": "OWN",
+          "specialAudioResources": [
+            "smart_preview"
+          ],
+          "backgroundVideoId": "vplv47sb6afhqgpxq42f",
+          "availableAsRbt": true,
+          "explicit": true,
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ]
+        },
+        {
+          "id": 64072310,
+          "realId": "64072310",
+          "title": "Кино",
+          "major": {
+            "id": 0,
+            "name": "-"
+          },
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableFullWithoutPermission": false,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "disclaimers": [],
+          "storageDir": "",
+          "durationMs": 184440,
+          "fileSize": 0,
+          "r128": {
+            "i": -8.62,
+            "tp": -0.05
+          },
+          "fade": {
+            "inStart": 0.0,
+            "inStop": 1.5,
+            "outStart": 178.4,
+            "outStop": 181.2
+          },
+          "previewDurationMs": 30000,
+          "artists": [
+            {
+              "id": 3892062,
+              "name": "MACAN",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/14304155/77471f61.p.3892062/%%",
+                "prefix": "77471f61.p.3892062/"
+              },
+              "genres": [],
+              "disclaimers": [],
+              "cutoutCover": {
+                "uri": "avatars.yandex.net/get-music-content/19752797/ad5aa1bd.c.999562/%%"
+              }
+            }
+          ],
+          "albums": [
+            {
+              "id": 10252343,
+              "title": "Кино",
+              "type": "single",
+              "metaType": "music",
+              "year": 2020,
+              "releaseDate": "2020-03-30T00:00:00+03:00",
+              "coverUri": "avatars.yandex.net/get-music-content/2358262/d217c998.a.10252343-1/%%",
+              "ogImage": "avatars.yandex.net/get-music-content/2358262/d217c998.a.10252343-1/%%",
+              "genre": "rusrap",
+              "trackCount": 1,
+              "likesCount": 12783,
+              "recent": false,
+              "veryImportant": false,
+              "artists": [
+                {
+                  "id": 3892062,
+                  "name": "MACAN",
+                  "various": false,
+                  "composer": false,
+                  "available": true,
+                  "cover": {
+                    "type": "from-artist-photos",
+                    "uri": "avatars.yandex.net/get-music-content/14304155/77471f61.p.3892062/%%",
+                    "prefix": "77471f61.p.3892062/"
+                  },
+                  "genres": [],
+                  "disclaimers": [],
+                  "cutoutCover": {
+                    "uri": "avatars.yandex.net/get-music-content/19752797/ad5aa1bd.c.999562/%%"
+                  }
+                }
+              ],
+              "available": true,
+              "availableForPremiumUsers": true,
+              "availableForOptions": [
+                "bookmate"
+              ],
+              "availableForMobile": true,
+              "availablePartially": false,
+              "bests": [],
+              "disclaimers": [],
+              "listeningFinished": false,
+              "labels": [
+                "Golden Sound"
+              ],
+              "storageDir": "d217c998.a.10252343-1",
+              "trackPosition": {
+                "volume": 1,
+                "index": 1
+              },
+              "regions": [
+                "BELARUS",
+                "BELARUS_PREMIUM"
+              ],
+              "availableRegions": []
+            }
+          ],
+          "coverUri": "avatars.yandex.net/get-music-content/2358262/d217c998.a.10252343-1/%%",
+          "derivedColors": {
+            "average": "#37312d",
+            "waveText": "#e0e0e0",
+            "miniPlayer": "#beb6b0",
+            "accent": "#a3968e"
+          },
+          "ogImage": "avatars.yandex.net/get-music-content/2358262/d217c998.a.10252343-1/%%",
+          "lyricsAvailable": false,
+          "type": "music",
+          "rememberPosition": false,
+          "trackSharingFlag": "COVER_ONLY",
+          "lyricsInfo": {
+            "hasAvailableSyncLyrics": true,
+            "hasAvailableTextLyrics": true
+          },
+          "trackSource": "OWN",
+          "specialAudioResources": [
+            "karaoke",
+            "smart_preview"
+          ],
+          "availableAsRbt": true,
+          "explicit": false,
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ]
+        },
+        {
+          "id": 124904044,
+          "realId": "124904044",
+          "title": "Кино",
+          "major": {
+            "id": 0,
+            "name": "-"
+          },
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableFullWithoutPermission": false,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "disclaimers": [],
+          "storageDir": "",
+          "durationMs": 201040,
+          "fileSize": 0,
+          "r128": {
+            "i": -5.4,
+            "tp": 1.68
+          },
+          "fade": {
+            "inStart": 0.0,
+            "inStop": 1.5,
+            "outStart": 195.9,
+            "outStop": 198.3
+          },
+          "previewDurationMs": 30000,
+          "artists": [
+            {
+              "id": 10878798,
+              "name": "XOLIDAYBOY",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/15499524/cbcf8a27.p.10878798/%%",
+                "prefix": "cbcf8a27.p.10878798/"
+              },
+              "genres": [],
+              "disclaimers": [],
+              "cutoutCover": {
+                "uri": "avatars.yandex.net/get-music-content/16616584/f1861a5c.c.168600/%%"
+              }
+            }
+          ],
+          "albums": [
+            {
+              "id": 30749264,
+              "title": "Кино",
+              "type": "single",
+              "metaType": "music",
+              "year": 2024,
+              "releaseDate": "2024-04-19T00:00:00+03:00",
+              "coverUri": "avatars.yandex.net/get-music-content/10126140/9bb5155b.a.30749264-1/%%",
+              "ogImage": "avatars.yandex.net/get-music-content/10126140/9bb5155b.a.30749264-1/%%",
+              "genre": "ruspop",
+              "trackCount": 1,
+              "likesCount": 12978,
+              "recent": false,
+              "veryImportant": false,
+              "artists": [
+                {
+                  "id": 10878798,
+                  "name": "XOLIDAYBOY",
+                  "various": false,
+                  "composer": false,
+                  "available": true,
+                  "cover": {
+                    "type": "from-artist-photos",
+                    "uri": "avatars.yandex.net/get-music-content/15499524/cbcf8a27.p.10878798/%%",
+                    "prefix": "cbcf8a27.p.10878798/"
+                  },
+                  "genres": [],
+                  "disclaimers": [],
+                  "cutoutCover": {
+                    "uri": "avatars.yandex.net/get-music-content/16616584/f1861a5c.c.168600/%%"
+                  }
+                }
+              ],
+              "available": true,
+              "availableForPremiumUsers": true,
+              "availableForOptions": [
+                "bookmate"
+              ],
+              "availableForMobile": true,
+              "availablePartially": false,
+              "bests": [],
+              "disclaimers": [],
+              "listeningFinished": false,
+              "labels": [
+                "Banana Music"
+              ],
+              "storageDir": "9bb5155b.a.30749264-1",
+              "trackPosition": {
+                "volume": 1,
+                "index": 1
+              },
+              "regions": [
+                "BELARUS",
+                "BELARUS_PREMIUM"
+              ],
+              "availableRegions": []
+            }
+          ],
+          "coverUri": "avatars.yandex.net/get-music-content/10126140/9bb5155b.a.30749264-1/%%",
+          "derivedColors": {
+            "average": "#5c6f5c",
+            "waveText": "#e0e0e0",
+            "miniPlayer": "#b1beb1",
+            "accent": "#8fa28f"
+          },
+          "ogImage": "avatars.yandex.net/get-music-content/10126140/9bb5155b.a.30749264-1/%%",
+          "lyricsAvailable": true,
+          "type": "music",
+          "rememberPosition": false,
+          "backgroundVideoUri": "https://runtime.strm.yandex.ru/videos/vplvnbbmuv2faqfywenj/outputs/ecc3dce168fe2c9fa2cda341ef14ec.mp4",
+          "trackSharingFlag": "COVER_ONLY",
+          "playerId": "vplvnbbmuv2faqfywenj",
+          "lyricsInfo": {
+            "hasAvailableSyncLyrics": true,
+            "hasAvailableTextLyrics": true
+          },
+          "trackSource": "OWN",
+          "specialAudioResources": [
+            "karaoke",
+            "smart_preview"
+          ],
+          "backgroundVideoId": "vplvnbbmuv2faqfywenj",
+          "availableAsRbt": true,
+          "explicit": false,
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ]
+        }
+      ]
+    },
+    "podcasts": {
+      "total": 1382,
+      "perPage": 10,
+      "order": 4,
+      "results": [
+        {
+          "id": 10572815,
+          "title": "КиноТеатр",
+          "type": "podcast",
+          "metaType": "podcast",
+          "coverUri": "avatars.yandex.net/get-music-content/2424959/b28d033f.a.10572815-2/%%",
+          "ogImage": "avatars.yandex.net/get-music-content/2424959/b28d033f.a.10572815-2/%%",
+          "trackCount": 8,
+          "likesCount": 83,
+          "recent": false,
+          "veryImportant": false,
+          "artists": [],
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "availableForMobile": true,
+          "availablePartially": false,
+          "bests": [],
+          "disclaimers": [],
+          "listeningFinished": false,
+          "labels": [],
+          "storageDir": "b28d033f.a.10572815-2",
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ],
+          "availableRegions": []
+        }
+      ]
+    },
+    "albums": {
+      "total": 1825,
+      "perPage": 10,
+      "order": 3,
+      "results": [
+        {
+          "id": 10252343,
+          "title": "Кино",
+          "type": "single",
+          "metaType": "music",
+          "year": 2020,
+          "releaseDate": "2020-03-30T00:00:00+03:00",
+          "coverUri": "avatars.yandex.net/get-music-content/2358262/d217c998.a.10252343-1/%%",
+          "ogImage": "avatars.yandex.net/get-music-content/2358262/d217c998.a.10252343-1/%%",
+          "genre": "rusrap",
+          "trackCount": 1,
+          "likesCount": 12783,
+          "recent": false,
+          "veryImportant": false,
+          "artists": [
+            {
+              "id": 3892062,
+              "name": "MACAN",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/14304155/77471f61.p.3892062/%%",
+                "prefix": "77471f61.p.3892062/"
+              },
+              "genres": [],
+              "disclaimers": [],
+              "cutoutCover": {
+                "uri": "avatars.yandex.net/get-music-content/19752797/ad5aa1bd.c.999562/%%"
+              }
+            }
+          ],
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "availableForMobile": true,
+          "availablePartially": false,
+          "bests": [],
+          "disclaimers": [],
+          "listeningFinished": false,
+          "labels": [
+            "Golden Sound"
+          ],
+          "storageDir": "d217c998.a.10252343-1",
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ],
+          "availableRegions": [
+            "jo",
+            "md",
+            "ge",
+            "eg",
+            "tm",
+            "om",
+            "il",
+            "am",
+            "bh",
+            "tj",
+            "uz",
+            "by",
+            "kw",
+            "sa",
+            "ua",
+            "ru",
+            "kg",
+            "ae",
+            "qa",
+            "az",
+            "kz",
+            "pk",
+            "iq"
+          ]
+        },
+        {
+          "id": 30749264,
+          "title": "Кино",
+          "type": "single",
+          "metaType": "music",
+          "year": 2024,
+          "releaseDate": "2024-04-19T00:00:00+03:00",
+          "coverUri": "avatars.yandex.net/get-music-content/10126140/9bb5155b.a.30749264-1/%%",
+          "ogImage": "avatars.yandex.net/get-music-content/10126140/9bb5155b.a.30749264-1/%%",
+          "genre": "ruspop",
+          "trackCount": 1,
+          "likesCount": 12978,
+          "recent": false,
+          "veryImportant": false,
+          "artists": [
+            {
+              "id": 10878798,
+              "name": "XOLIDAYBOY",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/15499524/cbcf8a27.p.10878798/%%",
+                "prefix": "cbcf8a27.p.10878798/"
+              },
+              "genres": [],
+              "disclaimers": [],
+              "cutoutCover": {
+                "uri": "avatars.yandex.net/get-music-content/16616584/f1861a5c.c.168600/%%"
+              }
+            }
+          ],
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "availableForMobile": true,
+          "availablePartially": false,
+          "bests": [],
+          "disclaimers": [],
+          "listeningFinished": false,
+          "labels": [
+            "Banana Music"
+          ],
+          "storageDir": "9bb5155b.a.30749264-1",
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ],
+          "availableRegions": [
+            "jo",
+            "md",
+            "ge",
+            "eg",
+            "tm",
+            "om",
+            "il",
+            "am",
+            "bh",
+            "tj",
+            "uz",
+            "by",
+            "kw",
+            "sa",
+            "ua",
+            "ru",
+            "kg",
+            "ae",
+            "qa",
+            "az",
+            "kz",
+            "pk",
+            "iq"
+          ]
+        },
+        {
+          "id": 43447453,
+          "title": "КИНО",
+          "type": "single",
+          "metaType": "music",
+          "contentWarning": "explicit",
+          "year": 2026,
+          "releaseDate": "2026-08-21T00:00:00+03:00",
+          "coverUri": "avatars.yandex.net/get-music-content/21498071/63841757.a.43447453-1/%%",
+          "ogImage": "avatars.yandex.net/get-music-content/21498071/63841757.a.43447453-1/%%",
+          "genre": "rusrock",
+          "trackCount": 1,
+          "likesCount": 739,
+          "recent": false,
+          "veryImportant": false,
+          "artists": [
+            {
+              "id": 9538938,
+              "name": "NATCORN",
+              "various": false,
+              "composer": false,
+              "available": true,
+              "cover": {
+                "type": "from-artist-photos",
+                "uri": "avatars.yandex.net/get-music-content/16496077/4e054565.p.9538938/%%",
+                "prefix": "4e054565.p.9538938/"
+              },
+              "genres": [],
+              "disclaimers": [],
+              "cutoutCover": {
+                "uri": "avatars.yandex.net/get-music-content/20031403/efb7e71d.c.152963/%%"
+              }
+            }
+          ],
+          "available": true,
+          "availableForPremiumUsers": true,
+          "availableForOptions": [
+            "bookmate"
+          ],
+          "availableForMobile": true,
+          "availablePartially": false,
+          "bests": [],
+          "disclaimers": [
+            "age18",
+            "age18Icon:671a23afcec5646906723a53",
+            "descriptionText:67370c8e13b92b0a60256675"
+          ],
+          "listeningFinished": false,
+          "labels": [
+            "DNK Music"
+          ],
+          "storageDir": "63841757.a.43447453-1",
+          "regions": [
+            "BELARUS",
+            "BELARUS_PREMIUM"
+          ],
+          "availableRegions": [
+            "jo",
+            "md",
+            "ge",
+            "eg",
+            "tm",
+            "om",
+            "il",
+            "am",
+            "bh",
+            "tj",
+            "uz",
+            "mn",
+            "by",
+            "kw",
+            "sa",
+            "ua",
+            "ru",
+            "kg",
+            "ae",
+            "qa",
+            "az",
+            "kz",
+            "iq"
+          ]
+        }
+      ]
+    }
+  }
+}

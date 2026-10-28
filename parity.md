@@ -27,7 +27,8 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Stations, grouped by type | yes | yes | |
 | My Wave | yes | yes | [wave.md](player/wave.md) |
 | Wheel of waves (waves matched to the current track) | yes | yes | `POST /wheel/new` |
-| Search with the best result | yes | yes | [SRC-09 to SRC-12](player/sources.md#search) |
+| Search shows its results: the best result, tracks, artists and albums; a found track plays the found tracks from it; an artist or album opens to its tracks | no: Kickoman/QiYaa#73 | no: Kickoman/QiYaa-android#144 | [SRC-13 to SRC-19](player/sources.md#search), [SPOT-11](player/spotify.md#picks) |
+| Play next and Add to the end, for a track or an album | no: Kickoman/QiYaa#73 | no: Kickoman/QiYaa-android#144 | [ADD-01 to ADD-09](player/queue.md); during a jam the search adds to the jam ([HOST-38](jam/host.md#adding-as-the-host)) |
 | Empty source, or one whose tracks are all unavailable, keeps the queue | yes | yes | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |
@@ -35,7 +36,7 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Local files from the phone's media library: all tracks, albums, artists and folders, with the permission to read audio | n/a | not checked: Kickoman/QiYaa-android#118 | [LOCAL-10 to LOCAL-14](player/local.md#the-phones-media-library-android) |
 | Local files: tags and covers, read from the disk; no wave from history after them | yes | not checked: Kickoman/QiYaa-android#118 | [local.md](player/local.md), [CONT-12](player/continuation.md#the-flag). Android: the media library's tags (one line of artists) and pictures ([LOCAL-04, LOCAL-05](player/local.md#tracks)); a codec the phone cannot decode fails when it plays, and FLAC without a decoder is not taken ([LOCAL-13](player/local.md#the-phones-media-library-android)) |
 | Ogg Vorbis among local files | yes | not checked: Kickoman/QiYaa-android#118 | [LOCAL-09](player/local.md#tracks) |
-| Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search with the best result, radio by a track | yes | not checked: Kickoman/QiYaa-android#118 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
+| Spotify (Premium): Liked Songs, playlists (Spotify's own too), albums, artists, "For you", search, radio by a track | yes | not checked: Kickoman/QiYaa-android#118 | [SPOT-07 to SPOT-12](player/spotify.md#picks) |
 | Spotify tracks: Ogg Vorbis 320 or 96 kbps by the quality, refused audio keys stop playback, Spotify's autoplay after a queue | yes | not checked: Kickoman/QiYaa-android#118 | [SPOT-13 to SPOT-22](player/spotify.md#playing-a-track) |
 
 ## Playback

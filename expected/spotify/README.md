@@ -155,7 +155,7 @@ What an app must get right, beyond the field numbers above.
       `profile.name`;
     - `Album` with a `spotify:album:` URI is `album`, its name `name`;
     - anything else is `tracks` with `best` `null`.
-  - Nothing found is `tracks` without `trackUris` (SRC-12).
+  - Nothing found is `tracks` without `trackUris` ([SRC-19](../../player/sources.md#search)).
 - **Home**, from `data.home.sectionContainer`; without it the reply is unreadable.
   - The section is the item of `sections.items` whose `uri` is
     `spotify:section:0JQ5DAUnp4wcj0bCb3wh3S`, Made For You.

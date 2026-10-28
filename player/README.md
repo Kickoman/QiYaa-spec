@@ -5,6 +5,7 @@ How the player behaves, as scenarios that the tests of both apps check. One file
 | File | Area | IDs |
 |---|---|---|
 | [sources.md](sources.md) | Loading a source into the queue: requests, empty sources, unavailable tracks, search | `SRC-` |
+| [queue.md](queue.md) | Adding to the queue without replacing it: "Play next" and "Add to the end" | `ADD-` |
 | [wave.md](wave.md) | Waves (rotor): start, loading more, shuffle and repeat in a wave | `WAVE-` |
 | [continuation.md](continuation.md) | What follows a queue's head: the flag "continue with a wave", the wave from history, shuffle and repeat with a continuation | `CONT-` |
 | [tracking.md](tracking.md) | Play reports: `/play-audio` and the rotor feedback events | `TRK-` |
@@ -50,15 +51,19 @@ scenario names its ID in its name or in a comment.
   are a wave with an empty head ([wave.md](wave.md)); a wave from history follows a head
   ([continuation.md](continuation.md)). A **wave track** is a track a wave gave.
 - **Current track**: the track under the cursor, whether it is playing, paused or stopped.
-- **Play order**: the order in which the queue plays: the head in its source order, or with
-  shuffle in the order of the chosen algorithm ([shuffle.md](shuffle.md)), then the continuation
-  in its own order.
+- **Play order**: the order in which the queue plays: the waiting tracks first ([queue.md](queue.md)),
+  then the head in its source order, or with shuffle in the order of the chosen algorithm
+  ([shuffle.md](shuffle.md)), then the continuation in its own order.
 - **Remaining**: the number of tracks from the current one to the end of the queue in play order,
   counting the current track. It is endless while repeat holds the head (CONT-10) and with Random
   track (SHUF-08).
 - **Source request**: a request that replaces the queue. It covers likes, a playlist, an album, an
-  artist, a station, a wave, a search, local files or a folder, a pick of the phone's media library
+  artist, a station, a wave, a track played from a search or from an artist or album opened in it
+  ([SRC-16, SRC-18](sources.md#search)), local files or a folder, a pick of the phone's media library
   ([local.md](local.md)), and the picks of Spotify ([spotify.md](spotify.md)).
+- **Waiting track**: a track that plays once, right after the current one and before the queue goes
+  on: added with "Play next" ([ADD-01](queue.md)), or a jam item
+  ([jam/host.md](../jam/host.md#the-base)).
 - **Status**: a short message the user sees. On desktop this is the main window's status line,
   and on Android a toast or snackbar. The wording is up to each app; the spec only fixes when a
   status appears.

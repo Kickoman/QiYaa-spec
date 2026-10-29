@@ -75,4 +75,4 @@ issue is fixed, remove its tag from the scenario rows and delete the entry here.
 
 | Gap | App | What the app does instead | Scenarios | Issue |
 |---|---|---|---|---|
-| A6 | Android | Outside a jam, removing the current track stops playback only when a waiting track would play next: that track then waits for Play or Next. With tracks added to the end and no waiting track behind the current one, the next track plays on at once. The general case of removing the current track outside a jam is not specified, and the two apps differ in it | ADD-07 | Kickoman/QiYaa-spec#17 |
+| A6 | Android | Outside a jam, removing the current track stops playback only when a waiting track would play next, which then waits for Play or Next, or when nothing would play next ([TR-04](transport.md)). When the track that would play next is not a waiting one, such as a head track (a track added to the end included), it starts at once. The general case of removing the current track outside a jam is not specified, and the two apps differ in it | ADD-07 | Kickoman/QiYaa-spec#17 |

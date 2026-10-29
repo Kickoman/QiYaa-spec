@@ -27,8 +27,8 @@ When a feature lands on one platform, add its row here and open an issue for the
 | Stations, grouped by type | yes | yes | |
 | My Wave | yes | yes | [wave.md](player/wave.md) |
 | Wheel of waves (waves matched to the current track) | yes | yes | `POST /wheel/new` |
-| Search shows its results: the best result, tracks, artists and albums; a found track plays the found tracks from it; an artist or album opens to its tracks | yes | no: Kickoman/QiYaa-android#144 | [SRC-13 to SRC-19](player/sources.md#search), [SPOT-11](player/spotify.md#picks); Spotify's artists and albums on the desktop are not checked against a live reply yet (Kickoman/QiYaa#73) |
-| Play next and Add to the end, for a track or an album | yes | no: Kickoman/QiYaa-android#144 | [ADD-01 to ADD-09](player/queue.md); during a jam the search adds to the jam ([HOST-38](jam/host.md#adding-as-the-host)) |
+| Search shows its results: the best result, tracks, artists and albums; a found track plays the found tracks from it; an artist or album opens to its tracks | yes | not checked: Kickoman/QiYaa-android#118 | [SRC-13 to SRC-19](player/sources.md#search), [SPOT-11](player/spotify.md#picks); Spotify's artists and albums on the desktop are not checked against a live reply yet (Kickoman/QiYaa#73) |
+| Play next and Add to the end, for a track or an album | yes | differs: gap A6, Kickoman/QiYaa-spec#17 | [ADD-01 to ADD-09](player/queue.md); during a jam the search adds to the jam ([HOST-38](jam/host.md#adding-as-the-host)) |
 | Empty source, or one whose tracks are all unavailable, keeps the queue | yes | yes | [SRC-07, SRC-08, WAVE-03](player/sources.md) |
 | The last source picked wins over slower earlier ones | yes | yes | [SRC-01 to SRC-03](player/sources.md) |
 | Open the track in the browser | yes | yes | |

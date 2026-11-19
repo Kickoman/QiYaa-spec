@@ -122,6 +122,11 @@ A guest's track is built like a track of the app's own parsing ([expected/yandex
 | HOST-30 | Connected | `validateRequest{requestId, trackIds}` | `POST /tracks` with those ids. `validateResult{requestId, results}` with one result per id, in order: `track` for a track that is available, `reason: track-unavailable` for one that is missing or unavailable. If the request fails: `reason: failed` for every id. | yes | yes |
 | HOST-31 | Connected | Either request | The answer goes out within the host timeout ([limits](limits.md#requests-through-the-host)), even while the player is busy: these requests do not wait behind playback work. | yes | yes |
 
+A protocol 2 host can create and resume a room with Spotify as its only available catalogue.
+It searches through its own Spotify session and existing metadata lookup, returns up to 20
+playable tracks in search order, and plays queued results through the Spotify playback source.
+A host with both accounts can continue with the remaining catalogue when one signs out.
+
 ## The end
 
 | ID | Given | When | Then | Desktop | Android |

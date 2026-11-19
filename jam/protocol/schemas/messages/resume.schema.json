@@ -41,6 +41,17 @@
       "items": {
         "$ref": "started.schema.json"
       }
+    },
+    "searchSources": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "yandex",
+          "spotify"
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 2
     }
   }
 }

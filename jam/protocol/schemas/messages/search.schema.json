@@ -18,6 +18,12 @@
     },
     "text": {
       "$ref": "../defs.schema.json#/$defs/searchText"
+    },
+    "source": {
+      "enum": [
+        "yandex",
+        "spotify"
+      ]
     }
   }
 }

@@ -191,7 +191,7 @@ an unknown field now and ignored, and the name stays on the list above so that i
   with no cover and no link to Yandex Music.
 
 A `host` track appears only as the track of `playing{source: wave}` and of `room.nowPlaying`. Queue
-items, recent items, search results and checked tracks are tracks of the catalog (`CatalogTrack`
+items, recent items, search results and checked tracks are tracks of a supported catalog (`CatalogTrack`
 in the schemas), and the server refuses an `add` of a `host` track
 ([ROOM-66](../room.md#add)).
 
@@ -239,8 +239,20 @@ Reconnecting waits 1, 2, 4 … up to 30 s, and happens at once when the network 
 
 ## Versions and unknown content
 
-- This is protocol **1**. A change that an old client could not safely ignore bumps the number.
-  Adding optional fields, or messages that only the other side needs, does not.
+- The server accepts protocols **1** and **2** and echoes the negotiated version in `welcome`.
+  Protocol 1 keeps Yandex search, add and host recovery. Version 2 adds Spotify catalog tracks.
+- A version 2 host publishes `searchSources` at create and resume and updates it with `settings`.
+  Omission defaults to Yandex. The room publishes the list to version 2 guests.
+- Search and search requests have an optional catalogue `source` (default `yandex`). The host
+  returns tracks from that source only. Web adds name the track by `source` and `trackId`.
+  The server checks that source against the host's list and looks up both fields in the guest's cache.
+  QiYaa guest adds continue to use Yandex and host validation.
+- Spotify catalog tracks carry `source: spotify` and a 22-character base62 track ID. They have
+  no `albumId` or `coverUri`. Queue identity includes the catalogue source. Spotify tracks enter
+  the queue and recent history but do not seed the Yandex wave or carry listening links.
+- A version 1 guest receives queue and recent history without Spotify items. A Spotify current
+  track is projected as a host base track with title and artists. The stored room stays intact.
+  A version 1 host cannot resume a room with Spotify tracks in its stored state.
 - Unknown fields are ignored by everyone, and the schemas allow them. The exception is the
   secret names in `state` and in the snapshot.
 - An unknown value of a known field is refused: by the server's schemas and by the apps' decoders.

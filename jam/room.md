@@ -24,7 +24,7 @@ connections is in [recovery.md](recovery.md).
 - **Item**: a track in the jam, with `itemId`, `addedBy`, `addedAt` and, once pinned, `pinnedAt`.
   An item is **waiting** while it is in the queue. It is **current** while it is
   `nowPlaying` with `source: item`. It is **recent** after that, with `playedAt` = the time it
-  stopped being current; the latest 10 are kept. An item's track is always a track of the Yandex
+  stopped being current; the latest 10 are kept. An item's track belongs to the Yandex Music or Spotify
   catalog (ROOM-66).
 - **Waiting items of a guest**: the items in the queue that the guest added, pinned or not. This is
   `participants[].pending`.
@@ -68,23 +68,23 @@ not kicked → known participant (then admitted at once) → join secret → roo
 
 | ID | Given | When | Then | Server |
 |---|---|---|---|---|
-| ROOM-14 | A web guest got track T in its own `searchResults` within the last 30 min, among its latest 200 result tracks | `add{trackId: T}` | A new item: `itemId` = `i` + the room's next number, the track's metadata from those results, `addedBy` = the guest, `addedAt` = now, not pinned. `ack`, then state to all. | no: #7, #9 |
-| ROOM-15 | — | A web guest sends `add{trackId}` for a track that it did not get in its own results, or got more than 30 min ago, or that dropped out of its latest 200 | `rejected{unknown-track}`. Another guest's results do not count. | no: #9 |
-| ROOM-16 | The host is online | A QiYaa guest sends `add{track}` | The server sends the host `validateRequest{trackIds: [track.id]}`. If the host answers with a `track`, the item is added with the host's metadata, not the guest's. Then `ack` and state to all. | no: #9 |
+| ROOM-14 | The catalog is enabled and a web guest got track T in its own `searchResults` within the last 30 min, among its latest 200 result tracks | `add{trackId: T, source}` for the same catalog (omitted source means Yandex) | A new item: `itemId` = `i` + the room's next number, the track's metadata from those results, `addedBy` = the guest, `addedAt` = now, not pinned. `ack`, then state to all. | no: #7, #9 |
+| ROOM-15 | — | A web guest sends `add{trackId, source}` for an enabled catalog and track ID that it did not get in its own results, or got more than 30 min ago, or that dropped out of its latest 200 | `rejected{unknown-track}`. Another guest's results do not count. | no: #9 |
+| ROOM-16 | The host is online and Yandex is enabled | A QiYaa guest sends `add{track}` for a Yandex track | The server sends the host `validateRequest{trackIds: [track.id]}`. If the host answers with a `track`, the item is added with the host's metadata, not the guest's. Then `ack` and state to all. | no: #9 |
 | ROOM-17 | As ROOM-16 | The host answers `reason: track-unavailable`, or `reason: failed` | `rejected{track-unavailable}`, or `rejected{host-error}`. | no: #9 |
-| ROOM-18 | The host is offline, or does not answer in 10 s | A QiYaa guest sends `add{track}` | `rejected{host-offline}`, or `rejected{host-timeout}`. | no: #9 |
+| ROOM-18 | Yandex is enabled and the host is offline or does not answer in 10 s | A QiYaa guest sends `add{track}` for a Yandex track | `rejected{host-offline}`, or `rejected{host-timeout}`. | no: #9 |
 | ROOM-19 | — | The host sends `add{track}` | The item is added with the host's metadata as sent, without a check and without a per-person limit. `ack`, state to all. | no: #7 |
-| ROOM-20 | An item with the same track id is waiting | Anyone, the host included, adds that track | `rejected{duplicate}`. The same track may be added again once it is current or recent. | no: #7 |
+| ROOM-20 | An item with the same catalog and track ID is waiting | Anyone, the host included, adds that track | `rejected{duplicate}`. The same track may be added again once it is current or recent. | no: #7 |
 | ROOM-21 | A guest has `maxPendingPerGuest` waiting items | It adds | `rejected{queue-limit}`. | no: #7 |
 | ROOM-22 | The queue holds its maximum of items | Anyone adds | `rejected{queue-limit}`. | no: #7 |
 | ROOM-23 | A guest sent its maximum of `add` requests in the last minute, accepted or not | It sends another | `rejected{rate-limited}`. | no: #8 |
-| ROOM-66 | — | The host or a QiYaa guest sends `add{track}` with `track.source: host` | `rejected{not-allowed}`: an item is a track of the Yandex catalog. A QiYaa guest's track is refused before the host is asked: no `validateRequest`. | no: #17 |
+| ROOM-66 | — | The host or a QiYaa guest sends `add{track}` with `track.source: host` | `rejected{not-allowed}`: an item belongs to a supported catalog. A QiYaa guest's track is refused before the host is asked: no `validateRequest`. | no: #17 |
 
 ## Search
 
 | ID | Given | When | Then | Server |
 |---|---|---|---|---|
-| ROOM-24 | The host is online | A web guest sends `search{text}` | The text is trimmed, and runs of spaces become one. The server sends the host `searchRequest{requestId, text}` with its own `requestId`. The host's `searchResult.tracks` go to that guest as `searchResults{id, tracks}` and into its result cache (ROOM-14). | no: #9 |
+| ROOM-24 | The host is online and the requested catalog is enabled | A web guest sends `search{text, source}` (omitted source means Yandex) | The text is trimmed, and runs of spaces become one. The server sends the host `searchRequest{requestId, text, source}` with its own `requestId`. The host's matching-catalog `searchResult.tracks` go to that guest as `searchResults{id, tracks}` and into its result cache (ROOM-14). | no: #9 |
 | ROOM-25 | As ROOM-24 | The host is offline; or does not answer in 10 s; or answers `error` | `rejected{host-offline}`; `rejected{host-timeout}`; `rejected{host-error}`. An answer that comes later, or with a `requestId` the server does not expect, is dropped. | no: #9 |
 | ROOM-26 | A web guest sent its maximum of searches in the last minute | It searches | `rejected{rate-limited}`. No request to the host. | no: #8 |
 | ROOM-27 | — | A QiYaa guest sends `search` | `rejected{not-allowed}`: it searches with its own account. | no: #8 |

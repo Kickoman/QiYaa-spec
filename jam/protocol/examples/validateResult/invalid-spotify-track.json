@@ -1,0 +1,18 @@
+{
+  "type": "validateResult",
+  "requestId": "v3",
+  "results": [
+    {
+      "trackId": "4uLU6hMCjMI75M1A2tKUQC",
+      "track": {
+        "id": "4uLU6hMCjMI75M1A2tKUQC",
+        "title": "A track",
+        "artists": [
+          "An artist"
+        ],
+        "durationMs": 297700,
+        "source": "spotify"
+      }
+    }
+  ]
+}

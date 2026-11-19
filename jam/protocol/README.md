@@ -198,7 +198,7 @@ in the schemas), and the server refuses an `add` of a `host` track
 
 The server never takes a guest's word for a track's metadata. A web guest identifies a track from its own search results with `trackId` and, for Spotify,
 `source`. The host replaces a QiYaa guest's track with its own
-canonical metadata (`validateResult`).
+canonical Yandex metadata (`validateResult`).
 
 ## Reasons
 
@@ -212,7 +212,7 @@ canonical metadata (`validateResult`).
 | `rate-limited` | any request over a rate limit; `create`, or a `resume` that would raise a room, over the rooms of one IP |
 | `queue-limit` | `add`: the guest has `maxPendingPerGuest` items waiting, or the queue is full |
 | `duplicate` | `add`: the track is already waiting in the queue |
-| `not-allowed` | the sender's role or the room's settings do not allow it; `add` of a track that only the host can play |
+| `not-allowed` | the sender's role or the room's settings do not allow it, the required catalog is unavailable or unsupported for this operation, or a track can only be played by the host |
 | `stale` | the item is no longer in the queue, or a `skip` names an item that is not playing |
 | `unknown-track` | `add` from a web guest: the `trackId` is not among the search results the server gave that guest recently |
 | `track-unavailable` | `add` from a QiYaa guest: the host cannot play the track |
@@ -220,7 +220,7 @@ canonical metadata (`validateResult`).
 | `host-timeout` | the host did not answer a `searchRequest` or `validateRequest` in time |
 | `host-error` | the host answered with an error (`searchResult.error`, `validateResult` reason `failed`) |
 | `invalid-message` | the message does not match its schema; the connection is closed next |
-| `update-required` | `hello` names a protocol this server does not speak; carries `serverProtocol` |
+| `update-required` | `hello` names a protocol this server does not speak; or a protocol 1 host tries to resume a live room or snapshot with a Spotify track in the queue, current playback or recent history. Sent without `id`, carries `serverProtocol`, and closes the connection with code 1000 |
 | `server-full` | `create`, or a `resume` that would raise a room from its snapshot: the server has its maximum of rooms |
 
 A client that meets a `reason` it does not know shows a general failure.
@@ -247,13 +247,16 @@ Reconnecting waits 1, 2, 4 … up to 30 s, and happens at once when the network 
 - Search and search requests have an optional catalogue `source` (default `yandex`). The host
   returns tracks from that source only. Web adds name the track by `source` and `trackId`.
   The server checks that source against the host's list and looks up both fields in the guest's cache.
-  QiYaa guest adds continue to use Yandex and host validation.
+  QiYaa guest adds continue to use Yandex and host validation. When the host removes a catalog
+  through settings or resume, the server discards its cached results and rejects outstanding
+  guest searches and validations for it with `not-allowed`.
 - Spotify catalog tracks carry `source: spotify` and a 22-character base62 track ID. They have
   no `albumId` or `coverUri`. Queue identity includes the catalogue source. Spotify tracks enter
   the queue and recent history but do not seed the Yandex wave or carry listening links.
 - A version 1 guest receives queue and recent history without Spotify items. A Spotify current
   track is projected as a host base track with title and artists. The stored room stays intact.
-  A version 1 host cannot resume a room with Spotify tracks in its stored state.
+  A version 1 host receives `update-required` when it tries to resume a room whose stored
+  state contains Spotify tracks.
 - Unknown fields are ignored by everyone, and the schemas allow them. The exception is the
   secret names in `state` and in the snapshot.
 - An unknown value of a known field is refused: by the server's schemas and by the apps' decoders.

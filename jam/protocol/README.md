@@ -177,7 +177,8 @@ an unknown field now and ignored, and the name stays on the list above so that i
 `track = {id, source?, albumId?, title, artists[], durationMs, coverUri?}`:
 
 - `source`: `yandex`, a track of the Yandex catalog, is the default and is usually left out.
-  `host` is a track that only the host can play: a local file or a Spotify track.
+  `spotify` is a track of the Spotify catalog. `host` is a base track reported as host-only,
+  for example a local file or a track from the host’s own Spotify queue.
 - `id` and `albumId`: catalogue ids as strings. A `host` track's `id` is the host's own: the same
   for the same track during a jam session, and never a path or a file name, since every guest gets
   it. It keeps the pattern of catalogue ids, so a decoder that does not know `source` still reads
@@ -195,8 +196,8 @@ items, recent items, search results and checked tracks are tracks of a supported
 in the schemas), and the server refuses an `add` of a `host` track
 ([ROOM-66](../room.md#add)).
 
-The server never takes a guest's word for a track's metadata. A web guest sends only a `trackId`
-from the search results the server gave it. The host replaces a QiYaa guest's track with its own
+The server never takes a guest's word for a track's metadata. A web guest identifies a track from its own search results with `trackId` and, for Spotify,
+`source`. The host replaces a QiYaa guest's track with its own
 canonical metadata (`validateResult`).
 
 ## Reasons

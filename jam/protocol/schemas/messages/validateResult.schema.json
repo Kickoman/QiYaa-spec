@@ -30,7 +30,13 @@
             "$ref": "../defs.schema.json#/$defs/catalogId"
           },
           "track": {
-            "$ref": "../track.schema.json#/$defs/catalogTrack"
+            "$ref": "../track.schema.json#/$defs/catalogTrack",
+            "type": "object",
+            "properties": {
+              "source": {
+                "const": "yandex"
+              }
+            }
           },
           "reason": {
             "enum": [

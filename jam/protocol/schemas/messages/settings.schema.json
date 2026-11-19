@@ -6,8 +6,7 @@
   "type": "object",
   "required": [
     "type",
-    "id",
-    "settings"
+    "id"
   ],
   "properties": {
     "type": {
@@ -24,6 +23,29 @@
         }
       ],
       "minProperties": 1
+    },
+    "searchSources": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "yandex",
+          "spotify"
+        ]
+      },
+      "uniqueItems": true,
+      "maxItems": 2
     }
-  }
+  },
+  "anyOf": [
+    {
+      "required": [
+        "settings"
+      ]
+    },
+    {
+      "required": [
+        "searchSources"
+      ]
+    }
+  ]
 }

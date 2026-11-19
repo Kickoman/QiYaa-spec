@@ -20,6 +20,12 @@
     },
     "track": {
       "$ref": "../track.schema.json"
+    },
+    "source": {
+      "enum": [
+        "yandex",
+        "spotify"
+      ]
     }
   },
   "oneOf": [

@@ -140,3 +140,10 @@ A host with both accounts can continue with the remaining catalogue when one sig
 |---|---|---|---|---|---|
 | HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. A base track carries no name: the jam wave's tracks are marked as the jam wave, and the rest of the base looks as it does outside a jam. The current track's line says who added it. | yes | yes |
 | HOST-35 | A jam session | — | The jam window or screen shows a QR code of `joinUrl`, the link with a copy or share action, the participants with their online state and a kick action, the settings, "new link" and "end", and whether the host is connected. | yes | yes |
+
+### Desktop catalog logout
+
+| ID | Given | When | Then | Desktop | Android |
+| --- | --- | --- | --- | --- | --- |
+| HOST-39 | An active or stored Desktop Jam | The host explicitly logs out of a catalog | The host disables guest search for that catalog and removes its waiting items from the room. The room stays open even with no searchable catalogs. Cleanup continues after reconnect and before search for that catalog is re-enabled. | yes | no |
+| HOST-40 | A Desktop Jam with a mixed playlist | The host explicitly logs out of a catalog | Waiting tracks of that source and its continuation are removed from local playback. Other sources retain their order. A playing or loading track of the logged-out source gives way to the next available track. Paused or stopped playback does not start on logout. | yes | no |

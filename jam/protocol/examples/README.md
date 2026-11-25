@@ -43,6 +43,7 @@ pass, `invalid-*` must fail. Each invalid example is listed here with the reason
 | `validateResult/invalid-track-and-reason.json` | A result carries either `track` or `reason`, not both. |
 | `validateResult/invalid-no-results.json` | `results` is empty. |
 | `validateResult/invalid-host-track.json` | A checked track is a track of the Yandex catalog, never a `host` one. |
+| `validateResult/invalid-spotify-track.json` | Validation only returns Yandex catalog tracks. |
 | `join/invalid-name-with-spaces.json` | `name` has spaces at its ends: the client trims it before sending. |
 | `join/invalid-name-ending-in-bom.json` | `name` ends in U+FEFF, white space in ECMAScript though not by Unicode properties. |
 | `join/invalid-participant-not-uuid.json` | `participantId` is not a UUID v4. |

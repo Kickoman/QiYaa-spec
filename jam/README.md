@@ -1,7 +1,7 @@
 # Jam
 
 A shared queue for a party. One QiYaa (desktop or Android) hosts the jam and plays the music with
-its Yandex account. Guests scan a QR code and add tracks from a browser or from their own QiYaa.
+its connected Yandex Music or Spotify account. Guests scan a QR code and add tracks from a browser or from their own QiYaa.
 A small jam server holds the room and its rules. The server and the web guest live in
 [Kickoman/QiYaa-jam](https://github.com/Kickoman/QiYaa-jam). Everything here is shared by the
 server and both apps.

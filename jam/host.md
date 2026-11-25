@@ -113,14 +113,19 @@ The host's account must not learn the party's taste.
 
 ## Search and check for guests
 
-A guest's track is built like a track of the app's own parsing ([expected/yandex](../expected/yandex/README.md)): `id`, the first album's id as `albumId`, `title` with the version, the artists' names, `durationMs`, and `coverUri` in the same order of sources (left out when there is none). Artists are cut to 10 and names to 64 characters.
+A guest's Yandex track is built like a track of the app's own parsing ([expected/yandex](../expected/yandex/README.md)): `id`, the first album's id as `albumId`, `title` with the version, the artists' names, `durationMs`, and `coverUri` in the same order of sources (left out when there is none). Artists are cut to 10 and names to 64 characters.
 
 | ID | Given | When | Then | Desktop | Android |
 |---|---|---|---|---|---|
-| HOST-28 | Connected | `searchRequest{requestId, text}` | `GET /search?text=<text>&type=track&page=0`. `searchResult{requestId, tracks}` with the available tracks of `tracks.results`, in the order of the reply, at most 20. A reply without tracks gives `tracks: []`. | yes | yes |
+| HOST-28 | Connected | `searchRequest{requestId, text}` for the Yandex catalog | `GET /search?text=<text>&type=track&page=0`. `searchResult{requestId, tracks}` with the available tracks of `tracks.results`, in the order of the reply, at most 20. A reply without tracks gives `tracks: []`. | yes | yes |
 | HOST-29 | As HOST-28 | The search fails; or the token is rejected (401) | `searchResult{requestId, error: failed}`; or `error: unauthorized`, and the app shows the login problem to its user as usual. | yes | yes |
 | HOST-30 | Connected | `validateRequest{requestId, trackIds}` | `POST /tracks` with those ids. `validateResult{requestId, results}` with one result per id, in order: `track` for a track that is available, `reason: track-unavailable` for one that is missing or unavailable. If the request fails: `reason: failed` for every id. | yes | yes |
 | HOST-31 | Connected | Either request | The answer goes out within the host timeout ([limits](limits.md#requests-through-the-host)), even while the player is busy: these requests do not wait behind playback work. | yes | yes |
+
+A protocol 2 host can create and resume a room with Spotify as its only available catalogue.
+It searches through its own Spotify session and existing metadata lookup, returns up to 20
+playable tracks in search order, and plays queued results through the Spotify playback source.
+A host with both accounts can continue with the remaining catalogue when one signs out.
 
 ## The end
 
@@ -135,3 +140,10 @@ A guest's track is built like a track of the app's own parsing ([expected/yandex
 |---|---|---|---|---|---|
 | HOST-34 | A jam session | The playlist shows the tail | Each jam item carries the name of whoever added it, from `participants` by `addedBy`. A base track carries no name: the jam wave's tracks are marked as the jam wave, and the rest of the base looks as it does outside a jam. The current track's line says who added it. | yes | yes |
 | HOST-35 | A jam session | — | The jam window or screen shows a QR code of `joinUrl`, the link with a copy or share action, the participants with their online state and a kick action, the settings, "new link" and "end", and whether the host is connected. | yes | yes |
+
+### Desktop catalog logout
+
+| ID | Given | When | Then | Desktop | Android |
+| --- | --- | --- | --- | --- | --- |
+| HOST-39 | An active or stored Desktop Jam | The host explicitly logs out of a catalog | The host disables guest search for that catalog and removes its waiting items from the room. The room stays open even with no searchable catalogs. Cleanup continues after reconnect and before search for that catalog is re-enabled. | yes | no |
+| HOST-40 | A Desktop Jam with a mixed playlist | The host explicitly logs out of a catalog | Waiting tracks of that source and its continuation are removed from local playback. Other sources retain their order. A playing or loading track of the logged-out source gives way to the next available track. Paused or stopped playback does not start on logout. | yes | no |

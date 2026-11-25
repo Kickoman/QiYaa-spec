@@ -106,6 +106,17 @@
         },
         "fallback": {
           "$ref": "room.schema.json#/$defs/fallback"
+        },
+        "searchSources": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "yandex",
+              "spotify"
+            ]
+          },
+          "uniqueItems": true,
+          "maxItems": 2
         }
       }
     },
